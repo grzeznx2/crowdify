@@ -52,8 +52,8 @@
     }
 
     &__value {
-        // color: $COLOR_GRAY_10;
         line-height: 1;
+        text-transform: capitalize;
 
         @include respond(tl) {
             font-size: 1.4rem;

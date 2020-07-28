@@ -22,6 +22,9 @@ export default function Carousel() {
                         period={6}
                         type='entertainment'
                         location='riga'
+                        paid={40000}
+                        minTarget={50000}
+                        totalTarget={100000}
                     />
                     <Project
                         title='modern, high quality detached house project'
@@ -29,6 +32,9 @@ export default function Carousel() {
                         period={6}
                         type='entertainment'
                         location='riga'
+                        paid={40000}
+                        minTarget={50000}
+                        totalTarget={100000}
                     />
                     <Project
                         title='modern, high quality detached house project'
@@ -36,6 +42,9 @@ export default function Carousel() {
                         period={6}
                         type='entertainment'
                         location='riga'
+                        paid={40000}
+                        minTarget={50000}
+                        totalTarget={100000}
                     />
                     <Project
                         title='modern, high quality detached house project'
@@ -43,6 +52,9 @@ export default function Carousel() {
                         period={6}
                         type='entertainment'
                         location='riga'
+                        paid={40000}
+                        minTarget={50000}
+                        totalTarget={100000}
                     />
                 </div>
             </div>
