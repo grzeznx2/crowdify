@@ -1,0 +1,100 @@
+.heading-1 {
+    font-size: 5.4rem;
+    line-height: 1.2;
+    text-transform: capitalize;
+    white-space: pre-line;
+
+    @include respond(tp) {
+        font-size: 3.6rem;
+    }
+}
+
+.heading-2 {
+    font-size: 4.4rem;
+    line-height: 1.2;
+
+    @include respond(tp) {
+        font-size: 3.2rem;
+    }
+}
+
+.heading-3 {
+    font-size: 3.2rem;
+    font-weight: 400;
+    line-height: 1.2;
+
+
+    @include respond(tp) {
+        font-size: 2.6rem;
+    }
+}
+
+.heading-4 {
+    font-size: 2.2rem;
+    font-weight: 400;
+    line-height: 1.2;
+
+
+    @include respond(tl) {
+        font-size: 2.0rem;
+    }
+}
+
+.heading-5 {
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 1.2;
+
+}
+
+.section-title {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    margin-bottom: 5rem;
+    text-align: center;
+    font-size: 4.4rem;
+    font-weight: 600;
+    line-height: 1.2;
+
+    &--text-white {
+        color: $COLOR_WHITE;
+    }
+
+    &--text-primary {
+        color: $COLOR_BLUE_30;
+    }
+
+    @include respond(tp) {
+        font-size: 3.2rem;
+    }
+}
+
+// 
+.text-bold {
+    font-weight: 600;
+}
+
+// TEXT COLORS
+.text {
+    color: $COLOR_GRAY_10;
+}
+
+.text-gray-10 {
+    color: $COLOR_GRAY_10;
+}
+
+.text-blue-10 {
+    color: $COLOR_BLUE_10
+}
+
+.text-blue-20 {
+    color: $COLOR_BLUE_20
+}
+
+.text-blue-30 {
+    color: $COLOR_BLUE_30
+}
+
+.text-white {
+    color: $COLOR_WHITE
+}

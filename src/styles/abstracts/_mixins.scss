@@ -1,0 +1,107 @@
+@mixin positionCenter {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin absCenter {
+    position: absolute;
+    @include positionCenter;
+}
+
+@mixin absCover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+@mixin fixCenter {
+    @include positionCenter;
+    position: fixed;
+}
+
+//MQ MANAGER
+/*
+0 - 600px: Phone
+600 - 900ox: Tablet portrait
+900px - 1200px : Tablet landscape
+1200px - 1800px: Desktop
+1800+ - Big desktop
+*/
+
+/*
+-extra small: xs
+-phone: p
+-tab-port: tp
+-tab-land: tl
+-big-desktop: bd
+*/
+
+@mixin respond($breakpoint) {
+    @if($breakpoint==xs) {
+        @media (max-width: 26.5625em) {
+            @content
+        }
+    }
+
+    ;
+
+    @if($breakpoint==p) {
+        @media (max-width: 37.5em) {
+            @content
+        }
+    }
+
+    ;
+
+    @if($breakpoint==tp) {
+        @media (max-width: 56.25em) {
+            @content
+        }
+    }
+
+    ;
+
+    @if($breakpoint==tl) {
+        @media (max-width: 75em) {
+            @content
+        }
+    }
+}
+
+;
+
+@mixin styleThumb($width, $height, $background, $box-shadow) {
+    width: $width;
+    height: $height;
+    background: $background;
+    box-shadow: $box-shadow;
+}
+
+@mixin buttonRoundCenter($width, $height:$width) {
+    width: $width;
+    height: $height;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// FLEX
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-center-column {
+    @include flex-center;
+    flex-direction: column;
+}

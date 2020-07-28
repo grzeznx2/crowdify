@@ -1,0 +1,21 @@
+.text-center {
+    text-align: center !important;
+}
+
+.hide-tl {
+    @include respond(tl) {
+        display: none !important;
+    }
+}
+
+.hide-tp {
+    @include respond(tp) {
+        display: none !important;
+    }
+}
+
+.hide-p {
+    @include respond(p) {
+        display: none !important;
+    }
+}

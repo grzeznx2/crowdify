@@ -1,0 +1,48 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+button {
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+input[type=range] {
+    -webkit-appearance: none; // Hides the slider so that custom slider can be made
+    width: 100%; // Specific width is required for Firefox.
+    background: transparent; //Otherwise white in Chrome
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]::-ms-track {
+    width: 100%;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+
+ul,
+ol {
+    list-style: none;
+}
