@@ -1,0 +1,33 @@
+@import '../../styles/abstracts/variables';
+@import '../../styles/abstracts/mixins';
+
+.header {
+    position: fixed;
+    z-index: $HEADER_Z_INDEX;
+    width: 100%;
+    background-color: $COLOR_BLUE_30;
+    box-shadow: 0 .5rem 1rem rgba($COLOR_BLACK, .1);
+
+    &__container {
+        display: flex;
+        align-items: center;
+        min-height: $HEADER_HEIGHT;
+    }
+
+    &__logo {
+        margin-right: auto;
+    }
+
+    &__nav {
+        margin-right: 2rem;
+
+        @include respond(tp) {
+            display: none;
+        }
+    }
+
+    &__button-account {
+        margin-right: calc(#{$HAMBURGER_SIZE + 2rem});
+    }
+
+}

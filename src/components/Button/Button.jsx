@@ -12,22 +12,23 @@ const Button = ({
     disabled,
     handleClick,
     modifiers,
-    otherClasses,
     navLink,
+    otherClasses,
     page,
+    root = 'button',
     to
 }) =>
     to ?
         navLink ?
-            <NavLink activeClassName={activeClassName} to={`${to}`} className={joinClasses('btn', modifiers, otherClasses)}>
+            <NavLink activeClassName={activeClassName} to={`${to}`} className={joinClasses(root, modifiers, otherClasses)}>
                 {children}
             </NavLink>
             :
-            <Link to={`${to}`} className={joinClasses('btn', modifiers, otherClasses)}>
+            <Link to={`${to}`} className={joinClasses(root, modifiers, otherClasses)}>
                 {children}
             </Link>
         :
-        <button onClick={handleClick} data-page={page} disabled={disabled} className={`${joinClasses('btn', modifiers, otherClasses)}`}>
+        <button onClick={handleClick} data-page={page} disabled={disabled} className={`${joinClasses(root, modifiers, otherClasses)}`}>
             {children}
         </button>
 
