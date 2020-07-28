@@ -1,8 +1,10 @@
 import React from 'react'
 
+import ProjectDetails from './ProjectDetails/ProjectDetails'
+
 import './Project.scss'
 
-export default function Project() {
+export default function Project({ title, interestRate, type, period, location }) {
 
     return (
         <div class="project">
@@ -11,33 +13,38 @@ export default function Project() {
                 </div>
                 <div class="project__title-box">
                     <h3 class="heading-3 text-white">
-                        Modern, high quality detached house project
-           </h3>
+                        {title}
+                    </h3>
                 </div>
             </div>
             <div class="project__middle-container">
 
                 <div class="project__details-box">
-                    <div class="project-details">
+                    <ProjectDetails
+                        interestRate={interestRate}
+                        type={type}
+                        period={period}
+                        location={location} />
+                    {/* <div class="project-details">
                         <ul class="project-details__list">
                             <li class="project-details__item">
                                 <span class="project-details__label">interest rate:</span>
-                                <span class="project-details__value">25%</span>
+                                <span class="project-details__value">{interestRate}%</span>
                             </li>
                             <li class="project-details__item">
                                 <span class="project-details__label">type:</span>
-                                <span class="project-details__value">Entertainment</span>
+                                <span class="project-details__value">{type}</span>
                             </li>
                             <li class="project-details__item">
                                 <span class="project-details__label">period:</span>
-                                <span class="project-details__value">6 months</span>
+                                <span class="project-details__value">{period} months</span>
                             </li>
                             <li class="project-details__item">
                                 <span class="project-details__label">location:</span>
-                                <span class="project-details__value">Riga</span>
+                                <span class="project-details__value">{location}</span>
                             </li>
                         </ul>
-                    </div>
+                    </div> */}
 
                 </div>
                 <div class="project__target-box">

@@ -1,0 +1,62 @@
+@import '../../../styles/abstracts/variables';
+@import '../../../styles/abstracts/mixins';
+
+.project-details {
+    height: 100%;
+
+    &--bg-dark {
+        color: $COLOR_WHITE
+    }
+
+    &__list {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        height: 100%;
+    }
+
+    &__item {
+        display: flex;
+        align-items: baseline;
+        flex: 1 1 100%;
+
+        @include respond(tl) {
+            display: flex;
+            flex-direction: column;
+        }
+
+        @include respond(tp) {
+            flex: 1 1 50%;
+        }
+
+        @include respond(p) {
+            flex: 1 1 100%;
+        }
+
+        @include respond(xs) {
+            align-items: center;
+        }
+
+        margin-bottom: 1rem;
+    }
+
+    &__label {
+        font-size: 1.2rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-bottom: .2rem;
+        margin-right: .5rem;
+    }
+
+    &__value {
+        // color: $COLOR_GRAY_10;
+        line-height: 1;
+
+        @include respond(tl) {
+            font-size: 1.4rem;
+        }
+    }
+}

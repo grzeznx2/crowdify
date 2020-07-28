@@ -16,10 +16,34 @@ export default function Carousel() {
             </button>
             <div class="carousel__container">
                 <div class="carousel__content">
-                    <Project />
-                    <Project />
-                    <Project />
-                    <Project />
+                    <Project
+                        title='modern, high quality detached house project'
+                        interestRate={32}
+                        period={6}
+                        type='entertainment'
+                        location='riga'
+                    />
+                    <Project
+                        title='modern, high quality detached house project'
+                        interestRate={32}
+                        period={6}
+                        type='entertainment'
+                        location='riga'
+                    />
+                    <Project
+                        title='modern, high quality detached house project'
+                        interestRate={32}
+                        period={6}
+                        type='entertainment'
+                        location='riga'
+                    />
+                    <Project
+                        title='modern, high quality detached house project'
+                        interestRate={32}
+                        period={6}
+                        type='entertainment'
+                        location='riga'
+                    />
                 </div>
             </div>
         </div>
