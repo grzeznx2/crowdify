@@ -4,6 +4,10 @@
     text-transform: capitalize;
     white-space: pre-line;
 
+    &__break {
+        display: block;
+    }
+
     @include respond(tp) {
         font-size: 3.6rem;
     }
@@ -74,15 +78,6 @@
     font-weight: 600;
 }
 
-// TEXT COLORS
-.text {
-    color: $COLOR_GRAY_10;
-}
-
-.text-gray-10 {
-    color: $COLOR_GRAY_10;
-}
-
 .text-blue-10 {
     color: $COLOR_BLUE_10
 }
@@ -91,7 +86,7 @@
     color: $COLOR_BLUE_20
 }
 
-.text-blue-30 {
+.text-primary-30 {
     color: $COLOR_BLUE_30
 }
 
