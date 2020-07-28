@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Button from '../Button/Button'
+import Logo from '../Logo/Logo'
 import MainNav from '../MainNav/MainNav'
 import SvgIcon from '../SvgIcon/SvgIcon'
 
@@ -11,9 +12,7 @@ export default function Header() {
 
         <div class="container">
             <div class="header__container">
-                <a href="#" class="logo logo--white logo--main header__logo">
-                    Crowdify
-                </a>
+                <Logo modifiers={['white', 'main']} otherClasses={['header__logo']} />
                 <MainNav />
                 <Button to='/' root='button-account' otherClasses={['header__button-account']}>
                     <SvgIcon svgId='icon-user' otherClasses={["button-account__icon"]} />

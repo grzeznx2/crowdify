@@ -1,0 +1,22 @@
+@import '../../styles/abstracts/variables';
+
+.logo {
+    display: inline-block;
+    text-decoration: none;
+    line-height: 1;
+
+    &--main {
+        font-size: 3.2rem;
+        font-weight: 700;
+    }
+
+    &--footer {
+        font-size: 2.6rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+    }
+
+    &--white {
+        color: $COLOR_WHITE;
+    }
+}
