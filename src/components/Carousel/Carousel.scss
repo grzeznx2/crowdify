@@ -1,0 +1,33 @@
+@import '../../styles/abstracts/variables';
+
+.carousel {
+    position: relative;
+
+    &__container {
+        min-height: 62rem;
+        padding: 2rem 0;
+        overflow: hidden;
+    }
+
+
+    &__content {
+        display: flex;
+    }
+
+    &__arrow {
+        position: absolute;
+        top: 50%;
+        width: 5rem;
+        height: 5rem;
+        fill: $COLOR_BLUE_30;
+        cursor: pointer;
+
+        &--left {
+            left: -2.5rem
+        }
+
+        &--right {
+            right: -2.5rem
+        }
+    }
+}
