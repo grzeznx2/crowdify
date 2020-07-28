@@ -1,21 +1,36 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-import SvgIcon from '../SvgIcon/SvgIcon'
+import Button from '../Button/Button'
 import Project from '../Project/Project'
+import SvgIcon from '../SvgIcon/SvgIcon'
 
 import './Carousel.scss'
 
 export default function Carousel() {
+    const [contentPosition, setContentPosition] = useState(0)
+
+    const handleCarousel = (direction) => {
+        if (direction === 'forward') setContentPosition(prev => prev - 100)
+        if (direction === 'backward') setContentPosition(prev => prev + 100)
+    }
+
+    const handleForward = () => handleCarousel('forward')
+    const handleBackward = () => handleCarousel('backward')
+
     return (
         <div class="carousel">
-            <button>
-                <SvgIcon svgId='icon-chevron-left' root='carousel__arrow' modifiers={['left']} />
-            </button>
-            <button>
-                <SvgIcon svgId='icon-chevron-right' root='carousel__arrow' modifiers={['right']} />
-            </button>
+            <Button handleClick={handleBackward} root='carousel__arrow-button' modifiers={['left']}>
+                <SvgIcon svgId='icon-chevron-left' root='carousel__arrow-icon' />
+            </Button>
+            <Button handleClick={handleForward} root='carousel__arrow-button' modifiers={['right']}>
+                <SvgIcon svgId='icon-chevron-right' root='carousel__arrow-icon' />
+            </Button>
             <div class="carousel__container">
-                <div class="carousel__content">
+                <div
+                    style={{
+                        transform: `translateX(${contentPosition}%)`
+                    }}
+                    class="carousel__content">
                     <Project
                         title='modern, high quality detached house project'
                         interestRate={32}
@@ -32,7 +47,7 @@ export default function Carousel() {
                         period={6}
                         type='entertainment'
                         location='riga'
-                        paid={40000}
+                        paid={80000}
                         minTarget={50000}
                         totalTarget={100000}
                     />
