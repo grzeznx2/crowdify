@@ -12,7 +12,8 @@ const carouselInitialState = {
     contentPosition: 0,
     projects: [],
     availablePages: 1,
-    hasMoreProjects: true
+    hasMoreProjects: true,
+    availablePagesMultiplier: 1
 }
 
 
@@ -37,6 +38,14 @@ const carouselReducer = (state, action) => {
                 projects: [...state.projects, ...action.projects],
                 availablePages: Math.ceil((state.projects.length + action.projects.length) / 2) || 1,
                 hasMoreProjects: action.projects.length < 4 ? false : true
+            }
+        case 'RESIZE_WINDOW':
+            console.log('RESIZING!')
+            return {
+                ...state,
+                availablePagesMultiplier: action.multiplier,
+                contentPosition: 0,
+                displayPage: 1
             }
         default:
             return state
@@ -97,19 +106,35 @@ export default function Carousel() {
         if (carouselState.hasMoreProjects) fetchProjects()
     }, [carouselState.hasMoreProjects, carouselState.fetchPage])
 
+    useEffect(() => {
+        function handleResize() {
+            const multiplier = (window.innerWidth / 900) < 1 ? 2 : 1
+            if (carouselState.availablePagesMultiplier !== multiplier) dispatch({ type: 'RESIZE_WINDOW', multiplier })
+        }
+
+        window.addEventListener('resize', handleResize)
+
+        handleResize()
+
+        return () => {
+            window.removeEventListener('resize', handleResize)
+        }
+    }, [carouselState.availablePagesMultiplier])
+
     const showNextPage = () => dispatch({ type: 'SHOW_NEXT_PAGE' })
     const showPrevPage = () => dispatch({ type: 'SHOW_PREV_PAGE' })
 
-    console.log(carouselState.hasMoreProjects, carouselState.displayPage, carouselState.availablePages)
+    const lastPage = (carouselState.availablePages === 1 && carouselState.availablePagesMultiplier === 2) ? 1 :
+        carouselState.availablePages * carouselState.availablePagesMultiplier
 
     return (
         <div class="carousel">
             {
-                carouselState.contentPosition < 0 && <Button handleClick={showPrevPage} root='carousel__arrow-button' modifiers={['left']}>
+                carouselState.displayPage !== 1 && <Button handleClick={showPrevPage} root='carousel__arrow-button' modifiers={['left']}>
                     <SvgIcon svgId='icon-chevron-left' root='carousel__arrow-icon' />
                 </Button>
             }{
-                carouselState.displayPage === carouselState.availablePages && !carouselState.hasMoreProjects ? null : <Button handleClick={showNextPage} root='carousel__arrow-button' modifiers={['right']}>
+                carouselState.displayPage === (lastPage) && !carouselState.hasMoreProjects ? null : <Button handleClick={showNextPage} root='carousel__arrow-button' modifiers={['right']}>
                     <SvgIcon svgId='icon-chevron-right' root='carousel__arrow-icon' />
                 </Button>
             }
