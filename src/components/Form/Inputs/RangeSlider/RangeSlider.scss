@@ -1,0 +1,74 @@
+@import '../../../../styles/abstracts/variables';
+@import '../../../../styles/abstracts/mixins';
+
+.range-slider {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
+    font-size: 1.4rem;
+
+    &--bg-white {
+        color: $COLOR_GRAY_10;
+    }
+
+    &--bg-blue {
+        color: $COLOR_WHITE;
+    }
+
+    &__label {
+        font-weight: 600;
+    }
+
+    &__slider-container {
+        position: relative;
+        flex: 1 1 100%;
+        margin-top: 1.5rem;
+        height: 10px;
+
+        &>* {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 10px;
+            border-radius: 50px;
+        }
+    }
+
+    &__input {
+        z-index: 3;
+        width: 100%;
+        pointer-events: none;
+
+        &::-webkit-slider-thumb {
+            pointer-events: all;
+            @include styleThumb(2.5rem, 2.5rem, $COLOR_WHITE, 0 .5rem 1rem rgba($COLOR_BLACK, .1))
+        }
+
+        &::-moz-range-thumb {
+            pointer-events: all;
+            @include styleThumb(2.5rem, 2.5rem, $COLOR_WHITE, 0 .5rem 1rem rgba($COLOR_BLACK, .1))
+        }
+
+        &::-ms-thumb {
+            pointer-events: all;
+            @include styleThumb(2.5rem, 2.5rem, $COLOR_WHITE, 0 .5rem 1rem rgba($COLOR_BLACK, .1))
+        }
+
+    }
+
+    &__track {
+        z-index: 1;
+        width: 100%;
+        background-color: rgba($COLOR_BLUE_10, .3);
+
+    }
+
+    &__range {
+        z-index: 2;
+        right: 50%;
+        background-color: $COLOR_BLUE_10;
+    }
+
+}
