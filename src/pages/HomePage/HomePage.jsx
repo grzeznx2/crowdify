@@ -4,6 +4,7 @@ import SectionHero from './Sections/SectionHero'
 import SectionLatestProjects from './Sections/SectionLatestProjects'
 import SectionCalculateReturn from './Sections/SectionCalculateReturn'
 import SectionFeatures from './Sections/SectionFeatures'
+import SectionSubscribe from './Sections/SectionSubscribe'
 import './HomePage.scss'
 
 export default function HomePage() {
@@ -13,6 +14,7 @@ export default function HomePage() {
             <SectionLatestProjects />
             <SectionCalculateReturn />
             <SectionFeatures />
+            <SectionSubscribe />
 
         </>
     )
