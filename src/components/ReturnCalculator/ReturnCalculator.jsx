@@ -12,7 +12,7 @@ const initalState = {
         name: 'amountInvested',
         value: 2500,
         unit: '€',
-        min: 1000,
+        min: 100,
         max: 10000,
         modifiers: ['bg-white'],
         otherClasses: ['return-calculator__range-slider']

@@ -19,6 +19,7 @@
 
     &__label {
         font-weight: 600;
+        text-transform: capitalize;
     }
 
     &__slider-container {
@@ -67,7 +68,6 @@
 
     &__range {
         z-index: 2;
-        right: 50%;
         background-color: $COLOR_BLUE_10;
     }
 

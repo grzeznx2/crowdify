@@ -11,7 +11,9 @@ export default function RangeSlider({ id, name, title, value, unit, min, max, mo
             <span className="range-slider__value">{value} {unit}</span>
             <div className="range-slider__slider-container">
                 <div className="range-slider__track"></div>
-                <div className="range-slider__range"></div>
+                <div style={{
+                    width: `${((value - min) / (max - min)) * 100}%`
+                }} className="range-slider__range"></div>
                 <input id={id} type="range" min={min} max={max} value={value} name={name} className="range-slider__input" onInput={onInput} />
             </div>
         </div>
