@@ -4,7 +4,8 @@ import { joinClasses } from '../../../../utils/utils'
 
 import './RangeSlider.scss'
 
-export default function RangeSlider({ id, name, title, value, unit, min, max, modifiers, otherClasses, onInput }) {
+export default React.memo(function RangeSlider({ id, name, title, value, unit, min, max, modifiers, otherClasses, onInput }) {
+    console.log(`${name} rendered`)
     return (
         <div key={id} className={joinClasses('range-slider', modifiers, otherClasses)}>
             <label htmlFor={id} className="range-slider__label">{title}</label>
@@ -18,4 +19,4 @@ export default function RangeSlider({ id, name, title, value, unit, min, max, mo
             </div>
         </div>
     )
-}
+})

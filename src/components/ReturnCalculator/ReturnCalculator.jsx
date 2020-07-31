@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useCallback } from 'react'
 
 import Button from '../Button/Button'
 import RangeSlider from '../Form/Inputs/RangeSlider/RangeSlider'
@@ -61,9 +61,9 @@ const returnCalculatorReducer = (state, action) => {
 export default function ReturnCalculator() {
     const [inputs, dispatch] = useReducer(returnCalculatorReducer, initalState)
 
-    const handleChange = e => {
+    const handleChange = useCallback(e => {
         dispatch({ type: 'CHANGE_VALUE', target: e.target })
-    }
+    }, [])
 
     const totalReturn = Math.floor(inputs.amountInvested.value * (inputs.interestRate.value / 100) * (inputs.loanPeriod.value / 12))
 
