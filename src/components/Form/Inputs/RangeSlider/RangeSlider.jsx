@@ -4,8 +4,8 @@ import { joinClasses } from '../../../../utils/utils'
 
 import './RangeSlider.scss'
 
-export default React.memo(function RangeSlider({ id, name, title, value, unit, min, max, modifiers, otherClasses, onInput }) {
-    console.log(`${name} rendered`)
+export default React.memo(function RangeSlider({ id, name, title, value, unit, min, max, modifiers, otherClasses, onChange }) {
+
     return (
         <div key={id} className={joinClasses('range-slider', modifiers, otherClasses)}>
             <label htmlFor={id} className="range-slider__label">{title}</label>
@@ -15,7 +15,7 @@ export default React.memo(function RangeSlider({ id, name, title, value, unit, m
                 <div style={{
                     width: `${((value - min) / (max - min)) * 100}%`
                 }} className="range-slider__range"></div>
-                <input id={id} type="range" min={min} max={max} value={value} name={name} className="range-slider__input" onInput={onInput} />
+                <input id={id} type="range" min={min} max={max} value={value} name={name} className="range-slider__input" onChange={onChange} />
             </div>
         </div>
     )

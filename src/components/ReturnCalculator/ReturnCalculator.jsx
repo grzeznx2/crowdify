@@ -73,7 +73,7 @@ export default function ReturnCalculator() {
                     </h3>
             {
                 Object.values(inputs).map(input => {
-                    return <RangeSlider onInput={handleChange}
+                    return <RangeSlider onChange={handleChange}
                         {...input} />
                 })
             }
