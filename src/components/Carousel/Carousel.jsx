@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useReducer } from 'react'
+import React, { useEffect, useReducer } from 'react'
+
+import useWindowResize from '../../hooks/useWindowResize'
 
 import Button from '../Button/Button'
 import Project from '../Project/Project'
@@ -86,6 +88,13 @@ export default function Carousel() {
     const [carouselState, dispatch] = useReducer(carouselReducer, carouselInitialState)
     const [fetchState, dispatchFetch] = useReducer(fetchReducer, fetchInititalState)
 
+    function handleResize() {
+        const multiplier = (window.innerWidth / 900) < 1 ? 2 : 1
+        if (carouselState.availablePagesMultiplier !== multiplier) dispatch({ type: 'RESIZE_WINDOW', multiplier })
+    }
+
+    useWindowResize(handleResize, [carouselState.availablePagesMultiplier])
+
     useEffect(() => {
         const controller = new AbortController()
 
@@ -105,21 +114,6 @@ export default function Carousel() {
         }
         if (carouselState.hasMoreProjects) fetchProjects()
     }, [carouselState.hasMoreProjects, carouselState.fetchPage])
-
-    useEffect(() => {
-        function handleResize() {
-            const multiplier = (window.innerWidth / 900) < 1 ? 2 : 1
-            if (carouselState.availablePagesMultiplier !== multiplier) dispatch({ type: 'RESIZE_WINDOW', multiplier })
-        }
-
-        window.addEventListener('resize', handleResize)
-
-        handleResize()
-
-        return () => {
-            window.removeEventListener('resize', handleResize)
-        }
-    }, [carouselState.availablePagesMultiplier])
 
     const showNextPage = () => dispatch({ type: 'SHOW_NEXT_PAGE' })
     const showPrevPage = () => dispatch({ type: 'SHOW_PREV_PAGE' })
