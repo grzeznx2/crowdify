@@ -8,7 +8,9 @@ export default function SectionCalculateReturn() {
             <div className="container">
                 <div className="section-calculate-return__container">
                     <div className="section-calculate-return__image-container">
-                        <div className="section-calculate-return__image-box">
+                        <div style={{
+                            backgroundImage: `url('/assets/img/Girl-with-umbrella.jpg')`
+                        }} className="section-calculate-return__image-box">
                         </div>
                     </div>
                     <div className="section-calculate-return__return-calculator-container">
