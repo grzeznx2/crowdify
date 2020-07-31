@@ -1,0 +1,27 @@
+@import '../../styles/abstracts/variables';
+
+.feature {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    column-gap: 2.5rem;
+    row-gap: .5rem;
+    margin-bottom: 7rem;
+
+    &__icon {
+        width: 6rem;
+        height: 6rem;
+        fill: $COLOR_WHITE;
+    }
+
+    &__title-box {
+        display: flex;
+        align-items: center;
+        text-transform: capitalize;
+    }
+
+    &__text {
+        grid-column: 2/3;
+        font-size: 1.4rem;
+        color: rgba($COLOR_WHITE, .8);
+    }
+}
