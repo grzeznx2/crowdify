@@ -56,12 +56,16 @@ const returnCalculatorReducer = (state, action) => {
     }
 }
 
+
+
 export default function ReturnCalculator() {
     const [inputs, dispatch] = useReducer(returnCalculatorReducer, initalState)
 
     const handleChange = e => {
         dispatch({ type: 'CHANGE_VALUE', target: e.target })
     }
+
+    const totalReturn = Math.floor(inputs.amountInvested.value * (inputs.interestRate.value / 100) * (inputs.loanPeriod.value / 12))
 
     return (
         <div className="return-calculator">
@@ -75,7 +79,7 @@ export default function ReturnCalculator() {
             }
             <div className="return-calculator__result-box">
                 <span className="return-calculator__result-label">Total Return:</span>
-                <span className="return-calculator__result-value">256€</span>
+                <span className="return-calculator__result-value">{totalReturn} €</span>
             </div>
             <Button to='/projects' modifiers={['primary']} otherClasses={['return-calculator__button']}>Start Investing</Button>
         </div>
