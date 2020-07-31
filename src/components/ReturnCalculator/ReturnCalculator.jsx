@@ -9,6 +9,7 @@ const initalState = {
     amountInvested: {
         title: 'amount invested',
         id: 'amountInvested',
+        name: 'amountInvested',
         value: 2500,
         unit: '€',
         min: 1000,
@@ -19,6 +20,7 @@ const initalState = {
     interestRate: {
         title: 'interest Rate',
         id: 'interestRate',
+        name: 'interestRate',
         value: 22,
         unit: '%',
         min: 10,
@@ -29,6 +31,7 @@ const initalState = {
     loanPeriod: {
         title: 'loan period',
         id: 'loanPeriod',
+        name: 'loanPeriod',
         value: 6,
         unit: 'months',
         min: 1,
@@ -40,6 +43,14 @@ const initalState = {
 
 const returnCalculatorReducer = (state, action) => {
     switch (action.type) {
+        case 'CHANGE_VALUE':
+            return {
+                ...state,
+                [action.target.name]: {
+                    ...state[action.target.name],
+                    value: action.target.value
+                }
+            }
         default:
             return state
     }
@@ -48,7 +59,9 @@ const returnCalculatorReducer = (state, action) => {
 export default function ReturnCalculator() {
     const [inputs, dispatch] = useReducer(returnCalculatorReducer, initalState)
 
-
+    const handleChange = e => {
+        dispatch({ type: 'CHANGE_VALUE', target: e.target })
+    }
 
     return (
         <div className="return-calculator">
@@ -56,7 +69,7 @@ export default function ReturnCalculator() {
                     </h3>
             {
                 Object.values(inputs).map(input => {
-                    return <RangeSlider
+                    return <RangeSlider onInput={handleChange}
                         {...input} />
                 })
             }
