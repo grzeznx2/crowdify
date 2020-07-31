@@ -3,6 +3,7 @@ import React from 'react'
 import SectionHero from './Sections/SectionHero'
 import SectionLatestProjects from './Sections/SectionLatestProjects'
 import SectionCalculateReturn from './Sections/SectionCalculateReturn'
+import SectionFeatures from './Sections/SectionFeatures'
 import './HomePage.scss'
 
 export default function HomePage() {
@@ -11,6 +12,8 @@ export default function HomePage() {
             <SectionHero />
             <SectionLatestProjects />
             <SectionCalculateReturn />
+            <SectionFeatures />
+
         </>
     )
 }
