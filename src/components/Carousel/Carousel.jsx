@@ -42,7 +42,6 @@ const carouselReducer = (state, action) => {
                 hasMoreProjects: action.projects.length < 4 ? false : true
             }
         case 'RESIZE_WINDOW':
-            console.log('RESIZING!')
             return {
                 ...state,
                 availablePagesMultiplier: action.multiplier,
