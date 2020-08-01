@@ -1,35 +1,41 @@
-import React from 'react'
+import React, { useReducer } from 'react'
+
+import Button from '../../Button/Button'
+import InputGroup from '../Inputs/InputGroup/InputGroup'
 
 import './Form.scss'
 
+
+
 export default function Form() {
+
+
     return (
-        <form action="#" class="form">
-            <div class="form__container form__container--subscribe">
-                <div class="input-group input-group--column">
-                    <label for="subscribe-name" class="input-group__label">Name:</label>
-                    <input id="subscribe-name" type="text" class="input-group__input input-group__input--invalid" />
-                    <div class="error">
-                        <svg class="error__icon">
+        <form action="#" className="form">
+            <div className="form__container form__container--subscribe">
+                <div className="input-group input-group--column">
+                    <label for="subscribe-name" className="input-group__label">Name:</label>
+                    <input id="subscribe-name" type="text" className="input-group__input input-group__input--invalid" />
+                    <div className="error">
+                        <svg className="error__icon">
                             <use xlinkHref='/img/sprite.svg#icon-circle-with-cross' />
                         </svg>
-                        <span class="error__message">Name is required.</span>
+                        <span className="error__message">Name is required.</span>
                     </div>
-                    <div class="error">
-                        <svg class="error__icon">
+                    <div className="error">
+                        <svg className="error__icon">
                             <use xlinkHref='/img/sprite.svg#icon-circle-with-cross' />
                         </svg>
-                        <span class="error__message">Name is required.</span>
+                        <span className="error__message">Name is required.</span>
                     </div>
                 </div>
-                <div class="input-group input-group--column">
-                    <label for="subscribe-email" class="input-group__label">Email:</label>
-                    <input id="subscribe-email" type="text" class="input-group__input input-group__input--valid" />
+                <div className="input-group input-group--column">
+                    <label for="subscribe-email" className="input-group__label">Email:</label>
+                    <input id="subscribe-email" type="text" className="input-group__input input-group__input--valid" />
                 </div>
             </div>
-            <div class="form__button-wrapper">
-
-                <a href="#" class="button button--primary">Subscribe</a>
+            <div className="form__button-wrapper">
+                <Button to='/' modifiers={['primary']}>subscribe</Button>
             </div>
         </form>
     )

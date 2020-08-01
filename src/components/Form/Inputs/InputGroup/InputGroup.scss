@@ -1,0 +1,107 @@
+@import '../../../../styles/abstracts/variables';
+@import '../../../../styles/abstracts/mixins';
+
+.input-group {
+    display: flex;
+    margin-bottom: 2rem;
+
+    &--column {
+        @include flex-column;
+    }
+
+    &__label {
+        margin-bottom: 1rem;
+        font-size: 1.4rem;
+        font-weight: 600;
+    }
+
+    &__input {
+        display: inline-block;
+        border: none;
+        border-bottom: 3px solid $COLOR_WHITE;
+        padding: 1rem 1.5rem;
+        font-size: 1.6rem;
+        font-family: inherit;
+        background-color: rgba(#8F8F90, .07);
+        outline: none;
+
+        &--invalid {
+            border-bottom: 3px solid $COLOR_RED_30;
+        }
+
+        &--valid {
+            border-bottom: 3px solid $COLOR_GREEN_30;
+        }
+
+        &--modal {
+            align-self: center;
+            width: 15rem;
+        }
+    }
+
+    &__input--invalid+&__round-buttons-container {
+        border-bottom: 3px solid $COLOR_RED_30;
+    }
+
+    &__input--valid+&__round-buttons-container {
+        border-bottom: 3px solid $COLOR_GREEN_30;
+    }
+
+    &__round-buttons-container {
+        display: flex;
+        border-bottom: 3px solid $COLOR_WHITE;
+
+        &>* {
+            margin-left: .2rem;
+            margin-bottom: .2rem;
+        }
+    }
+
+    &__additional-info {
+        display: inline-block;
+        margin-top: 2rem;
+        font-size: 1.4rem;
+        font-weight: 600;
+    }
+}
+
+.input-group {
+    &--change-personal-data {
+        justify-content: flex-start;
+    }
+
+    &--change-personal-data &__label {
+        display: inline-block;
+        width: 10rem;
+        margin-bottom: 0;
+        font-weight: 300;
+        align-self: center;
+    }
+
+    &--change-personal-data &__input {
+        flex: 1 1 50%;
+        padding: 0;
+        background-color: transparent;
+        color: $COLOR_GRAY_10;
+    }
+}
+
+.input-group {
+    &--on-dark-bg {
+        color: $COLOR_WHITE;
+    }
+
+    &--on-dark-bg &__input {
+        background-color: $COLOR_WHITE;
+        text-align: center;
+    }
+
+    &--on-blue-bg {
+        color: $COLOR_WHITE;
+    }
+
+    &--on-blue-bg &__input {
+        background-color: $COLOR_BLUE_10;
+        color: inherit;
+    }
+}
