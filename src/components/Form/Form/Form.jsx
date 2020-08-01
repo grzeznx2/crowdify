@@ -3,6 +3,8 @@ import React, { useReducer, useCallback } from 'react'
 import Button from '../../Button/Button'
 import InputGroup from '../Inputs/InputGroup/InputGroup'
 
+import Validator from '../../../utils/Validator'
+
 import './Form.scss'
 
 const initialState = {
@@ -14,8 +16,8 @@ const initialState = {
         value: '',
         isValid: false,
         isTouched: false,
-        validators: [],
-        errors: ['Name is required', 'Name must be at least 2 characters long'],
+        validators: [Validator.isRequired('Name is required')],
+        errors: [],
         modifiers: ['column']
     },
     subscribeEmail: {
@@ -26,7 +28,7 @@ const initialState = {
         value: '',
         isValid: false,
         isTouched: false,
-        validators: [],
+        validators: [Validator.isEmail('Please provide valid email')],
         errors: [],
         modifiers: ['column']
     },
@@ -35,11 +37,17 @@ const initialState = {
 const formReducer = (state, action) => {
     switch (action.type) {
         case 'CHANGE_VALUE':
+            const { name, value } = action.target
+            const { validators } = state[name]
+            const { isValid, errors } = Validator.validateAll(validators, value)
             return {
                 ...state,
-                [action.target.name]: {
-                    ...state[action.target.name],
-                    value: action.target.value
+                [name]: {
+                    ...state[name],
+                    value,
+                    isValid,
+                    errors,
+                    isTouched: true
                 }
             }
         default:

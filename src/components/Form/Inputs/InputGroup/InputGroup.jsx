@@ -21,10 +21,3 @@ export default function InputGroup({ onChange, id, name, type, isValid, isTouche
         </div>
     )
 }
-
-{/* <div className="error">
-<svg className="error__icon">
-    <use xlinkHref='/img/sprite.svg#icon-circle-with-cross' />
-</svg>
-<span className="error__message">Name is required.</span>
-</div> */}
