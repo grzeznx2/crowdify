@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route } from 'react-router-dom'
 
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
@@ -9,7 +10,7 @@ function App() {
     <div>
       <div className="header-placeholder"></div>
       <Header />
-      <HomePage />
+      <Route exact path='/' component={HomePage} />
       <Footer />
     </div>
   );
