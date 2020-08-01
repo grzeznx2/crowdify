@@ -1,0 +1,91 @@
+@import '../../styles/abstracts/variables';
+@import '../../styles/abstracts/mixins';
+
+.footer {
+    background-color: $COLOR_BLUE_30;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    font-size: 1.4rem;
+    color: $COLOR_WHITE;
+
+    &__container {
+        display: flex;
+        // align-items: center;
+
+        @include respond(p) {
+            flex-direction: column;
+        }
+    }
+
+    &__info-container {
+        flex: 1 1 30%;
+
+        @include respond(p) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+    }
+
+    &__nav {
+        flex: 1 1 20%;
+    }
+
+    &__trustpilot {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-self: center;
+        flex: 1 1 25%;
+        height: 100%;
+
+        @include respond(p) {
+            margin-top: 1rem;
+        }
+    }
+
+    &__info {
+        display: block;
+
+        &:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+
+        @include respond(tp) {
+            font-size: 1.2rem;
+            margin-bottom: .5rem;
+        }
+
+    }
+
+    &__media {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        align-self: center;
+        flex: 1 1 25%;
+        height: 100%;
+
+        @include respond(p) {
+            justify-content: center;
+            margin-top: 1rem;
+        }
+    }
+
+    &__icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        fill: $COLOR_WHITE;
+        transition: opacity .2s ease;
+        cursor: pointer;
+
+        &:not(:last-child) {
+            margin-right: .5rem;
+        }
+
+        &:hover {
+            opacity: .7;
+        }
+    }
+}
