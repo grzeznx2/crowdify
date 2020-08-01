@@ -6,7 +6,7 @@ class Validator {
     static isGreaterThanZero = (errorMessage) => ({ type: 'IS_GREATER_THAN_ZERO', errorMessage })
     static areEqual = (value, value2, errorMessage) => ({ type: 'ARE_EQUAL', value, value2, errorMessage })
 
-    static validate = (validator, inputValue, errorsArray) => {
+    static validate = (validator, inputValue, errors) => {
         const { type, value, value2, errorMessage } = validator
         let isValid = true;
 
@@ -20,18 +20,19 @@ class Validator {
             isValid = isValid && value === value2
         }
 
-        if (!isValid) errorsArray.push(errorMessage)
+        if (!isValid) errors.push(errorMessage)
         return isValid
     }
 
-    static validateAll = (validators, inputValue, errorsArray) => {
+    static validateAll = (validators, inputValue) => {
+        let errors = []
 
         let isValid = true;
         validators.forEach(validator => {
-            isValid = this.validate(validator, inputValue, errorsArray) && isValid
+            isValid = this.validate(validator, inputValue, errors) && isValid
         })
 
-        return isValid
+        return { isValid, errors }
     }
 }
 
