@@ -27,6 +27,7 @@ input[type=range]::-ms-thumb {
     cursor: pointer;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="email"] {
     width: 100%;
 }
