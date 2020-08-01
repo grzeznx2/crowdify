@@ -64,15 +64,26 @@ export default function Form() {
         dispatch({ type: 'CHANGE_VALUE', target: e.target })
     }, [])
 
+    const handleSubmit = event => {
+        event.preventDefault();
+        const inputsArray = Object.values(inputs)
+        const isFormValid = inputsArray.every(input => input.isValid)
+        if (isFormValid) {
+            for (let input of inputsArray) {
+                console.log(`${input.name}: ${input.value}`)
+            }
+        }
+    }
+
     return (
-        <form action="#" className="form">
+        <form onSubmit={handleSubmit} className="form">
             <div className="form__container form__container--subscribe">
                 {
                     Object.values(inputs).map(input => <InputGroup onChange={handleChange} key={input.id} {...input} />)
                 }
             </div>
             <div className="form__button-wrapper">
-                <Button to='/' modifiers={['primary']}>subscribe</Button>
+                <Button modifiers={['primary']}>subscribe</Button>
             </div>
         </form>
     )
