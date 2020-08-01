@@ -111,7 +111,7 @@ export default function Carousel() {
                 else dispatchFetch({ type: 'FETCH_FAILURE' })
             }
         }
-        if (carouselState.hasMoreProjects) fetchProjects()
+        // if (carouselState.hasMoreProjects) fetchProjects()
     }, [carouselState.hasMoreProjects, carouselState.fetchPage])
 
     const showNextPage = () => dispatch({ type: 'SHOW_NEXT_PAGE' })
