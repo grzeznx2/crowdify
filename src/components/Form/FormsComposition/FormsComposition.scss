@@ -1,0 +1,129 @@
+@import '../../../styles/abstracts/variables';
+@import '../../../styles/abstracts/mixins';
+
+.forms-composition {
+    position: relative;
+    overflow: hidden;
+    max-width: 75rem;
+    margin: 0 auto;
+    background-color: $COLOR_WHITE;
+    border-radius: 10px;
+    box-shadow: 0 1.4rem 2.8rem rgba($COLOR_BLACK, .25), 0 1rem 2rem rgba($COLOR_BLACK, .22);
+    display: flex;
+
+    @include respond(p) {
+        flex-direction: column;
+    }
+
+    &__form-box {
+        flex: 1 1 50%;
+        padding: 3rem 3rem;
+        transition: all .6s ease-in-out;
+        background-color: $COLOR_WHITE;
+
+        &--sign-up {
+            opacity: 0;
+            z-index: 1;
+
+            @include respond(p) {
+                opacity: 1;
+                order: 1;
+            }
+
+        }
+
+        &--sign-in {
+            @include flex-center;
+            z-index: 2;
+            transform: translateX(-100%);
+            opacity: 1;
+
+            @include respond(p) {
+                transform: translateX(0);
+                border-bottom: 20px solid $COLOR_BLUE_20;
+            }
+        }
+    }
+
+    &__overlay-container {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 50%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 100;
+        transition: all .6s ease-in-out;
+
+        @include respond(p) {
+            display: none;
+        }
+    }
+
+    &__overlay {
+        transform: translateX(-50%);
+        height: 100%;
+        width: 200%;
+        background-image: $GRADIENT_BLUE_1;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: all .6s ease-in-out;
+        display: flex;
+    }
+
+    &__overlay-box {
+        flex: 1 1 50%;
+        @include flex-center-column;
+        padding: 0 4rem;
+        text-align: center;
+        color: $COLOR_WHITE;
+        transition: all .6s ease-in-out;
+
+        &--left {
+            transform: translateX(-20%);
+        }
+
+        &--right {
+            right: 0;
+        }
+    }
+
+    &__text {
+        margin: 2rem 0 3rem;
+    }
+}
+
+.forms-composition {
+
+    &--active &__overlay-container {
+        transform: translateX(-100%);
+    }
+
+    &--active &__overlay {
+        transform: translateX(0);
+    }
+
+
+
+    &--active &__overlay-box--left {
+        transform: translateX(0);
+    }
+
+    &--active &__overlay-box--right {
+        transform: translateX(20%);
+    }
+
+    &--active &__form-box--sign-up {
+        transform: translateX(100%);
+        opacity: 1;
+        animation: show .6s;
+        z-index: 5;
+    }
+
+    &--active &__form-box--sign-in {
+        transform: translateX(0);
+        opacity: 0;
+        animation: hide .6s;
+    }
+}
