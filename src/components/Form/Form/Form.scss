@@ -1,0 +1,105 @@
+@import '../../../styles/abstracts/variables';
+@import '../../../styles/abstracts/mixins';
+
+.form {
+    width: 100%;
+
+    &--center-column {
+        @include flex-center-column;
+    }
+
+    &__container {
+        display: flex;
+        flex-wrap: wrap;
+        padding-bottom: 3rem;
+        margin-left: -2rem;
+        margin-right: -2rem;
+
+        &>* {
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+    }
+
+    &__button-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &--change-password {
+            justify-content: flex-end;
+
+            @include respond(p) {
+                justify-content: center;
+            }
+        }
+    }
+
+    &__title {
+        margin-bottom: 2rem;
+    }
+
+    &__forgot-password-link {
+
+        &:link,
+        &:visited {
+            display: inline-block;
+            text-decoration: none;
+            color: $COLOR_GRAY_10;
+            margin: 2rem 0 2rem;
+            transition: color .2s ease;
+        }
+
+        &:hover {
+            color: $COLOR_BLACK;
+        }
+
+    }
+}
+
+.form__container--subscribe {
+    &>* {
+        flex: 0 1 50%;
+
+        @include respond(p) {
+            flex: 0 1 100%;
+        }
+    }
+}
+
+.form__container--login-register {
+    &>* {
+        flex: 0 1 100%;
+    }
+}
+
+
+
+.form__container--change-personal-data {
+    &>* {
+        flex: 0 1 50%;
+
+        @include respond(tp) {
+            flex: 0 1 100%;
+        }
+    }
+}
+
+.form__container--filter-transactions,
+.form__container--change-password {
+    &>* {
+        flex: 0 1 33.33333%;
+
+        @include respond(tp) {
+            flex: 0 1 50%;
+        }
+
+        @include respond(p) {
+            flex: 0 1 100%;
+        }
+    }
+}
+
+.form__container--center-content {
+    justify-content: center;
+}
