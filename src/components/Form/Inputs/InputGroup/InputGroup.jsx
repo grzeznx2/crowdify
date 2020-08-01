@@ -1,18 +1,23 @@
 import React from 'react'
 
-import './ImportGroup.scss'
+import FormError from '../../FormError/FormError'
+
+import './InputGroup.scss'
 
 import { joinClasses } from '../../../../utils/utils'
 
-export default function InputGroup({ id, name, isValid, isTouched, modifiers, otherClasses, title }) {
+export default function InputGroup({ onChange, id, name, type, isValid, isTouched, modifiers, otherClasses, title, errors }) {
     let validityModifier = isTouched ?
         isValid ? 'valid' : 'invalid'
         : ''
 
     return (
         <div className={joinClasses('input-group', modifiers, otherClasses)}>
-            <label for={id} className="input-group__label">{title}</label>
-            <input id={id} name={name} type="text" className={joinClasses('input-group__input', [validityModifier])} />
+            <label htmlFor={id} className="input-group__label">{title}:</label>
+            <input id={id} name={name} type={type} onChange={onChange} className={joinClasses('input-group__input', [validityModifier])} />
+            {
+                errors.map(error => <FormError message={error} />)
+            }
         </div>
     )
 }
