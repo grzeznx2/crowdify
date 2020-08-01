@@ -17,7 +17,7 @@ export default function Header() {
                 <Button to='/' root='button-account' otherClasses={['header__button-account']}>
                     <SvgIcon svgId='icon-user' otherClasses={["button-account__icon"]} />
                 </Button>
-                <Button to="/" modifiers={['secondary']} otherClasses={['hide-p']}>
+                <Button to="/auth" modifiers={['secondary']} otherClasses={['hide-p']}>
                     login / signin
                 </Button>
 
