@@ -19,12 +19,18 @@
     &__input {
         display: inline-block;
         border: none;
-        border-bottom: 3px solid $COLOR_WHITE;
+        border-bottom: 3px solid $COLOR_GRAY_5;
         padding: 1rem 1.5rem;
         font-size: 1.6rem;
         font-family: inherit;
-        background-color: rgba(#8F8F90, .07);
-        outline: none;
+        background-color: $COLOR_GRAY_5;
+        transition: all .3s;
+        box-shadow: $BOX_SHADOW_SMALL;
+
+        &:focus {
+            outline: none;
+            box-shadow: $BOX_SHADOW_MEDIUM;
+        }
 
         &--invalid {
             border-bottom: 3px solid $COLOR_RED_30;
