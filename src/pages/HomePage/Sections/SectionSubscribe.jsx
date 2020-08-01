@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Form from '../../../components/Form/Form/Form'
+import SubscribeForm from '../../../components/Form/Forms/SubscribeForm'
 
 export default function SectionSubscribe() {
     return (
@@ -12,7 +12,7 @@ export default function SectionSubscribe() {
                     latest
                     investments
                and special offers!</p>
-                    <Form />
+                    <SubscribeForm />
                 </div>
             </div>
         </section>
