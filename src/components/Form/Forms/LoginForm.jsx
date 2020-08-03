@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Validator from '../../../utils/Validator'
+
 import './Form.scss'
 
 export default function LoginForm() {

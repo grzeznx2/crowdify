@@ -1,6 +1,71 @@
 import React from 'react'
 
+import Validator from '../../../utils/Validator'
+
 import './Form.scss'
+
+const initialState = {
+    registerFirsName: {
+        title: 'first name',
+        id: 'registerFirsName',
+        name: 'registerFirsName',
+        type: 'text',
+        value: '',
+        isValid: false,
+        isTouched: false,
+        validators: [Validator.isRequired('Name is required')],
+        errors: [],
+        modifiers: ['column']
+    },
+    registerLastName: {
+        title: 'last name',
+        id: 'registerLastName',
+        name: 'registerLastName',
+        type: 'text',
+        value: '',
+        isValid: false,
+        isTouched: false,
+        validators: [Validator.isRequired('Name is required')],
+        errors: [],
+        modifiers: ['column']
+    },
+    registerEmail: {
+        title: 'email',
+        id: 'registerEmail',
+        name: 'registerEmail',
+        type: 'email',
+        value: '',
+        isValid: false,
+        isTouched: false,
+        validators: [Validator.isEmail('Please provide valid email')],
+        errors: [],
+        modifiers: ['column']
+    },
+    registerPassword: {
+        title: 'password',
+        id: 'registerPassword',
+        name: 'registerPassword',
+        type: 'password',
+        value: '',
+        isValid: false,
+        isTouched: false,
+        validators: [Validator.minLength(8, 'Password must contain at least 8 characters')],
+        errors: [],
+        modifiers: ['column']
+    },
+    registerPasswordConfirm: {
+        title: 'confirm password',
+        id: 'registerPasswordConfirm',
+        name: 'registerPasswordConfirm',
+        type: 'password',
+        value: '',
+        isValid: false,
+        isTouched: false,
+        validators: [Validator.minLength('Password must contain at least 8 characters')],
+        errors: [],
+        modifiers: ['column']
+    },
+}
 
 export default function RegisterForm() {
     return (
@@ -30,22 +95,23 @@ export default function RegisterForm() {
                            Password:</label>
                     <input id="register-confirm-password" type="text" class="input-group__input" />
                 </div>
-            </div>
-            <div class="input-group input-group--column">
-                <div class="form__checkbox-container">
-                    <div class="checkbox checkbox--on-light-bg">
-                        <input type="checkbox" id="register-agree-terms" class="checkbox__input" />
-                        <label htmlFor="register-agree-terms" class="checkbox__label">
-                            <span class="checkbox__button">
-                                <svg class="checkbox__icon">
-                                    <use xlinkHref="/img/sprite.svg#icon-checkmark" />
-                                </svg>
-                            </span>
+                <div class="input-group input-group--column">
+                    <div class="form__checkbox-container">
+                        <div class="checkbox checkbox--on-light-bg">
+                            <input type="checkbox" id="register-agree-terms" class="checkbox__input" />
+                            <label htmlFor="register-agree-terms" class="checkbox__label">
+                                <span class="checkbox__button">
+                                    <svg class="checkbox__icon">
+                                        <use xlinkHref="/img/sprite.svg#icon-checkmark" />
+                                    </svg>
+                                </span>
                                  I agree to the terms
                               </label>
+                        </div>
                     </div>
                 </div>
             </div>
+
             <button class="button button--primary">Sign Up</button>
         </form>
     )

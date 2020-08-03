@@ -1,14 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-
+import Button from '../../Button/Button'
 import RegisterForm from '../Forms/RegisterForm'
 import LoginForm from '../Forms/LoginForm'
 
 import './FormsComposition.scss'
 
 export default function FormsComposition() {
+    const [registerMode, setRegisterMode] = useState(false)
+
+    const handleSignInButton = () => setRegisterMode(false)
+    const handleSignUpButton = () => setRegisterMode(true)
+
     return (
-        <div class="forms-composition">
+        <div class={`forms-composition ${registerMode ? 'forms-composition--register-mode' : ''}`}>
             <div class="forms-composition__form-box forms-composition__form-box--sign-up">
                 <RegisterForm />
             </div>
@@ -24,8 +29,7 @@ export default function FormsComposition() {
                         <p class="forms-composition__text">
                             Login now to get access to latest projects
                      </p>
-                        <button href="#" class="button button--secondary" id="button-sign-in">Sign
-                        In</button>
+                        <Button handleClick={handleSignInButton} modifiers={['secondary']}>Sign In</Button>
                     </div>
                     <div class="forms-composition__overlay-box forms-composition__overlay-box--right">
                         <h3 class="heading-3 text-bold">
@@ -34,8 +38,7 @@ export default function FormsComposition() {
                         <p class="forms-composition__text">
                             Register now and begin your financial journey with us
                      </p>
-                        <button href="#" class="button button--secondary" id="button-sign-up">Sign
-                        Up</button>
+                        <Button handleClick={handleSignUpButton} modifiers={['secondary']}>Sign Up</Button>
                     </div>
                 </div>
             </div>

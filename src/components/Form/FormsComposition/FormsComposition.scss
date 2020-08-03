@@ -96,32 +96,32 @@
 
 .forms-composition {
 
-    &--active &__overlay-container {
+    &--register-mode &__overlay-container {
         transform: translateX(-100%);
     }
 
-    &--active &__overlay {
+    &--register-mode &__overlay {
         transform: translateX(0);
     }
 
 
 
-    &--active &__overlay-box--left {
+    &--register-mode &__overlay-box--left {
         transform: translateX(0);
     }
 
-    &--active &__overlay-box--right {
+    &--register-mode &__overlay-box--right {
         transform: translateX(20%);
     }
 
-    &--active &__form-box--sign-up {
+    &--register-mode &__form-box--sign-up {
         transform: translateX(100%);
         opacity: 1;
         animation: show .6s;
         z-index: 5;
     }
 
-    &--active &__form-box--sign-in {
+    &--register-mode &__form-box--sign-in {
         transform: translateX(0);
         opacity: 0;
         animation: hide .6s;
