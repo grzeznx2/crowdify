@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useReducer } from 'react'
 
 import Checkbox from '../Inputs/Checkbox/Checkbox'
+import InputGroup from '../Inputs/InputGroup/InputGroup'
 import Validator from '../../../utils/Validator'
 
 import './Form.scss'
@@ -66,41 +67,57 @@ const initialState = {
         errors: [],
         modifiers: ['column']
     },
+    registerAgreeTerms: {
+        title: 'I agree to the terms',
+        id: 'registerAgreeTerms',
+        name: 'registerAgreeTerms',
+        type: 'checkbox',
+        value: '',
+        isValid: false,
+        isTouched: false,
+        validators: [Validator.isRequired('You have to agree to the terms to register')],
+        errors: [],
+        modifiers: ['column']
+    },
+}
+
+const formReducer = (state, action) => {
+    switch (action.type) {
+        case 'CHANGE_VALUE':
+            const { name, value } = action.target
+            const { validators } = state[name]
+            const { isValid, errors } = Validator.validateAll(validators, value)
+            return {
+                ...state,
+                [name]: {
+                    ...state[name],
+                    value,
+                    isValid,
+                    errors,
+                    isTouched: true
+                }
+            }
+        default:
+            return state
+    }
 }
 
 export default function RegisterForm() {
+
+    const [inputs, dispatch] = useReducer(formReducer, initialState)
+
     return (
         <form action="#" class="form form--center-column">
             <h3 class="heading-3 text-blue-20 text-bold form__title">
                 Create Account
                   </h3>
             <div class="form__container form__container--auth">
-                <div class="input-group input-group--column">
-                    <label htmlFor="register-first-name" class="input-group__label">First Name:</label>
-                    <input id="register-first-name" type="text" class="input-group__input" />
-                </div>
-                <div class="input-group input-group--column">
-                    <label htmlFor="register-last-name" class="input-group__label">Last Name:</label>
-                    <input id="register-last-name" type="text" class="input-group__input" />
-                </div>
-                <div class="input-group input-group--column">
-                    <label htmlFor="register-email" class="input-group__label">Email:</label>
-                    <input id="register-email" type="text" class="input-group__input" />
-                </div>
-                <div class="input-group input-group--column">
-                    <label htmlFor="register-password" class="input-group__label">Password:</label>
-                    <input id="register-password" type="text" class="input-group__input" />
-                </div>
-                <div class="input-group input-group--column">
-                    <label htmlFor="register-confirm-password" class="input-group__label">Confirm
-                           Password:</label>
-                    <input id="register-confirm-password" type="text" class="input-group__input" />
-                </div>
-                <div class="input-group input-group--column">
-                    <div class="form__checkbox-container">
-                        <Checkbox />
-                    </div>
-                </div>
+                {
+                    inputs.map(input => {
+                        if (input.type === 'checkbox') return <Checkbox {...input} />
+                        return <InputGroup {...input} />
+                    })
+                }
             </div>
 
             <button class="button button--primary">Sign Up</button>
