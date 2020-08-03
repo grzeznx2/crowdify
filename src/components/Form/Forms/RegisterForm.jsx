@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useCallback } from 'react'
 
 import Checkbox from '../Inputs/Checkbox/Checkbox'
 import InputGroup from '../Inputs/InputGroup/InputGroup'
@@ -106,6 +106,10 @@ export default function RegisterForm() {
 
     const [inputs, dispatch] = useReducer(formReducer, initialState)
 
+    const handleChange = useCallback(e => {
+        dispatch({ type: 'CHANGE_VALUE', target: e.target })
+    }, [])
+
     return (
         <form action="#" class="form form--center-column">
             <h3 class="heading-3 text-blue-20 text-bold form__title">
@@ -113,9 +117,9 @@ export default function RegisterForm() {
                   </h3>
             <div class="form__container form__container--auth">
                 {
-                    inputs.map(input => {
-                        if (input.type === 'checkbox') return <Checkbox {...input} />
-                        return <InputGroup {...input} />
+                    Object.values(inputs).map(input => {
+                        if (input.type === 'checkbox') return <Checkbox onChange={handleChange} {...input} />
+                        return <InputGroup onChange={handleChange} {...input} />
                     })
                 }
             </div>
