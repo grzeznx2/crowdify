@@ -12,7 +12,7 @@ export default function InputGroup({ onChange, id, name, type, isValid, isTouche
         : ''
 
     return (
-        <div className={joinClasses('input-group', modifiers, otherClasses)}>
+        <div key={id} className={joinClasses('input-group', modifiers, otherClasses)}>
             <label htmlFor={id} className="input-group__label">{title}:</label>
             <input value={value} id={id} name={name} type={type} onChange={onChange} className={joinClasses('input-group__input', [validityModifier])} />
             {

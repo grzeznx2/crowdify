@@ -64,7 +64,8 @@ const initialState = {
         value: '',
         isValid: false,
         isTouched: false,
-        validators: [Validator.minLength(8, 'Password must contain at least 8 characters')],
+        validators: [Validator.minLength(8, 'Password must contain at least 8 characters'),
+        Validator.isEqual('registerPassword', 'Passwords must be identical')],
         errors: [],
         modifiers: ['column']
     },
@@ -88,7 +89,9 @@ const formReducer = (state, action) => {
             const value = action.target.type === "checkbox" ? action.target.checked : action.target.value;
             const { name } = action.target
             const { validators } = state[name]
-            const { isValid, errors } = Validator.validateAll(validators, value)
+            const euqalValidator = validators.find(validator => validator.type === 'IS_EQUAL')
+            const equalValue = euqalValidator ? state[euqalValidator.value].value : ''
+            const { isValid, errors } = Validator.validateAll(validators, value, equalValue)
             return {
                 ...state,
                 [name]: {
@@ -131,8 +134,8 @@ export default function RegisterForm() {
             <div class="form__container form__container--auth">
                 {
                     Object.values(inputs).map(input => {
-                        if (input.type === 'checkbox') return <Checkbox onChange={handleChange} {...input} />
-                        return <InputGroup onChange={handleChange} {...input} />
+                        if (input.type === 'checkbox') return <Checkbox key={input.id} onChange={handleChange} {...input} />
+                        return <InputGroup key={input.id} onChange={handleChange} {...input} />
                     })
                 }
             </div>

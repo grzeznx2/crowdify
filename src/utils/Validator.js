@@ -5,10 +5,10 @@ class Validator {
     static isTruthy = (errorMessage) => ({ type: 'IS_TRUTHY', errorMessage })
     static isEmail = (errorMessage) => ({ type: 'IS_EMAIL', errorMessage })
     static isGreaterThanZero = (errorMessage) => ({ type: 'IS_GREATER_THAN_ZERO', errorMessage })
-    static areEqual = (value, value2, errorMessage) => ({ type: 'ARE_EQUAL', value, value2, errorMessage })
+    static isEqual = (value, errorMessage) => ({ type: 'IS_EQUAL', value, errorMessage })
 
-    static validate = (validator, inputValue, errors) => {
-        const { type, value, value2, errorMessage } = validator
+    static validate = (validator, inputValue, equalValue, errors) => {
+        const { type, value, errorMessage } = validator
         let isValid = true;
 
         if (type === 'IS_REQUIRED') isValid = isValid && inputValue.trim().length > 0
@@ -17,21 +17,20 @@ class Validator {
         if (type === 'MIN_LENGTH') isValid = isValid && value <= inputValue.trim().length
         if (type === 'MAX_LENGTH') isValid = isValid && value >= inputValue.trim().length
         if (type === 'IS_EMAIL') isValid = isValid && /^\S+@\S+\.\S+$/.test(inputValue)
-        if (type === 'ARE_EQUAL') {
-
-            isValid = isValid && value === value2
+        if (type === 'IS_EQUAL') {
+            isValid = isValid && inputValue === equalValue
         }
 
         if (!isValid) errors.push(errorMessage)
         return isValid
     }
 
-    static validateAll = (validators, inputValue) => {
+    static validateAll = (validators, inputValue, equalValue) => {
         let errors = []
 
         let isValid = true;
         validators.forEach(validator => {
-            isValid = this.validate(validator, inputValue, errors) && isValid
+            isValid = this.validate(validator, inputValue, equalValue, errors) && isValid
         })
 
         return { isValid, errors }
