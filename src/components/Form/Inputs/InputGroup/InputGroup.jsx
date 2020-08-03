@@ -6,7 +6,7 @@ import './InputGroup.scss'
 
 import { joinClasses } from '../../../../utils/utils'
 
-export default function InputGroup({ onChange, id, name, type, isValid, isTouched, modifiers, otherClasses, title, errors }) {
+export default function InputGroup({ onChange, id, name, type, isValid, isTouched, value, modifiers, otherClasses, title, errors }) {
     let validityModifier = isTouched ?
         isValid ? 'valid' : 'invalid'
         : ''
@@ -14,7 +14,7 @@ export default function InputGroup({ onChange, id, name, type, isValid, isTouche
     return (
         <div className={joinClasses('input-group', modifiers, otherClasses)}>
             <label htmlFor={id} className="input-group__label">{title}:</label>
-            <input id={id} name={name} type={type} onChange={onChange} className={joinClasses('input-group__input', [validityModifier])} />
+            <input value={value} id={id} name={name} type={type} onChange={onChange} className={joinClasses('input-group__input', [validityModifier])} />
             {
                 errors.map(error => <FormError message={error} />)
             }
