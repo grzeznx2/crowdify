@@ -1,9 +1,8 @@
-import React, { useReducer, useCallback } from 'react'
+import React from 'react'
 
 import Button from '../../Button/Button'
 import Checkbox from '../Inputs/Checkbox/Checkbox'
 import InputGroup from '../Inputs/InputGroup/InputGroup'
-import Validator from '../../../utils/Validator'
 
 import useForm from '../../../hooks/useForm'
 
