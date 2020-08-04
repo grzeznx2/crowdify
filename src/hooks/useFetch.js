@@ -1,4 +1,4 @@
-import { useReducer, useCallback } from 'react'
+import { useReducer, useCallback, useRef, useEffect } from 'react'
 
 const initialState = {
     isLoading: false,
@@ -35,22 +35,36 @@ const fetchReducer = (state, action) => {
 export default function useFetch() {
     const [fetchState, dispatch] = useReducer(fetchReducer, initialState)
 
+    const abortControllers = useRef([])
+
     const sendRequest = useCallback(async options => {
+        const abortController = new AbortController()
+        abortControllers.current.push(abortController)
+
         const { url } = options
         const { method } = options || 'GET'
         const { headers } = options || {}
         const body = JSON.stringify(options.body) || null
+        const { signal } = abortController
+
+
 
         try {
             dispatch({ type: 'FETCH_START' })
-            const response = await fetch(url, { method, body, headers })
+            const response = await fetch(url, { method, body, headers, signal })
             const responseData = await response.json()
             if (!response.ok) throw Error(responseData.message)
-            console.log(responseData)
+            // console.log(responseData)
             dispatch({ type: 'FETCH_SUCCESS', payload: responseData.data })
         } catch (error) {
-            console.log(error.message)
+            // console.log(error.message)
             dispatch({ type: 'FETCH_FAILURE', payload: error.message })
+        }
+    }, [])
+
+    useEffect(() => {
+        for (let controller of abortControllers.current) {
+            controller.abort()
         }
     }, [])
 
