@@ -116,10 +116,10 @@ export const loginInputs = {
         errors: [],
         modifiers: ['column']
     },
-    registerPassword: {
+    loginPassword: {
         title: 'password',
-        id: 'registerPassword',
-        name: 'registerPassword',
+        id: 'loginPassword',
+        name: 'loginPassword',
         type: 'password',
         value: '',
         isValid: false,
