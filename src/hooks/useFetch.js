@@ -37,36 +37,46 @@ export default function useFetch() {
 
     const abortControllers = useRef([])
 
+
+
     const sendRequest = useCallback(async options => {
-        const abortController = new AbortController()
-        abortControllers.current.push(abortController)
 
-        const { url } = options
-        const { method } = options || 'GET'
-        const { headers } = options || {}
-        const body = JSON.stringify(options.body) || null
-        const { signal } = abortController
+        const createAbortController = () => {
+            const abortController = new AbortController()
+            abortControllers.current.push(abortController)
+            return abortController
+        }
 
+        const getRequestOptions = options => ({
+            url: options.url,
+            method: options.method || 'GET',
+            headers: options.headers || {},
+            body: JSON.stringify(options.body) || null,
+            signal: createAbortController().signal
+        })
 
+        const { url, method, headers, body, signal } = getRequestOptions(options)
 
         try {
             dispatch({ type: 'FETCH_START' })
             const response = await fetch(url, { method, body, headers, signal })
             const responseData = await response.json()
             if (!response.ok) throw Error(responseData.message)
-            // console.log(responseData)
+            console.log(responseData)
             dispatch({ type: 'FETCH_SUCCESS', payload: responseData.data })
         } catch (error) {
-            // console.log(error.message)
+            console.log(error.message)
             dispatch({ type: 'FETCH_FAILURE', payload: error.message })
         }
     }, [])
 
-    useEffect(() => {
+    const abortAllControllers = () => {
         for (let controller of abortControllers.current) {
             controller.abort()
         }
-    }, [])
+    }
+
+    useEffect(() => abortAllControllers, [])
 
     return { fetchState, sendRequest }
 }
