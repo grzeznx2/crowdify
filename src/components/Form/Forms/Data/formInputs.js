@@ -11,7 +11,7 @@ export const subscribeInputs = {
         isTouched: false,
         validators: [Validator.isRequired('Name is required')],
         errors: [],
-        modifiers: ['column']
+        modifiers: 'column'
     },
     subscribeEmail: {
         title: 'email',
@@ -23,7 +23,7 @@ export const subscribeInputs = {
         isTouched: false,
         validators: [Validator.isEmail('Please provide valid email')],
         errors: [],
-        modifiers: ['column']
+        modifiers: 'column'
     },
 }
 
@@ -38,7 +38,7 @@ export const registerInputs = {
         isTouched: false,
         validators: [Validator.isRequired('Name is required')],
         errors: [],
-        modifiers: ['column']
+        modifiers: 'column'
     },
     registerLastName: {
         title: 'last name',
@@ -50,7 +50,7 @@ export const registerInputs = {
         isTouched: false,
         validators: [Validator.isRequired('Name is required')],
         errors: [],
-        modifiers: ['column']
+        modifiers: 'column'
     },
     registerEmail: {
         title: 'email',
@@ -62,7 +62,7 @@ export const registerInputs = {
         isTouched: false,
         validators: [Validator.isEmail('Please provide valid email')],
         errors: [],
-        modifiers: ['column']
+        modifiers: 'column'
     },
     registerPassword: {
         title: 'password',
@@ -74,7 +74,7 @@ export const registerInputs = {
         isTouched: false,
         validators: [Validator.minLength(8, 'Password must contain at least 8 characters')],
         errors: [],
-        modifiers: ['column']
+        modifiers: 'column'
     },
     registerPasswordConfirm: {
         title: 'confirm password',
@@ -87,7 +87,7 @@ export const registerInputs = {
         validators: [Validator.minLength(8, 'Password must contain at least 8 characters'),
         Validator.isEqual('registerPassword', 'Passwords must be identical')],
         errors: [],
-        modifiers: ['column']
+        modifiers: 'column'
     },
     registerAgreeTerms: {
         title: 'I agree to the terms',
@@ -99,7 +99,7 @@ export const registerInputs = {
         isTouched: false,
         validators: [Validator.isTruthy('You have to agree to the terms to register')],
         errors: [],
-        modifiers: ['column']
+        modifiers: 'column'
     },
 }
 
@@ -114,7 +114,7 @@ export const loginInputs = {
         isTouched: false,
         validators: [Validator.isEmail('Please provide a valid email')],
         errors: [],
-        modifiers: ['column']
+        modifiers: 'column'
     },
     loginPassword: {
         title: 'password',
@@ -126,6 +126,6 @@ export const loginInputs = {
         isTouched: false,
         validators: [Validator.minLength(8, 'Password must contain at least 8 characters')],
         errors: [],
-        modifiers: ['column']
+        modifiers: 'column'
     },
 }
