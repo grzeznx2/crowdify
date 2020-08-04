@@ -124,7 +124,7 @@ export const loginInputs = {
         value: '',
         isValid: false,
         isTouched: false,
-        validators: [Validator.minLength('Password must contain at least 8 characters')],
+        validators: [Validator.minLength(8, 'Password must contain at least 8 characters')],
         errors: [],
         modifiers: ['column']
     },
