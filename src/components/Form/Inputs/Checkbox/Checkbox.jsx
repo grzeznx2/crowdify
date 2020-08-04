@@ -7,7 +7,7 @@ import { joinClasses } from '../../../../utils/utils'
 
 import './Checkbox.scss'
 
-export default function Checkbox({ onChange, modifiers, otherClasses, id, name, title, isValid, isTouched, errors, value }) {
+export default React.memo(function Checkbox({ onChange, modifiers, otherClasses, id, name, title, isValid, isTouched, errors, value }) {
     return (
 
         <div key={id} class={joinClasses('checkbox', modifiers, otherClasses)}>
@@ -23,4 +23,4 @@ export default function Checkbox({ onChange, modifiers, otherClasses, id, name, 
             }
         </div>
     )
-}
+})
