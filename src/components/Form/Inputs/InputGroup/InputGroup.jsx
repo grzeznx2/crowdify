@@ -6,7 +6,7 @@ import './InputGroup.scss'
 
 import { joinClasses } from '../../../../utils/utils'
 
-export default function InputGroup({ onChange, id, name, type, isValid, isTouched, value, modifiers, otherClasses, title, errors }) {
+export default React.memo(function InputGroup({ onChange, id, name, type, isValid, isTouched, value, modifiers, otherClasses, title, errors }) {
     let validityModifier = isTouched ?
         isValid ? 'valid' : 'invalid'
         : ''
@@ -20,4 +20,4 @@ export default function InputGroup({ onChange, id, name, type, isValid, isTouche
             }
         </div>
     )
-}
+})
