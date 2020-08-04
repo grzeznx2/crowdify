@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 
 import Button from '../../Button/Button'
 import RegisterForm from '../Forms/RegisterForm'
@@ -9,8 +9,8 @@ import './FormsComposition.scss'
 export default function FormsComposition() {
     const [registerMode, setRegisterMode] = useState(false)
 
-    const handleSignInButton = () => setRegisterMode(false)
-    const handleSignUpButton = () => setRegisterMode(true)
+    const handleSignInButton = useCallback(() => setRegisterMode(false), [])
+    const handleSignUpButton = useCallback(() => setRegisterMode(true), [])
 
     return (
         <div class={`forms-composition ${registerMode ? 'forms-composition--register-mode' : ''}`}>
