@@ -13,7 +13,7 @@ import './Form.scss'
 export default function Form({ name, formModifiers, formOtherClasses, containerModifiers, containerOtherClasses, title, buttonText, children }) {
     console.log(name)
 
-    const { inputs, handleChange, handleSubmit } = useForm(name)
+    const { inputs, fetchState, handleChange, handleSubmit } = useForm(name)
 
     const createInputs = useCallback(inputs => Object.values(inputs).map(input => {
         if (input.type === 'checkbox') return <Checkbox key={input.id} onChange={handleChange} {...input} />
@@ -34,7 +34,7 @@ export default function Form({ name, formModifiers, formOtherClasses, containerM
                 }
             </div>
             {children}
-            <Button modifiers='primary'>{buttonText}</Button>
+            <Button modifiers='primary'>{fetchState.isLoading ? 'Sending...' : buttonText}</Button>
         </form>
     )
 }
