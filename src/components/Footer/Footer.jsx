@@ -13,7 +13,7 @@ export default function Footer() {
             <div class="container">
                 <div class="footer__container">
                     <div class="footer__info-container">
-                        <Logo modifiers={['footer', 'white']} />
+                        <Logo modifiers='footer white' />
                         <span class="footer__info">ul.Krakowska 25, Warszawa</span>
                         <span class="footer__info">All rights reserved &copy; 2020 crowdify.com</span>
                     </div>

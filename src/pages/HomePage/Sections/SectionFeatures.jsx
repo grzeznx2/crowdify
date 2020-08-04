@@ -32,7 +32,7 @@ export default function SectionFeatures() {
                     {features.map((feature, i) => <div key={`${feature.title}-${i}`} class="section-features__feature-box"><Feature {...feature} /></div>)}
                 </div>
                 <div class="section-features__button-wrapper">
-                    <Button to='/login-register' modifiers={['secondary']}>start now</Button>
+                    <Button to='/login-register' modifiers='secondary'>start now</Button>
                 </div>
             </div>
         </section>

@@ -14,8 +14,8 @@ const initalState = {
         unit: '€',
         min: 100,
         max: 10000,
-        modifiers: ['bg-white'],
-        otherClasses: ['return-calculator__range-slider']
+        modifiers: 'bg-white',
+        otherClasses: 'return-calculator__range-slider'
     },
     interestRate: {
         title: 'interest Rate',
@@ -25,8 +25,8 @@ const initalState = {
         unit: '%',
         min: 10,
         max: 36,
-        modifiers: ['bg-white'],
-        otherClasses: ['return-calculator__range-slider']
+        modifiers: 'bg-white',
+        otherClasses: 'return-calculator__range-slider'
     },
     loanPeriod: {
         title: 'loan period',
@@ -36,8 +36,8 @@ const initalState = {
         unit: 'months',
         min: 1,
         max: 24,
-        modifiers: ['bg-white'],
-        otherClasses: ['return-calculator__range-slider']
+        modifiers: 'bg-white',
+        otherClasses: 'return-calculator__range-slider'
     },
 }
 
@@ -81,7 +81,7 @@ export default function ReturnCalculator() {
                 <span className="return-calculator__result-label">Total Return:</span>
                 <span className="return-calculator__result-value">{totalReturn} €</span>
             </div>
-            <Button to='/projects' modifiers={['primary']} otherClasses={['return-calculator__button']}>Start Investing</Button>
+            <Button to='/projects' modifiers='primary' otherClasses='return-calculator__button'>Start Investing</Button>
         </div>
     )
 }

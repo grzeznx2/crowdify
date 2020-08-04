@@ -123,11 +123,11 @@ export default function Carousel() {
     return (
         <div class="carousel">
             {
-                carouselState.displayPage !== 1 && <Button handleClick={showPrevPage} root='carousel__arrow-button' modifiers={['left']}>
+                carouselState.displayPage !== 1 && <Button handleClick={showPrevPage} root='carousel__arrow-button' modifiers='left'>
                     <SvgIcon svgId='icon-chevron-left' root='carousel__arrow-icon' />
                 </Button>
             }{
-                carouselState.displayPage === (lastPage) && !carouselState.hasMoreProjects ? null : <Button handleClick={showNextPage} root='carousel__arrow-button' modifiers={['right']}>
+                carouselState.displayPage === (lastPage) && !carouselState.hasMoreProjects ? null : <Button handleClick={showNextPage} root='carousel__arrow-button' modifiers='right'>
                     <SvgIcon svgId='icon-chevron-right' root='carousel__arrow-icon' />
                 </Button>
             }

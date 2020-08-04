@@ -29,7 +29,7 @@ export default function FormsComposition() {
                         <p class="forms-composition__text">
                             Login now to get access to latest projects
                      </p>
-                        <Button handleClick={handleSignInButton} modifiers={['secondary']}>Sign In</Button>
+                        <Button handleClick={handleSignInButton} modifiers='secondary'>Sign In</Button>
                     </div>
                     <div class="forms-composition__overlay-box forms-composition__overlay-box--right">
                         <h3 class="heading-3 text-bold">
@@ -38,7 +38,7 @@ export default function FormsComposition() {
                         <p class="forms-composition__text">
                             Register now and begin your financial journey with us
                      </p>
-                        <Button handleClick={handleSignUpButton} modifiers={['secondary']}>Sign Up</Button>
+                        <Button handleClick={handleSignUpButton} modifiers='secondary'>Sign Up</Button>
                     </div>
                 </div>
             </div>

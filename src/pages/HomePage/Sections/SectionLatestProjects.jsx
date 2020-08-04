@@ -10,7 +10,7 @@ export default function SectionLatestProjects() {
             <div class="container">
                 <Carousel />
                 <div class="section-latest-projects__button-wrapper">
-                    <Button to='/invest' modifiers={['primary']}>view all projects</Button>
+                    <Button to='/invest' modifiers='primary'>view all projects</Button>
                 </div>
             </div>
         </section>

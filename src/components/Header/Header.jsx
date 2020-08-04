@@ -12,12 +12,12 @@ export default function Header() {
 
         <div class="container">
             <div class="header__container">
-                <Logo modifiers={['white', 'main']} otherClasses={['header__logo']} />
+                <Logo modifiers='white main' otherClasses='header__logo' />
                 <MainNav />
-                <Button to='/' root='button-account' otherClasses={['header__button-account']}>
-                    <SvgIcon svgId='icon-user' otherClasses={["button-account__icon"]} />
+                <Button to='/' root='button-account' otherClasses='header__button-account'>
+                    <SvgIcon svgId='icon-user' otherClasses='button-account__icon' />
                 </Button>
-                <Button to="/auth" modifiers={['secondary']} otherClasses={['hide-p']}>
+                <Button to="/auth" modifiers='secondary' otherClasses='hide-p'>
                     login / signin
                 </Button>
 

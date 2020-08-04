@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 
 import Button from '../../Button/Button'
 import Checkbox from '../Inputs/Checkbox/Checkbox'
@@ -11,13 +11,14 @@ import { joinClasses } from '../../../utils/utils'
 import './Form.scss'
 
 export default function Form({ name, formModifiers, formOtherClasses, containerModifiers, containerOtherClasses, title, buttonText, children }) {
+    console.log(name)
 
     const { inputs, handleChange, handleSubmit } = useForm(name)
 
-    const createInputs = inputs => Object.values(inputs).map(input => {
+    const createInputs = useCallback(inputs => Object.values(inputs).map(input => {
         if (input.type === 'checkbox') return <Checkbox key={input.id} onChange={handleChange} {...input} />
         return <InputGroup key={input.id} onChange={handleChange} {...input} />
-    })
+    }), [])
 
     return (
         <form onSubmit={handleSubmit} className={joinClasses('form', formModifiers, formOtherClasses)}>
@@ -33,7 +34,7 @@ export default function Form({ name, formModifiers, formOtherClasses, containerM
                 }
             </div>
             {children}
-            <Button modifiers={['primary']}>{buttonText}</Button>
+            <Button modifiers='primary'>{buttonText}</Button>
         </form>
     )
 }
