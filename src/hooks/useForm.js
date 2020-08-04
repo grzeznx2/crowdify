@@ -2,6 +2,8 @@ import { useReducer, useCallback } from 'react'
 
 import { subscribeInputs, loginInputs, registerInputs } from '../components/Form/Forms/Data/formInputs'
 
+import Validator from '../utils/Validator'
+
 const formReducer = (state, action) => {
     switch (action.type) {
         case 'CHANGE_VALUE':
@@ -36,6 +38,8 @@ export default function useForm(form) {
                 return loginInputs
             case 'register':
                 return registerInputs
+            default:
+                return console.log('Please call useForm with either "subscribe", "login" or "register".')
         }
     }
 
