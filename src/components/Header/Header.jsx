@@ -18,7 +18,7 @@ export default function Header() {
                     <SvgIcon svgId='icon-user' otherClasses='button-account__icon' />
                 </Button>
                 <Button to="/auth" modifiers='secondary' otherClasses='hide-p'>
-                    login / signin
+                    login / sign in
                 </Button>
 
             </div>
