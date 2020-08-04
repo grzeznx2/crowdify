@@ -1,5 +1,7 @@
 import { useReducer, useCallback } from 'react'
 
+import useFetch from './useFetch'
+
 import { subscribeInputs, loginInputs, registerInputs } from '../components/Form/Forms/Data/formInputs'
 
 import Validator from '../utils/Validator'
@@ -23,6 +25,12 @@ const formReducer = (state, action) => {
                     isTouched: true
                 }
             }
+        case 'SET_VALIDATED_INPUTS':
+
+            return {
+                ...state,
+                ...action.inputs
+            }
         default:
             return state
     }
@@ -44,22 +52,50 @@ export default function useForm(form) {
     }
 
     const [inputs, dispatch] = useReducer(formReducer, loadState(form))
-
+    const { fetchState, sendRequest } = useFetch()
 
     const handleChange = useCallback(e => {
         dispatch({ type: 'CHANGE_VALUE', target: e.target })
     }, [])
 
+    const submitRegister = async inputs => {
+        const options = {
+            url: 'http://localhost:5000/api/v1/users/login',
+            method: 'POST',
+            body: {
+                email: inputs.loginEmail.value,
+                password: inputs.loginPassword.value
+            },
+            headers: { 'Content-Type': 'application/json' }
+        }
+
+        await sendRequest(options)
+    }
+
     const handleSubmit = event => {
         event.preventDefault();
         const inputsArray = Object.values(inputs)
-        const isFormValid = inputsArray.every(input => input.isValid)
-        if (isFormValid) {
-            for (let input of inputsArray) {
-                console.log(`${input.name}: ${input.value}`)
+        const inputsCopy = { ...inputs }
+        let isFormValid = true
+
+        for (let input of inputsArray) {
+            if (!input.isValid) {
+                isFormValid = false
+                const { value, validators, name } = input
+                const euqalValidator = validators.find(validator => validator.type === 'IS_EQUAL')
+                const equalValue = euqalValidator ? inputsCopy[euqalValidator.value].value : ''
+                const { isValid, errors } = Validator.validateAll(validators, value, equalValue)
+                inputsCopy[name] = {
+                    ...inputsCopy[name],
+                    isValid,
+                    errors
+                }
             }
         }
+
+        if (!isFormValid) return dispatch({ type: 'SET_VALIDATED_INPUTS', inputs: inputsCopy })
+        submitRegister(inputsCopy)
     }
 
-    return { inputs, handleChange, handleSubmit }
+    return { inputs, fetchState, handleChange, handleSubmit }
 }
