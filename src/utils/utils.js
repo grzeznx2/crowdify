@@ -1,5 +1,4 @@
 export const joinClasses = (root = '', modifiers = '', otherClasses = '') => {
-    console.log(modifiers)
 
     const modifiersArray = modifiers.split(' ')
     const otherClassesArray = otherClasses.split(' ')
@@ -10,10 +9,3 @@ export const joinClasses = (root = '', modifiers = '', otherClasses = '') => {
             [root, ...otherClassesArray].join(' ')
             : otherClassesArray.join(' ')
 };
-// export const joinClasses = (root = '', modifiers = [], otherClasses = []) => {
-//     return modifiers ?
-//         [root, ...modifiers.map(type => `${root}--${type}`), ...otherClasses].join(' ')
-//         : root ?
-//             [root, ...otherClasses].join(' ')
-//             : otherClasses.join(' ')
-// };
