@@ -5,9 +5,12 @@ import { subscribeInputs, loginInputs, registerInputs } from '../components/Form
 const formReducer = (state, action) => {
     switch (action.type) {
         case 'CHANGE_VALUE':
-            const { name, value } = action.target
+            const value = action.target.type === "checkbox" ? action.target.checked : action.target.value;
+            const { name } = action.target
             const { validators } = state[name]
-            const { isValid, errors } = Validator.validateAll(validators, value)
+            const euqalValidator = validators.find(validator => validator.type === 'IS_EQUAL')
+            const equalValue = euqalValidator ? state[euqalValidator.value].value : ''
+            const { isValid, errors } = Validator.validateAll(validators, value, equalValue)
             return {
                 ...state,
                 [name]: {
