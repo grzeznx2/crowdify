@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Checkbox from '../Form/Inputs/Checkbox/Checkbox'
+import FormGroup from '../Form/Inputs/FormGroup/FormGroup'
 
 import './Filtration.scss'
 
@@ -16,7 +16,8 @@ const filtrationInputs = {
             isTouched: false,
             validators: [],
             errors: [],
-            modifiers: 'on-dark-bg'
+            modifiers: 'on-dark-bg',
+            formGroupModifiers: 'filtration-checkbox'
         },
         filtrationStatusActive: {
             title: 'active',
@@ -28,7 +29,8 @@ const filtrationInputs = {
             isTouched: false,
             validators: [],
             errors: [],
-            modifiers: 'on-dark-bg'
+            modifiers: 'on-dark-bg',
+            formGroupModifiers: 'filtration-checkbox'
         },
         filtrationStatusComing: {
             title: 'coming',
@@ -40,7 +42,8 @@ const filtrationInputs = {
             isTouched: false,
             validators: [],
             errors: [],
-            modifiers: 'on-dark-bg'
+            modifiers: 'on-dark-bg',
+            formGroupModifiers: 'filtration-checkbox'
         },
         filtrationStatusFunded: {
             title: 'funded',
@@ -52,7 +55,8 @@ const filtrationInputs = {
             isTouched: false,
             validators: [],
             errors: [],
-            modifiers: 'on-dark-bg'
+            modifiers: 'on-dark-bg',
+            formGroupModifiers: 'filtration-checkbox'
         },
         filtrationStatusRepaid: {
             title: 'repaid',
@@ -64,7 +68,8 @@ const filtrationInputs = {
             isTouched: false,
             validators: [],
             errors: [],
-            modifiers: 'on-dark-bg'
+            modifiers: 'on-dark-bg',
+            formGroupModifiers: 'filtration-checkbox'
         },
     },
     filtrationType: {
@@ -157,93 +162,89 @@ const filtrationInputs = {
 
 export default function Filtration() {
     return (
-        <div class="filtration">
-            <div class="container">
-                <div class="filtration__container">
-                    <div class="filtration__box filtration__box--status">
-                        <fieldset class="filtration__fieldset">
-                            <legend class="filtration__legend">Status:</legend>
-                            <div class="filtration__fields">
+        <div className="filtration">
+            <div className="container">
+                <div className="filtration__container">
+                    <div className="filtration__box filtration__box--status">
+                        <fieldset className="filtration__fieldset">
+                            <legend className="filtration__legend">Status:</legend>
+                            <div className="filtration__fields">
                                 {
-                                    Object.values(filtrationInputs.filtrationStatus).map(input => <div class="filtration__field" key={input.id}>
-                                        <Checkbox {...input} />
-                                    </div>)
+                                    Object.values(filtrationInputs.filtrationStatus).map(input => <FormGroup key={input.id} {...input} />)
                                 }
                             </div>
                         </fieldset>
                     </div>
-                    <div class="filtration__box filtration__box--type">
-                        <fieldset class="filtration__fieldset">
-                            <legend class="filtration__legend">Type:</legend>
-                            <div class="filtration__fields">
+                    <div className="filtration__box filtration__box--type">
+                        <fieldset className="filtration__fieldset">
+                            <legend className="filtration__legend">Type:</legend>
+                            <div className="filtration__fields">
                                 {
-                                    Object.values(filtrationInputs.filtrationType).map(input => <div class="filtration__field" key={input.id}>
-                                        <Checkbox {...input} />
-                                    </div>)
+                                    Object.values(filtrationInputs.filtrationType).map(input => <FormGroup key={input.id}  {...input} />)
                                 }
                             </div>
                         </fieldset>
                     </div>
-                    <div class="filtration__box filtration__box--sort">
-                        <div class="input-group input-group--column input-group--on-blue-bg">
-                            <label for="filtration-sort" class="input-group__label">Sort by:</label>
-                            <select id="filtration-sort" name="filtration-sort" type="select" class="input-group__input">
+                    <div className="filtration__box filtration__box--sort">
+                        <div className="input-group input-group--column input-group--on-blue-bg">
+                            <label htmlFor="filtration-sort" className="input-group__label">Sort by:</label>
+                            <select id="filtration-sort" name="filtration-sort" type="select" className="input-group__input">
                                 <option value="interest-rate">Interest Rate</option>
                                 <option value="duration">Duration</option>
                                 <option value="payments-rate">Payments Rate</option>
                             </select>
                         </div>
-                        <div class="input-group">
-                            <div class="range-slider">
-                                <label class="range-slider__label">Interest Rate:</label>
-                                <div class="range-slider__outputs">
-                                    <span class="range-slider__output">12%</span>
+                        <div className="input-group">
+                            <div className="range-slider">
+                                <label className="range-slider__label">Interest Rate:</label>
+                                <div className="range-slider__outputs">
+                                    <span className="range-slider__output">12%</span>
                            -
-                           <span class="range-slider__output">26%</span>
+                           <span className="range-slider__output">26%</span>
                                 </div>
-                                <div class="range-slider__slider-container">
+                                <div className="range-slider__slider-container">
                                     <input type="range" min='10' max='32' value='16'
-                                        class="range-slider__input range-slider__input--left" />
+                                        className="range-slider__input range-slider__input--left" />
                                     <input type="range" min='10' max='32' value='26'
-                                        class="range-slider__input range-slider__input--right" />
-                                    <div class="range-slider__track"></div>
-                                    <div class="range-slider__range range-slider__range--multi"></div>
+                                        className="range-slider__input range-slider__input--right" />
+                                    <div className="range-slider__track"></div>
+                                    <div className="range-slider__range range-slider__range--multi"></div>
                                 </div>
                             </div>
 
                         </div>
-                        <div class="input-group">
-                            <div class="range-slider">
-                                <label class="range-slider__label">Duration:</label>
-                                <div class="range-slider__outputs">
-                                    <span class="range-slider__output">1m</span>
+                        <div className="input-group">
+                            <div className="range-slider">
+                                <label className="range-slider__label">Duration:</label>
+                                <div className="range-slider__outputs">
+                                    <span className="range-slider__output">1m</span>
                            -
-                           <span class="range-slider__output">24m</span>
+                           <span className="range-slider__output">24m</span>
                                 </div>
-                                <div class="range-slider__slider-container">
+                                <div className="range-slider__slider-container">
                                     <input type="range" min='1' max='24' value='3'
-                                        class="range-slider__input range-slider__input--left" />
+                                        className="range-slider__input range-slider__input--left" />
                                     <input type="range" min='1' max='24' value='16'
-                                        class="range-slider__input range-slider__input--right" />
-                                    <div class="range-slider__track"></div>
-                                    <div class="range-slider__range range-slider__range--multi"></div>
+                                        className="range-slider__input range-slider__input--right" />
+                                    <div className="range-slider__track"></div>
+                                    <div className="range-slider__range range-slider__range--multi"></div>
                                 </div>
                             </div>
 
                         </div>
 
                     </div>
-                    <div class="filtration__box filtration__box--target">
-                        <div class="input-group input-group--column input-group--on-blue-bg">
-                            <label for="filtration-min-target" class="input-group__label">Min. Target:</label>
-                            <input id="filtration-min-target" type="number" class="input-group__input" min="0" step="10" />
+                    <div className="filtration__box filtration__box--target">
+                        <div className="input-group input-group--column input-group--on-blue-bg">
+                            <label htmlFor="filtration-min-target" className="input-group__label">Min. Target:</label>
+                            <input id="filtration-min-target" type="number" className="input-group__input" min="0" step="10" />
                         </div>
-                        <div class="input-group input-group--column input-group--on-blue-bg">
-                            <label for="filtration-max-target" class="input-group__label">Max. Target:</label>
-                            <input id="filtration-max-target" type="number" class="input-group__input" min="0" step="10" />
+                        <div className="input-group input-group--column input-group--on-blue-bg">
+                            <label htmlFor="filtration-max-target" className="input-group__label">Max. Target:</label>
+                            <input id="filtration-max-target" type="number" className="input-group__input" min="0" step="10" />
                         </div>
-                        <div class="filtration-group filtration__button-wrapper">
-                            <a href="#" class="button button--info">Search Projects</a>
+                        <div className="filtration-group filtration__button-wrapper">
+                            <a href="#" className="button button--info">Search Projects</a>
                         </div>
                     </div>
                 </div>
