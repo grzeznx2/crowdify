@@ -1,6 +1,73 @@
 import React from 'react'
 
+import Checkbox from '../Form/Inputs/Checkbox/Checkbox'
+
 import './Filtration.scss'
+
+const filtrationInputs = {
+    filtrationStatus: {
+        filtrationStatusAll: {
+            title: 'all',
+            id: 'filtrationStatusAll',
+            name: 'filtrationStatus',
+            type: 'checkbox',
+            value: false,
+            isValid: true,
+            isTouched: false,
+            validators: [],
+            errors: [],
+            modifiers: 'on-dark-bg'
+        },
+        filtrationStatusActive: {
+            title: 'active',
+            id: 'filtrationStatusActive',
+            name: 'filtrationStatus',
+            type: 'checkbox',
+            value: false,
+            isValid: true,
+            isTouched: false,
+            validators: [],
+            errors: [],
+            modifiers: 'on-dark-bg'
+        },
+        filtrationStatusComing: {
+            title: 'coming',
+            id: 'filtrationStatusComing',
+            name: 'filtrationStatus',
+            type: 'checkbox',
+            value: false,
+            isValid: true,
+            isTouched: false,
+            validators: [],
+            errors: [],
+            modifiers: 'on-dark-bg'
+        },
+        filtrationStatusFunded: {
+            title: 'funded',
+            id: 'filtrationStatusFunded',
+            name: 'filtrationStatus',
+            type: 'checkbox',
+            value: false,
+            isValid: true,
+            isTouched: false,
+            validators: [],
+            errors: [],
+            modifiers: 'on-dark-bg'
+        },
+        filtrationStatusRepaid: {
+            title: 'repaid',
+            id: 'filtrationStatusRepaid',
+            name: 'filtrationStatus',
+            type: 'checkbox',
+            value: false,
+            isValid: true,
+            isTouched: false,
+            validators: [],
+            errors: [],
+            modifiers: 'on-dark-bg'
+        },
+    },
+}
 
 export default function Filtration() {
     return (
@@ -11,76 +78,11 @@ export default function Filtration() {
                         <fieldset class="filtration__fieldset">
                             <legend class="filtration__legend">Status:</legend>
                             <div class="filtration__fields">
-                                <div class="filtration__field">
-                                    <div class="checkbox checkbox--on-dark-bg">
-                                        <input type="checkbox" name="filtration-status" id="filtration-status-all"
-                                            class="checkbox__input" />
-                                        <label for="filtration-status-all" class="checkbox__label">
-                                            <span class="checkbox__button">
-                                                <svg class="checkbox__icon">
-                                                    <use xlinkHref="/img/sprite.svg#icon-checkmark" />
-                                                </svg>
-                                            </span>
-                                 all
-                              </label>
-                                    </div>
-                                </div>
-                                <div class="filtration__field">
-                                    <div class="checkbox checkbox--on-dark-bg">
-                                        <input type="checkbox" name="filtration-status" id="filtration-status-active"
-                                            class="checkbox__input" />
-                                        <label for="filtration-status-active" class="checkbox__label">
-                                            <span class="checkbox__button">
-                                                <svg class="checkbox__icon">
-                                                    <use xlinkHref="/img/sprite.svg#icon-checkmark" />
-                                                </svg>
-                                            </span>
-                                 active
-                              </label>
-                                    </div>
-                                </div>
-                                <div class="filtration__field">
-                                    <div class="checkbox checkbox--on-dark-bg">
-                                        <input type="checkbox" name="filtration-status" id="filtration-status-coming"
-                                            class="checkbox__input" />
-                                        <label for="filtration-status-coming" class="checkbox__label">
-                                            <span class="checkbox__button">
-                                                <svg class="checkbox__icon">
-                                                    <use xlinkHref="/img/sprite.svg#icon-checkmark" />
-                                                </svg>
-                                            </span>
-                                 coming
-                              </label>
-                                    </div>
-                                </div>
-                                <div class="filtration__field">
-                                    <div class="checkbox checkbox--on-dark-bg">
-                                        <input type="checkbox" name="filtration-status" id="filtration-status-funded"
-                                            class="checkbox__input" />
-                                        <label for="filtration-status-funded" class="checkbox__label">
-                                            <span class="checkbox__button">
-                                                <svg class="checkbox__icon">
-                                                    <use xlinkHref="/img/sprite.svg#icon-checkmark" />
-                                                </svg>
-                                            </span>
-                                 funded
-                              </label>
-                                    </div>
-                                </div>
-                                <div class="filtration__field">
-                                    <div class="checkbox checkbox--on-dark-bg">
-                                        <input type="checkbox" name="filtration-status" id="filtration-status-repaid"
-                                            class="checkbox__input" />
-                                        <label for="filtration-status-repaid" class="checkbox__label">
-                                            <span class="checkbox__button">
-                                                <svg class="checkbox__icon">
-                                                    <use xlinkHref="/img/sprite.svg#icon-checkmark" />
-                                                </svg>
-                                            </span>
-                                 repaid
-                              </label>
-                                    </div>
-                                </div>
+                                {
+                                    Object.values(filtrationInputs.filtrationStatus).map(input => <div class="filtration__field">
+                                        <Checkbox {...input} />
+                                    </div>)
+                                }
                             </div>
                         </fieldset>
                     </div>
