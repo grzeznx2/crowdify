@@ -14,6 +14,8 @@ const filtrationInputs = {
             value: false,
             isValid: true,
             isTouched: false,
+            validators: [],
+            errors: [],
             modifiers: 'on-dark-bg',
             formGroupModifiers: 'filtration-checkbox'
         },
@@ -25,6 +27,8 @@ const filtrationInputs = {
             value: false,
             isValid: true,
             isTouched: false,
+            validators: [],
+            errors: [],
             modifiers: 'on-dark-bg',
             formGroupModifiers: 'filtration-checkbox'
         },
@@ -36,6 +40,8 @@ const filtrationInputs = {
             value: false,
             isValid: true,
             isTouched: false,
+            validators: [],
+            errors: [],
             modifiers: 'on-dark-bg',
             formGroupModifiers: 'filtration-checkbox'
         },
@@ -47,6 +53,8 @@ const filtrationInputs = {
             value: false,
             isValid: true,
             isTouched: false,
+            validators: [],
+            errors: [],
             modifiers: 'on-dark-bg',
             formGroupModifiers: 'filtration-checkbox'
         },
@@ -58,6 +66,8 @@ const filtrationInputs = {
             value: false,
             isValid: true,
             isTouched: false,
+            validators: [],
+            errors: [],
             modifiers: 'on-dark-bg',
             formGroupModifiers: 'filtration-checkbox'
         },
@@ -71,6 +81,8 @@ const filtrationInputs = {
             value: false,
             isValid: true,
             isTouched: false,
+            validators: [],
+            errors: [],
             modifiers: 'on-dark-bg',
             formGroupModifiers: 'filtration-checkbox'
         },
@@ -82,6 +94,8 @@ const filtrationInputs = {
             value: false,
             isValid: true,
             isTouched: false,
+            validators: [],
+            errors: [],
             modifiers: 'on-dark-bg',
             formGroupModifiers: 'filtration-checkbox'
         },
@@ -93,6 +107,8 @@ const filtrationInputs = {
             value: false,
             isValid: true,
             isTouched: false,
+            validators: [],
+            errors: [],
             modifiers: 'on-dark-bg',
             formGroupModifiers: 'filtration-checkbox'
         },
@@ -104,6 +120,8 @@ const filtrationInputs = {
             value: false,
             isValid: true,
             isTouched: false,
+            validators: [],
+            errors: [],
             modifiers: 'on-dark-bg',
             formGroupModifiers: 'filtration-checkbox'
         },
@@ -115,6 +133,8 @@ const filtrationInputs = {
             value: false,
             isValid: true,
             isTouched: false,
+            validators: [],
+            errors: [],
             modifiers: 'on-dark-bg',
             formGroupModifiers: 'filtration-checkbox'
         },
@@ -126,6 +146,8 @@ const filtrationInputs = {
             value: false,
             isValid: true,
             isTouched: false,
+            validators: [],
+            errors: [],
             modifiers: 'on-dark-bg',
             formGroupModifiers: 'filtration-checkbox'
         },
@@ -137,6 +159,8 @@ const filtrationInputs = {
             value: false,
             isValid: true,
             isTouched: false,
+            validators: [],
+            errors: [],
             modifiers: 'on-dark-bg',
             formGroupModifiers: 'filtration-checkbox'
         },
@@ -154,6 +178,8 @@ const filtrationInputs = {
             },
             isValid: true,
             isTouched: false,
+            validators: [],
+            errors: [],
             modifiers: 'column on-blue-bg',
             formGroupModifiers: ''
         },
