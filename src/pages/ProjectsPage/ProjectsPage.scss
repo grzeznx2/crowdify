@@ -1,0 +1,29 @@
+@import '../../styles/abstracts/variables';
+@import '../../styles/abstracts/mixins';
+
+.section-projects {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+
+    &__filtration-background {
+        background-image: $GRADIENT_BLUE_1;
+    }
+
+    &__projects-container {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 6rem;
+        margin-left: -2rem;
+        margin-right: -2rem;
+    }
+
+    &__project {
+        flex: 1 1 50%;
+        padding: 2rem;
+        margin-bottom: 4rem;
+
+        @include respond(tp) {
+            flex: 1 1 100%;
+        }
+    }
+}
