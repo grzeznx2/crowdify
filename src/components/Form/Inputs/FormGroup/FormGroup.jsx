@@ -4,6 +4,8 @@ import Checkbox from '../Checkbox/Checkbox'
 import InputGroup from '../InputGroup/InputGroup'
 import RangeSlider from '../RangeSlider/RangeSlider'
 
+import './FormGroup.scss'
+
 export default function FormGroup(props) {
 
     let markup = null
