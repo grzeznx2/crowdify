@@ -19,7 +19,7 @@ export default React.memo(function Checkbox({ onChange, modifiers, otherClasses,
                 {title}
             </label>
             {
-                errors.map(error => <FormError message={error} />)
+                errors && errors.map(error => <FormError message={error} />)
             }
         </div>
     )

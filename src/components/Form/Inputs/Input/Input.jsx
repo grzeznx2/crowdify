@@ -54,7 +54,7 @@ export default React.memo(function Input({ onChange, id, name, type, isValid, is
                 inputMarkup
             }
             {
-                errors.map(error => <FormError message={error} />)
+                errors && errors.map(error => <FormError message={error} />)
             }
         </div>
     )
