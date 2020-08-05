@@ -5,16 +5,16 @@ import './MainNav.scss'
 
 export default function MainNav() {
 
-    return <nav class="header__nav">
-        <ul class="main-nav">
-            <li class="main-nav__item">
-                <Link to="/" class="main-nav__link">invest</Link>
+    return <nav className="header__nav">
+        <ul className="main-nav">
+            <li className="main-nav__item">
+                <Link to="/" className="main-nav__link">invest</Link>
             </li>
-            <li class="main-nav__item">
-                <Link to="/" class="main-nav__link">about</Link>
+            <li className="main-nav__item">
+                <Link to="/" className="main-nav__link">about</Link>
             </li>
-            <li class="main-nav__item">
-                <Link to="/" class="main-nav__link">blog</Link>
+            <li className="main-nav__item">
+                <Link to="/" className="main-nav__link">blog</Link>
             </li>
         </ul>
     </nav>

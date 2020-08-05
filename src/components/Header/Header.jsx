@@ -8,10 +8,10 @@ import SvgIcon from '../SvgIcon/SvgIcon'
 import './Header.scss'
 
 export default function Header() {
-    return <header class="header">
+    return <header className="header">
 
-        <div class="container">
-            <div class="header__container">
+        <div className="container">
+            <div className="header__container">
                 <Logo modifiers='white main' otherClasses='header__logo' />
                 <MainNav />
                 <Button to='/' root='button-account' otherClasses='header__button-account'>
