@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import FormGroup from '../Form/Inputs/FormGroup/FormGroup'
 
@@ -14,8 +14,6 @@ const filtrationInputs = {
             value: false,
             isValid: true,
             isTouched: false,
-            validators: [],
-            errors: [],
             modifiers: 'on-dark-bg',
             formGroupModifiers: 'filtration-checkbox'
         },
@@ -27,8 +25,6 @@ const filtrationInputs = {
             value: false,
             isValid: true,
             isTouched: false,
-            validators: [],
-            errors: [],
             modifiers: 'on-dark-bg',
             formGroupModifiers: 'filtration-checkbox'
         },
@@ -40,8 +36,6 @@ const filtrationInputs = {
             value: false,
             isValid: true,
             isTouched: false,
-            validators: [],
-            errors: [],
             modifiers: 'on-dark-bg',
             formGroupModifiers: 'filtration-checkbox'
         },
@@ -53,8 +47,6 @@ const filtrationInputs = {
             value: false,
             isValid: true,
             isTouched: false,
-            validators: [],
-            errors: [],
             modifiers: 'on-dark-bg',
             formGroupModifiers: 'filtration-checkbox'
         },
@@ -66,8 +58,6 @@ const filtrationInputs = {
             value: false,
             isValid: true,
             isTouched: false,
-            validators: [],
-            errors: [],
             modifiers: 'on-dark-bg',
             formGroupModifiers: 'filtration-checkbox'
         },
@@ -81,8 +71,6 @@ const filtrationInputs = {
             value: false,
             isValid: true,
             isTouched: false,
-            validators: [],
-            errors: [],
             modifiers: 'on-dark-bg',
             formGroupModifiers: 'filtration-checkbox'
         },
@@ -94,8 +82,6 @@ const filtrationInputs = {
             value: false,
             isValid: true,
             isTouched: false,
-            validators: [],
-            errors: [],
             modifiers: 'on-dark-bg',
             formGroupModifiers: 'filtration-checkbox'
         },
@@ -107,8 +93,6 @@ const filtrationInputs = {
             value: false,
             isValid: true,
             isTouched: false,
-            validators: [],
-            errors: [],
             modifiers: 'on-dark-bg',
             formGroupModifiers: 'filtration-checkbox'
         },
@@ -120,8 +104,6 @@ const filtrationInputs = {
             value: false,
             isValid: true,
             isTouched: false,
-            validators: [],
-            errors: [],
             modifiers: 'on-dark-bg',
             formGroupModifiers: 'filtration-checkbox'
         },
@@ -133,8 +115,6 @@ const filtrationInputs = {
             value: false,
             isValid: true,
             isTouched: false,
-            validators: [],
-            errors: [],
             modifiers: 'on-dark-bg',
             formGroupModifiers: 'filtration-checkbox'
         },
@@ -146,8 +126,6 @@ const filtrationInputs = {
             value: false,
             isValid: true,
             isTouched: false,
-            validators: [],
-            errors: [],
             modifiers: 'on-dark-bg',
             formGroupModifiers: 'filtration-checkbox'
         },
@@ -159,8 +137,6 @@ const filtrationInputs = {
             value: false,
             isValid: true,
             isTouched: false,
-            validators: [],
-            errors: [],
             modifiers: 'on-dark-bg',
             formGroupModifiers: 'filtration-checkbox'
         },
@@ -178,9 +154,27 @@ const filtrationInputs = {
             },
             isValid: true,
             isTouched: false,
+            modifiers: 'column on-blue-bg',
+            formGroupModifiers: ''
+        },
+    },
+    filtrationInterestRate: {
+        filtrationInterestRate: {
+            title: 'interest rate',
+            id: 'filtrationInterestRate',
+            name: 'filtrationInterestRate',
+            type: 'range',
+            multipleRanges: true,
+            min: 10,
+            max: 36,
+            firstValue: 16,
+            secondValue: 26,
+            unit: '%',
+            isValid: true,
+            isTouched: false,
             validators: [],
             errors: [],
-            modifiers: 'column on-blue-bg',
+            modifiers: '',
             formGroupModifiers: ''
         },
     },
@@ -219,6 +213,45 @@ const filtrationInputs = {
 }
 
 export default function Filtration() {
+    const [interestRate, setInterestRate] = useState({
+        title: 'interest rate',
+        id: 'filtrationInterestRate',
+        name: 'filtrationInterestRate',
+        type: 'range',
+        multipleRanges: true,
+        min: 10,
+        max: 36,
+        firstValue: 16,
+        secondValue: 26,
+        unit: '%',
+        isValid: true,
+        isTouched: false,
+        validators: [],
+        errors: [],
+        modifiers: '',
+        formGroupModifiers: ''
+    })
+
+    const handleInterestRate = e => {
+        if (e.target.id === 'filtrationInterestRateLeft') {
+            const val = Math.min(e.target.value, interestRate.secondValue - 1)
+            setInterestRate(
+                {
+                    ...interestRate,
+                    firstValue: val
+                }
+            )
+        } else {
+            const val = Math.max(interestRate.firstValue + 1, e.target.value)
+            setInterestRate(
+                {
+                    ...interestRate,
+                    secondValue: val
+                }
+            )
+        }
+    }
+
     return (
         <div className="filtration">
             <div className="container">
@@ -245,25 +278,7 @@ export default function Filtration() {
                     </div>
                     <div className="filtration__box filtration__box--sort">
                         <FormGroup key={filtrationInputs.filtrationSort.filtrationSortBy.id}  {...filtrationInputs.filtrationSort.filtrationSortBy} />
-                        <div className="input-group">
-                            <div className="range-slider">
-                                <label className="range-slider__label">Interest Rate:</label>
-                                <div className="range-slider__outputs">
-                                    <span className="range-slider__output">12%</span>
-                           -
-                           <span className="range-slider__output">26%</span>
-                                </div>
-                                <div className="range-slider__slider-container">
-                                    <input type="range" min='10' max='32' value='16'
-                                        className="range-slider__input range-slider__input--left" />
-                                    <input type="range" min='10' max='32' value='26'
-                                        className="range-slider__input range-slider__input--right" />
-                                    <div className="range-slider__track"></div>
-                                    <div className="range-slider__range range-slider__range--multi"></div>
-                                </div>
-                            </div>
-
-                        </div>
+                        <FormGroup key={interestRate.id} onChange={handleInterestRate}  {...interestRate} />
                         <div className="input-group">
                             <div className="range-slider">
                                 <label className="range-slider__label">Duration:</label>
