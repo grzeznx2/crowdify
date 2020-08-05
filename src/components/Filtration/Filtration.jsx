@@ -165,6 +165,38 @@ const filtrationInputs = {
             formGroupModifiers: 'filtration-checkbox'
         },
     },
+    filtrationTarget: {
+        filtrationTargetMin: {
+            title: 'min. target',
+            id: 'filtrationTargetMin',
+            name: 'filtrationTargetMin',
+            type: 'number',
+            min: 0,
+            step: 10,
+            value: 10000,
+            isValid: true,
+            isTouched: false,
+            validators: [],
+            errors: [],
+            modifiers: 'column on-blue-bg',
+            formGroupModifiers: ''
+        },
+        filtrationTargetMax: {
+            title: 'max. target',
+            id: 'filtrationTargetMax',
+            name: 'filtrationTargetMax',
+            type: 'number',
+            min: 0,
+            step: 10,
+            value: 250000,
+            isValid: true,
+            isTouched: false,
+            validators: [],
+            errors: [],
+            modifiers: 'column on-blue-bg',
+            formGroupModifiers: ''
+        },
+    }
 }
 
 export default function Filtration() {
@@ -242,14 +274,9 @@ export default function Filtration() {
 
                     </div>
                     <div className="filtration__box filtration__box--target">
-                        <div className="input-group input-group--column input-group--on-blue-bg">
-                            <label htmlFor="filtration-min-target" className="input-group__label">Min. Target:</label>
-                            <input id="filtration-min-target" type="number" className="input-group__input" min="0" step="10" />
-                        </div>
-                        <div className="input-group input-group--column input-group--on-blue-bg">
-                            <label htmlFor="filtration-max-target" className="input-group__label">Max. Target:</label>
-                            <input id="filtration-max-target" type="number" className="input-group__input" min="0" step="10" />
-                        </div>
+                        {
+                            Object.values(filtrationInputs.filtrationTarget).map(input => <FormGroup key={input.id} {...input} />)
+                        }
                         <div className="filtration-group filtration__button-wrapper">
                             <a href="#" className="button button--info">Search Projects</a>
                         </div>
