@@ -165,6 +165,25 @@ const filtrationInputs = {
             formGroupModifiers: 'filtration-checkbox'
         },
     },
+    filtrationSort: {
+        filtrationSortBy: {
+            title: 'sort by',
+            id: 'filtrationSortBy',
+            name: 'filtrationSortBy',
+            type: 'select',
+            options: {
+                interestRate: 'Interest Rate',
+                duration: 'Duration',
+                interestPaymentsRate: 'Interest Payments Rate'
+            },
+            isValid: true,
+            isTouched: false,
+            validators: [],
+            errors: [],
+            modifiers: 'column on-blue-bg',
+            formGroupModifiers: ''
+        },
+    },
     filtrationTarget: {
         filtrationTargetMin: {
             title: 'min. target',
@@ -225,14 +244,7 @@ export default function Filtration() {
                         </fieldset>
                     </div>
                     <div className="filtration__box filtration__box--sort">
-                        <div className="input-group input-group--column input-group--on-blue-bg">
-                            <label htmlFor="filtration-sort" className="input-group__label">Sort by:</label>
-                            <select id="filtration-sort" name="filtration-sort" type="select" className="input-group__input">
-                                <option value="interest-rate">Interest Rate</option>
-                                <option value="duration">Duration</option>
-                                <option value="payments-rate">Payments Rate</option>
-                            </select>
-                        </div>
+                        <FormGroup key={filtrationInputs.filtrationSort.filtrationSortBy.id}  {...filtrationInputs.filtrationSort.filtrationSortBy} />
                         <div className="input-group">
                             <div className="range-slider">
                                 <label className="range-slider__label">Interest Rate:</label>
