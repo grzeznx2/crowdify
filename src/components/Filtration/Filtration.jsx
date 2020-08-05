@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useReducer } from 'react'
 
 import FormGroup from '../Form/Inputs/FormGroup/FormGroup'
 
@@ -11,10 +11,6 @@ const filtrationInputs = {
         name: 'filtrationStatus',
         type: 'checkbox',
         value: false,
-        isValid: true,
-        isTouched: false,
-        validators: [],
-        errors: [],
         modifiers: 'on-dark-bg',
         formGroupModifiers: 'filtration-checkbox'
     },
@@ -24,10 +20,6 @@ const filtrationInputs = {
         name: 'filtrationStatus',
         type: 'checkbox',
         value: false,
-        isValid: true,
-        isTouched: false,
-        validators: [],
-        errors: [],
         modifiers: 'on-dark-bg',
         formGroupModifiers: 'filtration-checkbox'
     },
@@ -37,10 +29,6 @@ const filtrationInputs = {
         name: 'filtrationStatus',
         type: 'checkbox',
         value: false,
-        isValid: true,
-        isTouched: false,
-        validators: [],
-        errors: [],
         modifiers: 'on-dark-bg',
         formGroupModifiers: 'filtration-checkbox'
     },
@@ -50,10 +38,6 @@ const filtrationInputs = {
         name: 'filtrationStatus',
         type: 'checkbox',
         value: false,
-        isValid: true,
-        isTouched: false,
-        validators: [],
-        errors: [],
         modifiers: 'on-dark-bg',
         formGroupModifiers: 'filtration-checkbox'
     },
@@ -63,10 +47,6 @@ const filtrationInputs = {
         name: 'filtrationStatus',
         type: 'checkbox',
         value: false,
-        isValid: true,
-        isTouched: false,
-        validators: [],
-        errors: [],
         modifiers: 'on-dark-bg',
         formGroupModifiers: 'filtration-checkbox'
     },
@@ -76,10 +56,6 @@ const filtrationInputs = {
         name: 'filtrationType',
         type: 'checkbox',
         value: false,
-        isValid: true,
-        isTouched: false,
-        validators: [],
-        errors: [],
         modifiers: 'on-dark-bg',
         formGroupModifiers: 'filtration-checkbox'
     },
@@ -89,10 +65,6 @@ const filtrationInputs = {
         name: 'filtrationType',
         type: 'checkbox',
         value: false,
-        isValid: true,
-        isTouched: false,
-        validators: [],
-        errors: [],
         modifiers: 'on-dark-bg',
         formGroupModifiers: 'filtration-checkbox'
     },
@@ -102,10 +74,6 @@ const filtrationInputs = {
         name: 'filtrationType',
         type: 'checkbox',
         value: false,
-        isValid: true,
-        isTouched: false,
-        validators: [],
-        errors: [],
         modifiers: 'on-dark-bg',
         formGroupModifiers: 'filtration-checkbox'
     },
@@ -115,10 +83,6 @@ const filtrationInputs = {
         name: 'filtrationType',
         type: 'checkbox',
         value: false,
-        isValid: true,
-        isTouched: false,
-        validators: [],
-        errors: [],
         modifiers: 'on-dark-bg',
         formGroupModifiers: 'filtration-checkbox'
     },
@@ -128,10 +92,6 @@ const filtrationInputs = {
         name: 'filtrationType',
         type: 'checkbox',
         value: false,
-        isValid: true,
-        isTouched: false,
-        validators: [],
-        errors: [],
         modifiers: 'on-dark-bg',
         formGroupModifiers: 'filtration-checkbox'
     },
@@ -141,10 +101,6 @@ const filtrationInputs = {
         name: 'filtrationType',
         type: 'checkbox',
         value: false,
-        isValid: true,
-        isTouched: false,
-        validators: [],
-        errors: [],
         modifiers: 'on-dark-bg',
         formGroupModifiers: 'filtration-checkbox'
     },
@@ -154,10 +110,6 @@ const filtrationInputs = {
         name: 'filtrationType',
         type: 'checkbox',
         value: false,
-        isValid: true,
-        isTouched: false,
-        validators: [],
-        errors: [],
         modifiers: 'on-dark-bg',
         formGroupModifiers: 'filtration-checkbox'
     },
@@ -171,10 +123,6 @@ const filtrationInputs = {
             duration: 'Duration',
             interestPaymentsRate: 'Interest Payments Rate'
         },
-        isValid: true,
-        isTouched: false,
-        validators: [],
-        errors: [],
         modifiers: 'column on-blue-bg',
         formGroupModifiers: ''
     },
@@ -189,10 +137,6 @@ const filtrationInputs = {
         firstValue: 16,
         secondValue: 26,
         unit: '%',
-        isValid: true,
-        isTouched: false,
-        validators: [],
-        errors: [],
         modifiers: '',
         formGroupModifiers: ''
     },
@@ -204,10 +148,6 @@ const filtrationInputs = {
         min: 0,
         step: 10,
         value: 10000,
-        isValid: true,
-        isTouched: false,
-        validators: [],
-        errors: [],
         modifiers: 'column on-blue-bg',
         formGroupModifiers: ''
     },
@@ -219,13 +159,25 @@ const filtrationInputs = {
         min: 0,
         step: 10,
         value: 250000,
-        isValid: true,
-        isTouched: false,
-        validators: [],
-        errors: [],
         modifiers: 'column on-blue-bg',
         formGroupModifiers: ''
     },
+}
+
+const formReducer = (state, action) => {
+    switch (action.type) {
+        case 'CHANGE_VALUE':
+            const value = action.target.type === "checkbox" ? action.target.checked : action.target.value;
+            return {
+                ...state,
+                [name]: {
+                    ...state[name],
+                    value,
+                }
+            }
+        default:
+            return state
+    }
 }
 
 export default function Filtration() {
