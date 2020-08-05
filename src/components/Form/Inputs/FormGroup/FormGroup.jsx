@@ -16,6 +16,7 @@ export default function FormGroup({ type, formGroupModifiers, ...otherProps }) {
         case 'text':
         case 'select':
         case 'email':
+        case 'number':
         case 'password':
             markup = <Input type={type} {...otherProps} />
             break;
