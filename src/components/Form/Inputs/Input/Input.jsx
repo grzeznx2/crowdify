@@ -6,7 +6,7 @@ import './Input.scss'
 
 import { joinClasses } from '../../../../utils/utils'
 
-export default React.memo(function InputGroup({ onChange, id, name, type, isValid, isTouched, value, modifiers, otherClasses, title, min, max, options, step, errors }) {
+export default React.memo(function Input({ onChange, id, name, type, isValid, isTouched, value, modifiers, otherClasses, title, min, max, options, step, errors }) {
     let validityModifier = isTouched ?
         isValid ? 'valid' : 'invalid'
         : ''
