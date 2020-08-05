@@ -4,7 +4,7 @@ import FormGroup from '../Form/Inputs/FormGroup/FormGroup'
 
 import './Filtration.scss'
 
-const filtrationInputs = {
+const initialState = {
     filtrationStatusAll: {
         title: 'all',
         id: 'filtrationStatusAll',
@@ -164,15 +164,28 @@ const filtrationInputs = {
     },
 }
 
-const formReducer = (state, action) => {
-    switch (action.type) {
+const filtrationReducer = (state, { type, target }) => {
+    switch (type) {
         case 'CHANGE_VALUE':
-            const value = action.target.type === "checkbox" ? action.target.checked : action.target.value;
+            const value = target.type === "checkbox" ? target.checked : target.value;
+            const { id } = target
             return {
                 ...state,
-                [name]: {
-                    ...state[name],
+                [id]: {
+                    ...state[id],
                     value,
+                }
+            }
+        case 'CHANGE_MULTI_RANGE_VALUE':
+            const { valueType } = target.dataset
+            let rangeValue;
+            if (valueType === 'firstValue') rangeValue = Math.min(target.value, state.filtrationInterestRate.secondValue - 1)
+            else rangeValue = Math.max(target.value, state.filtrationInterestRate.firstValue + 1)
+            return {
+                ...state,
+                [target.name]: {
+                    ...state[target.name],
+                    [valueType]: rangeValue
                 }
             }
         default:
@@ -181,43 +194,14 @@ const formReducer = (state, action) => {
 }
 
 export default function Filtration() {
-    const [interestRate, setInterestRate] = useState({
-        title: 'interest rate',
-        id: 'filtrationInterestRate',
-        name: 'filtrationInterestRate',
-        type: 'range',
-        multipleRanges: true,
-        min: 10,
-        max: 36,
-        firstValue: 16,
-        secondValue: 26,
-        unit: '%',
-        isValid: true,
-        isTouched: false,
-        validators: [],
-        errors: [],
-        modifiers: '',
-        formGroupModifiers: ''
-    })
+    const [filtrationInputs, dispatch] = useReducer(filtrationReducer, initialState)
 
-    const handleInterestRate = e => {
-        if (e.target.id === 'filtrationInterestRateLeft') {
-            const val = Math.min(e.target.value, interestRate.secondValue - 1)
-            setInterestRate(
-                {
-                    ...interestRate,
-                    firstValue: val
-                }
-            )
-        } else {
-            const val = Math.max(interestRate.firstValue + 1, e.target.value)
-            setInterestRate(
-                {
-                    ...interestRate,
-                    secondValue: val
-                }
-            )
-        }
+
+    const handleChange = e => {
+        const { target } = e
+        if (target.dataset.rangeType === 'multi') dispatch({ type: 'CHANGE_MULTI_RANGE_VALUE', target })
+        else dispatch({ type: 'CHANGE_VALUE', target })
+
     }
 
     return (
@@ -232,7 +216,7 @@ export default function Filtration() {
                                     Object
                                         .values(filtrationInputs)
                                         .filter(input => input.name === 'filtrationStatus')
-                                        .map(input => <FormGroup key={input.id} {...input} />)
+                                        .map(input => <FormGroup onChange={handleChange} key={input.id} {...input} />)
                                 }
                             </div>
                         </fieldset>
@@ -245,14 +229,14 @@ export default function Filtration() {
                                     Object
                                         .values(filtrationInputs)
                                         .filter(input => input.name === 'filtrationType')
-                                        .map(input => <FormGroup key={input.id} {...input} />)
+                                        .map(input => <FormGroup onChange={handleChange} key={input.id} {...input} />)
                                 }
                             </div>
                         </fieldset>
                     </div>
                     <div className="filtration__box filtration__box--sort">
-                        <FormGroup key={filtrationInputs.filtrationSort.id}  {...filtrationInputs.filtrationSort} />
-                        <FormGroup key={interestRate.id} onChange={handleInterestRate}  {...interestRate} />
+                        <FormGroup key={filtrationInputs.filtrationSort.id} onChange={handleChange}  {...filtrationInputs.filtrationSort} />
+                        <FormGroup key={filtrationInputs.filtrationInterestRate.id} onChange={handleChange}  {...filtrationInputs.filtrationInterestRate} />
                         <div className="input-group">
                             <div className="range-slider">
                                 <label className="range-slider__label">Duration:</label>
@@ -275,8 +259,8 @@ export default function Filtration() {
 
                     </div>
                     <div className="filtration__box filtration__box--target">
-                        <FormGroup key={filtrationInputs.filtrationTargetMin.id}  {...filtrationInputs.filtrationTargetMin} />
-                        <FormGroup key={filtrationInputs.filtrationTargetMax.id}  {...filtrationInputs.filtrationTargetMax} />
+                        <FormGroup key={filtrationInputs.filtrationTargetMin.id} onChange={handleChange}  {...filtrationInputs.filtrationTargetMin} />
+                        <FormGroup key={filtrationInputs.filtrationTargetMax.id} onChange={handleChange}  {...filtrationInputs.filtrationTargetMax} />
                         <div className="filtration-group filtration__button-wrapper">
                             <a href="#" className="button button--info">Search Projects</a>
                         </div>
