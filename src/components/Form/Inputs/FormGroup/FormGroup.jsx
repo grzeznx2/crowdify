@@ -4,9 +4,11 @@ import Checkbox from '../Checkbox/Checkbox'
 import InputGroup from '../InputGroup/InputGroup'
 import RangeSlider from '../RangeSlider/RangeSlider'
 
+import { joinClasses } from '../../../../utils/utils'
+
 import './FormGroup.scss'
 
-export default function FormGroup(props) {
+export default function FormGroup({ type, formGroupModifiers, ...otherProps }) {
 
     let markup = null
 
@@ -15,20 +17,20 @@ export default function FormGroup(props) {
         case 'select':
         case 'email':
         case 'password':
-            markup = <InputGroup {...props} />
+            markup = <InputGroup type={type} {...otherProps} />
             break;
         case 'checkbox':
-            markup = <Checkbox {...props} />
+            markup = <Checkbox type={type} {...otherProps} />
             break;
         case 'range':
-            markup = <RangeSlider {...props} />
+            markup = <RangeSlider type={type} {...otherProps} />
             break;
         default:
             return null
     }
 
     return (
-        <div className="form-group">
+        <div className={joinClasses('form-group', formGroupModifiers)}>
             {
                 markup
             }
