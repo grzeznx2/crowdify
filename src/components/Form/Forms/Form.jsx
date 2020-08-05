@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 
 import Button from '../../Button/Button'
 import Checkbox from '../Inputs/Checkbox/Checkbox'
-import InputGroup from '../Inputs/InputGroup/InputGroup'
+import Input from '../Inputs/Input/Input'
 
 import useForm from '../../../hooks/useForm'
 
@@ -17,7 +17,7 @@ export default function Form({ name, formModifiers, formOtherClasses, containerM
 
     const createInputs = useCallback(inputs => Object.values(inputs).map(input => {
         if (input.type === 'checkbox') return <Checkbox key={input.id} onChange={handleChange} {...input} />
-        return <InputGroup key={input.id} onChange={handleChange} {...input} />
+        return <Input key={input.id} onChange={handleChange} {...input} />
     }), [])
 
     return (

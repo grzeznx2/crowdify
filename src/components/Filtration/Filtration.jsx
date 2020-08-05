@@ -83,7 +83,8 @@ const filtrationInputs = {
             isTouched: false,
             validators: [],
             errors: [],
-            modifiers: 'on-dark-bg'
+            modifiers: 'on-dark-bg',
+            formGroupModifiers: 'filtration-checkbox'
         },
         filtrationTypeLogistics: {
             title: 'logistics',
@@ -95,7 +96,8 @@ const filtrationInputs = {
             isTouched: false,
             validators: [],
             errors: [],
-            modifiers: 'on-dark-bg'
+            modifiers: 'on-dark-bg',
+            formGroupModifiers: 'filtration-checkbox'
         },
         filtrationTypeEnergy: {
             title: 'energy',
@@ -107,7 +109,8 @@ const filtrationInputs = {
             isTouched: false,
             validators: [],
             errors: [],
-            modifiers: 'on-dark-bg'
+            modifiers: 'on-dark-bg',
+            formGroupModifiers: 'filtration-checkbox'
         },
         filtrationTypeSme: {
             title: 'sme',
@@ -119,7 +122,8 @@ const filtrationInputs = {
             isTouched: false,
             validators: [],
             errors: [],
-            modifiers: 'on-dark-bg'
+            modifiers: 'on-dark-bg',
+            formGroupModifiers: 'filtration-checkbox'
         },
         filtrationTypeTechnology: {
             title: 'technology',
@@ -131,7 +135,8 @@ const filtrationInputs = {
             isTouched: false,
             validators: [],
             errors: [],
-            modifiers: 'on-dark-bg'
+            modifiers: 'on-dark-bg',
+            formGroupModifiers: 'filtration-checkbox'
         },
         filtrationTypeRealEstate: {
             title: 'real estate',
@@ -143,7 +148,8 @@ const filtrationInputs = {
             isTouched: false,
             validators: [],
             errors: [],
-            modifiers: 'on-dark-bg'
+            modifiers: 'on-dark-bg',
+            formGroupModifiers: 'filtration-checkbox'
         },
         filtrationTypeEntertainment: {
             title: 'entertainment',
@@ -155,7 +161,8 @@ const filtrationInputs = {
             isTouched: false,
             validators: [],
             errors: [],
-            modifiers: 'on-dark-bg'
+            modifiers: 'on-dark-bg',
+            formGroupModifiers: 'filtration-checkbox'
         },
     },
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Checkbox from '../Checkbox/Checkbox'
-import InputGroup from '../InputGroup/InputGroup'
+import Input from '../Input/Input'
 import RangeSlider from '../RangeSlider/RangeSlider'
 
 import { joinClasses } from '../../../../utils/utils'
@@ -12,12 +12,12 @@ export default function FormGroup({ type, formGroupModifiers, ...otherProps }) {
 
     let markup = null
 
-    switch (props.type) {
+    switch (type) {
         case 'text':
         case 'select':
         case 'email':
         case 'password':
-            markup = <InputGroup type={type} {...otherProps} />
+            markup = <Input type={type} {...otherProps} />
             break;
         case 'checkbox':
             markup = <Checkbox type={type} {...otherProps} />
