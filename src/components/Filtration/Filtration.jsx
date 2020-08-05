@@ -140,6 +140,20 @@ const initialState = {
         modifiers: '',
         formGroupModifiers: ''
     },
+    filtrationDuration: {
+        title: 'duration',
+        id: 'filtrationDuration',
+        name: 'filtrationDuration',
+        type: 'range',
+        multipleRanges: true,
+        min: 1,
+        max: 36,
+        firstValue: 3,
+        secondValue: 12,
+        unit: 'months',
+        modifiers: '',
+        formGroupModifiers: ''
+    },
     filtrationTargetMin: {
         title: 'min. target',
         id: 'filtrationTargetMin',
@@ -237,26 +251,7 @@ export default function Filtration() {
                     <div className="filtration__box filtration__box--sort">
                         <FormGroup key={filtrationInputs.filtrationSort.id} onChange={handleChange}  {...filtrationInputs.filtrationSort} />
                         <FormGroup key={filtrationInputs.filtrationInterestRate.id} onChange={handleChange}  {...filtrationInputs.filtrationInterestRate} />
-                        <div className="input-group">
-                            <div className="range-slider">
-                                <label className="range-slider__label">Duration:</label>
-                                <div className="range-slider__outputs">
-                                    <span className="range-slider__output">1m</span>
-                           -
-                           <span className="range-slider__output">24m</span>
-                                </div>
-                                <div className="range-slider__slider-container">
-                                    <input type="range" min='1' max='24' value='3'
-                                        className="range-slider__input range-slider__input--left" />
-                                    <input type="range" min='1' max='24' value='16'
-                                        className="range-slider__input range-slider__input--right" />
-                                    <div className="range-slider__track"></div>
-                                    <div className="range-slider__range range-slider__range--multi"></div>
-                                </div>
-                            </div>
-
-                        </div>
-
+                        <FormGroup key={filtrationInputs.filtrationDuration.id} onChange={handleChange}  {...filtrationInputs.filtrationDuration} />
                     </div>
                     <div className="filtration__box filtration__box--target">
                         <FormGroup key={filtrationInputs.filtrationTargetMin.id} onChange={handleChange}  {...filtrationInputs.filtrationTargetMin} />
