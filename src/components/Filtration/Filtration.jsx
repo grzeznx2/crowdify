@@ -67,6 +67,92 @@ const filtrationInputs = {
             modifiers: 'on-dark-bg'
         },
     },
+    filtrationType: {
+        filtrationTypeBusiness: {
+            title: 'business',
+            id: 'filtrationTypeBusiness',
+            name: 'filtrationType',
+            type: 'checkbox',
+            value: false,
+            isValid: true,
+            isTouched: false,
+            validators: [],
+            errors: [],
+            modifiers: 'on-dark-bg'
+        },
+        filtrationTypeLogistics: {
+            title: 'logistics',
+            id: 'filtrationTypeLogistics',
+            name: 'filtrationType',
+            type: 'checkbox',
+            value: false,
+            isValid: true,
+            isTouched: false,
+            validators: [],
+            errors: [],
+            modifiers: 'on-dark-bg'
+        },
+        filtrationTypeEnergy: {
+            title: 'energy',
+            id: 'filtrationTypeEnergy',
+            name: 'filtrationType',
+            type: 'checkbox',
+            value: false,
+            isValid: true,
+            isTouched: false,
+            validators: [],
+            errors: [],
+            modifiers: 'on-dark-bg'
+        },
+        filtrationTypeSme: {
+            title: 'sme',
+            id: 'filtrationTypeSme',
+            name: 'filtrationType',
+            type: 'checkbox',
+            value: false,
+            isValid: true,
+            isTouched: false,
+            validators: [],
+            errors: [],
+            modifiers: 'on-dark-bg'
+        },
+        filtrationTypeTechnology: {
+            title: 'technology',
+            id: 'filtrationTypeTechnology',
+            name: 'filtrationType',
+            type: 'checkbox',
+            value: false,
+            isValid: true,
+            isTouched: false,
+            validators: [],
+            errors: [],
+            modifiers: 'on-dark-bg'
+        },
+        filtrationTypeRealEstate: {
+            title: 'real estate',
+            id: 'filtrationTypeRealEstate',
+            name: 'filtrationType',
+            type: 'checkbox',
+            value: false,
+            isValid: true,
+            isTouched: false,
+            validators: [],
+            errors: [],
+            modifiers: 'on-dark-bg'
+        },
+        filtrationTypeEntertainment: {
+            title: 'entertainment',
+            id: 'filtrationTypeEntertainment',
+            name: 'filtrationType',
+            type: 'checkbox',
+            value: false,
+            isValid: true,
+            isTouched: false,
+            validators: [],
+            errors: [],
+            modifiers: 'on-dark-bg'
+        },
+    },
 }
 
 export default function Filtration() {
@@ -79,7 +165,7 @@ export default function Filtration() {
                             <legend class="filtration__legend">Status:</legend>
                             <div class="filtration__fields">
                                 {
-                                    Object.values(filtrationInputs.filtrationStatus).map(input => <div class="filtration__field">
+                                    Object.values(filtrationInputs.filtrationStatus).map(input => <div class="filtration__field" key={input.id}>
                                         <Checkbox {...input} />
                                     </div>)
                                 }
@@ -90,104 +176,11 @@ export default function Filtration() {
                         <fieldset class="filtration__fieldset">
                             <legend class="filtration__legend">Type:</legend>
                             <div class="filtration__fields">
-                                <div class="filtration__field">
-                                    <div class="checkbox checkbox--on-dark-bg">
-                                        <input type="checkbox" name="filtration-type" id="filtration-type-business"
-                                            class="checkbox__input" />
-                                        <label for="filtration-type-business" class="checkbox__label">
-                                            <span class="checkbox__button">
-                                                <svg class="checkbox__icon">
-                                                    <use xlinkHref="/img/sprite.svg#icon-checkmark" />
-                                                </svg>
-                                            </span>
-                                 business
-                              </label>
-                                    </div>
-                                </div>
-                                <div class="filtration__field">
-                                    <div class="checkbox checkbox--on-dark-bg">
-                                        <input type="checkbox" name="filtration-type" id="filtration-type-logistics"
-                                            class="checkbox__input" />
-                                        <label for="filtration-type-logistics" class="checkbox__label">
-                                            <span class="checkbox__button">
-                                                <svg class="checkbox__icon">
-                                                    <use xlinkHref="/img/sprite.svg#icon-checkmark" />
-                                                </svg>
-                                            </span>
-                                 logistics
-                              </label>
-                                    </div>
-                                </div>
-                                <div class="filtration__field">
-                                    <div class="checkbox checkbox--on-dark-bg">
-                                        <input type="checkbox" name="filtration-type" id="filtration-type-energy"
-                                            class="checkbox__input" />
-                                        <label for="filtration-type-energy" class="checkbox__label">
-                                            <span class="checkbox__button">
-                                                <svg class="checkbox__icon">
-                                                    <use xlinkHref="/img/sprite.svg#icon-checkmark" />
-                                                </svg>
-                                            </span>
-                                 energy
-                              </label>
-                                    </div>
-                                </div>
-                                <div class="filtration__field">
-                                    <div class="checkbox checkbox--on-dark-bg">
-                                        <input type="checkbox" name="filtration-type" id="filtration-type-sme"
-                                            class="checkbox__input" />
-                                        <label for="filtration-type-sme" class="checkbox__label">
-                                            <span class="checkbox__button">
-                                                <svg class="checkbox__icon">
-                                                    <use xlinkHref="/img/sprite.svg#icon-checkmark" />
-                                                </svg>
-                                            </span>
-                                 sme
-                              </label>
-                                    </div>
-                                </div>
-                                <div class="filtration__field">
-                                    <div class="checkbox checkbox--on-dark-bg">
-                                        <input type="checkbox" name="filtration-type" id="filtration-type-technology"
-                                            class="checkbox__input" />
-                                        <label for="filtration-type-technology" class="checkbox__label">
-                                            <span class="checkbox__button">
-                                                <svg class="checkbox__icon">
-                                                    <use xlinkHref="/img/sprite.svg#icon-checkmark" />
-                                                </svg>
-                                            </span>
-                                 technology
-                              </label>
-                                    </div>
-                                </div>
-                                <div class="filtration__field">
-                                    <div class="checkbox checkbox--on-dark-bg">
-                                        <input type="checkbox" name="filtration-type" id="filtration-type-real-estate"
-                                            class="checkbox__input" />
-                                        <label for="filtration-type-real-estate" class="checkbox__label">
-                                            <span class="checkbox__button">
-                                                <svg class="checkbox__icon">
-                                                    <use xlinkHref="/img/sprite.svg#icon-checkmark" />
-                                                </svg>
-                                            </span>
-                                 real estate
-                              </label>
-                                    </div>
-                                </div>
-                                <div class="filtration__field">
-                                    <div class="checkbox checkbox--on-dark-bg">
-                                        <input type="checkbox" name="filtration-type" id="filtration-type-entertainment"
-                                            class="checkbox__input" />
-                                        <label for="filtration-type-entertainment" class="checkbox__label">
-                                            <span class="checkbox__button">
-                                                <svg class="checkbox__icon">
-                                                    <use xlinkHref="/img/sprite.svg#icon-checkmark" />
-                                                </svg>
-                                            </span>
-                                 entertainment
-                              </label>
-                                    </div>
-                                </div>
+                                {
+                                    Object.values(filtrationInputs.filtrationType).map(input => <div class="filtration__field" key={input.id}>
+                                        <Checkbox {...input} />
+                                    </div>)
+                                }
                             </div>
                         </fieldset>
                     </div>
