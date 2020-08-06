@@ -3,37 +3,39 @@ import React from 'react'
 import ProjectDetails from './ProjectDetails/ProjectDetails'
 import CircleBar from './CircleBar/CircleBar'
 
+import { joinClasses } from '../../utils/utils'
+
 import './Project.scss'
 
-export default function Project({ name, interestRate, type, duration, location, paid, minTarget, totalTarget }) {
+export default function Project({ name, interestRate, type, duration, location, paid, minTarget, totalTarget, modifiers, otherClasses }) {
 
     return (
-        <div class="project">
-            <div class="project__top-container">
-                <div class="project__image-box">
+        <div className={joinClasses('project', modifiers, otherClasses)}>
+            <div className="project__top-container">
+                <div className="project__image-box">
                 </div>
-                <div class="project__title-box">
-                    <h3 class="heading-3 text-white">
+                <div className="project__title-box">
+                    <h3 className="heading-3 text-white">
                         {name}
                     </h3>
                 </div>
             </div>
-            <div class="project__middle-container">
+            <div className="project__middle-container">
 
-                <div class="project__details-box">
+                <div className="project__details-box">
                     <ProjectDetails
                         interestRate={interestRate}
                         type={type}
                         duration={duration}
                         location={location} />
                 </div>
-                <div class="project__target-box">
+                <div className="project__target-box">
                     <CircleBar paid={paid} minTarget={minTarget} totalTarget={totalTarget} />
                 </div>
             </div>
-            <div class="project__bottom-container">
+            <div className="project__bottom-container">
 
-                <a href="#" class="button button--info">View Project</a>
+                <a href="#" className="button button--info">View Project</a>
             </div>
         </div>
     )
