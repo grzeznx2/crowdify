@@ -1,7 +1,9 @@
-import React, { useState, useReducer } from 'react'
+import React, { useReducer, useEffect } from 'react'
 
 import Button from '..//Button/Button'
 import FormGroup from '../Form/Inputs/FormGroup/FormGroup'
+
+import useFetch from '../../hooks/useFetch'
 
 import './Filtration.scss'
 
@@ -208,9 +210,13 @@ const filtrationReducer = (state, { type, target }) => {
     }
 }
 
-export default function Filtration() {
+export default function Filtration({ onSearch }) {
     const [filtrationInputs, dispatch] = useReducer(filtrationReducer, initialState)
+    const { fetchState, sendRequest } = useFetch()
 
+    useEffect(() => {
+        onSearch(fetchState)
+    }, [onSearch, fetchState])
 
     const handleChange = e => {
         const { target } = e
@@ -219,8 +225,16 @@ export default function Filtration() {
 
     }
 
+    const handleSubmit = async e => {
+        e.preventDefault()
+        const options = {
+            url: 'http://localhost:5000/api/v1/projects'
+        }
+        await sendRequest(options)
+    }
+
     return (
-        <div className="filtration">
+        <form onSubmit={handleSubmit} className="filtration">
             <div className="container">
                 <div className="filtration__container">
                     <div className="filtration__box filtration__box--status">
@@ -263,6 +277,6 @@ export default function Filtration() {
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
     )
 }

@@ -1,14 +1,21 @@
-import React from 'react'
+import React, { useState, useCallback } from 'react'
 
 import Filtration from '../../components/Filtration/Filtration'
 
 import './ProjectsPage.scss'
 
 export default function ProjectsPage() {
+    const [fetchStatus, setFetchStatus] = useState(null)
+
+    const filtrationHandler = useCallback(fetchStatus => {
+        console.log(fetchStatus.data)
+        setFetchStatus(fetchStatus)
+    }, [fetchStatus])
+
     return (
         <section className="section-projects">
             <h2 className="section-title section-title--text-primary">Latest Projects</h2>
-            <Filtration />
+            <Filtration onSearch={filtrationHandler} />
             <div className="container">
                 <div className="section-projects__projects-container">
                     <div className="section-projects__project">
