@@ -1,4 +1,6 @@
-import React, { useState, useCallback } from 'react'
+import React, { useEffect } from 'react'
+
+import useFetch from '../../hooks/useFetch'
 
 import Filtration from '../../components/Filtration/Filtration'
 import Project from '../../components/Project/Project'
@@ -6,31 +8,51 @@ import Project from '../../components/Project/Project'
 import './ProjectsPage.scss'
 
 export default function ProjectsPage() {
-    const [fetchStatus, setFetchStatus] = useState({})
+    const { fetchState, sendRequest } = useFetch()
 
-    const filtrationHandler = useCallback(fetchStatus => {
-        console.log(fetchStatus.data)
-        setFetchStatus(fetchStatus)
-    }, [fetchStatus])
+    useEffect(() => {
+        const fetchData = async () => {
+            const options = {
+                url: 'http://localhost:5000/api/v1/projects'
+            }
+            await sendRequest(options)
+
+        }
+
+        fetchData()
+
+    }, [sendRequest])
+
+    const handleFilter = async (e, str) => {
+        e.preventDefault()
+        console.log(str)
+        const options = {
+            url: 'http://localhost:5000/api/v1/projects'
+        }
+        await sendRequest(options)
+    }
 
     return (
         <section className="section-projects">
             <h2 className="section-title section-title--text-primary">Latest Projects</h2>
-            <Filtration onSearch={filtrationHandler} />
+            <Filtration handleFilter={handleFilter} />
             <div className="container">
                 <div className="section-projects__projects-container">
                     {
-                        fetchStatus.isLoading ?
+                        fetchState.isLoading ?
                             <h2>Loading...</h2>
                             :
-                            fetchStatus.data ?
-                                fetchStatus.data.projects.map(project => {
-                                    return (
-                                        <div key={project.id} className="section-projects__project"><Project modifiers='no-gutters' {...project} /></div>
-                                    )
-                                })
+                            fetchState.error ?
+                                <h2>{fetchState.error}</h2>
                                 :
-                                null
+                                fetchState.data ?
+                                    fetchState.data.projects.map(project => {
+                                        return (
+                                            <div key={project.id} className="section-projects__project"><Project modifiers='no-gutters' {...project} /></div>
+                                        )
+                                    })
+                                    :
+                                    null
                     }
                 </div>
             </div>
