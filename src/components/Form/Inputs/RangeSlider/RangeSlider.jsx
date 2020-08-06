@@ -48,7 +48,8 @@ export default React.memo(function RangeSlider({ id, name, title, value, unit, m
                         className="range-slider__input range-slider__input--left"
                         onChange={onChange}
                         data-value-type='firstValue'
-                        data-range-type='multi' />
+                        data-range-type='multi'
+                        data-id-copy={id} />
                     <input
                         id={`${id}Right`}
                         type="range"
@@ -59,7 +60,8 @@ export default React.memo(function RangeSlider({ id, name, title, value, unit, m
                         className="range-slider__input range-slider__input--right"
                         onChange={onChange}
                         data-value-type='secondValue'
-                        data-range-type='multi' />
+                        data-range-type='multi'
+                        data-id-copy={id} />
                 </div>
             </>
     } else {
