@@ -140,7 +140,7 @@ const initialState = {
         secondValue: 26,
         unit: '%',
         modifiers: '',
-        formGroupModifiers: ''
+        formGroupModifiers: 'filtration-range-slider'
     },
     filtrationDuration: {
         title: 'duration',
@@ -154,7 +154,7 @@ const initialState = {
         secondValue: 12,
         unit: 'months',
         modifiers: '',
-        formGroupModifiers: ''
+        formGroupModifiers: 'filtration-range-slider'
     },
     filtrationTargetMin: {
         title: 'min. target',
@@ -294,13 +294,27 @@ export default function Filtration({ handleFilter }) {
                         </fieldset>
                     </div>
                     <div className="filtration__box filtration__box--sort">
-                        <FormGroup key={filtrationInputs.filtrationSort.id} onChange={handleChange}  {...filtrationInputs.filtrationSort} />
-                        <FormGroup key={filtrationInputs.filtrationInterestRate.id} onChange={handleChange}  {...filtrationInputs.filtrationInterestRate} />
-                        <FormGroup key={filtrationInputs.filtrationDuration.id} onChange={handleChange}  {...filtrationInputs.filtrationDuration} />
+                        <FormGroup
+                            key={filtrationInputs.filtrationSort.id}
+                            onChange={handleChange}
+                            {...filtrationInputs.filtrationSort} />
+                        <FormGroup
+                            key={filtrationInputs.filtrationInterestRate.id}
+                            onChange={handleChange}
+                            {...filtrationInputs.filtrationInterestRate} />
+                        <FormGroup
+                            key={filtrationInputs.filtrationDuration.id}
+                            onChange={handleChange}
+                            {...filtrationInputs.filtrationDuration} />
                     </div>
                     <div className="filtration__box filtration__box--target">
-                        <FormGroup key={filtrationInputs.filtrationTargetMin.id} onChange={handleChange}  {...filtrationInputs.filtrationTargetMin} />
-                        <FormGroup key={filtrationInputs.filtrationTargetMax.id} onChange={handleChange}  {...filtrationInputs.filtrationTargetMax} />
+                        <FormGroup
+                            key={filtrationInputs.filtrationTargetMin.id}
+                            onChange={handleChange}
+                            {...filtrationInputs.filtrationTargetMin} />
+                        <FormGroup key={filtrationInputs.filtrationTargetMax.id}
+                            onChange={handleChange}
+                            {...filtrationInputs.filtrationTargetMax} />
                         <div className="filtration-group filtration__button-wrapper">
                             <Button modifiers='info'>Search Projects</Button>
                         </div>
