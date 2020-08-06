@@ -65,8 +65,10 @@ export default function useFetch() {
             console.log(responseData)
             dispatch({ type: 'FETCH_SUCCESS', payload: responseData.data })
         } catch (error) {
+            console.log(error.name)
             console.log(error.message)
-            dispatch({ type: 'FETCH_FAILURE', payload: error.message })
+            // IMPORTANT! Only update state if request was not aborted (ergo component was not unmounted)
+            if (error.name !== 'AbortError') dispatch({ type: 'FETCH_FAILURE', payload: error.message })
         }
     }, [])
 
