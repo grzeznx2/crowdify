@@ -1,11 +1,12 @@
 import React, { useState, useCallback } from 'react'
 
 import Filtration from '../../components/Filtration/Filtration'
+import Project from '../../components/Project/Project'
 
 import './ProjectsPage.scss'
 
 export default function ProjectsPage() {
-    const [fetchStatus, setFetchStatus] = useState(null)
+    const [fetchStatus, setFetchStatus] = useState({})
 
     const filtrationHandler = useCallback(fetchStatus => {
         console.log(fetchStatus.data)
@@ -18,257 +19,19 @@ export default function ProjectsPage() {
             <Filtration onSearch={filtrationHandler} />
             <div className="container">
                 <div className="section-projects__projects-container">
-                    <div className="section-projects__project">
-                        <div className="project project--no-gutters">
-                            <div className="project__top-container">
-                                <div className="project__image-box">
-                                </div>
-                                <div className="project__title-box">
-                                    <h3 className="heading-4 text-white">
-                                        Modern, high quality detached house project
-                        </h3>
-                                </div>
-                            </div>
-                            <div className="project__middle-container">
-
-                                <div className="project__details-box">
-                                    <div className="project-details">
-                                        <ul className="project-details__list">
-                                            <li className="project-details__item">
-                                                <span className="project-details__label">interest rate:</span>
-                                                <span className="project-details__value">25%</span>
-                                            </li>
-                                            <li className="project-details__item">
-                                                <span className="project-details__label">type:</span>
-                                                <span className="project-details__value">Entertainment</span>
-                                            </li>
-                                            <li className="project-details__item">
-                                                <span className="project-details__label">period:</span>
-                                                <span className="project-details__value">6 months</span>
-                                            </li>
-                                            <li className="project-details__item">
-                                                <span className="project-details__label">location:</span>
-                                                <span className="project-details__value">Riga</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div className="project__target-box">
-                                    <div className="target">
-                                        <div className="circle-bar">
-                                            <svg className="circle-bar__rings">
-                                                <circle className="circle-bar__ring-bg" cx='90' cy='90' r='85' />
-                                                <circle className="circle-bar__ring-progress circle-bar__ring-progress--total" cx='90'
-                                                    cy='90' r='85' />
-                                                <circle className="circle-bar__ring-bg" cx='90' cy='90' r='72' />
-                                                <circle className="circle-bar__ring-progress circle-bar__ring-progress--min" cx='90'
-                                                    cy='90' r='72' />
-                                            </svg>
-                                            <div className="circle-bar__percent-box">
-                                                <span className="circle-bar__percent">14%</span>
-                                                <span className="circle-bar__label"> of 50.000€ min</span>
-                                                <span className="circle-bar__percent">32%</span>
-                                                <span className="circle-bar__label"> of 128.500€ total</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="project__bottom-container">
-
-                                <a href="#" className="button button--info">View Project</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="section-projects__project">
-                        <div className="project project--no-gutters">
-                            <div className="project__top-container">
-                                <div className="project__image-box">
-                                </div>
-                                <div className="project__title-box">
-                                    <h3 className="heading-4 text-white">
-                                        Modern, high quality detached house project
-                        </h3>
-                                </div>
-                            </div>
-                            <div className="project__middle-container">
-
-                                <div className="project__details-box">
-                                    <div className="project-details">
-                                        <ul className="project-details__list">
-                                            <li className="project-details__item">
-                                                <span className="project-details__label">interest rate:</span>
-                                                <span className="project-details__value">25%</span>
-                                            </li>
-                                            <li className="project-details__item">
-                                                <span className="project-details__label">type:</span>
-                                                <span className="project-details__value">Entertainment</span>
-                                            </li>
-                                            <li className="project-details__item">
-                                                <span className="project-details__label">period:</span>
-                                                <span className="project-details__value">6 months</span>
-                                            </li>
-                                            <li className="project-details__item">
-                                                <span className="project-details__label">location:</span>
-                                                <span className="project-details__value">Riga</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-                                <div className="project__target-box">
-                                    <div className="target">
-                                        <div className="circle-bar">
-                                            <svg className="circle-bar__rings">
-                                                <circle className="circle-bar__ring-bg" cx='90' cy='90' r='85' />
-                                                <circle className="circle-bar__ring-progress circle-bar__ring-progress--total" cx='90'
-                                                    cy='90' r='85' />
-                                                <circle className="circle-bar__ring-bg" cx='90' cy='90' r='72' />
-                                                <circle className="circle-bar__ring-progress circle-bar__ring-progress--min" cx='90'
-                                                    cy='90' r='72' />
-                                            </svg>
-                                            <div className="circle-bar__percent-box">
-                                                <span className="circle-bar__percent">14%</span>
-                                                <span className="circle-bar__label"> of 50.000€ min</span>
-                                                <span className="circle-bar__percent">32%</span>
-                                                <span className="circle-bar__label"> of 128.500€ total</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="project__bottom-container">
-
-                                <a href="#" className="button button--info">View Project</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="section-projects__project">
-                        <div className="project project--no-gutters">
-                            <div className="project__top-container">
-                                <div className="project__image-box">
-                                </div>
-                                <div className="project__title-box">
-                                    <h3 className="heading-4 text-white">
-                                        Modern, high quality detached house project
-                        </h3>
-                                </div>
-                            </div>
-                            <div className="project__middle-container">
-
-                                <div className="project__details-box">
-                                    <div className="project-details">
-                                        <ul className="project-details__list">
-                                            <li className="project-details__item">
-                                                <span className="project-details__label">interest rate:</span>
-                                                <span className="project-details__value">25%</span>
-                                            </li>
-                                            <li className="project-details__item">
-                                                <span className="project-details__label">type:</span>
-                                                <span className="project-details__value">Entertainment</span>
-                                            </li>
-                                            <li className="project-details__item">
-                                                <span className="project-details__label">period:</span>
-                                                <span className="project-details__value">6 months</span>
-                                            </li>
-                                            <li className="project-details__item">
-                                                <span className="project-details__label">location:</span>
-                                                <span className="project-details__value">Riga</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-                                <div className="project__target-box">
-                                    <div className="target">
-                                        <div className="circle-bar">
-                                            <svg className="circle-bar__rings">
-                                                <circle className="circle-bar__ring-bg" cx='90' cy='90' r='85' />
-                                                <circle className="circle-bar__ring-progress circle-bar__ring-progress--total" cx='90'
-                                                    cy='90' r='85' />
-                                                <circle className="circle-bar__ring-bg" cx='90' cy='90' r='72' />
-                                                <circle className="circle-bar__ring-progress circle-bar__ring-progress--min" cx='90'
-                                                    cy='90' r='72' />
-                                            </svg>
-                                            <div className="circle-bar__percent-box">
-                                                <span className="circle-bar__percent">14%</span>
-                                                <span className="circle-bar__label"> of 50.000€ min</span>
-                                                <span className="circle-bar__percent">32%</span>
-                                                <span className="circle-bar__label"> of 128.500€ total</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="project__bottom-container">
-
-                                <a href="#" className="button button--info">View Project</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="section-projects__project">
-                        <div className="project project--no-gutters">
-                            <div className="project__top-container">
-                                <div className="project__image-box">
-                                </div>
-                                <div className="project__title-box">
-                                    <h3 className="heading-4 text-white">
-                                        Modern, high quality detached house project
-                        </h3>
-                                </div>
-                            </div>
-                            <div className="project__middle-container">
-
-                                <div className="project__details-box">
-                                    <div className="project-details">
-                                        <ul className="project-details__list">
-                                            <li className="project-details__item">
-                                                <span className="project-details__label">interest rate:</span>
-                                                <span className="project-details__value">25%</span>
-                                            </li>
-                                            <li className="project-details__item">
-                                                <span className="project-details__label">type:</span>
-                                                <span className="project-details__value">Entertainment</span>
-                                            </li>
-                                            <li className="project-details__item">
-                                                <span className="project-details__label">period:</span>
-                                                <span className="project-details__value">6 months</span>
-                                            </li>
-                                            <li className="project-details__item">
-                                                <span className="project-details__label">location:</span>
-                                                <span className="project-details__value">Riga</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-                                <div className="project__target-box">
-                                    <div className="target">
-                                        <div className="circle-bar">
-                                            <svg className="circle-bar__rings">
-                                                <circle className="circle-bar__ring-bg" cx='90' cy='90' r='85' />
-                                                <circle className="circle-bar__ring-progress circle-bar__ring-progress--total" cx='90'
-                                                    cy='90' r='85' />
-                                                <circle className="circle-bar__ring-bg" cx='90' cy='90' r='72' />
-                                                <circle className="circle-bar__ring-progress circle-bar__ring-progress--min" cx='90'
-                                                    cy='90' r='72' />
-                                            </svg>
-                                            <div className="circle-bar__percent-box">
-                                                <span className="circle-bar__percent">14%</span>
-                                                <span className="circle-bar__label"> of 50.000€ min</span>
-                                                <span className="circle-bar__percent">32%</span>
-                                                <span className="circle-bar__label"> of 128.500€ total</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="project__bottom-container">
-
-                                <a href="#" className="button button--info">View Project</a>
-                            </div>
-                        </div>
-                    </div>
+                    {
+                        fetchStatus.isLoading ?
+                            <h2>Loading...</h2>
+                            :
+                            fetchStatus.data ?
+                                fetchStatus.data.projects.map(project => {
+                                    return (
+                                        <div key={project.id} className="section-projects__project"><Project {...project} /></div>
+                                    )
+                                })
+                                :
+                                null
+                    }
                 </div>
             </div>
             <div className="pagination">
