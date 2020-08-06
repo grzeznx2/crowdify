@@ -26,7 +26,7 @@ export default function ProjectsPage() {
                             fetchStatus.data ?
                                 fetchStatus.data.projects.map(project => {
                                     return (
-                                        <div key={project.id} className="section-projects__project"><Project {...project} /></div>
+                                        <div key={project.id} className="section-projects__project"><Project modifiers='no-gutters' {...project} /></div>
                                     )
                                 })
                                 :
