@@ -1,5 +1,6 @@
 import React, { useState, useReducer } from 'react'
 
+import Button from '..//Button/Button'
 import FormGroup from '../Form/Inputs/FormGroup/FormGroup'
 
 import './Filtration.scss'
@@ -257,7 +258,7 @@ export default function Filtration() {
                         <FormGroup key={filtrationInputs.filtrationTargetMin.id} onChange={handleChange}  {...filtrationInputs.filtrationTargetMin} />
                         <FormGroup key={filtrationInputs.filtrationTargetMax.id} onChange={handleChange}  {...filtrationInputs.filtrationTargetMax} />
                         <div className="filtration-group filtration__button-wrapper">
-                            <a href="#" className="button button--info">Search Projects</a>
+                            <Button modifiers='info'>Search Projects</Button>
                         </div>
                     </div>
                 </div>
