@@ -24,10 +24,10 @@ export default React.memo(function RangeSlider({ id, name, title, value, unit, m
         rangeMarkup =
             <>
                 <label className="range-slider__label">{title}</label>
-                <div class="range-slider__outputs">
-                    <span class="range-slider__output">{firstValue}{unit}</span>
+                <div className="range-slider__outputs">
+                    <span className="range-slider__output">{firstValue}{unit}</span>
                            &nbsp;-&nbsp;
-                    <span class="range-slider__output">{secondValue}{unit}</span>
+                    <span className="range-slider__output">{secondValue}{unit}</span>
                 </div>
                 <div className="range-slider__slider-container">
                     <div className="range-slider__track"></div>

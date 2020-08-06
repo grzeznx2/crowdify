@@ -5,22 +5,22 @@ import './FooterNav.scss'
 
 export default function FooterNav() {
     return (
-        <nav class="footer-nav">
-            <ul class="footer-nav__list">
-                <li class="footer-nav__item">
-                    <Link to='/terms' class='footer-nav__link'>terms</Link>
+        <nav className="footer-nav">
+            <ul className="footer-nav__list">
+                <li className="footer-nav__item">
+                    <Link to='/terms' className='footer-nav__link'>terms</Link>
                 </li>
-                <li class="footer-nav__item">
-                    <Link to='/terms' class='footer-nav__link'>privacy policy</Link>
+                <li className="footer-nav__item">
+                    <Link to='/terms' className='footer-nav__link'>privacy policy</Link>
                 </li>
-                <li class="footer-nav__item">
-                    <Link to='/terms' class='footer-nav__link'>security</Link>
+                <li className="footer-nav__item">
+                    <Link to='/terms' className='footer-nav__link'>security</Link>
                 </li>
-                <li class="footer-nav__item">
-                    <Link to='/terms' class='footer-nav__link'>risks</Link>
+                <li className="footer-nav__item">
+                    <Link to='/terms' className='footer-nav__link'>risks</Link>
                 </li>
-                <li class="footer-nav__item">
-                    <Link to='/terms' class='footer-nav__link'>price list</Link>
+                <li className="footer-nav__item">
+                    <Link to='/terms' className='footer-nav__link'>price list</Link>
                 </li>
             </ul>
         </nav>
