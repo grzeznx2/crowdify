@@ -10,7 +10,6 @@ import { joinClasses } from '../../../utils/utils'
 import './Form.scss'
 
 export default function Form({ name, formModifiers, formOtherClasses, containerModifiers, containerOtherClasses, title, buttonText, children }) {
-    console.log(name)
 
     const { inputs, fetchState, handleChange, handleSubmit } = useForm(name)
 
