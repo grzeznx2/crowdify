@@ -9,7 +9,7 @@ const initialState = {
     filtrationStatusAll: {
         title: 'all',
         id: 'filtrationStatusAll',
-        name: 'filtrationStatus',
+        name: 'status',
         type: 'checkbox',
         value: false,
         modifiers: 'on-dark-bg',
@@ -18,7 +18,7 @@ const initialState = {
     filtrationStatusActive: {
         title: 'active',
         id: 'filtrationStatusActive',
-        name: 'filtrationStatus',
+        name: 'status',
         type: 'checkbox',
         value: false,
         modifiers: 'on-dark-bg',
@@ -27,7 +27,7 @@ const initialState = {
     filtrationStatusComing: {
         title: 'coming',
         id: 'filtrationStatusComing',
-        name: 'filtrationStatus',
+        name: 'status',
         type: 'checkbox',
         value: false,
         modifiers: 'on-dark-bg',
@@ -36,7 +36,7 @@ const initialState = {
     filtrationStatusFunded: {
         title: 'funded',
         id: 'filtrationStatusFunded',
-        name: 'filtrationStatus',
+        name: 'status',
         type: 'checkbox',
         value: false,
         modifiers: 'on-dark-bg',
@@ -45,7 +45,7 @@ const initialState = {
     filtrationStatusRepaid: {
         title: 'repaid',
         id: 'filtrationStatusRepaid',
-        name: 'filtrationStatus',
+        name: 'status',
         type: 'checkbox',
         value: false,
         modifiers: 'on-dark-bg',
@@ -54,7 +54,7 @@ const initialState = {
     filtrationTypeBusiness: {
         title: 'business',
         id: 'filtrationTypeBusiness',
-        name: 'filtrationType',
+        name: 'type',
         type: 'checkbox',
         value: false,
         modifiers: 'on-dark-bg',
@@ -63,7 +63,7 @@ const initialState = {
     filtrationTypeLogistics: {
         title: 'logistics',
         id: 'filtrationTypeLogistics',
-        name: 'filtrationType',
+        name: 'type',
         type: 'checkbox',
         value: false,
         modifiers: 'on-dark-bg',
@@ -72,7 +72,7 @@ const initialState = {
     filtrationTypeEnergy: {
         title: 'energy',
         id: 'filtrationTypeEnergy',
-        name: 'filtrationType',
+        name: 'type',
         type: 'checkbox',
         value: false,
         modifiers: 'on-dark-bg',
@@ -81,7 +81,7 @@ const initialState = {
     filtrationTypeSme: {
         title: 'sme',
         id: 'filtrationTypeSme',
-        name: 'filtrationType',
+        name: 'type',
         type: 'checkbox',
         value: false,
         modifiers: 'on-dark-bg',
@@ -90,7 +90,7 @@ const initialState = {
     filtrationTypeTechnology: {
         title: 'technology',
         id: 'filtrationTypeTechnology',
-        name: 'filtrationType',
+        name: 'type',
         type: 'checkbox',
         value: false,
         modifiers: 'on-dark-bg',
@@ -99,7 +99,7 @@ const initialState = {
     filtrationTypeRealEstate: {
         title: 'real estate',
         id: 'filtrationTypeRealEstate',
-        name: 'filtrationType',
+        name: 'type',
         type: 'checkbox',
         value: false,
         modifiers: 'on-dark-bg',
@@ -108,7 +108,7 @@ const initialState = {
     filtrationTypeEntertainment: {
         title: 'entertainment',
         id: 'filtrationTypeEntertainment',
-        name: 'filtrationType',
+        name: 'type',
         type: 'checkbox',
         value: false,
         modifiers: 'on-dark-bg',
@@ -117,8 +117,9 @@ const initialState = {
     filtrationSort: {
         title: 'sort by',
         id: 'filtrationSort',
-        name: 'filtrationSort',
+        name: 'sort',
         type: 'select',
+        value: 'interestRate',
         options: {
             interestRate: 'Interest Rate',
             duration: 'Duration',
@@ -130,7 +131,7 @@ const initialState = {
     filtrationInterestRate: {
         title: 'interest rate',
         id: 'filtrationInterestRate',
-        name: 'filtrationInterestRate',
+        name: 'interestRate',
         type: 'range',
         multipleRanges: true,
         min: 10,
@@ -144,7 +145,7 @@ const initialState = {
     filtrationDuration: {
         title: 'duration',
         id: 'filtrationDuration',
-        name: 'filtrationDuration',
+        name: 'duration',
         type: 'range',
         multipleRanges: true,
         min: 1,
@@ -158,7 +159,7 @@ const initialState = {
     filtrationTargetMin: {
         title: 'min. target',
         id: 'filtrationTargetMin',
-        name: 'filtrationTargetMin',
+        name: 'minTarget',
         type: 'number',
         min: 0,
         step: 10,
@@ -169,7 +170,7 @@ const initialState = {
     filtrationTargetMax: {
         title: 'max. target',
         id: 'filtrationTargetMax',
-        name: 'filtrationTargetMax',
+        name: 'maxTarget',
         type: 'number',
         min: 0,
         step: 10,
@@ -192,14 +193,14 @@ const filtrationReducer = (state, { type, target }) => {
                 }
             }
         case 'CHANGE_MULTI_RANGE_VALUE':
-            const { valueType } = target.dataset
+            const { valueType, idCopy } = target.dataset
             let rangeValue;
             if (valueType === 'firstValue') rangeValue = Math.min(target.value, state.filtrationInterestRate.secondValue - 1)
             else rangeValue = Math.max(target.value, state.filtrationInterestRate.firstValue + 1)
             return {
                 ...state,
-                [target.name]: {
-                    ...state[target.name],
+                [idCopy]: {
+                    ...state[idCopy],
                     [valueType]: rangeValue
                 }
             }
@@ -219,9 +220,48 @@ export default function Filtration({ handleFilter }) {
     }
 
     const filter = e => {
-        handleFilter(e, '')
-    }
 
+        const filterObj = {}
+
+        Object.defineProperty(filterObj, 'queryString', {
+            get: function () {
+                return `?${Object.values(this).join('&')}`
+            }
+        })
+
+        for (let input of Object.values(filtrationInputs)) {
+            const { name, title, value, firstValue, secondValue } = input
+            switch (name) {
+                case 'status':
+                    if (value) {
+                        filterObj[name] = filterObj[name] ? filterObj[name].concat(`,${title.replace(' ', '_')}`) : `status=${title.replace(' ', '_')}`
+                    }
+                    break;
+                case 'type':
+                    if (value) {
+                        filterObj[name] = filterObj[name] ? filterObj[name].concat(`,${title.replace(' ', '_')}`) : `type=${title.replace(' ', '_')}`
+                    }
+                    break;
+                case 'sort':
+                    filterObj.sort = `sort=${value}`
+                    break
+                case 'minTarget':
+                    filterObj.minTarget = `totalTarget[gte]=${value}`
+                    break
+                case 'maxTarget':
+                    filterObj.maxTarget = `totalTarget[lte]=${value}`
+                    break
+                case 'duration':
+                    filterObj.duration = `duration[gte]=${firstValue}&duration[lte]=${secondValue}`
+                    break
+                case 'interestRate':
+                    filterObj.interestRate = `interestRate[gte]=${firstValue}&interestRate[lte]=${secondValue}`
+                    break
+            }
+        }
+
+        handleFilter(e, filterObj.queryString)
+    }
 
     return (
         <form onSubmit={filter} className="filtration">
@@ -234,7 +274,7 @@ export default function Filtration({ handleFilter }) {
                                 {
                                     Object
                                         .values(filtrationInputs)
-                                        .filter(input => input.name === 'filtrationStatus')
+                                        .filter(input => input.name === 'status')
                                         .map(input => <FormGroup onChange={handleChange} key={input.id} {...input} />)
                                 }
                             </div>
@@ -247,7 +287,7 @@ export default function Filtration({ handleFilter }) {
                                 {
                                     Object
                                         .values(filtrationInputs)
-                                        .filter(input => input.name === 'filtrationType')
+                                        .filter(input => input.name === 'type')
                                         .map(input => <FormGroup onChange={handleChange} key={input.id} {...input} />)
                                 }
                             </div>
