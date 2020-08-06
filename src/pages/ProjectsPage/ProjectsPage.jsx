@@ -23,11 +23,10 @@ export default function ProjectsPage() {
 
     }, [sendRequest])
 
-    const handleFilter = async (e, str) => {
+    const handleFilter = async (e, queryString) => {
         e.preventDefault()
-        console.log(str)
         const options = {
-            url: 'http://localhost:5000/api/v1/projects'
+            url: `http://localhost:5000/api/v1/projects${queryString}`
         }
         await sendRequest(options)
     }
