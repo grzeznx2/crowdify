@@ -3,9 +3,7 @@ import React, { useRef } from 'react'
 import './Pagination.scss'
 
 export default function Pagination({ changePage, resultsCount, resPerPage, page }) {
-    const pagesCountRef = useRef(0)
-    const pagesCount = resultsCount ? Math.ceil(resultsCount / resPerPage) : pagesCountRef.current
-    pagesCountRef.current = useRef(pagesCount)
+    const pagesCount = Math.ceil(resultsCount / resPerPage)
 
     return (
         <div className="pagination">
