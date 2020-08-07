@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useRef } from 'react'
 
 import Button from '..//Button/Button'
 import FormGroup from '../Form/Inputs/FormGroup/FormGroup'
@@ -211,6 +211,7 @@ const filtrationReducer = (state, { type, target }) => {
 
 export default React.memo(function Filtration({ handleFilter }) {
     const [filtrationInputs, dispatch] = useReducer(filtrationReducer, initialState)
+    const filtrationInputsRef = useRef(null)
 
     const handleChange = e => {
         const { target } = e
@@ -221,46 +222,51 @@ export default React.memo(function Filtration({ handleFilter }) {
 
     const filter = e => {
         e.preventDefault()
-        const filterObj = {}
+        if (filtrationInputs !== filtrationInputsRef.current) {
+            filtrationInputsRef.current = filtrationInputs
 
-        Object.defineProperty(filterObj, 'queryString', {
-            get: function () {
-                return `${Object.values(this).join('&')}`
-            }
-        })
+            const filterObj = {}
 
-        for (let input of Object.values(filtrationInputs)) {
-            const { name, title, value, firstValue, secondValue } = input
-            switch (name) {
-                case 'status':
-                    if (value) {
-                        filterObj[name] = filterObj[name] ? filterObj[name].concat(`,${title.replace(' ', '_')}`) : `status=${title.replace(' ', '_')}`
-                    }
-                    break;
-                case 'type':
-                    if (value) {
-                        filterObj[name] = filterObj[name] ? filterObj[name].concat(`,${title.replace(' ', '_')}`) : `type=${title.replace(' ', '_')}`
-                    }
-                    break;
-                case 'sort':
-                    filterObj.sort = `sort=${value}`
-                    break
-                case 'minTarget':
-                    filterObj.minTarget = `totalTarget[gte]=${value}`
-                    break
-                case 'maxTarget':
-                    filterObj.maxTarget = `totalTarget[lte]=${value}`
-                    break
-                case 'duration':
-                    filterObj.duration = `duration[gte]=${firstValue}&duration[lte]=${secondValue}`
-                    break
-                case 'interestRate':
-                    filterObj.interestRate = `interestRate[gte]=${firstValue}&interestRate[lte]=${secondValue}`
-                    break
+            Object.defineProperty(filterObj, 'queryString', {
+                get: function () {
+                    return `${Object.values(this).join('&')}`
+                }
+            })
+
+            for (let input of Object.values(filtrationInputs)) {
+                const { name, title, value, firstValue, secondValue } = input
+                switch (name) {
+                    case 'status':
+                        if (value) {
+                            filterObj[name] = filterObj[name] ? filterObj[name].concat(`,${title.replace(' ', '_')}`) : `status=${title.replace(' ', '_')}`
+                        }
+                        break;
+                    case 'type':
+                        if (value) {
+                            filterObj[name] = filterObj[name] ? filterObj[name].concat(`,${title.replace(' ', '_')}`) : `type=${title.replace(' ', '_')}`
+                        }
+                        break;
+                    case 'sort':
+                        filterObj.sort = `sort=${value}`
+                        break
+                    case 'minTarget':
+                        filterObj.minTarget = `totalTarget[gte]=${value}`
+                        break
+                    case 'maxTarget':
+                        filterObj.maxTarget = `totalTarget[lte]=${value}`
+                        break
+                    case 'duration':
+                        filterObj.duration = `duration[gte]=${firstValue}&duration[lte]=${secondValue}`
+                        break
+                    case 'interestRate':
+                        filterObj.interestRate = `interestRate[gte]=${firstValue}&interestRate[lte]=${secondValue}`
+                        break
+                }
             }
+
+            handleFilter(filterObj.queryString)
         }
 
-        handleFilter(filterObj.queryString)
     }
 
     return (
