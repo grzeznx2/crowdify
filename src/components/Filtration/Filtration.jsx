@@ -209,7 +209,7 @@ const filtrationReducer = (state, { type, target }) => {
     }
 }
 
-export default function Filtration({ handleFilter }) {
+export default React.memo(function Filtration({ handleFilter }) {
     const [filtrationInputs, dispatch] = useReducer(filtrationReducer, initialState)
 
     const handleChange = e => {
@@ -220,12 +220,12 @@ export default function Filtration({ handleFilter }) {
     }
 
     const filter = e => {
-
+        e.preventDefault()
         const filterObj = {}
 
         Object.defineProperty(filterObj, 'queryString', {
             get: function () {
-                return `?${Object.values(this).join('&')}`
+                return `${Object.values(this).join('&')}`
             }
         })
 
@@ -260,7 +260,7 @@ export default function Filtration({ handleFilter }) {
             }
         }
 
-        handleFilter(e, filterObj.queryString)
+        handleFilter(filterObj.queryString)
     }
 
     return (
@@ -323,4 +323,4 @@ export default function Filtration({ handleFilter }) {
             </div>
         </form>
     )
-}
+})
