@@ -9,7 +9,7 @@ import Project from '../../components/Project/Project'
 import './ProjectsPage.scss'
 
 export default function ProjectsPage() {
-    const { fetchState, sendRequest } = useFetch()
+    const { isLoading, error, data, sendRequest } = useFetch()
     const [countDocuments, setCountDocuments] = useState(true)
     const [page, setPage] = useState(1)
     const [queryString, setQueryString] = useState('')
@@ -41,14 +41,14 @@ export default function ProjectsPage() {
             <div className="container">
                 <div className="section-projects__projects-container">
                     {
-                        fetchState.isLoading ?
+                        isLoading ?
                             <h2>Loading...</h2>
                             :
-                            fetchState.error ?
-                                <h2>{fetchState.error}</h2>
+                            error ?
+                                <h2>{error}</h2>
                                 :
-                                fetchState.data ?
-                                    fetchState.data.projects.map(project => {
+                                data ?
+                                    data.projects.map(project => {
                                         return (
                                             <div key={project.id} className="section-projects__project"><Project modifiers='no-gutters' {...project} /></div>
                                         )
@@ -58,7 +58,19 @@ export default function ProjectsPage() {
                     }
                 </div>
             </div>
-            <Pagination />
+            {
+                isLoading ?
+                    <h2>Loading...</h2>
+                    :
+                    error ?
+                        <h2>{error}</h2>
+                        :
+                        data ?
+
+                            <Pagination resultsCount={data.totalResultsCount} />
+                            :
+                            null
+            }
         </section>
     )
 }
