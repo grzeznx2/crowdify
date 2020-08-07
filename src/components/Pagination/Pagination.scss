@@ -15,22 +15,19 @@
 
     &__button {
 
-        &:link,
-        &:visited {
-            display: inline-block;
-            padding: 2rem;
-            font-size: 1.4rem;
-            line-height: 1;
-            text-decoration: none;
-            color: $COLOR_BLUE_10;
-        }
+        display: inline-block;
+        padding: 2rem;
+        font-size: 1.4rem;
+        line-height: 1;
+        text-decoration: none;
+        color: $COLOR_BLUE_10;
+
 
         &:hover {
             background-color: rgba($COLOR_BLUE_10, .2);
         }
 
-        &--active:link,
-        &--active:visited {
+        &--active {
             font-size: 2rem;
             font-weight: 700;
         }
