@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 
 import useFetch from '../../hooks/useFetch'
 
@@ -10,27 +10,29 @@ import './ProjectsPage.scss'
 
 export default function ProjectsPage() {
     const { fetchState, sendRequest } = useFetch()
+    const [countDocuments, setCountDocuments] = useState(true)
+    const [page, setPage] = useState(1)
+    const [queryString, setQueryString] = useState('')
 
     useEffect(() => {
+        console.log('I work!')
         const fetchData = async () => {
             const options = {
-                url: 'http://localhost:5000/api/v1/projects'
+                url: `http://localhost:5000/api/v1/projects?page=${page}&countDocuments=${countDocuments}&${queryString}`
             }
             await sendRequest(options)
 
         }
+        setCountDocuments(false)
 
         fetchData()
 
-    }, [sendRequest])
+    }, [sendRequest, queryString, page, countDocuments])
 
-    const handleFilter = async (e, queryString) => {
-        e.preventDefault()
-        const options = {
-            url: `http://localhost:5000/api/v1/projects${queryString}`
-        }
-        await sendRequest(options)
-    }
+    const handleFilter = useCallback(async (queryString) => {
+        setQueryString(queryString)
+        setCountDocuments(true)
+    }, [queryString])
 
     return (
         <section className="section-projects">
