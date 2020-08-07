@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState, useCallback, useRef } from 'react'
 
 import useFetch from '../../hooks/useFetch'
 
@@ -9,30 +9,39 @@ import Project from '../../components/Project/Project'
 import './ProjectsPage.scss'
 
 export default function ProjectsPage() {
-    const { isLoading, error, data, sendRequest } = useFetch()
+    const { isLoading, error, sendRequest } = useFetch()
+    // determines whether API should include the total number of elements matching search params in response or not
     const [countDocuments, setCountDocuments] = useState(true)
     const [page, setPage] = useState(1)
     const [queryString, setQueryString] = useState('')
+    const [projects, setProjects] = useState([])
+    const [totalResults, setTotalResults] = useState(0)
 
     useEffect(() => {
-        console.log('I work!')
         const fetchData = async () => {
             const options = {
-                url: `http://localhost:5000/api/v1/projects?page=${page}&countDocuments=${countDocuments}&${queryString}`
+                url: `http://localhost:5000/api/v1/projects?page=${page}&limit=6&countDocuments=${countDocuments}&${queryString}`
             }
-            await sendRequest(options)
-
+            const response = await sendRequest(options)
+            if (response) {
+                setProjects(response.projects)
+                if (response.totalResultsCount === 0 || response.totalResultsCount) setTotalResults(response.totalResultsCount)
+                setCountDocuments(false)
+            }
         }
-        setCountDocuments(false)
-
         fetchData()
+    }, [sendRequest, queryString, page])
 
-    }, [sendRequest, queryString, page, countDocuments])
 
     const handleFilter = useCallback(async (queryString) => {
         setQueryString(queryString)
         setCountDocuments(true)
-    }, [queryString])
+        setPage(1)
+    }, [])
+
+    const changePage = page => {
+        setPage(page)
+    }
 
     return (
         <section className="section-projects">
@@ -47,29 +56,26 @@ export default function ProjectsPage() {
                             error ?
                                 <h2>{error}</h2>
                                 :
-                                data ?
-                                    data.projects.map(project => {
-                                        return (
-                                            <div key={project.id} className="section-projects__project"><Project modifiers='no-gutters' {...project} /></div>
-                                        )
-                                    })
-                                    :
-                                    null
+                                projects.map(project => {
+                                    return (
+                                        <div key={project.id} className="section-projects__project"><Project modifiers='no-gutters' {...project} /></div>
+                                    )
+                                })
                     }
                 </div>
             </div>
             {
                 isLoading ?
-                    <h2>Loading...</h2>
+                    null
                     :
                     error ?
-                        <h2>{error}</h2>
+                        null
                         :
-                        data ?
-
-                            <Pagination resultsCount={data.totalResultsCount} />
-                            :
-                            null
+                        <Pagination
+                            changePage={changePage}
+                            resultsCount={totalResults}
+                            resPerPage={6}
+                            page={page} />
             }
         </section>
     )
