@@ -9,6 +9,10 @@ body {
     color: $COLOR_GRAY_10;
 }
 
+button {
+    font-family: inherit;
+}
+
 // RANGE THUMB GLOBAL STYLING
 input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
