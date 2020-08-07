@@ -12,13 +12,11 @@ const fetchReducer = (state, action) => {
             return {
                 ...state,
                 isLoading: true,
-                data: null,
                 error: null
             }
         case 'FETCH_SUCCESS':
             return {
                 ...state,
-                data: action.payload,
                 isLoading: false,
             }
         case 'FETCH_FAILURE':
@@ -63,7 +61,8 @@ export default function useFetch() {
             const responseData = await response.json()
             if (!response.ok) throw Error(responseData.message)
             // console.log(responseData)
-            dispatch({ type: 'FETCH_SUCCESS', payload: responseData.data })
+            dispatch({ type: 'FETCH_SUCCESS' })
+            return responseData.data
         } catch (error) {
             console.log(error.name)
             console.log(error.message)
@@ -80,7 +79,7 @@ export default function useFetch() {
 
     useEffect(() => abortAllControllers, [])
 
-    const { isLoading, data, error } = fetchState
+    const { isLoading, error } = fetchState
 
-    return { isLoading, data, error, sendRequest }
+    return { isLoading, error, sendRequest }
 }
