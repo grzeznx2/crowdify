@@ -62,7 +62,7 @@ export default function useFetch() {
             const response = await fetch(url, { method, body, headers, signal })
             const responseData = await response.json()
             if (!response.ok) throw Error(responseData.message)
-            console.log(responseData)
+            // console.log(responseData)
             dispatch({ type: 'FETCH_SUCCESS', payload: responseData.data })
         } catch (error) {
             console.log(error.name)
@@ -80,5 +80,7 @@ export default function useFetch() {
 
     useEffect(() => abortAllControllers, [])
 
-    return { fetchState, sendRequest }
+    const { isLoading, data, error } = fetchState
+
+    return { isLoading, data, error, sendRequest }
 }
