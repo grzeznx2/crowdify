@@ -195,8 +195,8 @@ const filtrationReducer = (state, { type, target }) => {
         case 'CHANGE_MULTI_RANGE_VALUE':
             const { valueType, idCopy } = target.dataset
             let rangeValue;
-            if (valueType === 'firstValue') rangeValue = Math.min(target.value, state.filtrationInterestRate.secondValue - 1)
-            else rangeValue = Math.max(target.value, state.filtrationInterestRate.firstValue + 1)
+            if (valueType === 'firstValue') rangeValue = Math.min(target.value, state[idCopy].secondValue - 1)
+            else rangeValue = Math.max(target.value, state[idCopy].firstValue + 1)
             return {
                 ...state,
                 [idCopy]: {
