@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useRef } from 'react'
 
 import './Pagination.scss'
 
-export default function Pagination() {
+export default function Pagination({ changePage, resultsCount, resPerPage, page }) {
+    const pagesCountRef = useRef(0)
+    const pagesCount = resultsCount ? Math.ceil(resultsCount / resPerPage) : pagesCountRef.current
+    pagesCountRef.current = useRef(pagesCount)
+
     return (
         <div className="pagination">
             <a href="#" className="pagination__button pagination__button--arrow">
@@ -10,16 +14,11 @@ export default function Pagination() {
                     <use xlinkHref='/img/sprite.svg#icon-chevron-left' />
                 </svg>
             </a>
-            <a href="#" className="pagination__button">1</a>
-            <a href="#" className="pagination__button">2</a>
-            <a href="#" className="pagination__button">3</a>
-            <a href="#" className="pagination__button">4</a>
-            <a href="#" className="pagination__button">5</a>
-            <a href="#" className="pagination__button">6</a>
-            <a href="#" className="pagination__button">7</a>
-            <a href="#" className="pagination__button">8</a>
-            <a href="#" className="pagination__button pagination__button--active">9</a>
-            <a href="#" className="pagination__button">10</a>
+            {
+                [...Array(pagesCount)].map((_, i) => {
+                    return <button onClick={() => changePage(i + 1)} className={`pagination__button${page === i + 1 ? ' pagination__button--active' : ''}`}>{i + 1}</button>
+                })
+            }
             <a href="#" className="pagination__button">
                 <svg className="pagination__icon">
                     <use xlinkHref='/img/sprite.svg#icon-chevron-right' />
