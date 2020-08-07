@@ -1,4 +1,8 @@
-import React, { useRef } from 'react'
+import React from 'react'
+
+import SvgIcon from '../SvgIcon/SvgIcon'
+
+import { joinClasses } from '../../utils/utils'
 
 import './Pagination.scss'
 
@@ -8,9 +12,7 @@ export default function Pagination({ changePage, resultsCount, resPerPage, page 
     return (
         <div className="pagination">
             <a href="#" className="pagination__button pagination__button--arrow">
-                <svg className="pagination__icon">
-                    <use xlinkHref='/img/sprite.svg#icon-chevron-left' />
-                </svg>
+                <SvgIcon root="pagination__icon" svgId='icon-chevron-left' />
             </a>
             {
                 [...Array(pagesCount)].map((_, i) => {
@@ -18,9 +20,7 @@ export default function Pagination({ changePage, resultsCount, resPerPage, page 
                 })
             }
             <a href="#" className="pagination__button">
-                <svg className="pagination__icon">
-                    <use xlinkHref='/img/sprite.svg#icon-chevron-right' />
-                </svg>
+                <SvgIcon root="pagination__icon" svgId='icon-chevron-right' />
             </a>
         </div>
     )
