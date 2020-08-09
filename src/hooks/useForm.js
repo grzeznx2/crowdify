@@ -52,7 +52,7 @@ export default function useForm(form) {
     }
 
     const [inputs, dispatch] = useReducer(formReducer, loadState(form))
-    const { fetchState, sendRequest } = useFetch()
+    const { isLoading, error, sendRequest } = useFetch()
 
     const handleChange = useCallback(e => {
         dispatch({ type: 'CHANGE_VALUE', target: e.target })
@@ -97,5 +97,5 @@ export default function useForm(form) {
         submitRegister(inputsCopy)
     }
 
-    return { inputs, fetchState, handleChange, handleSubmit }
+    return { inputs, isLoading, error, handleChange, handleSubmit }
 }

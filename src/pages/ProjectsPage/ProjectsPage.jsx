@@ -51,7 +51,11 @@ export default function ProjectsPage() {
             <Filtration handleFilter={handleFilter} />
             <div className="container">
                 <div className="section-projects__projects-container">
-                    <Loader isLoading={isLoading} error={error} loadingComp='dots'>
+                    <Loader
+                        isLoading={isLoading}
+                        loadingComp='dots'
+                        error={error}
+                    >
                         <Projects
                             projects={projects}
                             projectModifiers='no-gutters'
