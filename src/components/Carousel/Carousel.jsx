@@ -1,5 +1,6 @@
 import React, { useEffect, useReducer } from 'react'
 
+import useFetch from '../../hooks/useFetch'
 import useWindowResize from '../../hooks/useWindowResize'
 
 import Button from '../Button/Button'
@@ -53,39 +54,9 @@ const carouselReducer = (state, action) => {
     }
 }
 
-const fetchInititalState = {
-    isLoading: true,
-    hasError: false
-}
-
-const fetchReducer = (state, action) => {
-    switch (action.type) {
-        case 'FETCH_START':
-            return {
-                ...state,
-                isLoading: true,
-                hasError: false
-            }
-        case 'FETCH_SUCCESS':
-            return {
-                ...state,
-                isLoading: false,
-                hasError: false
-            }
-        case 'FETCH_FAILURE':
-            return {
-                ...state,
-                isLoading: false,
-                hasError: true
-            }
-        default:
-            return state
-    }
-}
-
 export default function Carousel() {
     const [carouselState, dispatch] = useReducer(carouselReducer, carouselInitialState)
-    const [fetchState, dispatchFetch] = useReducer(fetchReducer, fetchInititalState)
+    const { isLoading, error, sendRequest } = useFetch()
 
     function handleResize() {
         const multiplier = (window.innerWidth / 900) < 1 ? 2 : 1
@@ -95,23 +66,16 @@ export default function Carousel() {
     useWindowResize(handleResize, [carouselState.availablePagesMultiplier])
 
     useEffect(() => {
-        const controller = new AbortController()
-
         async function fetchProjects() {
-            try {
-                dispatchFetch({ type: 'FETCH_START' })
-                const response = await fetch(`http://localhost:5000/api/v1/projects?limit=4&page=${carouselState.fetchPage}&status=coming`, { signal: controller.signal })
-                const data = await response.json()
-
-                if (!response.ok) throw new Error(data.message)
-                dispatch({ type: 'ADD_PROJECTS', projects: data.data.projects })
-                dispatchFetch({ type: 'FETCH_SUCCESS' })
-            } catch (error) {
-                if (error.name === 'AbortError') console.log(error)
-                else dispatchFetch({ type: 'FETCH_FAILURE' })
+            const options = {
+                url: `http://localhost:5000/api/v1/projects?limit=4&page=${carouselState.fetchPage}&status=coming`
+            }
+            const response = await sendRequest(options)
+            if (response) {
+                dispatch({ type: 'ADD_PROJECTS', projects: response.projects })
             }
         }
-        // if (carouselState.hasMoreProjects) fetchProjects()
+        if (carouselState.hasMoreProjects) fetchProjects()
     }, [carouselState.hasMoreProjects, carouselState.fetchPage])
 
     const showNextPage = () => dispatch({ type: 'SHOW_NEXT_PAGE' })
@@ -155,7 +119,7 @@ export default function Carousel() {
                         })
                     }
                     {
-                        fetchState.isLoading ? <h1>Loading...</h1>
+                        isLoading ? <h1>Loading...</h1>
                             : carouselState.projects.length === 0 ? <h1>No active projects available.</h1> : ''
                     }
                 </div>
