@@ -6,6 +6,7 @@ import Footer from './components/Footer/Footer'
 import AuthPage from './pages/AuthPage/AuthPage'
 import HomePage from './pages/HomePage/HomePage'
 import ProjectsPage from './pages/ProjectsPage/ProjectsPage'
+import ProjectPage from './pages/ProjectPage/ProjectPage'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route exact path='/' component={HomePage} />
       <Route exact path='/auth' component={AuthPage} />
       <Route exact path='/projects' component={ProjectsPage} />
+      <Route exact path='/project' component={ProjectPage} />
       <Footer />
     </div>
   );
