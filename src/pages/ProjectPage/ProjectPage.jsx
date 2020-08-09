@@ -1,8 +1,8 @@
 import React from 'react'
 
-import LoanDetails from './Sections/LoanDetails'
-import ProjectDescription from './Sections/ProjectDescription'
-import ProjectPresentation from './Sections/ProjectPresentation'
+import LoanDetails from './Sections/LoanDetails/LoanDetails'
+import ProjectDescription from './Sections/ProjectDescription/ProjectDescription'
+import ProjectPresentation from './Sections/ProjectPresentation/ProjectPresentation'
 
 import './ProjectPage.scss'
 
