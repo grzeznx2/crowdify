@@ -2,7 +2,7 @@ import React from 'react'
 
 import Dots from './Dots/Dots'
 
-export default function Loader({ isLoading, error, loadingComp, errorComp, children }) {
+export default function Loader({ isLoading, error, loadingComp, children }) {
 
     let loadingMarkup
 
@@ -24,7 +24,7 @@ export default function Loader({ isLoading, error, loadingComp, errorComp, child
                     </>
                     :
                     error ?
-                        <h2>{error}</h2>
+                        <h2 style={{ textAlign: 'center', width: '100%' }}>{error}</h2>
                         :
                         <>
                             {children}
