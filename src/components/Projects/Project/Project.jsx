@@ -1,5 +1,6 @@
 import React from 'react'
 
+import Button from '../../Button/Button'
 import ProjectDetails from '../ProjectDetails/ProjectDetails'
 import CircleBar from '../CircleBar/CircleBar'
 
@@ -7,7 +8,7 @@ import { joinClasses } from '../../../utils/utils'
 
 import './Project.scss'
 
-export default function Project({ name, interestRate, type, duration, location, paid, minTarget, totalTarget, modifiers, otherClasses }) {
+export default function Project({ name, interestRate, type, duration, location, paid, minTarget, totalTarget, modifiers, otherClasses, id }) {
 
     return (
         <div className={joinClasses('project', modifiers, otherClasses)}>
@@ -34,8 +35,7 @@ export default function Project({ name, interestRate, type, duration, location, 
                 </div>
             </div>
             <div className="project__bottom-container">
-
-                <a href="#" className="button button--info">View Project</a>
+                <Button to={`/projects/${id}`} modifiers='info'>view project</Button>
             </div>
         </div>
     )
