@@ -2,11 +2,11 @@ import React from 'react'
 
 import Presentation from './Presentation/Presentation'
 
-export default function ProjectPresentation() {
+export default function ProjectPresentation(props) {
     return (
         <section class="section-project-presentation">
             <div class="container">
-                <Presentation />
+                <Presentation  {...props} />
             </div>
         </section>
     )
