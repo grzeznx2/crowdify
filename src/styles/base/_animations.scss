@@ -26,3 +26,70 @@
         opacity: 0;
     }
 }
+
+@keyframes dotFirst {
+    0% {
+        transform: scale(.5);
+    }
+
+    20% {
+        transform: scale(1);
+    }
+
+    40% {
+        transform: scale(1);
+    }
+
+    60% {
+        transform: scale(.5);
+    }
+
+    100% {
+        transform: scale(.5);
+    }
+}
+
+@keyframes dotSecond {
+    0% {
+        transform: scale(.5);
+    }
+
+    20% {
+        transform: scale(.5);
+    }
+
+    40% {
+        transform: scale(1);
+    }
+
+    60% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(.5);
+    }
+}
+
+@keyframes dotThird {
+    0% {
+        transform: scale(.5);
+    }
+
+
+    40% {
+        transform: scale(.5);
+    }
+
+    60% {
+        transform: scale(1);
+    }
+
+    80% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(.5);
+    }
+}
