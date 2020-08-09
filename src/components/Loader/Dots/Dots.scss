@@ -1,0 +1,30 @@
+@import '../../../styles/abstracts/variables';
+
+.dots {
+    width: 80px;
+    height: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+
+    &__dot {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: $COLOR_BLUE_10;
+
+        &--first {
+            animation: dotFirst 1s ease-in-out infinite;
+        }
+
+        &--second {
+            animation: dotSecond 1s ease-in-out infinite;
+        }
+
+        &--third {
+            animation: dotThird 1s ease-in-out infinite;
+        }
+    }
+
+}
