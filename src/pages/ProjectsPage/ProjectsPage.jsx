@@ -5,7 +5,7 @@ import useFetch from '../../hooks/useFetch'
 import Filtration from '../../components/Filtration/Filtration'
 import Loader from '../../components/Loader/Loader'
 import Pagination from '../../components/Pagination/Pagination'
-import Project from '../../components/Project/Project'
+import Project from '../../components/Projects/Project/Project'
 
 import './ProjectsPage.scss'
 

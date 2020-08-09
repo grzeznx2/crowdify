@@ -4,7 +4,7 @@ import useFetch from '../../hooks/useFetch'
 import useWindowResize from '../../hooks/useWindowResize'
 
 import Button from '../Button/Button'
-import Project from '../Project/Project'
+import Project from '../Projects/Project/Project'
 import SvgIcon from '../SvgIcon/SvgIcon'
 
 import './Carousel.scss'
