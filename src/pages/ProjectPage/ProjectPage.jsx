@@ -19,7 +19,7 @@ export default function ProjectPage() {
 
         const fetchProject = async () => {
             const options = {
-                url: `http://localhost:5000/api/v1/projectss/${projectId}`
+                url: `http://localhost:5000/api/v1/projects/${projectId}`
             }
             const response = await sendRequest(options)
             if (response) {
@@ -33,6 +33,29 @@ export default function ProjectPage() {
 
     }, [projectId])
 
+    const {
+        comments,
+        createdAt,
+        duration,
+        endDate,
+        imageUrl,
+        interestPayments,
+        interestPaymentsRate,
+        interestPaymentsStart,
+        interestRate,
+        interestsDates,
+        interestsNumber,
+        investors,
+        latestComments,
+        location,
+        minTarget,
+        name,
+        paid,
+        startDate,
+        status,
+        summary,
+        totalTarget,
+        type } = project
 
     return (<>
         <Loader
@@ -40,7 +63,12 @@ export default function ProjectPage() {
             loadingComp='dots'
             error={error}
         >
-            <ProjectPresentation />
+            <ProjectPresentation
+                location={location}
+                name={name}
+                paid={paid}
+                minTarget={minTarget}
+                totalTarget={totalTarget} />
             <LoanDetails />
             <ProjectDescription />
         </Loader>
