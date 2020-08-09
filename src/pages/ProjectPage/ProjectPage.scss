@@ -1,0 +1,61 @@
+@import '../../styles/abstracts/variables';
+@import '../../styles/abstracts/mixins';
+
+.section-loan-details {
+    padding: 5rem 0;
+    background-image: $GRADIENT_BLUE_1;
+
+    &__details-container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-left: -2rem;
+        margin-right: -2rem;
+    }
+
+    &__detail {
+        flex-basis: 33.333%;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        margin-bottom: 3rem;
+
+        @include respond(tp) {
+            flex-basis: 50%;
+        }
+
+        @include respond(p) {
+            flex-basis: 100%;
+        }
+    }
+}
+
+.section-project-description {
+    padding: 5rem 0;
+
+    &__container {
+        display: flex;
+
+        @include respond(p) {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    &__articles-container {
+        flex-basis: 80%;
+        padding-right: 5rem;
+    }
+
+    &__repayment-schedule-container {
+        flex-basis: 40%;
+    }
+
+    &__articles {
+        padding-left: 2rem;
+
+        @include respond(p) {
+            padding-left: 0;
+
+        }
+    }
+}
