@@ -1,23 +1,25 @@
 import React from 'react'
 
+import CircleBar from '../../../../../components/Projects/CircleBar/CircleBar'
+import ProjectDetails from '../../../../../components/Projects/ProjectDetails/ProjectDetails'
+
 import './Presentation.scss'
 
-export default function Presentation() {
+export default function Presentation({ location, name, paid, minTarget, totalTarget }) {
     return (
         <div class="presentation">
             <div class="presentation__container presentation__container--title-container">
                 <div class="presentation__title-box">
-                    <h3 class="heading-3">Estonia</h3>
-                    <h2 class="heading-2 text-bold presentation__title">Biggest Renovable Energy Farm
-                   </h2>
+                    <h3 class="heading-3">{location}</h3>
+                    <h2 class="heading-2 text-bold presentation__title">{name}</h2>
                     <a href="#" class="button button--primary">Invest</a>
                 </div>
             </div>
             <div class="presentation__container presentation__container--image-container">
                 <div class="presentation__target-details-container">
                     <div class="presentation__target-box">
-                        <div class="target">
-                            <div class="circle-bar circle-bar--bg-dark">
+                        {/* <div class="target"> */}
+                        {/* <div class="circle-bar circle-bar--bg-dark">
                                 <svg class="circle-bar__rings">
                                     <circle class="circle-bar__ring-bg" cx='90' cy='90' r='85' />
                                     <circle class="circle-bar__ring-progress circle-bar__ring-progress--total" cx='90' cy='90'
@@ -32,8 +34,14 @@ export default function Presentation() {
                                     <span class="circle-bar__percent">32%</span>
                                     <span class="circle-bar__label"> of 128.500€ total</span>
                                 </div>
-                            </div>
-                        </div>
+                            </div> */}
+                        <CircleBar
+                            paid={paid}
+                            minTarget={minTarget}
+                            totalTarget={totalTarget}
+                            modifiers='bg-dark'
+                        />
+                        {/* </div> */}
                     </div>
                     <div class="presentation__details-box">
                         <div class="project-details project-details--bg-dark">
