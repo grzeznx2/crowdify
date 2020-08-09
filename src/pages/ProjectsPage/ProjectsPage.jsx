@@ -1,8 +1,9 @@
-import React, { useEffect, useState, useCallback, useRef } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 
 import useFetch from '../../hooks/useFetch'
 
 import Filtration from '../../components/Filtration/Filtration'
+import Loader from '../../components/Loader/Loader'
 import Pagination from '../../components/Pagination/Pagination'
 import Project from '../../components/Project/Project'
 
@@ -10,17 +11,18 @@ import './ProjectsPage.scss'
 
 export default function ProjectsPage() {
     const { isLoading, error, sendRequest } = useFetch()
-    // determines whether API should include the total number of elements matching search params in response or not
+    // determines whether API should include the total number of elements matching search params in response
     const [countDocuments, setCountDocuments] = useState(true)
     const [page, setPage] = useState(1)
     const [queryString, setQueryString] = useState('')
     const [projects, setProjects] = useState([])
     const [totalResults, setTotalResults] = useState(0)
+    const resPerPage = 6
 
     useEffect(() => {
         const fetchData = async () => {
             const options = {
-                url: `http://localhost:5000/api/v1/projects?page=${page}&limit=6&countDocuments=${countDocuments}&${queryString}`
+                url: `http://localhost:5000/api/v1/projects?page=${page}&limit=${resPerPage}&countDocuments=${countDocuments}&${queryString}`
             }
             const response = await sendRequest(options)
             if (response) {
@@ -49,34 +51,24 @@ export default function ProjectsPage() {
             <Filtration handleFilter={handleFilter} />
             <div className="container">
                 <div className="section-projects__projects-container">
-                    {
-                        isLoading ?
-                            <h2>Loading...</h2>
-                            :
-                            error ?
-                                <h2>{error}</h2>
-                                :
-                                projects.map(project => {
-                                    return (
-                                        <div key={project.id} className="section-projects__project"><Project modifiers='no-gutters' {...project} /></div>
-                                    )
-                                })
-                    }
+                    <Loader isLoading={isLoading} error={error} loadingComp='dots'>
+                        {
+                            projects.map(project => {
+                                return (
+                                    <div key={project.id} className="section-projects__project"><Project modifiers='no-gutters' {...project} /></div>
+                                )
+                            })
+                        }
+                    </Loader>
                 </div>
             </div>
-            {
-                isLoading ?
-                    null
-                    :
-                    error ?
-                        null
-                        :
-                        <Pagination
-                            changePage={changePage}
-                            resultsCount={totalResults}
-                            resPerPage={6}
-                            page={page} />
-            }
+            <Loader isLoading={isLoading}>
+                <Pagination
+                    changePage={changePage}
+                    resultsCount={totalResults}
+                    resPerPage={resPerPage}
+                    page={page} />
+            </Loader>
         </section>
     )
 }
