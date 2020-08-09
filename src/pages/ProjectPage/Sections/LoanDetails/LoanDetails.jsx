@@ -1,5 +1,7 @@
 import React from 'react'
 
+import DataBox from '../../../../components/DataBox/DataBox'
+
 export default function LoanDetails() {
     return (
         <section class="section-loan-details">
@@ -9,64 +11,22 @@ export default function LoanDetails() {
             <div class="container">
                 <div class="section-loan-details__details-container">
                     <div class="section-loan-details__detail">
-                        <div class="data-box data-box--bg-blue">
-                            <div class="data-box__title-box">
-                                <h5 class="heading-5 data-box__title">Minimal Target</h5>
-                            </div>
-                            <div class="data-box__content-box">
-                                <span class="data-box__value">25, 000 $</span>
-                            </div>
-                        </div>
+                        <DataBox modifiers='bg-blue' title='minimal target' value='25, 000 $' />
                     </div>
                     <div class="section-loan-details__detail">
-                        <div class="data-box data-box--bg-blue section-loan-details__data-box">
-                            <div class="data-box__title-box">
-                                <h5 class="heading-5 data-box__title">Total Target</h5>
-                            </div>
-                            <div class="data-box__content-box">
-                                <span class="data-box__value">250, 000 $</span>
-                            </div>
-                        </div>
+                        <DataBox modifiers='bg-blue' title='total target' value='250, 000 $' />
                     </div>
                     <div class="section-loan-details__detail">
-                        <div class="data-box data-box--bg-blue section-loan-details__data-box">
-                            <div class="data-box__title-box">
-                                <h5 class="heading-5 data-box__title">Interest Rate</h5>
-                            </div>
-                            <div class="data-box__content-box">
-                                <span class="data-box__value">26%</span>
-                            </div>
-                        </div>
+                        <DataBox modifiers='bg-blue' title='interest rate' value='26%' />
                     </div>
                     <div class="section-loan-details__detail">
-                        <div class="data-box data-box--bg-blue section-loan-details__data-box">
-                            <div class="data-box__title-box">
-                                <h5 class="heading-5 data-box__title">Loan Period</h5>
-                            </div>
-                            <div class="data-box__content-box">
-                                <span class="data-box__value">6 months</span>
-                            </div>
-                        </div>
+                        <DataBox modifiers='bg-blue' title='loan period' value='6 months' />
                     </div>
                     <div class="section-loan-details__detail">
-                        <div class="data-box data-box--bg-blue section-loan-details__data-box">
-                            <div class="data-box__title-box">
-                                <h5 class="heading-5 data-box__title">Iterest Payment</h5>
-                            </div>
-                            <div class="data-box__content-box">
-                                <span class="data-box__value">Every 3 months</span>
-                            </div>
-                        </div>
+                        <DataBox modifiers='bg-blue' title='interest payment' value='Every 3 months' />
                     </div>
                     <div class="section-loan-details__detail">
-                        <div class="data-box data-box--bg-blue section-loan-details__data-box">
-                            <div class="data-box__title-box">
-                                <h5 class="heading-5 data-box__title">BuyBack Guarantee</h5>
-                            </div>
-                            <div class="data-box__content-box">
-                                <span class="data-box__value">Yes</span>
-                            </div>
-                        </div>
+                        <DataBox modifiers='bg-blue' title='buyBack guarantee' value='Yes' />
                     </div>
                 </div>
             </div>
