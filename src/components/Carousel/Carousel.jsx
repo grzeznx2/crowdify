@@ -4,7 +4,7 @@ import useFetch from '../../hooks/useFetch'
 import useWindowResize from '../../hooks/useWindowResize'
 
 import Button from '../Button/Button'
-import Project from '../Projects/Project/Project'
+import Projects from '../Projects/Projects'
 import SvgIcon from '../SvgIcon/SvgIcon'
 
 import './Carousel.scss'
@@ -104,19 +104,7 @@ export default function Carousel() {
                     }}
                     class="carousel__content">
                     {
-                        carouselState.projects.map(project => {
-                            const { name, interestRate, duration, type, location, paid, minTarget, totalTarget } = project
-                            return <Project
-                                name={name}
-                                interestRate={interestRate}
-                                duration={duration}
-                                type={type}
-                                location={location}
-                                paid={paid}
-                                minTarget={minTarget}
-                                totalTarget={totalTarget}
-                            />
-                        })
+                        <Projects projects={carouselState.projects} />
                     }
                     {
                         isLoading ? <h1>Loading...</h1>

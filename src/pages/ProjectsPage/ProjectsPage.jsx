@@ -5,7 +5,7 @@ import useFetch from '../../hooks/useFetch'
 import Filtration from '../../components/Filtration/Filtration'
 import Loader from '../../components/Loader/Loader'
 import Pagination from '../../components/Pagination/Pagination'
-import Project from '../../components/Projects/Project/Project'
+import Projects from '../../components/Projects/Projects'
 
 import './ProjectsPage.scss'
 
@@ -52,13 +52,10 @@ export default function ProjectsPage() {
             <div className="container">
                 <div className="section-projects__projects-container">
                     <Loader isLoading={isLoading} error={error} loadingComp='dots'>
-                        {
-                            projects.map(project => {
-                                return (
-                                    <div key={project.id} className="section-projects__project"><Project modifiers='no-gutters' {...project} /></div>
-                                )
-                            })
-                        }
+                        <Projects
+                            projects={projects}
+                            projectModifiers='no-gutters'
+                            wrapperClass="section-projects__project" />
                     </Loader>
                 </div>
             </div>
