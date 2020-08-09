@@ -3,7 +3,7 @@
 
 .presentation {
     display: flex;
-    min-height: 100vh;
+    min-height: calc(100vh - #{$HEADER_HEIGHT});
     padding: 2rem 0;
 
     @include respond(tp) {
