@@ -1,0 +1,64 @@
+@import '../../styles/abstracts/variables';
+@import '../../styles/abstracts/mixins';
+
+.data-box {
+    box-shadow: 0 1rem 2rem rgba($COLOR_BLACK, .2);
+
+    &__title-box {
+        padding: 1.5rem 2.5rem;
+    }
+
+    &__title {
+        text-align: center;
+
+        &--text-left {
+            text-align: left;
+        }
+    }
+
+    &__content-box {
+        @include flex-center;
+        min-height: 10rem;
+        padding: 2rem 2.5rem;
+    }
+
+    &__value {
+        font-size: 2.2rem;
+    }
+}
+
+.data-box {
+    &--bg-white {
+        box-shadow: 0 1rem 2rem rgba($COLOR_BLACK, .2);
+    }
+
+    &--bg-white &__title-box {
+        background-color: $COLOR_BLUE_30;
+    }
+
+    &--bg-white &__title {
+        color: $COLOR_WHITE;
+    }
+
+    &--bg-white &__value {
+        color: $COLOR_BLUE_30;
+    }
+}
+
+.data-box {
+    &-blue {
+        box-shadow: 0 1rem 2rem rgba($COLOR_WHITE, .1);
+    }
+
+    &--bg-blue &__title-box {
+        background-color: $COLOR_WHITE;
+    }
+
+    &--bg-blue &__title {
+        color: $COLOR_BLUE_30;
+    }
+
+    &--bg-blue &__value {
+        color: $COLOR_WHITE;
+    }
+}
