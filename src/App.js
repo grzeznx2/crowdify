@@ -15,7 +15,7 @@ function App() {
       <Header />
       <Route exact path='/' component={HomePage} />
       <Route exact path='/auth' component={AuthPage} />
-      <Route exact path='/projects/:pid' component={ProjectPage} />
+      <Route exact path='/projects/:projectId' component={ProjectPage} />
       <Route exact path='/projects' component={ProjectsPage} />
       <Footer />
     </div>
