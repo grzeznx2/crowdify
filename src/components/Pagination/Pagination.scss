@@ -27,6 +27,10 @@
             background-color: rgba($COLOR_BLUE_10, .2);
         }
 
+        &:focus {
+            outline: none;
+        }
+
         &--active {
             font-size: 2rem;
             font-weight: 700;
