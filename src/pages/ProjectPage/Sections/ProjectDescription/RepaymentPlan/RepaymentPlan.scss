@@ -8,13 +8,15 @@
     padding: 1rem;
 
     &__title {
-        display: inline-block;
+        display: block;
         color: $COLOR_BLUE_10;
         margin-bottom: 2rem;
     }
 
     &__input {
-        width: 12rem;
+        width: 80%;
+        max-width: 15rem;
+        display: inline-block;
     }
 
     &__infographic {
