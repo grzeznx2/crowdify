@@ -76,7 +76,14 @@ export default function ProjectPage() {
           minTarget={minTarget}
           totalTarget={totalTarget}
         />
-        <ProjectDescription />
+        <ProjectDescription
+          interestPaymentsStart={interestPaymentsStart}
+          interestPaymentsRate={interestPaymentsRate}
+          interestRate={interestRate}
+          interestDates={interestsDates}
+          interestsNumber={interestsNumber}
+          endDate={endDate}
+        />
       </Loader>
     </>
   );
