@@ -11,7 +11,7 @@ import ProjectPresentation from './Sections/ProjectPresentation/ProjectPresentat
 import './ProjectPage.scss';
 
 export default function ProjectPage() {
-  const [project, setProject] = useState({});
+  const [project, setProject] = useState(null);
   const { isLoading, error, sendRequest } = useFetch();
   const { projectId } = useParams();
 
@@ -22,68 +22,49 @@ export default function ProjectPage() {
       };
       const response = await sendRequest(options);
       if (response) {
-        console.log(response);
         setProject(response.project);
       }
     };
 
     fetchProject();
-  }, [projectId]);
+  }, [projectId, sendRequest]);
 
-  const {
-    comments,
-    createdAt,
-    duration,
-    endDate,
-    imageUrl,
-    interestPayments,
-    interestPaymentsRate,
-    interestPaymentsStart,
-    interestRate,
-    interestsDates,
-    interestsNumber,
-    investors,
-    latestComments,
-    location,
-    minTarget,
-    name,
-    paid,
-    startDate,
-    status,
-    summary,
-    totalTarget,
-    type,
-  } = project;
+
+  const markup = project ?
+    <>
+      <ProjectPresentation
+        duration={project.duration}
+        imageUrl={project.imageUrl}
+        interestRate={project.interestRate}
+        location={project.location}
+        name={project.name}
+        paid={project.paid}
+        minTarget={project.minTarget}
+        totalTarget={project.totalTarget}
+        type={project.type}
+      />
+      <LoanDetails
+        duration={project.duration}
+        interestPayments={project.interestPayments}
+        interestRate={project.interestRate}
+        minTarget={project.minTarget}
+        totalTarget={project.totalTarget}
+      />
+      <ProjectDescription
+        duration={project.duration}
+        interestPaymentsStart={project.interestPaymentsStart}
+        interestPaymentsRate={project.interestPaymentsRate}
+        interestRate={project.interestRate}
+        interestsDates={project.interestsDates}
+        interestsNumber={project.interestsNumber}
+        endDate={project.endDate}
+      />
+    </> : null
 
   return (
     <>
       <Loader isLoading={isLoading} loadingComp="dots" error={error}>
-        <ProjectPresentation
-          duration={duration}
-          imageUrl={imageUrl}
-          interestRate={interestRate}
-          location={location}
-          name={name}
-          paid={paid}
-          minTarget={minTarget}
-          totalTarget={totalTarget}
-          type={type}
-        />
-        <LoanDetails
-          duration={duration}
-          interestPayments={interestPayments}
-          interestRate={interestRate}
-          minTarget={minTarget}
-          totalTarget={totalTarget}
-        />
-        <ProjectDescription
-          interestPaymentsStart={interestPaymentsStart}
-          interestPaymentsRate={interestPaymentsRate}
-          interestRate={interestRate}
-          interestDates={interestsDates}
-          interestsNumber={interestsNumber}
-          endDate={endDate}
-        />
+        {markup}
       </Loader>
     </>
   );
