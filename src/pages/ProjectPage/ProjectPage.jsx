@@ -69,7 +69,13 @@ export default function ProjectPage() {
           totalTarget={totalTarget}
           type={type}
         />
-        <LoanDetails />
+        <LoanDetails
+          duration={duration}
+          interestPayments={interestPayments}
+          interestRate={interestRate}
+          minTarget={minTarget}
+          totalTarget={totalTarget}
+        />
         <ProjectDescription />
       </Loader>
     </>
