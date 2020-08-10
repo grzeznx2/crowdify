@@ -1,6 +1,6 @@
 import React from 'react';
 
-import RepaymentSchedule from './RepaymentSchedule/RepaymentSchedule';
+import RepaymentPlan from './RepaymentPlan/RepaymentPlan';
 
 export default function ProjectDescription() {
   return (
@@ -66,7 +66,7 @@ export default function ProjectDescription() {
             </section>
           </div>
           <div class="section-project-description__repayment-schedule-container">
-            <RepaymentSchedule />
+            <RepaymentPlan />
           </div>
         </div>
       </div>
