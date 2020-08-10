@@ -1,19 +1,29 @@
 import React from 'react';
 
+import FormGroup from '../../../../../components/Form/Inputs/FormGroup/FormGroup';
+
 import './RepaymentPlan.scss';
 
-export default function RepaymentPlan() {
+export default function RepaymentPlan({
+  interestPaymentsStart,
+  interestPaymentsRate,
+  interestRate,
+  interestDates,
+  interestsNumber,
+  endDate,
+}) {
   return (
     <aside class="repayment-plan">
       <span class="repayment-plan__title">Sample Repayment Plan</span>
-      <div class="input-group input-group--center-column">
-        <label for="repayment-plan-amount-invested" class="input-group__label">
-          Amount invested:
-        </label>
-        <input
+      <div className="repayment-plan__input">
+        <FormGroup
           type="number"
-          id="repayment-plan-amount-invested"
-          class="input-group__input repayment-plan__input"
+          min={0}
+          title="amount invested"
+          modifiers="column repayment-plan"
+          id="repaymentPlan"
+          name="repaymentPlan"
+          step={10}
         />
       </div>
       <div class="repayment-plan__infographic">

@@ -2,7 +2,7 @@ import React from 'react';
 
 import RepaymentPlan from './RepaymentPlan/RepaymentPlan';
 
-export default function ProjectDescription() {
+export default function ProjectDescription(props) {
   return (
     <section class="section-project-description">
       <h2 class="section-title section-title--text-primary">
@@ -66,7 +66,7 @@ export default function ProjectDescription() {
             </section>
           </div>
           <div class="section-project-description__repayment-schedule-container">
-            <RepaymentPlan />
+            <RepaymentPlan {...props} />
           </div>
         </div>
       </div>
