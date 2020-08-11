@@ -2,7 +2,7 @@ import { useReducer, useCallback } from 'react'
 
 import useFetch from './useFetch'
 
-import { subscribeInputs, loginInputs, registerInputs } from '../components/Form/Forms/Data/formInputs'
+import { subscribeInputs, loginInputs, registerInputs, changePasswordInputs } from '../components/Form/Forms/Data/formInputs'
 
 import Validator from '../utils/Validator'
 
@@ -46,6 +46,8 @@ export default function useForm(form) {
                 return loginInputs
             case 'register':
                 return registerInputs
+            case 'changePassword':
+                return changePasswordInputs
             default:
                 return console.log('Please call useForm with either "subscribe", "login" or "register".')
         }
