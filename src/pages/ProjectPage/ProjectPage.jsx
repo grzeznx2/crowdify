@@ -56,7 +56,6 @@ export default function ProjectPage() {
         interestPaymentsRate={project.interestPaymentsRate}
         interestRate={project.interestRate}
         interestsDates={project.interestsDates}
-        interestsNumber={project.interestsNumber}
         endDate={project.endDate}
       />
     </> : null
