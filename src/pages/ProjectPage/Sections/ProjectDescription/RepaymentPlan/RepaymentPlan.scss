@@ -31,7 +31,13 @@
     }
 
     &__date {
+        position: absolute;
+        right: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        min-width: 8rem;
         font-size: 1.0rem;
+        text-align: right;
     }
 
     &__circle-container {
@@ -40,10 +46,10 @@
         height: 4rem;
     }
 
-    &__circle-placeholder {
-        width: 4rem;
+    &__center-placeholder {
+        position: relative;
+        width: 7rem;
         height: 4rem;
-        margin: 0 1.5rem;
     }
 
     &__circle {
@@ -53,7 +59,17 @@
     }
 
     &__interest {
+        position: absolute;
+        left: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 10rem;
         font-weight: 600;
+        text-align: left;
+
+        @include respond(tp) {
+            width: 5rem;
+        }
     }
 
     &__bridge-container {
