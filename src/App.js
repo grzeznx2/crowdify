@@ -16,7 +16,7 @@ function App() {
       <Header />
       <Route exact path='/' component={HomePage} />
       <Route exact path='/auth' component={AuthPage} />
-      <Route exact path='/dashboard' component={DashboardPage} />
+      <Route path='/dashboard' component={DashboardPage} />
       <Route exact path='/projects/:projectId' component={ProjectPage} />
       <Route exact path='/projects' component={ProjectsPage} />
       <Footer />
