@@ -1,0 +1,43 @@
+@import '../../styles/abstracts/variables';
+
+.dashboard-nav {
+    width: 22rem;
+    box-shadow: 0 1rem 2rem rgba($COLOR_BLACK, .15);
+
+    &__list {
+        list-style: none;
+    }
+
+    &__item {
+        display: block;
+    }
+
+    &__link {
+
+        &:link,
+        &:visited {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            padding: 1.5rem 2rem;
+            text-decoration: none;
+            color: inherit;
+            transition: all .2s;
+        }
+
+        &:hover {
+            background-color: $COLOR_BLUE_30;
+            color: $COLOR_WHITE;
+        }
+
+        &:active {
+            outline: none;
+        }
+
+        &--active:link,
+        &--active:visited {
+            background-color: $COLOR_BLUE_30;
+            color: $COLOR_WHITE;
+        }
+    }
+}
