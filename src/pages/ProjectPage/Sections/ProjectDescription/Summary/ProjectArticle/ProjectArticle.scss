@@ -1,0 +1,16 @@
+.project-article {
+
+    &__title {
+        text-transform: uppercase;
+        font-weight: 600;
+        margin-bottom: 3rem;
+    }
+
+    &__text {
+        &:not(:last-child) {
+            margin-bottom: 2rem;
+        }
+    }
+
+    margin-bottom: 5rem;
+}
