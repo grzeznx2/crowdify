@@ -37,7 +37,6 @@ export default function RepaymentPlan({
 
   const createPlan = () => {
     const interestAmount = calcInterestAmount(value, interestRate, duration);
-    console.log(interestAmount);
 
     const interestsDistribution = calcInterestsDistribution(interestPaymentsStart, interestPaymentsRate, duration)
 
@@ -69,160 +68,45 @@ export default function RepaymentPlan({
       </div>
       <div class="repayment-plan__infographic">
         {
-          [endDate, ...createPlan()].map((interest, i) => {
-            if (i === 0)
-              return <div class="repayment-plan__infographic-group">
-                <div class="repayment-plan__node">
-
-                  <div class="repayment-plan__center-placeholder">
-                    <span class="repayment-plan__date">{interest.split('T')[0]}</span>
-                    <svg
-                      viewBox="0 0 40 40"
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="repayment-plan__circle-container"
-                    >
-                      <circle cx="20" cy="20" r="17" class="repayment-plan__circle" />
-                    </svg>
-                    <span class="repayment-plan__interest">Start Date</span>
-                  </div>
-                </div>
-              </div>
-            return <div class="repayment-plan__infographic-group">
+          [endDate, ...createPlan()].map((value, i) => {
+            const bridgeMarkup =
               <div class="repayment-plan__bridge-container">
                 <svg
                   viewBox="0 0 10 102"
                   class="repayment-plan__bridge"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
+                  xmlns="http://www.w3.org/2000/svg">
                   <line
                     x1="5"
                     y1="102"
                     x2="5"
                     y2="0"
-                    class="repayment-plan__line"
-                  />
+                    class="repayment-plan__line" />
                 </svg>
               </div>
+
+            const dateMarkup = i > 0 ? value.date.split('T')[0] : value.split('T')[0]
+            const valueMarkup = i > 0 ? `${value.amount}$` : 'Start Date'
+
+            return <div class="repayment-plan__infographic-group">
+              {i > 0 && bridgeMarkup}
               <div class="repayment-plan__node">
                 <div class="repayment-plan__center-placeholder">
-                  <span class="repayment-plan__date">{interest.date.split('T')[0]}</span>
+                  <span class="repayment-plan__date">{dateMarkup}</span>
                   <svg
                     viewBox="0 0 40 40"
                     xmlns="http://www.w3.org/2000/svg"
-                    class="repayment-plan__circle-container"
-                  >
+                    class="repayment-plan__circle-container">
                     <circle cx="20" cy="20" r="17" class="repayment-plan__circle" />
                   </svg>
-                  <span class="repayment-plan__interest">{interest.amount}$</span>
+                  <span class="repayment-plan__interest">{valueMarkup}</span>
                 </div>
               </div>
             </div>
           })
         }
-        {/* <div class="repayment-plan__infographic-group">
-          <div class="repayment-plan__node">
-            <span class="repayment-plan__date">31.07.2020</span>
-            <div class="repayment-plan__center-placeholder"></div>
-            <svg
-              viewBox="0 0 40 40"
-              xmlns="http://www.w3.org/2000/svg"
-              class="repayment-plan__circle-container"
-            >
-              <circle cx="20" cy="20" r="17" class="repayment-plan__circle" />
-            </svg>
-            <span class="repayment-plan__interest">24.5$</span>
-          </div>
-        </div>
-        <div class="repayment-plan__infographic-group">
-          <div class="repayment-plan__bridge-container">
-            <svg
-              viewBox="0 0 10 102"
-              class="repayment-plan__bridge"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <line
-                x1="5"
-                y1="102"
-                x2="5"
-                y2="0"
-                class="repayment-plan__line"
-              />
-            </svg>
-          </div>
-          <div class="repayment-plan__node">
-            <span class="repayment-plan__date">31.08.2020</span>
-            <div class="repayment-plan__center-placeholder"></div>
-            <svg
-              viewBox="0 0 40 40"
-              xmlns="http://www.w3.org/2000/svg"
-              class="repayment-plan__circle-container"
-            >
-              <circle cx="20" cy="20" r="17" class="repayment-plan__circle" />
-            </svg>
-            <span class="repayment-plan__interest">24.5$</span>
-          </div>
-        </div>
-        <div class="repayment-plan__infographic-group">
-          <div class="repayment-plan__bridge-container">
-            <svg
-              viewBox="0 0 10 102"
-              class="repayment-plan__bridge"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <line
-                x1="5"
-                y1="102"
-                x2="5"
-                y2="0"
-                class="repayment-plan__line"
-              />
-            </svg>
-          </div>
-          <div class="repayment-plan__node">
-            <span class="repayment-plan__date">31.08.2020</span>
-            <div class="repayment-plan__center-placeholder"></div>
-            <svg
-              viewBox="0 0 40 40"
-              xmlns="http://www.w3.org/2000/svg"
-              class="repayment-plan__circle-container"
-            >
-              <circle cx="20" cy="20" r="17" class="repayment-plan__circle" />
-            </svg>
-            <span class="repayment-plan__interest">24.5$</span>
-          </div>
-        </div>
-        <div class="repayment-plan__infographic-group">
-          <div class="repayment-plan__bridge-container">
-            <svg
-              viewBox="0 0 10 102"
-              class="repayment-plan__bridge"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <line
-                x1="5"
-                y1="102"
-                x2="5"
-                y2="0"
-                class="repayment-plan__line"
-              />
-            </svg>
-          </div>
-          <div class="repayment-plan__node">
-            <span class="repayment-plan__date">31.08.2020</span>
-            <div class="repayment-plan__center-placeholder"></div>
-            <svg
-              viewBox="0 0 40 40"
-              xmlns="http://www.w3.org/2000/svg"
-              class="repayment-plan__circle-container"
-            >
-              <circle cx="20" cy="20" r="17" class="repayment-plan__circle" />
-            </svg>
-            <span class="repayment-plan__interest">24.5$</span>
-          </div>
-        </div> */}
       </div>
       <div class="repayment-plan__total">
-        Total repayment:{' '}
+        Total repayment:
         <span class="repayment-plan__total-value">1060.50$</span>
       </div>
     </aside>
