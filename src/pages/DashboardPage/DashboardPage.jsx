@@ -1,6 +1,7 @@
 import React from 'react'
 
 import DashboardNav from '../../components/DashboardNav/DashboardNav'
+import Overview from './Overview/Overview'
 
 import './DashboardPage.scss'
 
@@ -25,6 +26,7 @@ export default function DashboardPage() {
             <div class="section-dashboard__content">
               <section class="overview">
                 <div class="overview__container">
+                  <Overview />
                   <div class="section-dashboard__box">
                     <div class="data-box data-box--bg-white">
                       <div class="data-box__title-box">
@@ -252,66 +254,6 @@ export default function DashboardPage() {
                       <div class="project__bottom-container">
 
                         <a href="#" class="button button--info">View Project</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="section-dashboard__box section-dashboard__box--small">
-                    <div class="data-box data-box--bg-white">
-                      <div class="data-box__title-box">
-                        <h5 class="heading-5 data-box__title">Minimal Target</h5>
-                      </div>
-                      <div class="data-box__content-box">
-                        <span class="data-box__value">25, 000 $</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="section-dashboard__box section-dashboard__box--small">
-                    <div class="data-box data-box--bg-white">
-                      <div class="data-box__title-box">
-                        <h5 class="heading-5 data-box__title">Minimal Target</h5>
-                      </div>
-                      <div class="data-box__content-box">
-                        <span class="data-box__value">25, 000 $</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="section-dashboard__box section-dashboard__box--small">
-                    <div class="data-box data-box--bg-white">
-                      <div class="data-box__title-box">
-                        <h5 class="heading-5 data-box__title">Minimal Target</h5>
-                      </div>
-                      <div class="data-box__content-box">
-                        <span class="data-box__value">25, 000 $</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="section-dashboard__box section-dashboard__box--small">
-                    <div class="data-box data-box--bg-white">
-                      <div class="data-box__title-box">
-                        <h5 class="heading-5 data-box__title">Minimal Target</h5>
-                      </div>
-                      <div class="data-box__content-box">
-                        <span class="data-box__value">25, 000 $</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="section-dashboard__box section-dashboard__box--small">
-                    <div class="data-box data-box--bg-white">
-                      <div class="data-box__title-box">
-                        <h5 class="heading-5 data-box__title">Minimal Target</h5>
-                      </div>
-                      <div class="data-box__content-box">
-                        <span class="data-box__value">25, 000 $</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="section-dashboard__box section-dashboard__box--small">
-                    <div class="data-box data-box--bg-white">
-                      <div class="data-box__title-box">
-                        <h5 class="heading-5 data-box__title">Minimal Target</h5>
-                      </div>
-                      <div class="data-box__content-box">
-                        <span class="data-box__value">25, 000 $</span>
                       </div>
                     </div>
                   </div>
