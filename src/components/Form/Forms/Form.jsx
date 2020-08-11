@@ -9,7 +9,7 @@ import { joinClasses } from '../../../utils/utils'
 
 import './Form.scss'
 
-export default function Form({ name, formModifiers, formOtherClasses, containerModifiers, containerOtherClasses, title, buttonText, children }) {
+export default function Form({ name, formModifiers, formOtherClasses, containerModifiers, buttonWrapperModifiers, containerOtherClasses, title, buttonText, children }) {
 
     const { inputs, isLoading, error, handleChange, handleSubmit } = useForm(name)
 
@@ -27,7 +27,9 @@ export default function Form({ name, formModifiers, formOtherClasses, containerM
                 }
             </div>
             {children}
-            <Button modifiers='primary'>{isLoading ? 'Sending...' : buttonText}</Button>
+            <div className={joinClasses('form__button-wrapper', buttonWrapperModifiers)}>
+                <Button modifiers='primary'>{isLoading ? 'Sending...' : buttonText}</Button>
+            </div>
         </form>
     )
 }
