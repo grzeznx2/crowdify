@@ -85,6 +85,10 @@ export default function RepaymentPlan({
           step={10}
         />
       </div>
+      <div class="repayment-plan__total repayment-plan__total--interests">
+        Interests amount:
+      <span class="repayment-plan__total-value">{`${interestsObj.interestsAmount}$`}</span>
+      </div>
       <div class="repayment-plan__infographic">
         {
           [endDate, ...interestsObj.interests].map((value, i) => {
