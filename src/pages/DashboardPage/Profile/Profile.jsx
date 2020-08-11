@@ -1,5 +1,7 @@
 import React from 'react'
 
+import ChangePasswordForm from '../../../components/Form/Forms/ChangePasswordForm'
+
 export default function Profile() {
     return (
         <>
@@ -10,32 +12,7 @@ export default function Profile() {
 								 </h5>
                     </div>
                     <div class="data-box__content-box">
-                        <form action="#" class="form">
-                            <div
-                                class="form__container form__container--inline form__container--change-password">
-                                <div class="input-group input-group--column">
-                                    <label for="register-first-name" class="input-group__label">First
-											 Name:</label>
-                                    <input size="1" id="register-first-name" type="text"
-                                        class="input-group__input" />
-                                </div>
-                                <div class="input-group input-group--column">
-                                    <label for="register-first-name" class="input-group__label">First
-											 Name:</label>
-                                    <input size="1" id="register-first-name" type="text"
-                                        class="input-group__input" />
-                                </div>
-                                <div class="input-group input-group--column">
-                                    <label for="register-first-name" class="input-group__label">First
-											 Name:</label>
-                                    <input size="1" id="register-first-name" type="text"
-                                        class="input-group__input" />
-                                </div>
-                            </div>
-                            <div class="form__button-wrapper form__button-wrapper--change-password">
-                                <a href="#" class="button button--primary">Save Password</a>
-                            </div>
-                        </form>
+                        <ChangePasswordForm />
                     </div>
                 </div>
             </div>
