@@ -11,18 +11,6 @@ export default function ProjectArticle({ title, content }) {
             {
                 content.map(paragraph => <p className="project-article__text">{paragraph}</p>)
             }
-            {/* <p className="project-article__text">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. In,
-            perspiciatis? Ipsam cum, labore, blanditiis animi itaque unde,
-            omnis eum sit illo nostrum officia quae earum corporis fuga
-            excepturi aliquid dolorem!
-</p>
-        <p className="project-article__text">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. In,
-            perspiciatis? Ipsam cum, labore, blanditiis animi itaque unde,
-            omnis eum sit illo nostrum officia quae earum corporis fuga
-            excepturi aliquid dolorem!
-</p> */}
         </article>
     )
 }
