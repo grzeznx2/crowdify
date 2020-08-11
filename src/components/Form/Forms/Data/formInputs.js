@@ -129,3 +129,43 @@ export const loginInputs = {
         modifiers: 'column'
     },
 }
+
+export const changePasswordInputs = {
+    changePasswordCurrent: {
+        title: 'current password',
+        id: 'changePasswordCurrent',
+        name: 'changePasswordCurrent',
+        type: 'password',
+        value: '',
+        isValid: false,
+        isTouched: false,
+        validators: [Validator.minLength(8, 'Password must contain at least 8 characters')],
+        errors: [],
+        modifiers: 'column'
+    },
+    changePassword: {
+        title: 'password',
+        id: 'changePassword',
+        name: 'changePassword',
+        type: 'password',
+        value: '',
+        isValid: false,
+        isTouched: false,
+        validators: [Validator.minLength(8, 'Password must contain at least 8 characters')],
+        errors: [],
+        modifiers: 'column'
+    },
+    changePasswordConfirm: {
+        title: 'confirm password',
+        id: 'changePasswordConfirm',
+        name: 'changePasswordConfirm',
+        type: 'password',
+        value: '',
+        isValid: false,
+        isTouched: false,
+        validators: [Validator.minLength(8, 'Password must contain at least 8 characters'),
+        Validator.isEqual('changePassword', 'Passwords must be identical')],
+        errors: [],
+        modifiers: 'column'
+    },
+}
