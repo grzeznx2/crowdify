@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import FormGroup from '../../../../../components/Form/Inputs/FormGroup/FormGroup';
 
@@ -14,41 +14,60 @@ export default function RepaymentPlan({
 }) {
   const [value, setValue] = useState(1000);
 
-  const calcInterestsDistribution = (interestPaymentsStart, interestPaymentsRate, duration) => {
-    const interestsDistribution = {};
-    interestsDistribution.first = interestPaymentsStart / duration;
-    interestsDistribution.remaining = interestPaymentsRate / duration;
+  const interestsObj = {
+    duration,
+    interestPaymentsStart,
+    interestPaymentsRate,
+    interestRate,
+    interestsDates,
+    endDate,
+    value,
 
-    return interestsDistribution;
+
+    calcInterestsDistribution() {
+      const interestsDistribution = {};
+      interestsDistribution.first = this.interestPaymentsStart / this.duration;
+      interestsDistribution.remaining = this.interestPaymentsRate / this.duration;
+      this.interestsDistribution = interestsDistribution
+      return this
+    },
+
+    calcInterestsAmount() {
+      this.interestsAmount = (this.value * (this.interestRate / 100) * (this.duration / 12)).toFixed(2) * 1
+      return this
+    },
+
+    createInterests() {
+      this.interests = this.interestsDates.map((date, i) => ({
+        date,
+        amount: i === 0 ?
+          (this.interestsAmount * this.interestsDistribution.first).toFixed(2) * 1
+          : (this.interestsAmount * this.interestsDistribution.remaining).toFixed(2) * 1,
+      }));
+      return this
+    },
+
+    calcTotalRepayment() {
+      this.totalRepayment = this.interestsAmount + this.value
+      return this
+    },
+
+    createPlan() {
+      this
+        .calcInterestsDistribution()
+        .calcInterestsAmount()
+        .createInterests()
+        .calcTotalRepayment()
+    }
+
   }
-
-  const calcInterestAmount = (value, interestRate, duration) => {
-    return (value * (interestRate / 100) * (duration / 12)).toFixed(2) * 1;
-  };
-
-  const createInterests = (interestsDistribution, interestsDates, interestAmount) => {
-    return interestsDates.map((date, i) => ({
-      date,
-      amount: i === 0 ?
-        (interestAmount * interestsDistribution.first).toFixed(2) * 1
-        : (interestAmount * interestsDistribution.remaining).toFixed(2) * 1,
-    }));
-  };
-
-  const createPlan = () => {
-    const interestAmount = calcInterestAmount(value, interestRate, duration);
-
-    const interestsDistribution = calcInterestsDistribution(interestPaymentsStart, interestPaymentsRate, duration)
-
-    const interests = createInterests(interestsDistribution, interestsDates, interestAmount)
-
-    return interests
-  };
 
   const changeValue = (e) => {
     const { value } = e.target;
-    setValue(value);
+    setValue(value * 1);
   };
+
+  interestsObj.createPlan()
 
   return (
     <aside class="repayment-plan">
@@ -68,7 +87,7 @@ export default function RepaymentPlan({
       </div>
       <div class="repayment-plan__infographic">
         {
-          [endDate, ...createPlan()].map((value, i) => {
+          [endDate, ...interestsObj.interests].map((value, i) => {
             const bridgeMarkup =
               <div class="repayment-plan__bridge-container">
                 <svg
@@ -107,7 +126,7 @@ export default function RepaymentPlan({
       </div>
       <div class="repayment-plan__total">
         Total repayment:
-        <span class="repayment-plan__total-value">1060.50$</span>
+      <span class="repayment-plan__total-value">{`${interestsObj.totalRepayment}$`}</span>
       </div>
     </aside>
   );
