@@ -1,5 +1,7 @@
 import React from 'react'
 
+import DashboardNav from '../../components/DashboardNav/DashboardNav'
+
 import './DashboardPage.scss'
 
 export default function DashboardPage() {
@@ -9,25 +11,7 @@ export default function DashboardPage() {
         <div class="section-dashboard__container">
           <div class="section-dashboard__nav">
             <div class="sticky-container sticky-container--dashboard-nav">
-              <nav class="dashboard-nav">
-                <ul class="dashboard-nav__list">
-                  <li class="dashboard-nav__item">
-                    <a href="#" class="dashboard-nav__link dashboard-nav__link--active">Overview</a>
-                  </li>
-                  <li class="dashboard-nav__item">
-                    <a href="#" class="dashboard-nav__link">Transactions</a>
-                  </li>
-                  <li class="dashboard-nav__item">
-                    <a href="#" class="dashboard-nav__link">Investments</a>
-                  </li>
-                  <li class="dashboard-nav__item">
-                    <a href="#" class="dashboard-nav__link">Profile</a>
-                  </li>
-                  <li class="dashboard-nav__item">
-                    <a href="#" class="dashboard-nav__link">Contact Us</a>
-                  </li>
-                </ul>
-              </nav>
+              <DashboardNav />
             </div>
           </div>
           <div class="section-dashboard__main">
