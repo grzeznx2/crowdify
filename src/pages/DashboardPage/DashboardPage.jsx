@@ -1,4 +1,5 @@
 import React from 'react'
+import { Route, useRouteMatch } from 'react-router-dom'
 
 import DashboardNav from '../../components/DashboardNav/DashboardNav'
 import Investments from './Investments/Investments'
@@ -9,6 +10,8 @@ import Transactions from './Transactions/Transactions'
 import './DashboardPage.scss'
 
 export default function DashboardPage() {
+  const match = useRouteMatch()
+
   return (
     <section class="section-dashboard">
       <div class="container">
@@ -29,10 +32,10 @@ export default function DashboardPage() {
             <div class="section-dashboard__content">
               <section class="overview">
                 <div class="overview__container">
-                  <Overview />
-                  <Transactions />
-                  <Investments />
-                  <Profile />
+                  <Route path={`${match.url}/overview`} component={Overview} />
+                  <Route path={`${match.url}/transactions`} component={Transactions} />
+                  <Route path={`${match.url}/investments`} component={Investments} />
+                  <Route path={`${match.url}/profile`} component={Profile} />
                 </div>
               </section>
             </div>
