@@ -57,6 +57,7 @@ export default function ProjectPage() {
         interestRate={project.interestRate}
         interestsDates={project.interestsDates}
         endDate={project.endDate}
+        summary={project.summary}
       />
     </> : null
 
