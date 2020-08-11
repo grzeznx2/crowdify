@@ -8,12 +8,14 @@ import { joinClasses } from '../../../utils/utils'
 
 import './Project.scss'
 
-export default function Project({ name, interestRate, type, duration, location, paid, minTarget, totalTarget, modifiers, otherClasses, id }) {
+export default function Project({ name, interestRate, type, duration, location, paid, minTarget, totalTarget, modifiers, otherClasses, id, imageUrl }) {
 
     return (
         <div className={joinClasses('project', modifiers, otherClasses)}>
             <div className="project__top-container">
-                <div className="project__image-box">
+                <div style={{
+                    backgroundImage: `url(${imageUrl})`,
+                }} className="project__image-box">
                 </div>
                 <div className="project__title-box">
                     <h3 className="heading-3 text-white">
