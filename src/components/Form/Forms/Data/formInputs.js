@@ -182,7 +182,7 @@ export const changePersonalDataInputs = {
         hasRoundButtons: true,
         validators: [Validator.isRequired(8, 'Please provide first name')],
         errors: [],
-        modifiers: 'change-personal-data'
+        modifiers: 'column change-personal-data'
     },
     changePersonalDataLastName: {
         title: 'last name',
@@ -195,7 +195,7 @@ export const changePersonalDataInputs = {
         hasRoundButtons: true,
         validators: [Validator.isRequired(8, 'Please provide last name')],
         errors: [],
-        modifiers: 'change-personal-data'
+        modifiers: 'column change-personal-data'
     },
     changePersonalDataEmail: {
         title: 'email',
@@ -208,7 +208,7 @@ export const changePersonalDataInputs = {
         hasRoundButtons: true,
         validators: [Validator.isEmail('Please provide a valid email')],
         errors: [],
-        modifiers: 'change-personal-data'
+        modifiers: 'column change-personal-data'
     },
     changePersonalDataCountry: {
         title: 'country',
@@ -221,7 +221,7 @@ export const changePersonalDataInputs = {
         hasRoundButtons: true,
         validators: [Validator.isCountry('Please provide a valid country')],
         errors: [],
-        modifiers: 'change-personal-data'
+        modifiers: 'column change-personal-data'
     },
     changePersonalDataCity: {
         title: 'city',
@@ -234,7 +234,7 @@ export const changePersonalDataInputs = {
         hasRoundButtons: true,
         validators: [Validator.isRequired('Please provide a city')],
         errors: [],
-        modifiers: 'change-personal-data'
+        modifiers: 'column change-personal-data'
     },
     changePersonalDataPostalCode: {
         title: 'postal code',
@@ -247,7 +247,7 @@ export const changePersonalDataInputs = {
         hasRoundButtons: true,
         validators: [Validator.isPostalCode('Required format: XX-XXX')],
         errors: [],
-        modifiers: 'change-personal-data'
+        modifiers: 'column change-personal-data'
     },
     changePersonalDataPhone: {
         title: 'phone',
@@ -260,6 +260,6 @@ export const changePersonalDataInputs = {
         hasRoundButtons: true,
         validators: [Validator.isPhone('Phone number must contain 9 digits')],
         errors: [],
-        modifiers: 'change-personal-data'
+        modifiers: 'column change-personal-data'
     },
 }
