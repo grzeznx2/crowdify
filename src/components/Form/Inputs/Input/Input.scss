@@ -49,9 +49,8 @@
 
     &__round-buttons-container {
         position: absolute;
-        top: 50%;
+        top: 40px;
         right: 2%;
-        transform: translateY(-45%);
         display: flex;
 
         &>* {
