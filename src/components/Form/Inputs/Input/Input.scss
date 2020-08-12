@@ -47,14 +47,6 @@
         }
     }
 
-    &__input--invalid+&__round-buttons-container {
-        border-bottom: 3px solid $COLOR_RED_30;
-    }
-
-    &__input--valid+&__round-buttons-container {
-        border-bottom: 3px solid $COLOR_GREEN_30;
-    }
-
     &__round-buttons-container {
         position: absolute;
         top: 50%;
