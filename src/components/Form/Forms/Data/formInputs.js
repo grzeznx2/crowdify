@@ -250,7 +250,7 @@ export const changePersonalDataInputs = {
         modifiers: 'change-personal-data'
     },
     changePersonalDataPhone: {
-        title: 'phone number',
+        title: 'phone',
         id: 'changePersonalDataPhone',
         name: 'changePersonalDataPhone',
         type: 'text',
