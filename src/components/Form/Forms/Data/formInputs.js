@@ -169,3 +169,90 @@ export const changePasswordInputs = {
         modifiers: 'column'
     },
 }
+
+export const changePersonalDataInputs = {
+    changePersonalDataFirstName: {
+        title: 'first name',
+        id: 'changePersonalDataFirstName',
+        name: 'changePersonalDataFirstName',
+        type: 'text',
+        value: '',
+        isValid: false,
+        isTouched: false,
+        validators: [Validator.isRequired(8, 'Please provide first name')],
+        errors: [],
+        modifiers: 'change-personal-data'
+    },
+    changePersonalDataLastName: {
+        title: 'last name',
+        id: 'changePersonalDataLastName',
+        name: 'changePersonalDataLastName',
+        type: 'text',
+        value: '',
+        isValid: false,
+        isTouched: false,
+        validators: [Validator.isRequired(8, 'Please provide last name')],
+        errors: [],
+        modifiers: 'change-personal-data'
+    },
+    changePersonalDataEmail: {
+        title: 'email',
+        id: 'changePersonalDataEmail',
+        name: 'changePersonalDataEmail',
+        type: 'email',
+        value: '',
+        isValid: false,
+        isTouched: false,
+        validators: [Validator.isEmail('Please provide a valid email')],
+        errors: [],
+        modifiers: 'change-personal-data'
+    },
+    changePersonalDataCountry: {
+        title: 'country',
+        id: 'changePersonalDataCountry',
+        name: 'changePersonalDataCountry',
+        type: 'text',
+        value: '',
+        isValid: false,
+        isTouched: false,
+        validators: [Validator.isCountry('Please provide a valid country')],
+        errors: [],
+        modifiers: 'change-personal-data'
+    },
+    changePersonalDataCity: {
+        title: 'city',
+        id: 'changePersonalDataCity',
+        name: 'changePersonalDataCity',
+        type: 'text',
+        value: '',
+        isValid: false,
+        isTouched: false,
+        validators: [Validator.isRequired('Please provide a city')],
+        errors: [],
+        modifiers: 'change-personal-data'
+    },
+    changePersonalDataPostalCode: {
+        title: 'postal code',
+        id: 'changePersonalDataPostalCode',
+        name: 'changePersonalDataPostalCode',
+        type: 'text',
+        value: '',
+        isValid: false,
+        isTouched: false,
+        validators: [Validator.isPostalCode('Required format: XX-XXX')],
+        errors: [],
+        modifiers: 'change-personal-data'
+    },
+    changePersonalDataPhone: {
+        title: 'phone number',
+        id: 'changePersonalDataPhone',
+        name: 'changePersonalDataPhone',
+        type: 'text',
+        value: '',
+        isValid: false,
+        isTouched: false,
+        validators: [Validator.isPhone('Phone number must contain 9 digits')],
+        errors: [],
+        modifiers: 'change-personal-data'
+    },
+}
