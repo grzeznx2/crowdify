@@ -27,9 +27,12 @@ export default function Form({ name, formModifiers, formOtherClasses, containerM
                 }
             </div>
             {children}
-            <div className={joinClasses('form__button-wrapper', buttonWrapperModifiers)}>
-                <Button modifiers='primary'>{isLoading ? 'Sending...' : buttonText}</Button>
-            </div>
+            {
+                buttonText &&
+                <div className={joinClasses('form__button-wrapper', buttonWrapperModifiers)}>
+                    <Button modifiers='primary'>{isLoading ? 'Sending...' : buttonText}</Button>
+                </div>
+            }
         </form>
     )
 }
