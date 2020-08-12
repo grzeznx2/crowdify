@@ -7,7 +7,7 @@ import './Input.scss'
 
 import { joinClasses } from '../../../../utils/utils'
 
-export default React.memo(function Input({ onChange, hasRoundButtons, id, name, type, isValid, isTouched, value, modifiers, otherClasses, title, min, max, options, step, errors }) {
+export default React.memo(function Input({ onChange, hasRoundButtons, id, name, type, isValid, isTouched, value, modifiers, otherClasses, title, min, max, options, step, errors, isBeingEdited, handleEditButton }) {
     let validityModifier = isTouched ?
         isValid ? 'valid' : 'invalid'
         : ''
@@ -60,9 +60,9 @@ export default React.memo(function Input({ onChange, hasRoundButtons, id, name, 
             {
                 hasRoundButtons &&
                 <div className="input__round-buttons-container">
-                    <RoundButton modifiers='edit' />
-                    <RoundButton modifiers='abort' />
-                    <RoundButton modifiers='accept' />
+                    {!isBeingEdited && <RoundButton modifiers='edit' handleClick={handleEditButton} />}
+                    {isBeingEdited && <RoundButton modifiers='abort' handleClick={handleEditButton} />}
+                    {isBeingEdited && isTouched && <RoundButton modifiers='accept' handleClick={handleEditButton} />}
                 </div>
             }
         </div>
