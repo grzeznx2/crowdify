@@ -101,5 +101,10 @@ export default function useForm(form) {
         submitRegister(inputsCopy)
     }
 
-    return { inputs, isLoading, error, handleChange, handleSubmit }
+    const handleEditButton = e => {
+        e.preventDefault()
+        console.log(e.target.dataset.type)
+    }
+
+    return { inputs, isLoading, error, handleChange, handleSubmit, handleEditButton }
 }
