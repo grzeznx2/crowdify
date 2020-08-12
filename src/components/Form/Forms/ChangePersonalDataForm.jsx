@@ -8,7 +8,6 @@ export default function ChangePersonalDataForm() {
         <Form
             name='changePersonalData'
             containerModifiers='change-personal-data'
-            hasRoundButtons={true}
             buttonWrapperModifiers='change-password' />
     )
 }

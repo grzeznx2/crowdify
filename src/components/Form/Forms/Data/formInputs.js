@@ -179,6 +179,7 @@ export const changePersonalDataInputs = {
         value: '',
         isValid: false,
         isTouched: false,
+        hasRoundButtons: true,
         validators: [Validator.isRequired(8, 'Please provide first name')],
         errors: [],
         modifiers: 'change-personal-data'
@@ -191,6 +192,7 @@ export const changePersonalDataInputs = {
         value: '',
         isValid: false,
         isTouched: false,
+        hasRoundButtons: true,
         validators: [Validator.isRequired(8, 'Please provide last name')],
         errors: [],
         modifiers: 'change-personal-data'
@@ -203,6 +205,7 @@ export const changePersonalDataInputs = {
         value: '',
         isValid: false,
         isTouched: false,
+        hasRoundButtons: true,
         validators: [Validator.isEmail('Please provide a valid email')],
         errors: [],
         modifiers: 'change-personal-data'
@@ -215,6 +218,7 @@ export const changePersonalDataInputs = {
         value: '',
         isValid: false,
         isTouched: false,
+        hasRoundButtons: true,
         validators: [Validator.isCountry('Please provide a valid country')],
         errors: [],
         modifiers: 'change-personal-data'
@@ -227,6 +231,7 @@ export const changePersonalDataInputs = {
         value: '',
         isValid: false,
         isTouched: false,
+        hasRoundButtons: true,
         validators: [Validator.isRequired('Please provide a city')],
         errors: [],
         modifiers: 'change-personal-data'
@@ -239,6 +244,7 @@ export const changePersonalDataInputs = {
         value: '',
         isValid: false,
         isTouched: false,
+        hasRoundButtons: true,
         validators: [Validator.isPostalCode('Required format: XX-XXX')],
         errors: [],
         modifiers: 'change-personal-data'
@@ -251,6 +257,7 @@ export const changePersonalDataInputs = {
         value: '',
         isValid: false,
         isTouched: false,
+        hasRoundButtons: true,
         validators: [Validator.isPhone('Phone number must contain 9 digits')],
         errors: [],
         modifiers: 'change-personal-data'
