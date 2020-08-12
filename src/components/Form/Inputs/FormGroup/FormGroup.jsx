@@ -1,6 +1,5 @@
 import React from 'react'
 
-import RoundButton from '../../../Button/RoundButton/RoundButton'
 import Checkbox from '../Checkbox/Checkbox'
 import Input from '../Input/Input'
 import RangeSlider from '../RangeSlider/RangeSlider'
@@ -9,7 +8,7 @@ import { joinClasses } from '../../../../utils/utils'
 
 import './FormGroup.scss'
 
-export default function FormGroup({ type, formGroupModifiers, hasRoundButtons, ...otherProps }) {
+export default function FormGroup({ type, formGroupModifiers, ...otherProps }) {
 
     let markup = null
 
@@ -35,14 +34,6 @@ export default function FormGroup({ type, formGroupModifiers, hasRoundButtons, .
         <div className={joinClasses('form-group', formGroupModifiers)}>
             {
                 markup
-            }
-            {
-                hasRoundButtons &&
-                <div className="input-group__round-buttons-container">
-                    <RoundButton modifiers='edit' />
-                    <RoundButton modifiers='abort' />
-                    <RoundButton modifiers='accept' />
-                </div>
             }
         </div>
     )
