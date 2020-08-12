@@ -56,8 +56,11 @@
     }
 
     &__round-buttons-container {
+        position: absolute;
+        top: 50%;
+        right: 2%;
+        transform: translateY(-45%);
         display: flex;
-        border-bottom: 3px solid $COLOR_WHITE;
 
         &>* {
             margin-left: .2rem;
