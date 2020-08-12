@@ -1,5 +1,6 @@
 import React from 'react'
 
+import RoundButton from '../../../components/Button/RoundButton/RoundButton'
 import ChangePasswordForm from '../../../components/Form/Forms/ChangePasswordForm'
 
 export default function Profile() {
@@ -32,11 +33,7 @@ export default function Profile() {
                                     <input type="text" id='change-personal-data-first-name'
                                         className="input-group__input input-group__input--invalid" />
                                     <div className="input-group__round-buttons-container">
-                                        <button className="button-personal-data button-personal-data--edit">
-                                            <svg className="button-personal-data__icon">
-                                                <use xlinkHref='/img/sprite.svg#icon-edit' />
-                                            </svg>
-                                        </button>
+                                        <RoundButton modifiers='edit' />
                                     </div>
                                 </div>
                                 <div className="input-group input-group--change-personal-data">
@@ -45,8 +42,7 @@ export default function Profile() {
                                     <input type="text" id='change-personal-data-first-name'
                                         className="input-group__input input-group__input--valid" />
                                     <div className="input-group__round-buttons-container">
-                                        <button className="button-personal-data button-personal-data--edit">
-                                        </button>
+                                        <RoundButton modifiers='edit' />
                                     </div>
                                 </div>
                                 <div className="input-group input-group--change-personal-data">
@@ -55,16 +51,8 @@ export default function Profile() {
                                     <input type="text" id='change-personal-data-first-name'
                                         className="input-group__input input-group__input" />
                                     <div className="input-group__round-buttons-container">
-                                        <button className="button-personal-data button-personal-data--abort">
-                                            <svg className="button-personal-data__icon">
-                                                <use xlinkHref='/img/sprite.svg#icon-cross' />
-                                            </svg>
-                                        </button>
-                                        <button className="button-personal-data button-personal-data--accept">
-                                            <svg className="button-personal-data__icon">
-                                                <use xlinkHref='/img/sprite.svg#icon-checkmark' />
-                                            </svg>
-                                        </button>
+                                        <RoundButton modifiers='abort' />
+                                        <RoundButton modifiers='accept' />
                                     </div>
                                 </div>
                                 <div className="input-group input-group--change-personal-data">
@@ -73,8 +61,7 @@ export default function Profile() {
                                     <input type="text" id='change-personal-data-first-name'
                                         className="input-group__input input-group__input--invalid" />
                                     <div className="input-group__round-buttons-container">
-                                        <button className="button-personal-data button-personal-data--edit">
-                                        </button>
+                                        <RoundButton modifiers='edit' />
                                     </div>
                                 </div>
                             </div>
