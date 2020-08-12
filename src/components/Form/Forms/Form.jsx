@@ -11,7 +11,7 @@ import './Form.scss'
 
 export default function Form({ name, formModifiers, formOtherClasses, containerModifiers, buttonWrapperModifiers, containerOtherClasses, title, buttonText, children }) {
 
-    const { inputs, isLoading, error, handleChange, handleSubmit } = useForm(name)
+    const { inputs, isLoading, error, handleChange, handleSubmit, handleEditButton } = useForm(name)
 
     return (
         <form onSubmit={handleSubmit} className={joinClasses('form', formModifiers, formOtherClasses)}>
@@ -23,7 +23,7 @@ export default function Form({ name, formModifiers, formOtherClasses, containerM
             }
             <div className={joinClasses('form__container', containerModifiers, containerOtherClasses)}>
                 {
-                    Object.values(inputs).map(input => <FormGroup key={input.id} onChange={handleChange} {...input} />)
+                    Object.values(inputs).map(input => <FormGroup handleEditButton={handleEditButton} key={input.id} onChange={handleChange} {...input} />)
                 }
             </div>
             {children}
