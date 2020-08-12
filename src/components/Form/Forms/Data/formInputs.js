@@ -180,7 +180,7 @@ export const changePersonalDataInputs = {
         isValid: false,
         isTouched: false,
         hasRoundButtons: true,
-        validators: [Validator.isRequired(8, 'Please provide first name')],
+        validators: [Validator.isRequired('Please provide first name')],
         errors: [],
         modifiers: 'column change-personal-data'
     },
@@ -193,7 +193,7 @@ export const changePersonalDataInputs = {
         isValid: false,
         isTouched: false,
         hasRoundButtons: true,
-        validators: [Validator.isRequired(8, 'Please provide last name')],
+        validators: [Validator.isRequired('Please provide last name')],
         errors: [],
         modifiers: 'column change-personal-data'
     },
