@@ -26,7 +26,7 @@ export default function Profile() {
                     <div class="data-box__content-box">
                         <form action="#" class="form">
                             <div class="form__container form__container--change-personal-data">
-                                <div class="input-group input-group--inline input-group--change-personal-data">
+                                <div class="input-group input-group--change-personal-data">
                                     <label for="change-personal-data-first-name" class="input-group__label">First
 											 name:</label>
                                     <input type="text" id='change-personal-data-first-name'
@@ -39,7 +39,7 @@ export default function Profile() {
                                         </button>
                                     </div>
                                 </div>
-                                <div class="input-group input-group--inline input-group--change-personal-data">
+                                <div class="input-group input-group--change-personal-data">
                                     <label for="change-personal-data-first-name"
                                         class="input-group__label">Email:</label>
                                     <input type="text" id='change-personal-data-first-name'
@@ -49,7 +49,7 @@ export default function Profile() {
                                         </button>
                                     </div>
                                 </div>
-                                <div class="input-group input-group--inline input-group--change-personal-data">
+                                <div class="input-group input-group--change-personal-data">
                                     <label for="change-personal-data-first-name"
                                         class="input-group__label">Address:</label>
                                     <input type="text" id='change-personal-data-first-name'
@@ -67,7 +67,7 @@ export default function Profile() {
                                         </button>
                                     </div>
                                 </div>
-                                <div class="input-group input-group--inline input-group--change-personal-data">
+                                <div class="input-group input-group--change-personal-data">
                                     <label for="change-personal-data-first-name"
                                         class="input-group__label">Country:</label>
                                     <input type="text" id='change-personal-data-first-name'
