@@ -4,6 +4,7 @@
 .input {
     display: flex;
     margin-bottom: 2rem;
+    position: relative;
 
     &--column {
         @include flex-column;
