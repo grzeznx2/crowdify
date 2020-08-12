@@ -69,16 +69,11 @@
 }
 
 .input {
-    // &--change-personal-data {
-    //     justify-content: flex-start;
-    // }
 
     &--change-personal-data &__label {
         display: inline-block;
         width: 10rem;
-        margin-bottom: 0;
         font-weight: 300;
-        align-self: center;
     }
 
     &--change-personal-data &__input {
