@@ -60,9 +60,9 @@ export default React.memo(function Input({ onChange, hasRoundButtons, id, name, 
             {
                 hasRoundButtons &&
                 <div className="input__round-buttons-container">
-                    {!isBeingEdited && <RoundButton modifiers='edit' handleClick={handleEditButton} />}
-                    {isBeingEdited && <RoundButton modifiers='abort' handleClick={handleEditButton} />}
-                    {isBeingEdited && isTouched && <RoundButton modifiers='accept' handleClick={handleEditButton} />}
+                    {!isBeingEdited && <RoundButton modifiers='edit' dataType='edit' handleClick={handleEditButton} />}
+                    {isBeingEdited && <RoundButton modifiers='abort' dataType='abort' handleClick={handleEditButton} />}
+                    {isBeingEdited && isTouched && <RoundButton modifiers='accept' dataType='approve' handleClick={handleEditButton} />}
                 </div>
             }
         </div>
