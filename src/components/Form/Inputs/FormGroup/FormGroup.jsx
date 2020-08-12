@@ -8,7 +8,7 @@ import { joinClasses } from '../../../../utils/utils'
 
 import './FormGroup.scss'
 
-export default function FormGroup({ type, formGroupModifiers, ...otherProps }) {
+export default function FormGroup({ type, formGroupModifiers, hasRoundButtons, ...otherProps }) {
 
     let markup = null
 
@@ -34,6 +34,14 @@ export default function FormGroup({ type, formGroupModifiers, ...otherProps }) {
         <div className={joinClasses('form-group', formGroupModifiers)}>
             {
                 markup
+            }
+            {
+                hasRoundButtons &&
+                <div className="input-group__round-buttons-container">
+                    <RoundButton modifiers='edit' />
+                    <RoundButton modifiers='abort' />
+                    <RoundButton modifiers='accept' />
+                </div>
             }
         </div>
     )
