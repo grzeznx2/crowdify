@@ -174,7 +174,7 @@ export const changePersonalDataInputs = {
     changePersonalDataFirstName: {
         title: 'first name',
         id: 'changePersonalDataFirstName',
-        name: 'changePersonalDataFirstName',
+        name: 'firstName',
         type: 'text',
         value: 'Adam',
         isValid: true,
@@ -189,7 +189,7 @@ export const changePersonalDataInputs = {
     changePersonalDataLastName: {
         title: 'last name',
         id: 'changePersonalDataLastName',
-        name: 'changePersonalDataLastName',
+        name: 'lastName',
         type: 'text',
         value: 'Bochen',
         isValid: true,
@@ -204,7 +204,7 @@ export const changePersonalDataInputs = {
     changePersonalDataEmail: {
         title: 'email',
         id: 'changePersonalDataEmail',
-        name: 'changePersonalDataEmail',
+        name: 'email',
         type: 'email',
         value: 'adam@gmail.com',
         isValid: true,
@@ -219,7 +219,7 @@ export const changePersonalDataInputs = {
     changePersonalDataCountry: {
         title: 'country',
         id: 'changePersonalDataCountry',
-        name: 'changePersonalDataCountry',
+        name: 'country',
         type: 'text',
         value: 'Poland',
         isValid: true,
@@ -234,7 +234,7 @@ export const changePersonalDataInputs = {
     changePersonalDataCity: {
         title: 'city',
         id: 'changePersonalDataCity',
-        name: 'changePersonalDataCity',
+        name: 'city',
         type: 'text',
         value: 'Malbork',
         isValid: true,
@@ -249,7 +249,7 @@ export const changePersonalDataInputs = {
     changePersonalDataPostalCode: {
         title: 'postal code',
         id: 'changePersonalDataPostalCode',
-        name: 'changePersonalDataPostalCode',
+        name: 'postalCode',
         type: 'text',
         value: '21-245',
         isValid: true,
@@ -264,7 +264,7 @@ export const changePersonalDataInputs = {
     changePersonalDataPhone: {
         title: 'phone',
         id: 'changePersonalDataPhone',
-        name: 'changePersonalDataPhone',
+        name: 'phone',
         type: 'text',
         value: '821894231',
         isValid: true,
