@@ -16,6 +16,7 @@ const Button = ({
     navLink,
     otherClasses,
     page,
+    relatedInput,
     root = 'button',
     to
 }) =>
@@ -29,7 +30,7 @@ const Button = ({
                 {children}
             </Link>
         :
-        <button onClick={handleClick} data-page={page} data-type={dataType} disabled={disabled} className={`${joinClasses(root, modifiers, otherClasses)}`}>
+        <button onClick={handleClick} data-page={page} data-type={dataType} data-related-input={relatedInput} disabled={disabled} className={`${joinClasses(root, modifiers, otherClasses)}`}>
             {children}
         </button>
 
