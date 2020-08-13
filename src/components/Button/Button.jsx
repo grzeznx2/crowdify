@@ -10,7 +10,7 @@ const Button = ({
     activeClassName,
     children,
     disabled,
-    dataType,
+    editAction,
     handleClick,
     modifiers,
     navLink,
@@ -30,7 +30,7 @@ const Button = ({
                 {children}
             </Link>
         :
-        <button onClick={handleClick} data-page={page} data-type={dataType} data-related-input={relatedInput} disabled={disabled} className={`${joinClasses(root, modifiers, otherClasses)}`}>
+        <button onClick={handleClick} data-page={page} data-edit-action={editAction} data-related-input={relatedInput} disabled={disabled} className={`${joinClasses(root, modifiers, otherClasses)}`}>
             {children}
         </button>
 
