@@ -42,13 +42,17 @@ const formReducer = (state, action) => {
                     isBeingEdited: true
                 }
             }
-        case 'SET_EDIT_STATUS':
+        case 'ABORT_EDITION':
             name = action.relatedInput
             return {
                 ...state,
                 [name]: {
                     ...state[name],
-                    isBeingEdited: action.editAction === 'edit'
+                    isBeingEdited: false,
+                    value: action.initialValue,
+                    isValid: true,
+                    isTouched: false,
+                    errors: []
                 }
             }
         default:
@@ -129,13 +133,15 @@ export default function useForm(form) {
     const handleEditButton = e => {
         e.preventDefault()
         const { editAction, relatedInput } = e.target.dataset
-        // const initialValue = personalDataRef[relatedInput].value
+        const initialValue = personalDataRef.current[relatedInput]
+
         switch (editAction) {
             case 'edit':
-                dispatch({ type: 'START_EDITION', relatedInput, })
+                return dispatch({ type: 'START_EDITION', relatedInput, })
+            case 'abort':
+                return dispatch({ type: 'ABORT_EDITION', relatedInput, initialValue })
+
         }
-        // dispatch({ type: 'SET_EDIT_STATUS', editAction, relatedInput,  })
-        // console.log(editAction, relatedInput)
     }
 
     return { inputs, isLoading, error, handleChange, handleSubmit, handleEditButton }
