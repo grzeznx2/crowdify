@@ -181,6 +181,7 @@ export const changePersonalDataInputs = {
         isTouched: false,
         hasRoundButtons: true,
         isBeingEdited: false,
+        requiresEditStatus: true,
         validators: [Validator.isRequired('Please provide first name')],
         errors: [],
         modifiers: 'column change-personal-data'
@@ -195,6 +196,7 @@ export const changePersonalDataInputs = {
         isTouched: false,
         hasRoundButtons: true,
         isBeingEdited: false,
+        requiresEditStatus: true,
         validators: [Validator.isRequired('Please provide last name')],
         errors: [],
         modifiers: 'column change-personal-data'
@@ -209,6 +211,7 @@ export const changePersonalDataInputs = {
         isTouched: false,
         hasRoundButtons: true,
         isBeingEdited: false,
+        requiresEditStatus: true,
         validators: [Validator.isEmail('Please provide a valid email')],
         errors: [],
         modifiers: 'column change-personal-data'
@@ -223,6 +226,7 @@ export const changePersonalDataInputs = {
         isTouched: false,
         hasRoundButtons: true,
         isBeingEdited: false,
+        requiresEditStatus: true,
         validators: [Validator.isCountry('Please provide a valid country')],
         errors: [],
         modifiers: 'column change-personal-data'
@@ -237,6 +241,7 @@ export const changePersonalDataInputs = {
         isTouched: false,
         hasRoundButtons: true,
         isBeingEdited: false,
+        requiresEditStatus: true,
         validators: [Validator.isRequired('Please provide a city')],
         errors: [],
         modifiers: 'column change-personal-data'
@@ -251,6 +256,7 @@ export const changePersonalDataInputs = {
         isTouched: false,
         hasRoundButtons: true,
         isBeingEdited: false,
+        requiresEditStatus: true,
         validators: [Validator.isPostalCode('Required format: XX-XXX')],
         errors: [],
         modifiers: 'column change-personal-data'
@@ -265,6 +271,7 @@ export const changePersonalDataInputs = {
         isTouched: false,
         hasRoundButtons: true,
         isBeingEdited: false,
+        requiresEditStatus: true,
         validators: [Validator.isPhone('Phone number must contain 9 digits')],
         errors: [],
         modifiers: 'column change-personal-data'
