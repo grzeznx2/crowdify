@@ -1,4 +1,4 @@
-import { useReducer, useCallback } from 'react'
+import { useReducer, useCallback, useRef } from 'react'
 
 import useFetch from './useFetch'
 
@@ -33,6 +33,15 @@ const formReducer = (state, action) => {
                 ...state,
                 ...action.inputs
             }
+        case 'START_EDITION':
+            name = action.relatedInput
+            return {
+                ...state,
+                [name]: {
+                    ...state[name],
+                    isBeingEdited: true
+                }
+            }
         case 'SET_EDIT_STATUS':
             name = action.relatedInput
             return {
@@ -48,6 +57,8 @@ const formReducer = (state, action) => {
 }
 
 export default function useForm(form) {
+    const personalDataRef = useRef({})
+
     const loadState = form => {
 
         switch (form) {
@@ -60,6 +71,9 @@ export default function useForm(form) {
             case 'changePassword':
                 return changePasswordInputs
             case 'changePersonalData':
+                for (let input of Object.values(changePersonalDataInputs)) {
+                    personalDataRef.current[input.name] = input.value
+                }
                 return changePersonalDataInputs
             default:
                 return console.log('Please call useForm with either "subscribe", "login" or "register".')
@@ -115,8 +129,13 @@ export default function useForm(form) {
     const handleEditButton = e => {
         e.preventDefault()
         const { editAction, relatedInput } = e.target.dataset
-        dispatch({ type: 'SET_EDIT_STATUS', editAction, relatedInput })
-        console.log(editAction, relatedInput)
+        // const initialValue = personalDataRef[relatedInput].value
+        switch (editAction) {
+            case 'edit':
+                dispatch({ type: 'START_EDITION', relatedInput, })
+        }
+        // dispatch({ type: 'SET_EDIT_STATUS', editAction, relatedInput,  })
+        // console.log(editAction, relatedInput)
     }
 
     return { inputs, isLoading, error, handleChange, handleSubmit, handleEditButton }
