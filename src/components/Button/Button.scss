@@ -109,6 +109,10 @@
 .button-round {
     @include buttonRoundCenter(2.5rem);
 
+    &:focus {
+        outline: none;
+    }
+
     &--edit {
         background-color: $COLOR_GRAY_8;
     }
