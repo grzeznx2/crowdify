@@ -7,7 +7,7 @@ import './Input.scss'
 
 import { joinClasses } from '../../../../utils/utils'
 
-export default React.memo(function Input({ onChange, hasRoundButtons, id, name, type, isValid, isTouched, value, modifiers, otherClasses, title, min, max, options, step, errors, isBeingEdited, handleEditButton }) {
+export default React.memo(function Input({ onChange, hasRoundButtons, id, name, type, isValid, isTouched, value, modifiers, otherClasses, title, min, max, options, step, errors, isBeingEdited, requiresEditStatus, handleEditButton }) {
     let validityModifier = isTouched ?
         isValid ? 'valid' : 'invalid'
         : ''
@@ -41,6 +41,7 @@ export default React.memo(function Input({ onChange, hasRoundButtons, id, name, 
             min={min}
             max={max}
             step={step}
+            disabled={!isBeingEdited && requiresEditStatus}
             className={joinClasses('input__input', validityModifier)} />
     }
 

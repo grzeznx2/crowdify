@@ -7,12 +7,12 @@ import { subscribeInputs, loginInputs, registerInputs, changePasswordInputs, cha
 import Validator from '../utils/Validator'
 
 const formReducer = (state, action) => {
-    let name
 
+    let name
     switch (action.type) {
         case 'CHANGE_VALUE':
             const value = action.target.type === "checkbox" ? action.target.checked : action.target.value;
-            name = action.target
+            name = action.target.name
             const { validators } = state[name]
             const euqalValidator = validators.find(validator => validator.type === 'IS_EQUAL')
             const equalValue = euqalValidator ? state[euqalValidator.value].value : ''
@@ -34,7 +34,7 @@ const formReducer = (state, action) => {
                 ...action.inputs
             }
         case 'SET_EDIT_STATUS':
-            const name = action.relatedInput
+            name = action.relatedInput
             return {
                 ...state,
                 [name]: {
