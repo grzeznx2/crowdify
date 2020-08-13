@@ -9,18 +9,19 @@ import Validator from '../utils/Validator'
 const formReducer = (state, action) => {
 
     let name
+    let id
     switch (action.type) {
         case 'CHANGE_VALUE':
             const value = action.target.type === "checkbox" ? action.target.checked : action.target.value;
-            name = action.target.name
-            const { validators } = state[name]
+            id = action.target.id
+            const { validators } = state[id]
             const euqalValidator = validators.find(validator => validator.type === 'IS_EQUAL')
             const equalValue = euqalValidator ? state[euqalValidator.value].value : ''
             const { isValid, errors } = Validator.validateAll(validators, value, equalValue)
             return {
                 ...state,
-                [name]: {
-                    ...state[name],
+                [id]: {
+                    ...state[id],
                     value,
                     isValid,
                     errors,
@@ -34,20 +35,20 @@ const formReducer = (state, action) => {
                 ...action.inputs
             }
         case 'START_EDITION':
-            name = action.relatedInput
+            id = action.relatedInput
             return {
                 ...state,
-                [name]: {
-                    ...state[name],
+                [id]: {
+                    ...state[id],
                     isBeingEdited: true
                 }
             }
         case 'ABORT_EDITION':
-            name = action.relatedInput
+            id = action.relatedInput
             return {
                 ...state,
-                [name]: {
-                    ...state[name],
+                [id]: {
+                    ...state[id],
                     isBeingEdited: false,
                     value: action.initialValue,
                     isValid: true,
@@ -76,7 +77,7 @@ export default function useForm(form) {
                 return changePasswordInputs
             case 'changePersonalData':
                 for (let input of Object.values(changePersonalDataInputs)) {
-                    personalDataRef.current[input.name] = input.value
+                    personalDataRef.current[input.id] = input.value
                 }
                 return changePersonalDataInputs
             default:
