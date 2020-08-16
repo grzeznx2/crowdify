@@ -9,12 +9,12 @@ export default function LoginForm() {
     const dispatch = useDispatch()
     const history = useHistory()
 
-    const setResponse = useCallback(response => {
+    const handleResponse = useCallback(response => {
         dispatch(setCurrentUser(response.user))
     }, [dispatch])
 
     return (
-        <Form setResponse={setResponse} name='login' formModifiers='center-column' containerModifiers='auth' title='sign in' buttonText='sign in' children>
+        <Form handleResponse={handleResponse} name='login' formModifiers='center-column' containerModifiers='auth' title='sign in' buttonText='sign in' children>
             <a href="#" class="form__forgot-password-link">Forgot your password?</a>
         </Form>
     )
