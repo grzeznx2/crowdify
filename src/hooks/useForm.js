@@ -2,8 +2,6 @@ import { useReducer, useCallback, useRef, useState } from 'react'
 
 import useFetch from './useFetch'
 
-import { subscribeInputs, loginInputs, registerInputs, changePasswordInputs, changePersonalDataInputs } from '../components/Form/Forms/Data/formInputs'
-
 import Validator from '../utils/Validator'
 
 const formReducer = (state, action) => {
