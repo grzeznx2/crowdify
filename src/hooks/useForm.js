@@ -1,4 +1,4 @@
-import { useReducer, useCallback, useRef } from 'react'
+import { useReducer, useCallback, useRef, useState } from 'react'
 
 import useFetch from './useFetch'
 
@@ -87,6 +87,7 @@ export default function useForm(form) {
 
     const [inputs, dispatch] = useReducer(formReducer, loadState(form))
     const { isLoading, error, sendRequest } = useFetch()
+    const [response, setResponse] = useState()
 
     const handleChange = useCallback(e => {
         dispatch({ type: 'CHANGE_VALUE', target: e.target })
@@ -133,7 +134,8 @@ export default function useForm(form) {
         }
 
         const response = await sendRequest(options)
-        console.log(response)
+        if (response) setResponse(response)
+        // console.log(response)
     }
 
     const handleSubmit = event => {
@@ -185,5 +187,5 @@ export default function useForm(form) {
         }
     }
 
-    return { inputs, isLoading, error, handleChange, handleSubmit, handleEditButton }
+    return { inputs, isLoading, error, response, handleChange, handleSubmit, handleEditButton }
 }
