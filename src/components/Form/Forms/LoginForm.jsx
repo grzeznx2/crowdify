@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react'
 import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 
 import { setCurrentUser } from '../../../redux/user/actions'
 
@@ -11,6 +12,7 @@ export default function LoginForm() {
 
     const handleResponse = useCallback(response => {
         dispatch(setCurrentUser(response.user))
+        history.push('/dashboard/overview')
     }, [dispatch])
 
     return (
