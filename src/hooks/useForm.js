@@ -92,14 +92,35 @@ export default function useForm(form) {
         dispatch({ type: 'CHANGE_VALUE', target: e.target })
     }, [])
 
-    const submitRegister = async inputs => {
+    const submitForm = async inputs => {
+
+        let url, body
+
+        switch (form) {
+            case 'login':
+                url = 'http://localhost:5000/api/v1/users/login'
+                body = {
+                    email: inputs.loginEmail.value,
+                    password: inputs.loginPassword.value
+                }
+                break
+            case 'register':
+                url = 'http://localhost:5000/api/v1/users/signup'
+                body = {
+                    email: inputs.registerEmail.value,
+                    firstName: inputs.registerfirstName.value,
+                    lastName: inputs.registerLastName.value,
+                    password: inputs.registerPassword.value,
+                    passwordConfrim: inputs.registerPasswordConfrim.value,
+                }
+            default:
+                return null
+        }
+
         const options = {
-            url: 'http://localhost:5000/api/v1/users/login',
+            url,
+            body,
             method: 'POST',
-            body: {
-                email: inputs.loginEmail.value,
-                password: inputs.loginPassword.value
-            },
             headers: { 'Content-Type': 'application/json' }
         }
 
@@ -128,7 +149,7 @@ export default function useForm(form) {
         }
 
         if (!isFormValid) return dispatch({ type: 'SET_VALIDATED_INPUTS', inputs: inputsCopy })
-        submitRegister(inputsCopy)
+        submitForm(inputsCopy)
     }
 
     const handleEditButton = e => {
