@@ -9,7 +9,7 @@ import Transactions from './Transactions/Transactions'
 
 import './DashboardPage.scss'
 
-export default function DashboardPage() {
+export default function DashboardPage({ user }) {
   const match = useRouteMatch()
 
   return (
