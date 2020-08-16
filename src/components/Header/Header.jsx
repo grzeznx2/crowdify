@@ -7,7 +7,7 @@ import SvgIcon from '../SvgIcon/SvgIcon'
 
 import './Header.scss'
 
-export default function Header() {
+export default function Header({ user }) {
     return <header className="header">
 
         <div className="container">
@@ -17,8 +17,8 @@ export default function Header() {
                 <Button to='/' root='button-account' otherClasses='header__button-account'>
                     <SvgIcon svgId='icon-user' otherClasses='button-account__icon' />
                 </Button>
-                <Button to="/auth" modifiers='secondary' otherClasses='hide-p'>
-                    login / sign in
+                <Button to={`/${user ? 'logout' : "auth"}`} modifiers='secondary' otherClasses='hide-p'>
+                    {user ? 'logout' : 'login / sign in'}
                 </Button>
 
             </div>
