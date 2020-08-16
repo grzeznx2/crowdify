@@ -108,11 +108,12 @@ export default function useForm(form) {
                 url = 'http://localhost:5000/api/v1/users/signup'
                 body = {
                     email: inputs.registerEmail.value,
-                    firstName: inputs.registerfirstName.value,
+                    firstName: inputs.registerFirstName.value,
                     lastName: inputs.registerLastName.value,
                     password: inputs.registerPassword.value,
-                    passwordConfrim: inputs.registerPasswordConfrim.value,
+                    passwordConfirm: inputs.registerPasswordConfirm.value,
                 }
+                break
             default:
                 return null
         }
@@ -124,7 +125,8 @@ export default function useForm(form) {
             headers: { 'Content-Type': 'application/json' }
         }
 
-        await sendRequest(options)
+        const response = await sendRequest(options)
+        console.log(response)
     }
 
     const handleSubmit = event => {
@@ -147,8 +149,8 @@ export default function useForm(form) {
                 }
             }
         }
-
         if (!isFormValid) return dispatch({ type: 'SET_VALIDATED_INPUTS', inputs: inputsCopy })
+        console.log(isFormValid)
         submitForm(inputsCopy)
     }
 
