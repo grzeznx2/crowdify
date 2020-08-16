@@ -1,4 +1,4 @@
-import { useReducer, useCallback, useRef, useState } from 'react'
+import { useReducer, useCallback, useRef, useState, useEffect } from 'react'
 
 import useFetch from './useFetch'
 
@@ -61,32 +61,18 @@ const formReducer = (state, action) => {
 
 export default function useForm(form, formInputs) {
     const personalDataRef = useRef({})
-
-    // const loadState = form => {
-
-    //     switch (form) {
-    //         case 'subscribe':
-    //             return subscribeInputs
-    //         case 'login':
-    //             return loginInputs
-    //         case 'register':
-    //             return registerInputs
-    //         case 'changePassword':
-    //             return changePasswordInputs
-    //         case 'changePersonalData':
-    //             for (let input of Object.values(changePersonalDataInputs)) {
-    //                 personalDataRef.current[input.id] = input.value
-    //             }
-    //             return changePersonalDataInputs
-    //         default:
-    //             return console.log('Please call useForm with either "subscribe", "login" or "register".')
-    //     }
-    // }
-
     const [inputs, dispatch] = useReducer(formReducer, formInputs)
-    // const [inputs, dispatch] = useReducer(formReducer, loadState(form))
     const { isLoading, error, sendRequest } = useFetch()
     const [response, setResponse] = useState()
+
+    useEffect(() => {
+        if (form === 'changePersonalData') {
+            for (let input of Object.values(inputs)) {
+                personalDataRef.current[input.id] = input.value
+            }
+        }
+    },
+        [])
 
     const handleChange = useCallback(e => {
         dispatch({ type: 'CHANGE_VALUE', target: e.target })
