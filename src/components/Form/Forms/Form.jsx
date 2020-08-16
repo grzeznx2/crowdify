@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import Button from '../../Button/Button'
 import FormGroup from '../Inputs/FormGroup/FormGroup'
@@ -9,9 +9,14 @@ import { joinClasses } from '../../../utils/utils'
 
 import './Form.scss'
 
-export default function Form({ name, formModifiers, formOtherClasses, containerModifiers, buttonWrapperModifiers, containerOtherClasses, title, buttonText, children }) {
+export default function Form({ name, formModifiers, formOtherClasses, containerModifiers, buttonWrapperModifiers, containerOtherClasses, title, buttonText, children, setResponse }) {
 
-    const { inputs, isLoading, error, handleChange, handleSubmit, handleEditButton } = useForm(name)
+    const { inputs, isLoading, error, response, handleChange, handleSubmit, handleEditButton } = useForm(name)
+
+    useEffect(() => {
+        if (response) setResponse(response)
+    },
+        [response])
 
     return (
         <form onSubmit={handleSubmit} className={joinClasses('form', formModifiers, formOtherClasses)}>
