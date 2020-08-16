@@ -5,7 +5,8 @@ import RoundButton from '../../../components/Button/RoundButton/RoundButton'
 import ChangePasswordForm from '../../../components/Form/Forms/ChangePasswordForm'
 import ChangePersonalDataForm from '../../../components/Form/Forms/ChangePersonalDataForm'
 
-export default function Profile() {
+export default function Profile(props) {
+
     return (
         <>
             <div className="section-dashboard__box">
@@ -27,7 +28,7 @@ export default function Profile() {
 								 </h5>
                     </div>
                     <div className="data-box__content-box">
-                        <ChangePersonalDataForm />
+                        <ChangePersonalDataForm {...props} />
                     </div>
                 </div>
             </div>
