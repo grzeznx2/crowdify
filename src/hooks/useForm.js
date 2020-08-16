@@ -94,7 +94,7 @@ export default function useForm(form) {
 
     const submitForm = async inputs => {
 
-        let url, body
+        let url, body, method
 
         switch (form) {
             case 'login':
@@ -103,6 +103,7 @@ export default function useForm(form) {
                     email: inputs.loginEmail.value,
                     password: inputs.loginPassword.value
                 }
+                method = 'POST'
                 break
             case 'register':
                 url = 'http://localhost:5000/api/v1/users/signup'
@@ -113,6 +114,12 @@ export default function useForm(form) {
                     password: inputs.registerPassword.value,
                     passwordConfirm: inputs.registerPasswordConfirm.value,
                 }
+                method = 'POST'
+                break
+            case 'changePersonalData':
+                url = 'http://localhost:5000/api/v1/users/updateMe'
+                body = inputs
+                method = 'PATCH'
                 break
             default:
                 return null
@@ -121,7 +128,7 @@ export default function useForm(form) {
         const options = {
             url,
             body,
-            method: 'POST',
+            method,
             headers: { 'Content-Type': 'application/json' }
         }
 
@@ -164,6 +171,16 @@ export default function useForm(form) {
                 return dispatch({ type: 'START_EDITION', relatedInput, })
             case 'abort':
                 return dispatch({ type: 'ABORT_EDITION', relatedInput, initialValue })
+            case 'approve':
+
+                let fieldName = relatedInput.replace('changePersonalData', '')
+                fieldName = fieldName.charAt(0).toLowerCase() + fieldName.slice(1)
+
+                const updatedInput = {
+                    fieldName: inputs[relatedInput]
+                }
+
+                submitForm(updatedInput)
 
         }
     }
