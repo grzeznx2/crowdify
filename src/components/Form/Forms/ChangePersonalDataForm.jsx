@@ -4,14 +4,14 @@ import Validator from '../../../utils/Validator'
 
 import Form from './Form'
 
-export default function ChangePersonalDataForm({ user }) {
+export default function ChangePersonalDataForm({ firstName, lastName, email }) {
     const inputs = {
         changePersonalDataFirstName: {
             title: 'first name',
             id: 'changePersonalDataFirstName',
             name: 'firstName',
             type: 'text',
-            value: user.firstName,
+            value: firstName,
             isValid: true,
             isTouched: false,
             hasRoundButtons: true,
@@ -26,7 +26,7 @@ export default function ChangePersonalDataForm({ user }) {
             id: 'changePersonalDataLastName',
             name: 'lastName',
             type: 'text',
-            value: user.lastName,
+            value: lastName,
             isValid: true,
             isTouched: false,
             hasRoundButtons: true,
@@ -41,7 +41,7 @@ export default function ChangePersonalDataForm({ user }) {
             id: 'changePersonalDataEmail',
             name: 'email',
             type: 'email',
-            value: user.email,
+            value: email,
             isValid: true,
             isTouched: false,
             hasRoundButtons: true,
