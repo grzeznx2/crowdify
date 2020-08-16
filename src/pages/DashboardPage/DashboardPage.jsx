@@ -10,6 +10,8 @@ import Transactions from './Transactions/Transactions'
 import './DashboardPage.scss'
 
 export default function DashboardPage({ user }) {
+  const { firstName, lastName, email } = user
+
   const match = useRouteMatch()
 
   return (
@@ -35,7 +37,9 @@ export default function DashboardPage({ user }) {
                   <Route path={`${match.url}/overview`} component={Overview} />
                   <Route path={`${match.url}/transactions`} component={Transactions} />
                   <Route path={`${match.url}/investments`} component={Investments} />
-                  <Route path={`${match.url}/profile`} component={Profile} />
+                  <Route path={`${match.url}/profile`}>
+                    <Profile firstName={firstName} lastName={lastName} email={email} />
+                  </Route>
                 </div>
               </section>
             </div>
