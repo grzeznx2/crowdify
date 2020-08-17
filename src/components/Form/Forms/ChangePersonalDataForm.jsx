@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 
 import Validator from '../../../utils/Validator'
 
@@ -113,8 +113,13 @@ export default function ChangePersonalDataForm({ firstName, lastName, email }) {
         },
     }
 
+    const handleResponse = useCallback(response => {
+        console.log(response)
+    }, [])
+
     return (
         <Form
+            handleResponse={handleResponse}
             formInputs={inputs}
             name='changePersonalData'
             containerModifiers='change-personal-data'
