@@ -119,6 +119,7 @@ export default function useForm(form, formInputs) {
         }
 
         const response = await sendRequest(options)
+        console.log(response)
         if (response) setResponse(response)
         // console.log(response)
     }
@@ -164,7 +165,7 @@ export default function useForm(form, formInputs) {
                 fieldName = fieldName.charAt(0).toLowerCase() + fieldName.slice(1)
 
                 const updatedInput = {
-                    fieldName: inputs[relatedInput]
+                    [fieldName]: inputs[relatedInput].value
                 }
 
                 submitForm(updatedInput)
