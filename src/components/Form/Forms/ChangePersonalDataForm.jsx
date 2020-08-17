@@ -1,4 +1,7 @@
 import React, { useCallback } from 'react'
+import { useDispatch } from 'react-redux'
+
+import { setCurrentUser } from '../../../redux/user/actions'
 
 import Validator from '../../../utils/Validator'
 
@@ -113,9 +116,11 @@ export default function ChangePersonalDataForm({ firstName, lastName, email }) {
         },
     }
 
+    const dispatch = useDispatch()
+
     const handleResponse = useCallback(response => {
-        console.log(response)
-    }, [])
+        dispatch(setCurrentUser(response.user))
+    }, [dispatch])
 
     return (
         <Form
