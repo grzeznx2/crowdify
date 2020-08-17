@@ -18,7 +18,7 @@ export default function ProjectPage() {
   useEffect(() => {
     const fetchProject = async () => {
       const options = {
-        url: `http://localhost:5000/api/v1/projects/${projectId}`,
+        url: `/api/v1/projects/${projectId}`,
       };
       const response = await sendRequest(options);
       if (response) {

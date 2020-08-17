@@ -40,6 +40,7 @@ export default function LoginForm() {
     const history = useHistory()
 
     const handleResponse = useCallback(response => {
+        console.log(response)
         dispatch(setCurrentUser(response.user))
         history.push('/dashboard/overview')
     }, [dispatch])

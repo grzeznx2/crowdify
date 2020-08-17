@@ -84,7 +84,7 @@ export default function useForm(form, formInputs) {
 
         switch (form) {
             case 'login':
-                url = 'http://localhost:5000/api/v1/users/login'
+                url = '/api/v1/users/login'
                 body = {
                     email: inputs.loginEmail.value,
                     password: inputs.loginPassword.value
@@ -92,7 +92,7 @@ export default function useForm(form, formInputs) {
                 method = 'POST'
                 break
             case 'register':
-                url = 'http://localhost:5000/api/v1/users/signup'
+                url = '/api/v1/users/signup'
                 body = {
                     email: inputs.registerEmail.value,
                     firstName: inputs.registerFirstName.value,
@@ -103,7 +103,7 @@ export default function useForm(form, formInputs) {
                 method = 'POST'
                 break
             case 'changePersonalData':
-                url = 'http://localhost:5000/api/v1/users/updateMe'
+                url = '/api/v1/users/updateMe'
                 body = inputs
                 method = 'PATCH'
                 break

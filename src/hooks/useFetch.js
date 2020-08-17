@@ -58,9 +58,9 @@ export default function useFetch() {
         try {
             dispatch({ type: 'FETCH_START' })
             const response = await fetch(url, { method, body, headers, signal })
+            console.log(url)
             const responseData = await response.json()
             if (!response.ok) throw Error(responseData.message)
-            // console.log(responseData)
             dispatch({ type: 'FETCH_SUCCESS' })
             return responseData.data
         } catch (error) {

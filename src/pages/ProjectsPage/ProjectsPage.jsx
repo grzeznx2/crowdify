@@ -22,7 +22,7 @@ export default function ProjectsPage() {
     useEffect(() => {
         const fetchData = async () => {
             const options = {
-                url: `http://localhost:5000/api/v1/projects?page=${page}&limit=${resPerPage}&countDocuments=${countDocuments}&${queryString}`
+                url: `/api/v1/projects?page=${page}&limit=${resPerPage}&countDocuments=${countDocuments}&${queryString}`
             }
             const response = await sendRequest(options)
             if (response) {

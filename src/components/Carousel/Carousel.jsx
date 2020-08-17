@@ -68,7 +68,7 @@ export default function Carousel() {
     useEffect(() => {
         async function fetchProjects() {
             const options = {
-                url: `http://localhost:5000/api/v1/projects?limit=4&page=${carouselState.fetchPage}&status=coming`
+                url: `/api/v1/projects?limit=4&page=${carouselState.fetchPage}&status=coming`
             }
             const response = await sendRequest(options)
             if (response) {
