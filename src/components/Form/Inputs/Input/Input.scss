@@ -89,7 +89,6 @@
 
     &--on-dark-bg &__input {
         background-color: $COLOR_WHITE;
-        text-align: center;
     }
 
     &--on-blue-bg {
@@ -97,7 +96,11 @@
     }
 
     &--on-blue-bg &__input {
-        background-color: $COLOR_BLUE_10;
-        color: inherit;
+        background-color: $COLOR_WHITE;
+        color: $COLOR_BLUE_30;
+    }
+
+    &--center-input-text &__input {
+        text-align: center;
     }
 }
