@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Route, useRouteMatch } from 'react-router-dom'
 
 import DashboardHeader from './DashboardHeader/DashboardHeader'
@@ -12,6 +12,9 @@ import './DashboardPage.scss'
 
 export default function DashboardPage({ user }) {
   const { firstName, lastName, email } = user
+  const [title, setTitle] = useState('overview')
+
+  // const changeTitle = newTitle => setTitle(newTitle)
 
   const match = useRouteMatch()
 
@@ -25,7 +28,7 @@ export default function DashboardPage({ user }) {
             </div>
           </div>
           <div class="section-dashboard__main">
-            <DashboardHeader />
+            <DashboardHeader title={title} />
             <div class="section-dashboard__content">
               <section class="overview">
                 <div class="overview__container">
