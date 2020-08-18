@@ -1,9 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+import { joinClasses } from '../../utils/utils'
+
 import './Modal.scss'
 
-export default function Modal({ handleClick, outerContainerModifiers, title, children, contentModifiers }) {
+export default function Modal({ handleClick, outerContainerModifiers, title, text, children, contentModifiers }) {
 
     const modalRoot = document.getElementById('modal-root')
 
