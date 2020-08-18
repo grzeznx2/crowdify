@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback } from 'react'
 
 import Button from '../../Button/Button'
 
@@ -6,8 +6,10 @@ import Validator from '../../../utils/Validator'
 
 import Form from './Form'
 
+import useFormLoading from '../../../hooks/useFormLoading'
+
 export default function LoginForm() {
-    const [buttonText, setButtonText] = useState('register')
+    const { buttonText, handleLoading } = useFormLoading('register')
 
     const inputs = {
         registerFirstName: {
@@ -90,10 +92,6 @@ export default function LoginForm() {
     }, [])
 
     const buttons = <Button modifiers='primary'>{buttonText}</Button>
-
-    const handleLoading = useCallback(isLoading => {
-        if (isLoading) setButtonText('sending...')
-    }, [])
 
     return (
         <Form

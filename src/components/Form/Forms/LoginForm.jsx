@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback } from 'react'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
@@ -10,8 +10,10 @@ import Validator from '../../../utils/Validator'
 
 import Form from './Form'
 
+import useFormLoading from '../../../hooks/useFormLoading'
+
 export default function LoginForm() {
-    const [buttonText, setButtonText] = useState('login')
+    const { buttonText, handleLoading } = useFormLoading('login')
 
     const inputs = {
         loginEmail: {
@@ -50,10 +52,6 @@ export default function LoginForm() {
     }, [dispatch])
 
     const buttons = <Button modifiers='primary'>{buttonText}</Button>
-
-    const handleLoading = useCallback(isLoading => {
-        if (isLoading) setButtonText('sending...')
-    }, [])
 
     return (
         <Form

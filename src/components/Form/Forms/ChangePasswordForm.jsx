@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React from 'react'
 
 import Button from '../../Button/Button'
 
@@ -6,8 +6,10 @@ import Validator from '../../../utils/Validator'
 
 import Form from './Form'
 
+import useFormLoading from '../../../hooks/useFormLoading'
+
 export default function ChangePasswordForm() {
-    const [buttonText, setButtonText] = useState('save password')
+    const { buttonText, handleLoading } = useFormLoading('save password')
 
     const inputs = {
         changePasswordCurrent: {
@@ -50,10 +52,6 @@ export default function ChangePasswordForm() {
     }
 
     const buttons = <Button modifiers='primary'>{buttonText}</Button>
-
-    const handleLoading = useCallback(isLoading => {
-        if (isLoading) setButtonText('sending...')
-    }, [])
 
     return (
         <Form

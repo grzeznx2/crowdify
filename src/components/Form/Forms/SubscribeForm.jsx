@@ -1,12 +1,14 @@
-import React, { useState, useCallback } from 'react'
+import React from 'react'
 
 import Validator from '../../../utils/Validator'
 
 import Button from '../../Button/Button'
 import Form from './Form'
 
+import useFormLoading from '../../../hooks/useFormLoading'
+
 export default function LoginForm() {
-    const [buttonText, setButtonText] = useState('subscribe')
+    const { buttonText, handleLoading } = useFormLoading('subscribe')
 
     const inputs = {
         subscribeName: {
@@ -36,11 +38,6 @@ export default function LoginForm() {
     }
 
     const buttons = <Button modifiers='primary'>{buttonText}</Button>
-
-
-    const handleLoading = useCallback(isLoading => {
-        if (isLoading) setButtonText('sending...')
-    }, [])
 
     return (
         <Form
