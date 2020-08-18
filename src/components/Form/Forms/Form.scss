@@ -19,24 +19,12 @@
             padding-left: 2rem;
             padding-right: 2rem;
         }
-
-        &--subscribe {
-            align-self: stretch;
-        }
     }
 
     &__button-wrapper {
         display: flex;
         align-items: center;
         justify-content: center;
-
-        &--change-password {
-            justify-content: flex-end;
-
-            @include respond(p) {
-                justify-content: center;
-            }
-        }
     }
 
     &__title {
@@ -61,7 +49,9 @@
     }
 }
 
-.form__container--subscribe {
+.form--subscribe .form__container {
+    align-self: stretch;
+
     &>* {
         flex: 0 1 50%;
 
@@ -71,7 +61,7 @@
     }
 }
 
-.form__container--auth {
+.form--auth .form__container {
     &>* {
         flex: 0 1 100%;
     }
@@ -79,7 +69,7 @@
 
 
 
-.form__container--change-personal-data {
+.form--change-personal-data .form__container {
     &>* {
         flex: 0 1 50%;
 
@@ -89,8 +79,8 @@
     }
 }
 
-.form__container--filter-transactions,
-.form__container--change-password {
+.form--filter-transactions .form__container,
+.form--change-password .form__container {
     &>* {
         flex: 0 1 33.33333%;
 
@@ -104,6 +94,15 @@
     }
 }
 
-.form__container--center-content {
+.form--change-password .form__button-wrapper,
+.form--change-personal-data .form__button-wrapper {
+    justify-content: flex-end;
+
+    @include respond(p) {
+        justify-content: center;
+    }
+}
+
+.form--center-content .form__container {
     justify-content: center;
 }
