@@ -46,7 +46,14 @@ export default function LoginForm() {
     }, [dispatch])
 
     return (
-        <Form formInputs={inputs} handleResponse={handleResponse} name='login' formModifiers='center-column' containerModifiers='auth' title='sign in' buttonText='sign in' children>
+        <Form
+            formInputs={inputs}
+            handleResponse={handleResponse}
+            name='login'
+            formModifiers='center-column auth'
+            title='sign in'
+            buttonText='sign in'
+            children>
             <a href="#" class="form__forgot-password-link">Forgot your password?</a>
         </Form>
     )

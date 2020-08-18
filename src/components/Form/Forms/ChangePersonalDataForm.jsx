@@ -127,7 +127,7 @@ export default function ChangePersonalDataForm({ firstName, lastName, email }) {
             handleResponse={handleResponse}
             formInputs={inputs}
             name='changePersonalData'
-            containerModifiers='change-personal-data'
-            buttonWrapperModifiers='change-password' />
+            formModifiers='change-personal-data'
+        />
     )
 }

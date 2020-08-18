@@ -86,6 +86,12 @@ export default function LoginForm() {
     }, [])
 
     return (
-        <Form formInputs={inputs} setResponse={setResponse} name='register' formModifiers='center-column' containerModifiers='auth' title='create account' buttonText='sign up' />
+        <Form
+            formInputs={inputs}
+            setResponse={setResponse}
+            name='register'
+            formModifiers='center-column auth'
+            title='create account'
+            buttonText='sign up' />
     )
 }

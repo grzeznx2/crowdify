@@ -49,8 +49,7 @@ export default function ChangePasswordForm() {
         <Form
             formInputs={inputs}
             name='changePassword'
-            containerModifiers='change-password'
-            buttonWrapperModifiers='change-password'
+            formModifiers='change-password'
             buttonText='save password'>
         </Form>
     )

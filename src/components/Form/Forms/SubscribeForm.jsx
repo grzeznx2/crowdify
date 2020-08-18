@@ -33,6 +33,11 @@ export default function LoginForm() {
     }
 
     return (
-        <Form formInputs={inputs} name='subscribe' formModifiers='center-column' containerModifiers='subscribe' buttonText='subscribe' />
+        <Form
+            formInputs={inputs}
+            name='subscribe'
+            formModifiers='center-column subscribe'
+            buttonText='subscribe'
+        />
     )
 }
