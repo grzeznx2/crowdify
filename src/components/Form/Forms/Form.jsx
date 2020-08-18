@@ -9,7 +9,7 @@ import { joinClasses } from '../../../utils/utils'
 
 import './Form.scss'
 
-export default function Form({ formInputs, name, formModifiers, formOtherClasses, title, buttonText, children, handleResponse }) {
+export default function Form({ formInputs, buttons, name, formModifiers, formOtherClasses, title, children, handleResponse, handleLoading }) {
 
     const { inputs, isLoading, error, response, handleChange, handleSubmit, handleEditButton } = useForm(name, formInputs)
 
@@ -17,6 +17,10 @@ export default function Form({ formInputs, name, formModifiers, formOtherClasses
         if (response) handleResponse(response)
     },
         [response])
+
+    useEffect(() => {
+        handleLoading(isLoading)
+    }, [isLoading])
 
     return (
         <form onSubmit={handleSubmit} className={joinClasses('form', formModifiers, formOtherClasses)}>
@@ -32,12 +36,7 @@ export default function Form({ formInputs, name, formModifiers, formOtherClasses
                 }
             </div>
             {children}
-            {
-                buttonText &&
-                <div className='form__button-wrapper'>
-                    <Button modifiers='primary'>{isLoading ? 'Sending...' : buttonText}</Button>
-                </div>
-            }
+            {buttons}
         </form>
     )
 }
