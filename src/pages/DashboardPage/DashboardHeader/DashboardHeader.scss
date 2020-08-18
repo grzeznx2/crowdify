@@ -3,7 +3,10 @@
     align-items: bottom;
     justify-content: space-between;
 
-    // &__title {
-    //     // line-height: 2;
-    // }
+
+    &__buttons-container {
+        &>button:not(:last-child) {
+            margin-right: 2rem;
+        }
+    }
 }
