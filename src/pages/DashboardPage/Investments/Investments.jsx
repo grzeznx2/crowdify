@@ -1,6 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-export default function Investments() {
+export default function Investments({ changeTitle }) {
+
+    useEffect(() => {
+        changeTitle()
+    }, [])
+
     return (
         <>
             <div class="overview__project">

@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-export default function Transactions() {
+export default function Transactions({ changeTitle }) {
+    useEffect(() => {
+        changeTitle()
+    }, [])
     return (
         <>
             <div class="section-dashboard__box">

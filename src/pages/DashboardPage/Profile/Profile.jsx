@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import FormGroup from '../../../components/Form/Inputs/FormGroup/FormGroup'
 import RoundButton from '../../../components/Button/RoundButton/RoundButton'
 import ChangePasswordForm from '../../../components/Form/Forms/ChangePasswordForm'
 import ChangePersonalDataForm from '../../../components/Form/Forms/ChangePersonalDataForm'
 
-export default function Profile(props) {
+export default function Profile({ changeTitle, ...props }) {
+
+    useEffect(() => {
+        changeTitle()
+    }, [])
 
     return (
         <>

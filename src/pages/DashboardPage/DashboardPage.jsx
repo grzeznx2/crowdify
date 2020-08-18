@@ -14,7 +14,7 @@ export default function DashboardPage({ user }) {
   const { firstName, lastName, email } = user
   const [title, setTitle] = useState('overview')
 
-  // const changeTitle = newTitle => setTitle(newTitle)
+  const changeTitle = newTitle => setTitle(newTitle)
 
   const match = useRouteMatch()
 
@@ -32,11 +32,17 @@ export default function DashboardPage({ user }) {
             <div class="section-dashboard__content">
               <section class="overview">
                 <div class="overview__container">
-                  <Route path={`${match.url}/overview`} component={Overview} />
-                  <Route path={`${match.url}/transactions`} component={Transactions} />
-                  <Route path={`${match.url}/investments`} component={Investments} />
+                  <Route path={`${match.url}/overview`}>
+                    <Overview changeTitle={() => changeTitle('overview')} />
+                  </Route>
+                  <Route path={`${match.url}/transactions`}>
+                    <Transactions changeTitle={() => changeTitle('transactions')} />
+                  </Route>
+                  <Route path={`${match.url}/investments`}>
+                    <Investments changeTitle={() => changeTitle('investments')} />
+                  </Route>
                   <Route path={`${match.url}/profile`}>
-                    <Profile firstName={firstName} lastName={lastName} email={email} />
+                    <Profile changeTitle={() => changeTitle('profile')} firstName={firstName} lastName={lastName} email={email} />
                   </Route>
                 </div>
               </section>

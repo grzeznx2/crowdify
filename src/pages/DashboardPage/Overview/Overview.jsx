@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 
-export default function Overview() {
+export default function Overview({ changeTitle }) {
+
+    useEffect(() => {
+        changeTitle()
+    }, [])
+
     return (
         <>
             <div class="section-dashboard__box section-dashboard__box--small">
