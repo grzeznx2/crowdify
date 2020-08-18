@@ -1,6 +1,7 @@
 import React from 'react'
 import { Route, useRouteMatch } from 'react-router-dom'
 
+import DashboardHeader from './DashboardHeader/DashboardHeader'
 import DashboardNav from '../../components/DashboardNav/DashboardNav'
 import Investments from './Investments/Investments'
 import Overview from './Overview/Overview'
@@ -24,13 +25,7 @@ export default function DashboardPage({ user }) {
             </div>
           </div>
           <div class="section-dashboard__main">
-            <header class="dashboard-header section-dashboard__header">
-              <h3 class="heading-3 dashboard-header__title">Overview</h3>
-              <div class="dashboard-header__buttons-container">
-                <a href="#" class="button button--primary">Add Funds</a>
-                <a href="#" class="button button--primary-inverse">Withdraw</a>
-              </div>
-            </header>
+            <DashboardHeader />
             <div class="section-dashboard__content">
               <section class="overview">
                 <div class="overview__container">
