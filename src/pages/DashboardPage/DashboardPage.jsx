@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Route, useRouteMatch } from 'react-router-dom'
+import { Route, Redirect, useRouteMatch } from 'react-router-dom'
 
 import DashboardHeader from './DashboardHeader/DashboardHeader'
 import DashboardNav from '../../components/DashboardNav/DashboardNav'
@@ -44,6 +44,7 @@ export default function DashboardPage({ user }) {
                   <Route path={`${match.url}/profile`}>
                     <Profile changeTitle={() => changeTitle('profile')} firstName={firstName} lastName={lastName} email={email} />
                   </Route>
+                  <Redirect to={`${match.url}/overview`} />
                 </div>
               </section>
             </div>
