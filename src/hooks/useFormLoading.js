@@ -5,6 +5,7 @@ export default function useFormLoading(text, loadingText = 'sending...') {
 
     const handleLoading = useCallback(isLoading => {
         if (isLoading) setButtonText(loadingText)
+        else setButtonText(text)
     }, [])
 
     return { buttonText, handleLoading }
