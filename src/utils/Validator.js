@@ -18,7 +18,7 @@ class Validator {
 
         if (type === 'IS_REQUIRED') isValid = isValid && inputValue.trim().length > 0
         if (type === 'IS_TRUTHY') isValid = isValid && inputValue === true
-        if (type === 'IS_GREATER_THAN_ZERO') isValid = isValid && typeof inputValue === 'number' && inputValue > 0
+        if (type === 'IS_GREATER_THAN_ZERO') isValid = isValid && +inputValue > 0
         if (type === 'MIN_LENGTH') isValid = isValid && value <= inputValue.trim().length
         if (type === 'MAX_LENGTH') isValid = isValid && value >= inputValue.trim().length
         if (type === 'IS_EMAIL') isValid = isValid && /^\S+@\S+\.\S+$/.test(inputValue)
