@@ -103,6 +103,17 @@
     }
 }
 
-.form--center-content .form__container {
+.form--modal .form__container {
     justify-content: center;
+}
+
+.form--modal .form__button-wrapper {
+    &>button {
+        min-width: 10rem;
+
+        &:not(:last-child) {
+            margin-right: 2rem;
+
+        }
+    }
 }
