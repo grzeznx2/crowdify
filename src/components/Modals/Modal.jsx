@@ -18,7 +18,7 @@ export default function Modal({ isModalOpen, handleClick, outerContainerModifier
             <CloseButton otherClasses='modal__button-close' handleClick={handleClick} iconModifiers='hv-fill-primary' />
             <div className="modal__inner-container">
                 <div className={joinClasses("modal__content", contentModifiers)}>
-                    {title && <h3 class="modal__title heading-3 text-white">Withdraw</h3>}
+                    {title && <h3 class="modal__title heading-3 text-white">{title}</h3>}
                     {text && <p class="modal__text text-white">{text}</p>}
                     {children}
                 </div>
