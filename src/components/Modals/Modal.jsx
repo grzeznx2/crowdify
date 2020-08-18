@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 
 import './Modal.scss'
 
-export default function Modal() {
+export default function Modal({ handleClick, outerContainerModifiers, title, children, contentModifiers }) {
 
     const modalRoot = document.getElementById('modal-root')
 
@@ -12,13 +12,6 @@ export default function Modal() {
         </div>
         <div className={joinClasses('modal__outer-container', outerContainerModifiers)}>
             <div className="modal__inner-container">
-                {
-                    headerTitle ?
-                        <div className="modal__header">
-                            <h3 className="modal__title">{headerTitle}</h3>
-                        </div> :
-                        null
-                }
                 <div className={joinClasses("modal__content", contentModifiers)}>
                     {title ?
                         <h3 class="modal__title">{title}</h3> :
