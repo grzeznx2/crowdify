@@ -91,13 +91,22 @@
         background-color: $COLOR_WHITE;
     }
 
-    &--on-blue-bg {
+    &--on-blue-bg,
+    &--on-red-bg {
         color: $COLOR_WHITE;
     }
 
-    &--on-blue-bg &__input {
+    &--on-blue-bg &__input,
+    &--on-red-bg &__input {
         background-color: $COLOR_WHITE;
+    }
+
+    &--on-blue-bg &__input {
         color: $COLOR_BLUE_30;
+    }
+
+    &--on-red-bg &__input {
+        color: $COLOR_RED_30;
     }
 
     &--center-input-text &__input {
