@@ -36,7 +36,9 @@ export default function Form({ formInputs, buttons, name, formModifiers, formOth
                 }
             </div>
             {children}
-            {buttons}
+            <div className="form__button-wrapper">
+                {buttons}
+            </div>
         </form>
     )
 }
