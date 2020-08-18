@@ -102,6 +102,15 @@ export default function useForm(form, formInputs) {
                 }
                 method = 'POST'
                 break
+            case 'addFunds':
+                url = '/api/v1/transactions'
+                body = {
+                    amount: +inputs.addFunds.value,
+                    increaseAccountValue: true,
+                    type: 'deposit'
+                }
+                method = 'POST'
+                break
             case 'changePersonalData':
                 url = '/api/v1/users/updateMe'
                 body = inputs
