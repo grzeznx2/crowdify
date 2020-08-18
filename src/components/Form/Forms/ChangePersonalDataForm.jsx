@@ -122,12 +122,15 @@ export default function ChangePersonalDataForm({ firstName, lastName, email }) {
         dispatch(setCurrentUser(response.user))
     }, [dispatch])
 
+    const handleLoading = isLoading => { }
+
     return (
         <Form
             handleResponse={handleResponse}
             formInputs={inputs}
             name='changePersonalData'
             formModifiers='change-personal-data'
+            handleLoading={handleLoading}
         />
     )
 }
