@@ -41,14 +41,16 @@ export default function AddFundsForm({ handleClick }) {
             <Button modifiers='secondary'>{buttonText}</Button>
         </>
 
-    const handleResponse = () => { }
+    const handleResponse = response => {
+        console.log(response)
+    }
 
     return (
         <Form
             formInputs={inputs}
             handleResponse={handleResponse}
             handleLoading={handleLoading}
-            name='addFundsForm'
+            name='addFunds'
             formModifiers='modal'
             buttons={buttons}
         >
