@@ -13,10 +13,8 @@ export default function Modal({ handleClick, outerContainerModifiers, title, chi
         <div className={joinClasses('modal__outer-container', outerContainerModifiers)}>
             <div className="modal__inner-container">
                 <div className={joinClasses("modal__content", contentModifiers)}>
-                    {title ?
-                        <h3 class="modal__title heading-3 text-white">Withdraw</h3>
-                        : null
-                    }
+                    {title && <h3 class="modal__title heading-3 text-white">Withdraw</h3>}
+                    {text && <p class="modal__text text-white">{text}</p>}
                     {children}
                 </div>
             </div>
