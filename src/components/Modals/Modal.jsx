@@ -5,7 +5,7 @@ import { joinClasses } from '../../utils/utils'
 
 import './Modal.scss'
 
-export default function Modal({ handleClick, outerContainerModifiers, title, text, children, contentModifiers }) {
+export default function Modal({ isModalOpen, handleClick, outerContainerModifiers, title, text, children, contentModifiers }) {
 
     const modalRoot = document.getElementById('modal-root')
 
@@ -23,7 +23,5 @@ export default function Modal({ handleClick, outerContainerModifiers, title, tex
         </div>
     </div>
 
-    return (
-        ReactDOM.createPortal(modalMarkup, modalRoot)
-    )
+    return isModalOpen && ReactDOM.createPortal(modalMarkup, modalRoot)
 }
