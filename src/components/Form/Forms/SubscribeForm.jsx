@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useState, useCallback } from 'react'
 
 import Validator from '../../../utils/Validator'
 
+import Button from '../../Button/Button'
 import Form from './Form'
 
 export default function LoginForm() {
+    const [buttonText, setButtonText] = useState('subscribe')
+
     const inputs = {
         subscribeName: {
             title: 'name',
@@ -32,12 +35,20 @@ export default function LoginForm() {
         },
     }
 
+    const buttons = <Button modifiers='primary'>{buttonText}</Button>
+
+
+    const handleLoading = useCallback(isLoading => {
+        if (isLoading) setButtonText('sending...')
+    }, [])
+
     return (
         <Form
             formInputs={inputs}
             name='subscribe'
             formModifiers='center-column subscribe'
-            buttonText='subscribe'
+            buttons={buttons}
+            handleLoading={handleLoading}
         />
     )
 }

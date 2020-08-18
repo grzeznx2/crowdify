@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useCallback, useState } from 'react'
+
+import Button from '../../Button/Button'
 
 import Validator from '../../../utils/Validator'
 
 import Form from './Form'
 
 export default function ChangePasswordForm() {
+    const [buttonText, setButtonText] = useState('save password')
+
     const inputs = {
         changePasswordCurrent: {
             title: 'current password',
@@ -45,12 +49,20 @@ export default function ChangePasswordForm() {
         },
     }
 
+    const buttons = <Button modifiers='primary'>{buttonText}</Button>
+
+    const handleLoading = useCallback(isLoading => {
+        if (isLoading) setButtonText('sending...')
+    }, [])
+
     return (
         <Form
             formInputs={inputs}
             name='changePassword'
             formModifiers='change-password'
-            buttonText='save password'>
+            buttons={buttons}
+            handleLoading={handleLoading}
+        >
         </Form>
     )
 }

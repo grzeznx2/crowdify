@@ -1,14 +1,18 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
 import { setCurrentUser } from '../../../redux/user/actions'
+
+import Button from '../../Button/Button'
 
 import Validator from '../../../utils/Validator'
 
 import Form from './Form'
 
 export default function LoginForm() {
+    const [buttonText, setButtonText] = useState('login')
+
     const inputs = {
         loginEmail: {
             title: 'email',
@@ -45,6 +49,12 @@ export default function LoginForm() {
         history.push('/dashboard/overview')
     }, [dispatch])
 
+    const buttons = <Button modifiers='primary'>{buttonText}</Button>
+
+    const handleLoading = useCallback(isLoading => {
+        if (isLoading) setButtonText('sending...')
+    }, [])
+
     return (
         <Form
             formInputs={inputs}
@@ -52,7 +62,9 @@ export default function LoginForm() {
             name='login'
             formModifiers='center-column auth'
             title='sign in'
-            buttonText='sign in'
+            buttons={buttons}
+            handleLoading={handleLoading}
+            // buttonText='sign in'
             children>
             <a href="#" class="form__forgot-password-link">Forgot your password?</a>
         </Form>
