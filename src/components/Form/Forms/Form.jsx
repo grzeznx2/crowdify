@@ -26,7 +26,7 @@ export default function Form({ formInputs, name, formModifiers, formOtherClasses
                         Sign In</h3>
                     : null
             }
-            <div className={joinClasses('form__container', containerModifiers, containerOtherClasses)}>
+            <div className='form__container'>
                 {
                     Object.values(inputs).map(input => <FormGroup handleEditButton={handleEditButton} key={input.id} onChange={handleChange} {...input} />)
                 }
@@ -34,7 +34,7 @@ export default function Form({ formInputs, name, formModifiers, formOtherClasses
             {children}
             {
                 buttonText &&
-                <div className={joinClasses('form__button-wrapper', buttonWrapperModifiers)}>
+                <div className='form__button-wrapper'>
                     <Button modifiers='primary'>{isLoading ? 'Sending...' : buttonText}</Button>
                 </div>
             }
