@@ -1,4 +1,5 @@
 import { useReducer, useCallback, useRef, useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 
 import useFetch from './useFetch'
 
@@ -64,6 +65,7 @@ export default function useForm(form, formInputs) {
     const [inputs, dispatch] = useReducer(formReducer, formInputs)
     const { isLoading, error, sendRequest } = useFetch()
     const [response, setResponse] = useState()
+    const params = useParams()
 
     useEffect(() => {
         if (form === 'changePersonalData') {
@@ -117,6 +119,13 @@ export default function useForm(form, formInputs) {
                     amount: +inputs.withdrawFunds.value,
                     increaseAccountValue: false,
                     type: 'withdrawal'
+                }
+                method = 'POST'
+                break
+            case 'investInProject':
+                url = `/api/v1/projects/${params.projectId}/investments`
+                body = {
+                    amount: +inputs.investInProject.value,
                 }
                 method = 'POST'
                 break
