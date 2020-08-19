@@ -41,6 +41,7 @@ export default function AddFundsForm({ closeModal }) {
         </>
 
     const handleResponse = response => {
+        closeModal()
     }
 
     return (
