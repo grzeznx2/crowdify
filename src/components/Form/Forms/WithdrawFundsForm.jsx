@@ -1,15 +1,18 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 
 import Button from '../../Button/Button'
+import Form from './Form'
 
 import Validator from '../../../utils/Validator'
 
-import Form from './Form'
-
 import useFormLoading from '../../../hooks/useFormLoading'
+
+import { setFlashMessage } from '../../../redux/flashMessage/actions'
 
 export default function WithdrawFundsForm({ closeModal }) {
     const { buttonText, handleLoading } = useFormLoading('withdraw')
+    const dispatch = useDispatch()
 
     const inputs = {
         withdrawFunds: {
@@ -40,12 +43,21 @@ export default function WithdrawFundsForm({ closeModal }) {
             <Button modifiers='secondary text-warning'>{buttonText}</Button>
         </>
 
-    const handleResponse = () => { }
+    const handleResponse = response => {
+        closeModal()
+        dispatch(setFlashMessage('success', 'Funds were successfully sent to your bank account.'))
+    }
+
+    const handleError = error => {
+        closeModal()
+        dispatch(setFlashMessage('error', error.message))
+    }
 
     return (
         <Form
             formInputs={inputs}
             handleResponse={handleResponse}
+            handleError={handleError}
             handleLoading={handleLoading}
             name='withdrawFunds'
             formModifiers='modal'
