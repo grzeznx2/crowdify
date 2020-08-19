@@ -1,0 +1,36 @@
+@import '../../styles/abstracts/variables';
+
+.flash-message {
+    position: fixed;
+    z-index: 90;
+    top: $HEADER_HEIGHT;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100vw - 3 * #{$GRID_MARGIN_VERTICAL});
+    padding: 3rem 2rem;
+    background-color: $COLOR_WHITE;
+    box-shadow: $BOX_SHADOW_MEDIUM;
+
+    &--error {
+        border-top: 15px solid $COLOR_RED_30;
+        border-bottom: 15px solid $COLOR_RED_30;
+    }
+
+    &--success {
+        border-top: 15px solid $COLOR_GREEN_30;
+        border-bottom: 15px solid $COLOR_GREEN_30;
+    }
+
+    &__close-button-container {
+        position: absolute;
+        top: 50%;
+        right: 3rem;
+        transform: translateY(-50%);
+    }
+
+    &__content {}
+
+    &__text {
+        text-align: center;
+    }
+}
