@@ -1,8 +1,11 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 
 import CloseButton from '../Button/CloseButton/CloseButton'
 
 import { joinClasses } from '../../utils/utils'
+
+import './FlashMessage.scss'
 
 export default function FlashMessage() {
     const type = 'error'
