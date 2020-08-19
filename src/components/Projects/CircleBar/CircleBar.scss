@@ -28,15 +28,6 @@
         stroke-linecap: round;
         transform: rotate(180deg);
         transform-origin: center;
-        stroke-dasharray: 540;
-
-        &--total {
-            stroke-dashoffset: 480;
-        }
-
-        &--min {
-            stroke-dashoffset: 300;
-        }
     }
 
     &__percent-box {
