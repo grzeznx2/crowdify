@@ -1,8 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 
-import Table from './Table/Table'
+import useFetch from '../../../hooks/useFetch'
+
+import Table from '../Tables/Table'
 
 export default function Transactions({ changeTitle }) {
+    const userTransactions = useSelector(state => state.user.currentUser.transactions)
+    const { isLoading, error, sendRequest } = useFetch()
+    const [transactions, setTransactions] = useState(userTransactions)
+
     useEffect(() => {
         changeTitle()
     }, [])
