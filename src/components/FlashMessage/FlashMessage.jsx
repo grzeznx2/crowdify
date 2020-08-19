@@ -7,14 +7,11 @@ import { joinClasses } from '../../utils/utils'
 
 import './FlashMessage.scss'
 
-export default function FlashMessage() {
-    const type = 'error'
-    const text = 'Something went wrong'
-
+export default function FlashMessage({ text, messageType }) {
 
     const flashMessageContainer = document.getElementById('flash-message-root')
     const flashMessageMarkup =
-        <div className={joinClasses('flash-message', type)}>
+        <div className={joinClasses('flash-message', messageType)}>
             <div className="flash-message__content">
                 <p className="flash-message__text">{text}</p>
             </div>
