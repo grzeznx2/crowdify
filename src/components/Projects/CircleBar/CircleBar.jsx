@@ -35,7 +35,7 @@ export default function CircleBar({ paid, minTarget, totalTarget, modifiers, oth
                         strokeDashoffset: totalProgressCircle.progressDashoffset,
                         strokeDasharray: totalProgressCircle.circumference,
                     }}
-                    className="circle-bar__ring-progress circle-bar__ring-progress--total"
+                    className="circle-bar__ring-progress"
                     cx={circleCenter}
                     cy={circleCenter}
                     r={totalProgressCircle.radius} />
@@ -49,7 +49,7 @@ export default function CircleBar({ paid, minTarget, totalTarget, modifiers, oth
                         strokeDashoffset: minProgressCircle.progressDashoffset,
                         strokeDasharray: minProgressCircle.circumference,
                     }}
-                    className="circle-bar__ring-progress circle-bar__ring-progress--min"
+                    className="circle-bar__ring-progress"
                     cx={circleCenter}
                     cy={circleCenter}
                     r={minProgressCircle.radius} />
