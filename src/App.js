@@ -14,10 +14,13 @@ import ProjectPage from './pages/ProjectPage/ProjectPage'
 
 function App() {
   const user = useSelector(state => state.user.currentUser)
+  const flashMessage = useSelector(state => state.flashMessage)
 
   return (
     <div>
-      <FlashMessage />
+      {
+        flashMessage.mounted && <FlashMessage text={flashMessage.text} messageType={flashMessage.messageType} />
+      }
       <div className="header-placeholder"></div>
       <Header user={user} />
       <Route exact path='/' component={HomePage} />
