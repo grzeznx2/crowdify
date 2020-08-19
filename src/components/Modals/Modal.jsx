@@ -7,15 +7,15 @@ import { joinClasses } from '../../utils/utils'
 
 import './Modal.scss'
 
-export default function Modal({ isModalOpen, handleClick, outerContainerModifiers, title, text, children, contentModifiers }) {
+export default function Modal({ isModalOpen, closeModal, outerContainerModifiers, title, text, children, contentModifiers }) {
 
     const modalRoot = document.getElementById('modal-root')
 
     const modalMarkup = <div className="modal">
-        <div onClick={handleClick} className='modal__background'>
+        <div onClick={closeModal} className='modal__background'>
         </div>
         <div className={joinClasses('modal__outer-container', outerContainerModifiers)}>
-            <CloseButton otherClasses='modal__button-close' handleClick={handleClick} iconModifiers='hv-fill-primary' />
+            <CloseButton otherClasses='modal__button-close' handleClick={closeModal} iconModifiers='hv-fill-primary' />
             <div className="modal__inner-container">
                 <div className={joinClasses("modal__content", contentModifiers)}>
                     {title && <h3 class="modal__title heading-3 text-white">{title}</h3>}

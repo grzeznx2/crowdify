@@ -8,7 +8,7 @@ import Form from './Form'
 
 import useFormLoading from '../../../hooks/useFormLoading'
 
-export default function AddFundsForm({ handleClick }) {
+export default function AddFundsForm({ closeModal }) {
     const { buttonText, handleLoading } = useFormLoading('add funds')
 
     const inputs = {
@@ -32,7 +32,7 @@ export default function AddFundsForm({ handleClick }) {
     const cancel = e => {
         e.preventDefault()
         console.log('ELO')
-        handleClick()
+        closeModal()
     }
 
     const buttons =

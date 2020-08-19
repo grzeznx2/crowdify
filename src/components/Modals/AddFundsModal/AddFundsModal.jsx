@@ -3,16 +3,16 @@ import React from 'react'
 import AddFundsForm from '../../Form/Forms/AddFundsForm'
 import Modal from '../Modal'
 
-export default function AddFundsModal({ isModalOpen, handleClick }) {
+export default function AddFundsModal({ isModalOpen, closeModal }) {
     return (
         <Modal
             isModalOpen={isModalOpen}
-            handleClick={handleClick}
+            closeModal={closeModal}
             title='Add funds to your account'
             outerContainerModifiers='bg-blue'
             contentModifiers='center'
         >
-            <AddFundsForm handleClick={handleClick} />
+            <AddFundsForm closeModal={closeModal} />
         </Modal>
     )
 }

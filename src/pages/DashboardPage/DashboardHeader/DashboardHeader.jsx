@@ -18,8 +18,8 @@ export default function DashboardHeader({ title }) {
 
     return (
         <>
-            <AddFundsModal isModalOpen={isAddFundsModalOpen} handleClick={closeAddFundsModal} />
-            <WithdrawFundsModal isModalOpen={isWithdrawFundsModalOpen} handleClick={closeWithdrawFundsModal} />
+            <AddFundsModal isModalOpen={isAddFundsModalOpen} closeModal={closeAddFundsModal} />
+            <WithdrawFundsModal isModalOpen={isWithdrawFundsModalOpen} closeModal={closeWithdrawFundsModal} />
             <header class="dashboard-header section-dashboard__header">
                 <h3 class="heading-3 dashboard-header__title">{title}</h3>
                 <div class="dashboard-header__buttons-container">
