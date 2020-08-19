@@ -5,3 +5,7 @@ export const setFlashMessage = (messageType, text) => ({
     messageType,
     text
 })
+
+export const clearFlashMessage = () => ({
+    type: types.CLEAR_FLASH_MESSAGE
+})
