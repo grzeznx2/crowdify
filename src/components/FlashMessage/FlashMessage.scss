@@ -2,7 +2,7 @@
 
 .flash-message {
     position: fixed;
-    z-index: 90;
+    z-index: $FLASH_MESSAGE_Z_INDEX;
     top: $HEADER_HEIGHT;
     left: 50%;
     transform: translateX(-50%);
