@@ -15,6 +15,13 @@ export default function flashMessageReducer(state = initialState, action) {
                 text: action.text,
                 messageType: action.messageType
             }
+        case types.CLEAR_FLASH_MESSAGE:
+            return {
+                ...state,
+                mounted: false,
+                text: '',
+                messageType: ''
+            }
         default:
             return state
     }
