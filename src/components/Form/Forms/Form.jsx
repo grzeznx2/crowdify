@@ -9,7 +9,7 @@ import { joinClasses } from '../../../utils/utils'
 
 import './Form.scss'
 
-export default function Form({ formInputs, buttons, name, formModifiers, formOtherClasses, title, children, handleResponse, handleLoading }) {
+export default function Form({ formInputs, buttons, name, formModifiers, formOtherClasses, title, children, handleResponse, handleError, handleLoading }) {
 
     const { inputs, isLoading, error, response, handleChange, handleSubmit, handleEditButton } = useForm(name, formInputs)
 
@@ -17,6 +17,11 @@ export default function Form({ formInputs, buttons, name, formModifiers, formOth
         if (response) handleResponse(response)
     },
         [response])
+
+    useEffect(() => {
+        if (error) handleError(error)
+    },
+        [error])
 
     useEffect(() => {
         handleLoading(isLoading)

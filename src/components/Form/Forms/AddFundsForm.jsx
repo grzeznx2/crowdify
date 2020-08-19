@@ -48,10 +48,16 @@ export default function AddFundsForm({ closeModal }) {
         dispatch(setFlashMessage('success', 'Funds were successfully added to your account.'))
     }
 
+    const handleError = error => {
+        closeModal()
+        dispatch(setFlashMessage('error', error.message))
+    }
+
     return (
         <Form
             formInputs={inputs}
             handleResponse={handleResponse}
+            handleError={handleError}
             handleLoading={handleLoading}
             name='addFunds'
             formModifiers='modal'
