@@ -1,15 +1,18 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 
 import Button from '../../Button/Button'
+import Form from './Form'
 
 import Validator from '../../../utils/Validator'
 
-import Form from './Form'
-
 import useFormLoading from '../../../hooks/useFormLoading'
+
+import { setFlashMessage } from '../../../redux/flashMessage/actions'
 
 export default function AddFundsForm({ closeModal }) {
     const { buttonText, handleLoading } = useFormLoading('add funds')
+    const dispatch = useDispatch()
 
     const inputs = {
         addFunds: {
@@ -42,6 +45,7 @@ export default function AddFundsForm({ closeModal }) {
 
     const handleResponse = response => {
         closeModal()
+        dispatch(setFlashMessage('success', 'Funds were successfully added to your account.'))
     }
 
     return (
