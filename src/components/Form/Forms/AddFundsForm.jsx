@@ -31,7 +31,6 @@ export default function AddFundsForm({ closeModal }) {
 
     const cancel = e => {
         e.preventDefault()
-        console.log('ELO')
         closeModal()
     }
 
@@ -42,7 +41,6 @@ export default function AddFundsForm({ closeModal }) {
         </>
 
     const handleResponse = response => {
-        console.log(response)
     }
 
     return (
