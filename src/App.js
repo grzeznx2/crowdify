@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux'
 import { Route, Redirect } from 'react-router-dom'
 
+import FlashMessage from './components/FlashMessage/FlashMessage'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import Logout from './components/Logout/Logout'
@@ -16,6 +17,7 @@ function App() {
 
   return (
     <div>
+      <FlashMessage />
       <div className="header-placeholder"></div>
       <Header user={user} />
       <Route exact path='/' component={HomePage} />
