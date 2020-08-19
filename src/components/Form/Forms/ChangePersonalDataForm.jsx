@@ -1,11 +1,13 @@
 import React, { useCallback } from 'react'
 import { useDispatch } from 'react-redux'
 
+import Form from './Form'
+
 import { setCurrentUser } from '../../../redux/user/actions'
+import { setFlashMessage } from '../../../redux/flashMessage/actions'
 
 import Validator from '../../../utils/Validator'
 
-import Form from './Form'
 
 export default function ChangePersonalDataForm({ firstName, lastName, email }) {
     const inputs = {
@@ -120,17 +122,23 @@ export default function ChangePersonalDataForm({ firstName, lastName, email }) {
 
     const handleResponse = useCallback(response => {
         dispatch(setCurrentUser(response.user))
+        dispatch(setFlashMessage('success', 'Your personal data was succesfully updated!'))
     }, [dispatch])
 
     const handleLoading = isLoading => { }
 
+    const handleError = error => {
+        dispatch(setFlashMessage('error', error.message))
+    }
+
     return (
         <Form
             handleResponse={handleResponse}
+            handleError={handleError}
+            handleLoading={handleLoading}
             formInputs={inputs}
             name='changePersonalData'
             formModifiers='change-personal-data'
-            handleLoading={handleLoading}
         />
     )
 }
