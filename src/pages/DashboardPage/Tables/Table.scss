@@ -58,8 +58,13 @@
     &__details-container {}
 
     &__detail-title {
+        display: inline-block;
         color: $COLOR_BLACK;
         font-weight: 600;
+
+        &::first-letter {
+            text-transform: uppercase;
+        }
     }
 
     &__detail-content {
