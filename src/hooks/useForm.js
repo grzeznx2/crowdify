@@ -167,7 +167,7 @@ export default function useForm(form, formInputs) {
         let isFormValid = true
 
         for (let input of inputsArray) {
-            if (!input.isValid && (input.hasOwnPropery('validators'))) {
+            if (!input.isValid && (input.hasOwnProperty('validators'))) {
                 isFormValid = false
                 const { value, validators, name } = input
                 const euqalValidator = validators.find(validator => validator.type === 'IS_EQUAL')
