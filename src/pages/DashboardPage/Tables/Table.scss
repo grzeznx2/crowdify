@@ -87,7 +87,14 @@
     }
 
     &__amount {
-        color: $COLOR_BLACK;
         font-weight: 600;
+
+        &--positive {
+            color: $COLOR_GREEN_30
+        }
+
+        &--negative {
+            color: $COLOR_RED_30
+        }
     }
 }
