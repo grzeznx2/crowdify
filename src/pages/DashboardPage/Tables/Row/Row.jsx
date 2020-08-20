@@ -1,9 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import { joinClasses } from '../../../../utils/utils'
 
 export default function Row({ transaction }) {
-    const { createdAt, type, amount, increaseAccountValue } = transaction
+    const { createdAt, type, amount, increaseAccountValue, project, projectName } = transaction
     console.log(transaction)
 
     const getDateAndTime = ISOString => {
@@ -18,8 +19,23 @@ export default function Row({ transaction }) {
         return [sign, modifier]
     }
 
+    const createDetailContent = (project, projectName) => {
+        let detailContent = null
+        if (project) {
+            detailContent =
+                <div className="table__detail-content">
+                    <span className="table__detail-label">Project:</span>
+                    <Link to={`/projects/${project}`} className="table__project-id">
+                        {projectName}
+                    </Link>
+                </div>
+        }
+        return detailContent
+    }
+
     const [date, time] = getDateAndTime(createdAt)
     const [sign, modifier] = getSignAndModifier(increaseAccountValue)
+    const detailContent = createDetailContent(project, projectName)
 
     return (
         <tr className="table__row">
@@ -29,10 +45,9 @@ export default function Row({ transaction }) {
             </td>
             <td className="table__cell">
                 <span className="table__detail-title">{type}</span>
-                <div className="table__detail-content">
-                    <span className="table__detail-label">Project:</span>
-                    <a href="#" className="table__project-id">CRP-1245</a>
-                </div>
+                {
+                    detailContent
+                }
             </td>
             <td className="table__cell table__cell--amount">
                 <span className={joinClasses("table__amount", modifier)}>{sign}{amount}$</span>
