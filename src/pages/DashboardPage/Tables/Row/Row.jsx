@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { joinClasses } from '../../../../utils/utils'
+
 export default function Row({ transaction }) {
     const { createdAt, type, amount, increaseAccountValue } = transaction
     console.log(transaction)
@@ -33,7 +35,7 @@ export default function Row({ transaction }) {
                 </div>
             </td>
             <td className="table__cell table__cell--amount">
-                <span className="table__amount">{sign}{amount}$</span>
+                <span className={joinClasses("table__amount", modifier)}>{sign}{amount}$</span>
             </td>
         </tr>
     )
