@@ -5,7 +5,7 @@ export default function Row({ transaction }) {
     console.log(transaction)
 
     const getDateAndTime = ISOString => {
-        let [date, time] = createdAt.split('T')
+        let [date, time] = ISOString.split('T')
         time = time.slice(0, 5)
         return [date, time]
     }
