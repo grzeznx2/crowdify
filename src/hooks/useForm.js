@@ -109,7 +109,7 @@ export default function useForm(form, formInputs) {
                 body = {
                     amount: +inputs.addFunds.value,
                     increaseAccountValue: true,
-                    type: 'deposit'
+                    type: 'account deposit'
                 }
                 method = 'POST'
                 break
@@ -118,7 +118,7 @@ export default function useForm(form, formInputs) {
                 body = {
                     amount: +inputs.withdrawFunds.value,
                     increaseAccountValue: false,
-                    type: 'withdrawal'
+                    type: 'funds withdrawal'
                 }
                 method = 'POST'
                 break
