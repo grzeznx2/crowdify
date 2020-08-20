@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 
 import useFetch from '../../../hooks/useFetch'
 
+import FilterTransactionsForm from '../../../components/Form/Forms/FilterTransactionsForm'
 import Table from '../Tables/Table'
 
 export default function Transactions({ changeTitle }) {
@@ -22,47 +23,10 @@ export default function Transactions({ changeTitle }) {
 								 </h5>
                     </div>
                     <div class="data-box__content-box">
-                        <form action="#" class="form">
-                            <div class="form__container form__container--filter-transactions">
-                                <div class="input-group input-group--column">
-                                    <label for="register-first-name" class="input-group__label">First
-											 Name:</label>
-                                    <input size="1" id="register-first-name" type="text"
-                                        class="input-group__input" />
-                                </div>
-                                <div class="input-group input-group--column">
-                                    <label for="register-first-name" class="input-group__label">First
-											 Name:</label>
-                                    <input size="1" id="register-first-name" type="text"
-                                        class="input-group__input" />
-                                </div>
-                                <div class="input-group input-group--column">
-                                    <label for="register-first-name" class="input-group__label">First
-											 Name:</label>
-                                    <input size="1" id="register-first-name" type="text"
-                                        class="input-group__input" />
-                                </div>
-                                <div class="input-group input-group--column">
-                                    <label for="register-first-name" class="input-group__label">First
-											 Name:</label>
-                                    <input size="1" id="register-first-name" type="text"
-                                        class="input-group__input" />
-                                </div>
-                                <div class="input-group input-group--column">
-                                    <label for="register-first-name" class="input-group__label">First
-											 Name:</label>
-                                    <input size="1" id="register-first-name" type="text"
-                                        class="input-group__input" />
-                                </div>
-                            </div>
-                            <div class="form__button-wrapper form__button-wrapper--change-password">
-                                <a href="#" class="button button--primary">Save Password</a>
-                            </div>
-                        </form>
+                        <FilterTransactionsForm />
                     </div>
                 </div>
             </div>
-
             <div class="section-dashboard__box">
                 <Table transactions={transactions} />
             </div>
