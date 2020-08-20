@@ -14,6 +14,15 @@ const formReducer = (state, action) => {
             const value = action.target.type === "checkbox" ? action.target.checked : action.target.value;
             id = action.target.id
             const { validators } = state[id]
+            if (!validators) {
+                return {
+                    ...state,
+                    [id]: {
+                        ...state[id],
+                        value,
+                    }
+                }
+            }
             const euqalValidator = validators.find(validator => validator.type === 'IS_EQUAL')
             const equalValue = euqalValidator ? state[euqalValidator.value].value : ''
             const { isValid, errors } = Validator.validateAll(validators, value, equalValue)
@@ -158,7 +167,7 @@ export default function useForm(form, formInputs) {
         let isFormValid = true
 
         for (let input of inputsArray) {
-            if (!input.isValid) {
+            if (!input.isValid && (input.hasOwnPropery('validators'))) {
                 isFormValid = false
                 const { value, validators, name } = input
                 const euqalValidator = validators.find(validator => validator.type === 'IS_EQUAL')
