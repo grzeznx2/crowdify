@@ -64,7 +64,7 @@ export default function Transactions({ changeTitle }) {
             </div>
 
             <div class="section-dashboard__box">
-                <Table />
+                <Table transactions={transactions} />
             </div>
         </>
     )
