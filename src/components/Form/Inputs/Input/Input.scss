@@ -2,122 +2,122 @@
 @import '../../../../styles/abstracts/mixins';
 
 .input {
+  display: flex;
+  margin-bottom: 2rem;
+  position: relative;
+
+  &--column {
+    @include flex-column;
+  }
+
+  &__label {
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+
+  &__input {
+    display: inline-block;
+    width: 100%;
+    border: none;
+    border-bottom: 3px solid $COLOR_GRAY_5;
+    padding: 1rem 1.5rem;
+    font-size: 1.6rem;
+    font-family: inherit;
+    background-color: $COLOR_GRAY_5;
+    transition: all 0.3s;
+    box-shadow: $BOX_SHADOW_SMALL;
+    color: inherit;
+    resize: none;
+
+    &:focus {
+      outline: none;
+      box-shadow: $BOX_SHADOW_MEDIUM;
+    }
+
+    &--invalid {
+      border-bottom: 3px solid $COLOR_RED_30;
+    }
+
+    &--valid {
+      border-bottom: 3px solid $COLOR_GREEN_30;
+    }
+
+    &--modal {
+      align-self: center;
+      width: 15rem;
+    }
+  }
+
+  &__round-buttons-container {
+    position: absolute;
+    top: 40px;
+    right: 2%;
     display: flex;
-    margin-bottom: 2rem;
-    position: relative;
 
-    &--column {
-        @include flex-column;
+    & > * {
+      margin-left: 0.2rem;
+      margin-bottom: 0.2rem;
     }
+  }
 
-    &__label {
-        margin-bottom: 1rem;
-        font-size: 1.4rem;
-        font-weight: 600;
-        text-transform: capitalize;
-    }
-
-    &__input {
-        display: inline-block;
-        width: 100%;
-        border: none;
-        border-bottom: 3px solid $COLOR_GRAY_5;
-        padding: 1rem 1.5rem;
-        font-size: 1.6rem;
-        font-family: inherit;
-        background-color: $COLOR_GRAY_5;
-        transition: all .3s;
-        box-shadow: $BOX_SHADOW_SMALL;
-        color: inherit;
-
-        &:focus {
-            outline: none;
-            box-shadow: $BOX_SHADOW_MEDIUM;
-        }
-
-        &--invalid {
-            border-bottom: 3px solid $COLOR_RED_30;
-        }
-
-        &--valid {
-            border-bottom: 3px solid $COLOR_GREEN_30;
-        }
-
-        &--modal {
-            align-self: center;
-            width: 15rem;
-        }
-    }
-
-    &__round-buttons-container {
-        position: absolute;
-        top: 40px;
-        right: 2%;
-        display: flex;
-
-        &>* {
-            margin-left: .2rem;
-            margin-bottom: .2rem;
-        }
-    }
-
-    &__additional-info {
-        display: inline-block;
-        margin-top: 2rem;
-        font-size: 1.4rem;
-        font-weight: 600;
-    }
+  &__additional-info {
+    display: inline-block;
+    margin-top: 2rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
 }
 
 .input {
+  &--change-personal-data &__label {
+    display: inline-block;
+    width: 10rem;
+    font-weight: 300;
+  }
 
-    &--change-personal-data &__label {
-        display: inline-block;
-        width: 10rem;
-        font-weight: 300;
-    }
-
-    &--change-personal-data &__input {
-        flex: 1 1 50%;
-        background-color: transparent;
-        color: $COLOR_GRAY_10;
-    }
+  &--change-personal-data &__input {
+    flex: 1 1 50%;
+    background-color: transparent;
+    color: $COLOR_GRAY_10;
+  }
 }
 
 .input {
-    &--on-dark-bg {
-        color: $COLOR_WHITE;
-    }
+  &--on-dark-bg {
+    color: $COLOR_WHITE;
+  }
 
-    &--on-dark-bg &__input {
-        background-color: $COLOR_WHITE;
-    }
+  &--on-dark-bg &__input {
+    background-color: $COLOR_WHITE;
+  }
 
-    &--on-blue-bg,
-    &--on-red-bg {
-        color: $COLOR_WHITE;
-    }
+  &--on-blue-bg,
+  &--on-red-bg {
+    color: $COLOR_WHITE;
+  }
 
-    &--on-blue-bg &__input,
-    &--on-red-bg &__input {
-        background-color: $COLOR_WHITE;
-    }
+  &--on-blue-bg &__input,
+  &--on-red-bg &__input {
+    background-color: $COLOR_WHITE;
+  }
 
-    &--on-blue-bg &__input {
-        color: $COLOR_BLUE_30;
-    }
+  &--on-blue-bg &__input {
+    color: $COLOR_BLUE_30;
+  }
 
-    &--on-red-bg &__input {
-        color: $COLOR_RED_30;
-    }
+  &--on-red-bg &__input {
+    color: $COLOR_RED_30;
+  }
 
-    &--center-input-text &__input {
-        text-align: center;
-    }
+  &--center-input-text &__input {
+    text-align: center;
+  }
 }
 
 .input {
-    &--select &__input {
-        text-transform: capitalize;
-    }
+  &--select &__input {
+    text-transform: capitalize;
+  }
 }
