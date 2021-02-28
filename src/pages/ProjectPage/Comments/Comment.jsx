@@ -3,18 +3,23 @@ import React from 'react'
 import Avatar from '../../../components/Avatar/Avatar'
 import './Comment.scss'
 
-const Comment = ({ comment: { name, createdAt, content } }) => {
+const Comment = ({
+  comment: {
+    createdAt,
+    content,
+    user: { firstName, lastName, photo },
+  },
+}) => {
   return (
     <div className="comment">
       <div className="comment__top">
         <div className="comment__avatar">
-          <Avatar
-            src="https://images.unsplash.com/photo-1614485436385-dfdf19f4afa9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80"
-            alt="avatar"
-          />
+          <Avatar src={photo} alt={`${firstName} ${lastName} photo`} />
         </div>
         <div className="comment__name-date">
-          <span className="comment__name">Grzegorz Kubik</span>
+          <span className="comment__name">
+            {firstName} {lastName}
+          </span>
           <span className="comment__date">{createdAt}</span>
         </div>
       </div>
