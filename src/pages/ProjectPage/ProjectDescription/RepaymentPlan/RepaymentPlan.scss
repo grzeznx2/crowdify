@@ -1,0 +1,111 @@
+@import '../../../../styles/abstracts/variables';
+@import '../../../../styles/abstracts/mixins';
+
+.repayment-plan {
+  text-align: center;
+  height: 100%;
+  background-color: rgba($COLOR_BLUE_10, 0.05);
+  padding: 1rem;
+
+  @include respond(tp) {
+    width: 30rem;
+  }
+
+  &__title {
+    display: block;
+    color: $COLOR_BLUE_10;
+    margin-bottom: 2rem;
+  }
+
+  &__input {
+    width: 80%;
+    max-width: 15rem;
+    display: inline-block;
+  }
+
+  &__infographic {
+    margin: 2rem 0;
+  }
+
+  &__node {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  &__date {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    min-width: 8rem;
+    font-size: 1rem;
+    text-align: right;
+  }
+
+  &__circle-container {
+    @include absCenter;
+    width: 4rem;
+    height: 4rem;
+  }
+
+  &__center-placeholder {
+    position: relative;
+    width: 7rem;
+    height: 4rem;
+  }
+
+  &__circle {
+    fill: none;
+    stroke: $COLOR_BLUE_10;
+    stroke-width: 6px;
+  }
+
+  &__interest {
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10rem;
+    font-weight: 600;
+    text-align: left;
+
+    @include respond(tp) {
+      width: 5rem;
+    }
+  }
+
+  &__bridge-container {
+    height: 10rem;
+    position: relative;
+  }
+
+  &__bridge {
+    @include absCenter;
+    height: 10.2rem;
+    width: 1rem;
+  }
+
+  &__line {
+    stroke-width: 6px;
+    stroke: $COLOR_BLUE_10;
+    stroke-linecap: round;
+  }
+
+  &__total {
+    font-size: 1.4rem;
+    font-weight: 600;
+
+    &--interests {
+      margin: 1rem 0;
+    }
+  }
+
+  &__total-value {
+    display: inline-block;
+    font-size: 2.2rem;
+    font-weight: 300;
+    margin-left: 0.5rem;
+  }
+}

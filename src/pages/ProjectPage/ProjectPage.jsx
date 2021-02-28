@@ -1,36 +1,35 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 
-import useFetch from '../../hooks/useFetch';
+import useFetch from '../../hooks/useFetch'
 
-import Loader from '../../components/Loader/Loader';
-import LoanDetails from './Sections/LoanDetails/LoanDetails';
-import ProjectDescription from './Sections/ProjectDescription/ProjectDescription';
-import ProjectPresentation from './Sections/ProjectPresentation/ProjectPresentation';
+import Loader from '../../components/Loader/Loader'
+import LoanDetails from './LoanDetails/LoanDetails'
+import ProjectDescription from './ProjectDescription/ProjectDescription'
+import ProjectPresentation from './ProjectPresentation/ProjectPresentation'
 
-import './ProjectPage.scss';
+import './ProjectPage.scss'
 
 export default function ProjectPage() {
-  const [project, setProject] = useState(null);
-  const { isLoading, error, sendRequest } = useFetch();
-  const { projectId } = useParams();
+  const [project, setProject] = useState(null)
+  const { isLoading, error, sendRequest } = useFetch()
+  const { projectId } = useParams()
 
   useEffect(() => {
     const fetchProject = async () => {
       const options = {
         url: `/api/v1/projects/${projectId}`,
-      };
-      const response = await sendRequest(options);
-      if (response) {
-        setProject(response.project);
       }
-    };
+      const response = await sendRequest(options)
+      if (response) {
+        setProject(response.project)
+      }
+    }
 
-    fetchProject();
-  }, [projectId, sendRequest]);
+    fetchProject()
+  }, [projectId, sendRequest])
 
-
-  const markup = project ?
+  const markup = project ? (
     <>
       <ProjectPresentation
         duration={project.duration}
@@ -59,7 +58,8 @@ export default function ProjectPage() {
         endDate={project.endDate}
         summary={project.summary}
       />
-    </> : null
+    </>
+  ) : null
 
   return (
     <>
@@ -67,5 +67,5 @@ export default function ProjectPage() {
         {markup}
       </Loader>
     </>
-  );
+  )
 }
