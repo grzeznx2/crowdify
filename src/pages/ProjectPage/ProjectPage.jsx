@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import useFetch from '../../hooks/useFetch'
 
 import Loader from '../../components/Loader/Loader'
+import Comments from './Comments/Comments'
 import LoanDetails from './LoanDetails/LoanDetails'
 import ProjectDescription from './ProjectDescription/ProjectDescription'
 import ProjectPresentation from './ProjectPresentation/ProjectPresentation'
@@ -58,6 +59,7 @@ export default function ProjectPage() {
         endDate={project.endDate}
         summary={project.summary}
       />
+      <Comments />
     </>
   ) : null
 
