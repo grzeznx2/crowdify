@@ -59,7 +59,7 @@ export default function ProjectPage() {
         endDate={project.endDate}
         summary={project.summary}
       />
-      <Comments />
+      <Comments comments={project.comments} />
     </>
   ) : null
 

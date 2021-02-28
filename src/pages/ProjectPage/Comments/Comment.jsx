@@ -3,7 +3,7 @@ import React from 'react'
 import Avatar from '../../../components/Avatar/Avatar'
 import './Comment.scss'
 
-const Comment = () => {
+const Comment = ({ comment: { name, createdAt, content } }) => {
   return (
     <div className="comment">
       <div className="comment__top">
@@ -15,11 +15,11 @@ const Comment = () => {
         </div>
         <div className="comment__name-date">
           <span className="comment__name">Grzegorz Kubik</span>
-          <span className="comment__date">17.09.2021</span>
+          <span className="comment__date">{createdAt}</span>
         </div>
       </div>
       <div className="comment__middle">
-        <p className="comment__content">I think this project is really a waste of money!</p>
+        <p className="comment__content">{content}</p>
       </div>
       <div className="comment__bottom"></div>
     </div>
