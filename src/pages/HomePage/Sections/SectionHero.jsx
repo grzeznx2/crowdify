@@ -16,7 +16,7 @@ export default function SectionHero() {
                         to
                         returns up to 32% and connect with investors around the whole world.
                     </p>
-                    <Button to='/invest' modifiers='primary'>start investing</Button>
+                    <Button to='/projects' modifiers='primary'>start investing</Button>
                 </div>
             </div>
         </section>
