@@ -1,0 +1,36 @@
+@import '../../../styles/abstracts/variables';
+
+.comment {
+  border-bottom: 1px solid $COLOR_BLUE_10;
+
+  &__top {
+    display: flex;
+    align-items: center;
+  }
+  &__middle {
+    padding: 2rem 0;
+  }
+  &__bottom {
+  }
+  &__avatar {
+    width: 8rem;
+    height: 8rem;
+    margin-right: 2rem;
+  }
+  &__content {
+  }
+  &__name-date {
+    display: flex;
+    flex-direction: column;
+  }
+  &__name {
+    font-size: 1.8rem;
+    color: rgba($COLOR_BLACK, 0.8);
+    margin-bottom: 0.6rem;
+  }
+  &__date {
+    font-size: 1.4rem;
+  }
+  &__ {
+  }
+}
