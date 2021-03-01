@@ -10,13 +10,14 @@ import useFormLoading from '../../../hooks/useFormLoading'
 
 import { setFlashMessage } from '../../../redux/flashMessage/actions'
 
-export default function CommentForm({ closeModal }) {
+export default function CommentForm({ closeModal, currentCommentId }) {
   const { buttonText, handleLoading } = useFormLoading('add comment')
   const dispatch = useDispatch()
 
   const inputs = {
     leaveComment: {
       //   title: 'amount you would like to add',
+      currentCommentId,
       id: 'leaveComment',
       name: 'leaveComment',
       type: 'textarea',
@@ -50,6 +51,8 @@ export default function CommentForm({ closeModal }) {
 
   const handleResponse = response => {
     closeModal()
+    console.log(response)
+    console.log(currentCommentId)
     dispatch(setFlashMessage('success', 'Comment was successfully added.'))
   }
 

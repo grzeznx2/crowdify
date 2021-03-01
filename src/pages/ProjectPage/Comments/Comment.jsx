@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Avatar from '../../../components/Avatar/Avatar'
+import Button from '../../../components/Button/Button'
 import './Comment.scss'
 
 const Comment = ({
@@ -10,6 +11,7 @@ const Comment = ({
     user: { firstName, lastName, photo },
     depth,
   },
+  handleResponseButton,
 }) => {
   return (
     <div className="comment" style={{ marginLeft: `${(depth - 1) * 50}px` }}>
@@ -27,7 +29,11 @@ const Comment = ({
       <div className="comment__middle">
         <p className="comment__content">{content}</p>
       </div>
-      <div className="comment__bottom"></div>
+      <div className="comment__bottom">
+        <Button className="button" handleClick={handleResponseButton}>
+          Response
+        </Button>
+      </div>
     </div>
   )
 }

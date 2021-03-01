@@ -140,7 +140,9 @@ export default function useForm(form, formInputs) {
         method = 'PATCH'
         break
       case 'leaveComment':
-        url = `/api/v1/projects/${params.projectId}/comments`
+        url = inputs.leaveComment.currentCommentId
+          ? `/api/v1/projects/${params.projectId}/comments/${inputs.leaveComment.currentCommentId}`
+          : `/api/v1/projects/${params.projectId}/comments`
         body = {
           content: inputs.leaveComment.value,
         }
