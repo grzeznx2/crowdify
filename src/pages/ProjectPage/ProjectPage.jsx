@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
 import useFetch from '../../hooks/useFetch'
@@ -8,11 +9,13 @@ import Comments from './Comments/Comments'
 import LoanDetails from './LoanDetails/LoanDetails'
 import ProjectDescription from './ProjectDescription/ProjectDescription'
 import ProjectPresentation from './ProjectPresentation/ProjectPresentation'
+import { setProject } from '../../redux/project/actions'
 
 import './ProjectPage.scss'
 
 export default function ProjectPage() {
-  const [project, setProject] = useState(null)
+  const dispatch = useDispatch()
+  const project = useSelector(state => state.project.currentProject)
   const { isLoading, error, sendRequest } = useFetch()
   const { projectId } = useParams()
 
@@ -21,9 +24,11 @@ export default function ProjectPage() {
       const options = {
         url: `/api/v1/projects/${projectId}`,
       }
+
       const response = await sendRequest(options)
+
       if (response) {
-        setProject(response.project)
+        dispatch(setProject(response.project))
       }
     }
 
