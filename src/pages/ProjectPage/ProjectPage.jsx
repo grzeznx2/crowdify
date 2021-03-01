@@ -26,7 +26,8 @@ export default function ProjectPage() {
       }
 
       const response = await sendRequest(options)
-
+      console.log('*********')
+      console.log(response)
       if (response) {
         dispatch(setProject(response.project))
       }

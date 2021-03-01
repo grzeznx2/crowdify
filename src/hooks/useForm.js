@@ -1,5 +1,6 @@
 import { useReducer, useCallback, useRef, useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 import useFetch from './useFetch'
 
@@ -73,6 +74,7 @@ export default function useForm(form, formInputs) {
   const { isLoading, error, sendRequest } = useFetch()
   const [response, setResponse] = useState()
   const params = useParams()
+  const currentCommentId = useSelector(state => state.project.currentCommentId)
 
   useEffect(() => {
     if (form === 'changePersonalData') {
@@ -140,9 +142,8 @@ export default function useForm(form, formInputs) {
         method = 'PATCH'
         break
       case 'leaveComment':
-        url = inputs.leaveComment.currentCommentId
-          ? `/api/v1/projects/${params.projectId}/comments/${inputs.leaveComment.currentCommentId}`
-          : `/api/v1/projects/${params.projectId}/comments`
+        console.log(currentCommentId)
+        url = currentCommentId ? `/api/v1/projects/${params.projectId}/comments/${currentCommentId}` : `/api/v1/projects/${params.projectId}/comments`
         body = {
           content: inputs.leaveComment.value,
         }
@@ -160,9 +161,7 @@ export default function useForm(form, formInputs) {
     }
 
     const response = await sendRequest(options)
-    console.log(response)
     if (response) setResponse(response)
-    // console.log(response)
   }
 
   const handleSubmit = event => {

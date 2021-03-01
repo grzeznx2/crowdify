@@ -9,25 +9,21 @@ import Validator from '../../../utils/Validator'
 import useFormLoading from '../../../hooks/useFormLoading'
 
 import { setFlashMessage } from '../../../redux/flashMessage/actions'
+import { setNewComment } from '../../../redux/project/actions'
 
-export default function CommentForm({ closeModal, currentCommentId }) {
+export default function CommentForm({ closeModal }) {
   const { buttonText, handleLoading } = useFormLoading('add comment')
   const dispatch = useDispatch()
 
   const inputs = {
     leaveComment: {
-      //   title: 'amount you would like to add',
-      currentCommentId,
       id: 'leaveComment',
       name: 'leaveComment',
       type: 'textarea',
       cols: 80,
       rows: 15,
-      // min: 0,
-      // step: 10,
       isValid: false,
       isTouched: false,
-      // value: 0,
       validators: [Validator.isRequired('Comment can not be empty!')],
       errors: [],
       modifiers: 'column on-blue-bg center-input-text',
@@ -51,8 +47,7 @@ export default function CommentForm({ closeModal, currentCommentId }) {
 
   const handleResponse = response => {
     closeModal()
-    console.log(response)
-    console.log(currentCommentId)
+    dispatch(setNewComment(response.comment))
     dispatch(setFlashMessage('success', 'Comment was successfully added.'))
   }
 

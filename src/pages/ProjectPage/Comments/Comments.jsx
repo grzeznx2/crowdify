@@ -1,18 +1,24 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { setCurrentCommentId, clearCurrentCommentId } from '../../../redux/project/actions'
 
 import Button from '../../../components/Button/Button'
 import Comment from './Comment'
 import CommentModal from '../../../components/Modals/CommentModal/CommenModal'
 
 export default function Comments({ comments }) {
+  const dispatch = useDispatch()
   const [isCommentModalOpen, setIsCommentModalOpen] = useState(false)
-  const [currentCommentId, setCurrentCommentId] = useState('')
 
   const openCommentModal = () => setIsCommentModalOpen(true)
   const closeCommentModal = () => setIsCommentModalOpen(false)
 
   const handleResponseButton = commentId => {
-    setCurrentCommentId(commentId)
+    dispatch(setCurrentCommentId(commentId))
+    openCommentModal()
+  }
+  const handleAddCommentButton = () => {
+    dispatch(clearCurrentCommentId())
     openCommentModal()
   }
 
@@ -35,12 +41,12 @@ export default function Comments({ comments }) {
 
   return (
     <>
-      <CommentModal isModalOpen={isCommentModalOpen} closeModal={closeCommentModal} currentCommentId={currentCommentId} />
+      <CommentModal isModalOpen={isCommentModalOpen} closeModal={closeCommentModal} />
       <section class="section-comments">
         <h2 class="section-title section-title--text-primary">Comments</h2>
         <div class="container">
           {renderNestedComments()}
-          <Button handleClick={openCommentModal} modifiers="primary">
+          <Button handleClick={handleAddCommentButton} modifiers="primary">
             add comment
           </Button>
         </div>
