@@ -8,10 +8,11 @@ const Comment = ({
     createdAt,
     content,
     user: { firstName, lastName, photo },
+    depth,
   },
 }) => {
   return (
-    <div className="comment">
+    <div className="comment" style={{ marginLeft: `${(depth - 1) * 50}px` }}>
       <div className="comment__top">
         <div className="comment__avatar">
           <Avatar src={photo} alt={`${firstName} ${lastName} photo`} />

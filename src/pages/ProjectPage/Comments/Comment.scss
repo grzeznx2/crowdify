@@ -1,8 +1,9 @@
 @import '../../../styles/abstracts/variables';
 
 .comment {
-  border-bottom: 1px solid $COLOR_BLUE_10;
   margin-bottom: 2rem;
+  padding: 1rem;
+  box-shadow: $BOX_SHADOW_SMALL;
 
   &__top {
     display: flex;
