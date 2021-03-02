@@ -8,7 +8,7 @@ import Form from './Form'
 
 import useFormLoading from '../../../hooks/useFormLoading'
 
-export default function LoginForm({ handleResponse }) {
+export default function LoginForm({ handleResponse, handleError }) {
   const { buttonText, handleLoading } = useFormLoading('register')
 
   const inputs = {
@@ -91,11 +91,12 @@ export default function LoginForm({ handleResponse }) {
   return (
     <Form
       formInputs={inputs}
+      handleError={handleError}
       handleResponse={handleResponse}
+      handleLoading={handleLoading}
       name="register"
       formModifiers="center-column auth"
       title="create account"
-      handleLoading={handleLoading}
       buttons={buttons}
     />
   )

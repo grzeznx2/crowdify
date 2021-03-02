@@ -8,7 +8,7 @@ import Form from './Form'
 
 import useFormLoading from '../../../hooks/useFormLoading'
 
-export default function LoginForm({ handleResponse }) {
+export default function LoginForm({ handleResponse, handleError }) {
   const { buttonText, handleLoading } = useFormLoading('login')
 
   const inputs = {
@@ -44,11 +44,12 @@ export default function LoginForm({ handleResponse }) {
     <Form
       formInputs={inputs}
       handleResponse={handleResponse}
+      handleError={handleError}
+      handleLoading={handleLoading}
       name="login"
       formModifiers="center-column auth"
       title="sign in"
       buttons={buttons}
-      handleLoading={handleLoading}
       children
     >
       <a href="#" class="form__forgot-password-link">

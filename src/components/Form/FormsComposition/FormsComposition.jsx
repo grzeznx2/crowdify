@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react'
 import { useDispatch } from 'react-redux'
 import useOptionalRedirect from '../../../hooks/useOptionalRedirect'
 import { setCurrentUser } from '../../../redux/user/actions'
+import { setFlashMessage } from '../../../redux/flashMessage/actions'
 
 import Button from '../../Button/Button'
 import RegisterForm from '../Forms/RegisterForm'
@@ -25,13 +26,17 @@ export default function FormsComposition() {
     [dispatch]
   )
 
+  const handleError = error => {
+    dispatch(setFlashMessage('error', error))
+  }
+
   return (
     <div class={`forms-composition ${registerMode ? 'forms-composition--register-mode' : ''}`}>
       <div class="forms-composition__form-box forms-composition__form-box--sign-up">
-        <RegisterForm handleResponse={handleResponse} />
+        <RegisterForm handleResponse={handleResponse} handleError={handleError} />
       </div>
       <div class="forms-composition__form-box forms-composition__form-box--sign-in">
-        <LoginForm handleResponse={handleResponse} />
+        <LoginForm handleResponse={handleResponse} handleError={handleError} />
       </div>
       <div class="forms-composition__overlay-container">
         <div class="forms-composition__overlay">
