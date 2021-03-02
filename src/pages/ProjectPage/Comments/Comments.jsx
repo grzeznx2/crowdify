@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useLocation } from 'react-router-dom'
-import { setCurrentCommentId, clearCurrentCommentId } from '../../../redux/project/actions'
+import { setParentCommentId, clearParentCommentId } from '../../../redux/project/actions'
 
 import Button from '../../../components/Button/Button'
 import Comment from './Comment'
@@ -19,15 +19,25 @@ export default function Comments({ comments }) {
 
   const handleResponseButton = commentId => {
     if (user) {
-      dispatch(setCurrentCommentId(commentId))
+      dispatch(setParentCommentId(commentId))
       openCommentModal()
     } else {
       history.push(`/auth?redirectTo=${location.pathname}`)
     }
   }
+
+  const handleEditButton = commentId => {
+    if (user) {
+      dispatch(setParentCommentId(commentId))
+      openCommentModal()
+    } else {
+      history.push(`/auth?redirectTo=${location.pathname}`)
+    }
+  }
+
   const handleAddCommentButton = () => {
     if (user) {
-      dispatch(clearCurrentCommentId())
+      dispatch(clearParentCommentId())
       openCommentModal()
     } else {
       history.push(`/auth?redirectTo=${location.pathname}`)
@@ -40,7 +50,15 @@ export default function Comments({ comments }) {
     const iterate = array => {
       for (let i = 0; i < array.length; i++) {
         const comment = array[i]
-        const commentMarkup = <Comment key={comment.id} comment={comment} currentUser={user} handleResponseButton={() => handleResponseButton(comment.id)} />
+        const commentMarkup = (
+          <Comment
+            key={comment.id}
+            comment={comment}
+            currentUser={user}
+            handleEditButton={() => handleEditButton(comment.id)}
+            handleResponseButton={() => handleResponseButton(comment.id)}
+          />
+        )
         flattenedArray.push(commentMarkup)
 
         if (array[i].comments.length !== 0) iterate(array[i].comments)

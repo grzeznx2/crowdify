@@ -5,13 +5,13 @@ export const setProject = project => ({
   payload: project,
 })
 
-export const setCurrentCommentId = id => ({
-  type: types.SET_CURRENT_COMMENT_ID,
+export const setParentCommentId = id => ({
+  type: types.SET_PARENT_COMMENT_ID,
   payload: id,
 })
 
-export const clearCurrentCommentId = () => ({
-  type: types.CLEAR_CURRENT_COMMENT_ID,
+export const clearParentCommentId = () => ({
+  type: types.CLEAR_PARENT_COMMENT_ID,
 })
 
 export const setNewComment = payload => ({

@@ -12,12 +12,12 @@ export default (state = inititalState, action) => {
         ...state,
         currentProject: action.payload,
       }
-    case types.SET_CURRENT_COMMENT_ID:
+    case types.SET_PARENT_COMMENT_ID:
       return {
         ...state,
         currentCommentId: action.payload,
       }
-    case types.CLEAR_CURRENT_COMMENT_ID:
+    case types.CLEAR_PARENT_COMMENT_ID:
       return {
         ...state,
         currentCommentId: '',
