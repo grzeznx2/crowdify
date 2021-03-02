@@ -1,7 +1,4 @@
-import React, { useCallback } from 'react'
-import { useDispatch } from 'react-redux'
-import { useHistory, useLocation } from 'react-router-dom'
-import { setCurrentUser } from '../../../redux/user/actions'
+import React from 'react'
 
 import Button from '../../Button/Button'
 
@@ -11,11 +8,8 @@ import Form from './Form'
 
 import useFormLoading from '../../../hooks/useFormLoading'
 
-export default function LoginForm() {
+export default function LoginForm({ handleResponse }) {
   const { buttonText, handleLoading } = useFormLoading('register')
-  const dispatch = useDispatch()
-  const history = useHistory()
-  const searchParams = new URLSearchParams(useLocation().search)
 
   const inputs = {
     registerFirstName: {
@@ -91,16 +85,6 @@ export default function LoginForm() {
       modifiers: 'column',
     },
   }
-
-  const handleResponse = useCallback(
-    response => {
-      dispatch(setCurrentUser(response.user))
-      const redirectTo = searchParams.get('redirectTo')
-      if (redirectTo) history.push(redirectTo)
-      else history.push('/dashboard/overview')
-    },
-    [dispatch]
-  )
 
   const buttons = <Button modifiers="primary">{buttonText}</Button>
 
