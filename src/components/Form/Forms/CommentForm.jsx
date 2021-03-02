@@ -53,7 +53,7 @@ export default function CommentForm({ closeModal }) {
 
   const handleError = error => {
     closeModal()
-    dispatch(setFlashMessage('error', error.message))
+    dispatch(setFlashMessage('error', error))
   }
 
   return (
