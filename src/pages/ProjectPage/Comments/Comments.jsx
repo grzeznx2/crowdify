@@ -1,13 +1,17 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useLocation } from 'react-router-dom'
-import { setParentCommentId, clearParentCommentId } from '../../../redux/project/actions'
+import { setParentCommentId, clearParentCommentId, editComment } from '../../../redux/project/actions'
 
 import Button from '../../../components/Button/Button'
 import Comment from './Comment'
 import CommentModal from '../../../components/Modals/CommentModal/CommenModal'
 
 export default function Comments({ comments }) {
+  const [formName, setFormName] = useState('')
+  const [parentCommentId, setParentCommentId] = useState('')
+  const [currentCommentId, setCurrentCommentId] = useState('')
+
   const history = useHistory()
   const location = useLocation()
   const dispatch = useDispatch()
@@ -18,30 +22,51 @@ export default function Comments({ comments }) {
   const closeCommentModal = () => setIsCommentModalOpen(false)
 
   const handleResponseButton = commentId => {
-    if (user) {
-      dispatch(setParentCommentId(commentId))
-      openCommentModal()
-    } else {
-      history.push(`/auth?redirectTo=${location.pathname}`)
-    }
+    setFormName('response')
+    setParentCommentId(commentId)
+    setCurrentCommentId('')
+    // if (user) {
+    //   dispatch(setParentCommentId(commentId))
+    openCommentModal()
+    // } else {
+    //   history.push(`/auth?redirectTo=${location.pathname}`)
+    // }
   }
 
   const handleEditButton = commentId => {
-    if (user) {
-      dispatch(setParentCommentId(commentId))
-      openCommentModal()
-    } else {
-      history.push(`/auth?redirectTo=${location.pathname}`)
-    }
+    setFormName('edit')
+    setParentCommentId('')
+    setCurrentCommentId(commentId)
+    // if (user) {
+    //   dispatch(editComment(commentId))
+    openCommentModal()
+    // } else {
+    //   history.push(`/auth?redirectTo=${location.pathname}`)
+    // }
+  }
+
+  const handleDeleteButton = commentId => {
+    setFormName('delete')
+    setParentCommentId('')
+    setCurrentCommentId(commentId)
+    // if (user) {
+    //   dispatch(editComment(commentId))
+    openCommentModal()
+    // } else {
+    //   history.push(`/auth?redirectTo=${location.pathname}`)
+    // }
   }
 
   const handleAddCommentButton = () => {
-    if (user) {
-      dispatch(clearParentCommentId())
-      openCommentModal()
-    } else {
-      history.push(`/auth?redirectTo=${location.pathname}`)
-    }
+    setFormName('addComment')
+    setParentCommentId('')
+    setCurrentCommentId('')
+    // if (user) {
+    //   dispatch(clearParentCommentId())
+    openCommentModal()
+    // } else {
+    //   history.push(`/auth?redirectTo=${location.pathname}`)
+    // }
   }
 
   const renderNestedComments = () => {
@@ -56,6 +81,7 @@ export default function Comments({ comments }) {
             comment={comment}
             currentUser={user}
             handleEditButton={() => handleEditButton(comment.id)}
+            handleDeleteButton={() => handleDeleteButton(comment.id)}
             handleResponseButton={() => handleResponseButton(comment.id)}
           />
         )
@@ -71,7 +97,13 @@ export default function Comments({ comments }) {
 
   return (
     <>
-      <CommentModal isModalOpen={isCommentModalOpen} closeModal={closeCommentModal} />
+      <CommentModal
+        isModalOpen={isCommentModalOpen}
+        closeModal={closeCommentModal}
+        formName={formName}
+        currentCommentId={currentCommentId}
+        parentCommentId={parentCommentId}
+      />
       <section class="section-comments">
         <h2 class="section-title section-title--text-primary">Comments</h2>
         <div class="container">
