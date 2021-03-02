@@ -8,9 +8,10 @@ const Comment = ({
   comment: {
     createdAt,
     content,
-    user: { firstName, lastName, photo },
+    user: { firstName, lastName, photo, id: commentCreatorId },
     depth,
   },
+  currentUser,
   handleResponseButton,
 }) => {
   return (
@@ -33,6 +34,11 @@ const Comment = ({
         <Button className="button" handleClick={handleResponseButton}>
           Response
         </Button>
+        {currentUser && currentUser.id === commentCreatorId && (
+          <Button className="button" handleClick={handleResponseButton}>
+            Edit
+          </Button>
+        )}
       </div>
     </div>
   )

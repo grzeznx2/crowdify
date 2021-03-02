@@ -40,7 +40,7 @@ export default function Comments({ comments }) {
     const iterate = array => {
       for (let i = 0; i < array.length; i++) {
         const comment = array[i]
-        const commentMarkup = <Comment key={comment.id} comment={comment} handleResponseButton={() => handleResponseButton(comment.id)} />
+        const commentMarkup = <Comment key={comment.id} comment={comment} currentUser={user} handleResponseButton={() => handleResponseButton(comment.id)} />
         flattenedArray.push(commentMarkup)
 
         if (array[i].comments.length !== 0) iterate(array[i].comments)
