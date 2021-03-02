@@ -11,6 +11,7 @@ export default function Comments({ comments }) {
   const [formName, setFormName] = useState('')
   const [parentCommentId, setParentCommentId] = useState('')
   const [currentCommentId, setCurrentCommentId] = useState('')
+  const [currentCommentContent, setCurrentCommentContent] = useState('')
 
   const history = useHistory()
   const location = useLocation()
@@ -22,77 +23,55 @@ export default function Comments({ comments }) {
   const closeCommentModal = () => setIsCommentModalOpen(false)
 
   const handleResponseButton = commentId => {
-    setFormName('response')
-    setParentCommentId(commentId)
-    setCurrentCommentId('')
-    // if (user) {
-    //   dispatch(setParentCommentId(commentId))
-    openCommentModal()
-    // } else {
-    //   history.push(`/auth?redirectTo=${location.pathname}`)
-    // }
+    if (user) {
+      setFormName('respondToComment')
+      setParentCommentId(commentId)
+      setCurrentCommentId('')
+      setCurrentCommentContent('')
+      // dispatch(setParentCommentId(commentId))
+      openCommentModal()
+    } else {
+      history.push(`/auth?redirectTo=${location.pathname}`)
+    }
   }
 
-  const handleEditButton = commentId => {
-    setFormName('edit')
-    setParentCommentId('')
-    setCurrentCommentId(commentId)
-    // if (user) {
-    //   dispatch(editComment(commentId))
-    openCommentModal()
-    // } else {
-    //   history.push(`/auth?redirectTo=${location.pathname}`)
-    // }
+  const handleEditButton = (commentId, currentCommentContent) => {
+    if (user) {
+      setFormName('editComment')
+      setParentCommentId('')
+      setCurrentCommentId(commentId)
+      setCurrentCommentContent(currentCommentContent)
+      // dispatch(editComment(commentId))
+      openCommentModal()
+    } else {
+      history.push(`/auth?redirectTo=${location.pathname}`)
+    }
   }
 
   const handleDeleteButton = commentId => {
-    setFormName('delete')
-    setParentCommentId('')
-    setCurrentCommentId(commentId)
-    // if (user) {
-    //   dispatch(editComment(commentId))
-    openCommentModal()
-    // } else {
-    //   history.push(`/auth?redirectTo=${location.pathname}`)
-    // }
+    if (user) {
+      setFormName('delete')
+      setParentCommentId('')
+      setCurrentCommentId(commentId)
+      setCurrentCommentContent('')
+      // dispatch(editComment(commentId))
+      openCommentModal()
+    } else {
+      history.push(`/auth?redirectTo=${location.pathname}`)
+    }
   }
 
   const handleAddCommentButton = () => {
-    setFormName('addComment')
-    setParentCommentId('')
-    setCurrentCommentId('')
-    // if (user) {
-    //   dispatch(clearParentCommentId())
-    openCommentModal()
-    // } else {
-    //   history.push(`/auth?redirectTo=${location.pathname}`)
-    // }
-  }
-
-  const renderNestedComments = () => {
-    const flattenedArray = []
-
-    const iterate = array => {
-      for (let i = 0; i < array.length; i++) {
-        const comment = array[i]
-        const commentMarkup = (
-          <Comment
-            key={comment.id}
-            comment={comment}
-            currentUser={user}
-            handleEditButton={() => handleEditButton(comment.id)}
-            handleDeleteButton={() => handleDeleteButton(comment.id)}
-            handleResponseButton={() => handleResponseButton(comment.id)}
-          />
-        )
-        flattenedArray.push(commentMarkup)
-
-        if (array[i].comments.length !== 0) iterate(array[i].comments)
-      }
+    if (user) {
+      setFormName('addComment')
+      setParentCommentId('')
+      setCurrentCommentId('')
+      setCurrentCommentContent('')
+      // dispatch(clearParentCommentId())
+      openCommentModal()
+    } else {
+      history.push(`/auth?redirectTo=${location.pathname}`)
     }
-
-    iterate(comments)
-    return flattenedArray
   }
 
   return (
@@ -103,11 +82,21 @@ export default function Comments({ comments }) {
         formName={formName}
         currentCommentId={currentCommentId}
         parentCommentId={parentCommentId}
+        currentCommentContent={currentCommentContent}
       />
       <section class="section-comments">
         <h2 class="section-title section-title--text-primary">Comments</h2>
         <div class="container">
-          {renderNestedComments()}
+          {comments.map(comment => (
+            <Comment
+              key={comment.id}
+              comment={comment}
+              currentUser={user}
+              handleEditButton={() => handleEditButton(comment.id, comment.content)}
+              handleDeleteButton={() => handleDeleteButton(comment.id)}
+              handleResponseButton={() => handleResponseButton(comment.id)}
+            />
+          ))}
           <Button handleClick={handleAddCommentButton} modifiers="primary">
             {user ? 'add comment' : 'log in to add comment'}
           </Button>
