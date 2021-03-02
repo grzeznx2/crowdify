@@ -19,6 +19,20 @@ export default function ProjectPage() {
   const { isLoading, error, sendRequest } = useFetch()
   const { projectId } = useParams()
 
+  const flattenTree = tree => {
+    const flattenedTree = []
+
+    const iterate = node => {
+      for (let i = 0; i < node.length; i++) {
+        flattenedTree.push(node[i])
+        if (node[i].comments.length !== 0) iterate(node[i].comments)
+      }
+    }
+
+    iterate(tree)
+    return flattenedTree
+  }
+
   useEffect(() => {
     const fetchProject = async () => {
       const options = {
@@ -26,10 +40,9 @@ export default function ProjectPage() {
       }
 
       const response = await sendRequest(options)
-      console.log('*********')
-      console.log(response)
+      const flattenedComments = flattenTree(response.project.comments)
       if (response) {
-        dispatch(setProject(response.project))
+        dispatch(setProject({ ...response.project, comments: flattenedComments }))
       }
     }
 
