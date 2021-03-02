@@ -141,11 +141,24 @@ export default function useForm(form, formInputs) {
         body = inputs
         method = 'PATCH'
         break
-      case 'leaveComment':
-        console.log(currentCommentId)
-        url = currentCommentId ? `/api/v1/projects/${params.projectId}/comments/${currentCommentId}` : `/api/v1/projects/${params.projectId}/comments`
+      case 'addComment':
+        url = `/api/v1/projects/${params.projectId}/comments`
         body = {
-          content: inputs.leaveComment.value,
+          content: inputs.addComment.value,
+        }
+        method = 'POST'
+        break
+      case 'editComment':
+        url = `/api/v1/comments/${inputs[form].currentCommentId}`
+        body = {
+          content: inputs[form].value,
+        }
+        method = 'PATCH'
+        break
+      case 'respondToComment':
+        url = `/api/v1/projects/${params.projectId}/comments/${inputs.respondToComment.parentCommentId}`
+        body = {
+          content: inputs.respondToComment.value,
         }
         method = 'POST'
         break

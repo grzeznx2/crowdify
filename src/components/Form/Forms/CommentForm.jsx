@@ -9,16 +9,21 @@ import Validator from '../../../utils/Validator'
 import useFormLoading from '../../../hooks/useFormLoading'
 
 import { setFlashMessage } from '../../../redux/flashMessage/actions'
-import { setNewComment } from '../../../redux/project/actions'
+import { addNewComment, respondToComment, editComment } from '../../../redux/project/actions'
 
-export default function CommentForm({ closeModal }) {
+export default function CommentForm({ closeModal, formName, parentCommentId, currentCommentId, currentCommentContent }) {
+  console.log(`name: ${formName}, parentCommentId: ${parentCommentId}, currentCommentId: ${currentCommentId}, value: ${currentCommentContent}`)
+
   const { buttonText, handleLoading } = useFormLoading('add comment')
   const dispatch = useDispatch()
 
   const inputs = {
-    leaveComment: {
-      id: 'leaveComment',
-      name: 'leaveComment',
+    [formName]: {
+      id: formName,
+      name: formName,
+      parentCommentId,
+      currentCommentId,
+      value: currentCommentContent,
       type: 'textarea',
       cols: 80,
       rows: 15,
@@ -47,8 +52,20 @@ export default function CommentForm({ closeModal }) {
 
   const handleResponse = response => {
     closeModal()
-    dispatch(setNewComment(response.comment))
-    dispatch(setFlashMessage('success', 'Comment was successfully added.'))
+    switch (formName) {
+      case 'addComment':
+        dispatch(addNewComment(response.comment))
+        dispatch(setFlashMessage('success', 'Comment was successfully added.'))
+        break
+      case 'respondToComment':
+        dispatch(respondToComment({ newComment: response.comment, parentCommentId }))
+        dispatch(setFlashMessage('success', 'Comment was successfully added.'))
+        break
+      case 'editComment':
+        dispatch(editComment(response.comment))
+        dispatch(setFlashMessage('success', 'Comment was successfully edited.'))
+        break
+    }
   }
 
   const handleError = error => {
@@ -62,7 +79,7 @@ export default function CommentForm({ closeModal }) {
       handleResponse={handleResponse}
       handleError={handleError}
       handleLoading={handleLoading}
-      name="leaveComment"
+      name={formName}
       formModifiers="modal"
       buttons={buttons}
     ></Form>
