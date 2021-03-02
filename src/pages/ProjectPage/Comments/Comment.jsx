@@ -13,6 +13,8 @@ const Comment = ({
   },
   currentUser,
   handleResponseButton,
+  handleEditButton,
+  handleDeleteButton,
 }) => {
   return (
     <div className="comment" style={{ marginLeft: `${(depth - 1) * 50}px` }}>
@@ -35,8 +37,13 @@ const Comment = ({
           Response
         </Button>
         {currentUser && currentUser.id === commentCreatorId && (
-          <Button className="button" handleClick={handleResponseButton}>
+          <Button className="button" handleClick={handleEditButton}>
             Edit
+          </Button>
+        )}
+        {currentUser && currentUser.id === commentCreatorId && (
+          <Button className="button" handleClick={handleDeleteButton}>
+            Delete
           </Button>
         )}
       </div>
