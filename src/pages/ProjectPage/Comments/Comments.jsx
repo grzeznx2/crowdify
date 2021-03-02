@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useHistory, useLocation } from 'react-router-dom'
 import { setCurrentCommentId, clearCurrentCommentId } from '../../../redux/project/actions'
 
 import Button from '../../../components/Button/Button'
@@ -7,19 +8,30 @@ import Comment from './Comment'
 import CommentModal from '../../../components/Modals/CommentModal/CommenModal'
 
 export default function Comments({ comments }) {
+  const history = useHistory()
+  const location = useLocation()
   const dispatch = useDispatch()
+  const user = useSelector(state => state.user.currentUser)
   const [isCommentModalOpen, setIsCommentModalOpen] = useState(false)
 
   const openCommentModal = () => setIsCommentModalOpen(true)
   const closeCommentModal = () => setIsCommentModalOpen(false)
 
   const handleResponseButton = commentId => {
-    dispatch(setCurrentCommentId(commentId))
-    openCommentModal()
+    if (user) {
+      dispatch(setCurrentCommentId(commentId))
+      openCommentModal()
+    } else {
+      history.push(`/auth?redirectTo=${location.pathname}`)
+    }
   }
   const handleAddCommentButton = () => {
-    dispatch(clearCurrentCommentId())
-    openCommentModal()
+    if (user) {
+      dispatch(clearCurrentCommentId())
+      openCommentModal()
+    } else {
+      history.push(`/auth?redirectTo=${location.pathname}`)
+    }
   }
 
   const renderNestedComments = () => {
@@ -47,7 +59,7 @@ export default function Comments({ comments }) {
         <div class="container">
           {renderNestedComments()}
           <Button handleClick={handleAddCommentButton} modifiers="primary">
-            add comment
+            {user ? 'add comment' : 'log in to add comment'}
           </Button>
         </div>
       </section>
