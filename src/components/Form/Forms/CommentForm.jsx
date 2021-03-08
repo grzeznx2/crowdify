@@ -18,14 +18,14 @@ export default function CommentForm({ closeModal, formName, parentCommentId, cur
     addComment: {
       buttonText: 'add',
       actions: response => {
-        dispatch(addNewComment(response.comment))
+        dispatch(addNewComment({ comment: response.comment }))
         dispatchCommentMessage('added')
       },
     },
     deleteComment: {
       buttonText: 'delete',
       actions: () => {
-        dispatch(deleteComment(currentCommentId))
+        dispatch(deleteComment({ deletedCommentId: currentCommentId }))
         dispatchCommentMessage('deleted')
       },
     },
@@ -39,7 +39,7 @@ export default function CommentForm({ closeModal, formName, parentCommentId, cur
     editComment: {
       buttonText: 'edit',
       actions: response => {
-        dispatch(editComment(response.comment))
+        dispatch(editComment({ editedComment: response.comment }))
         dispatchCommentMessage('edited')
       },
     },

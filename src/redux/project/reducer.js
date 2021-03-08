@@ -16,7 +16,7 @@ export default (state = inititalState, action) => {
         ...state,
         currentProject: {
           ...state.currentProject,
-          comments: [...state.currentProject.comments, action.payload],
+          comments: [...state.currentProject.comments, { ...action.payload.comment }],
         },
       }
     case types.RESPOND_TO_COMMENT:
@@ -46,7 +46,7 @@ export default (state = inititalState, action) => {
         },
       }
     case types.EDIT_COMMENT:
-      const editedComment = action.payload
+      const { editedComment } = action.payload
       const editedComments = state.currentProject.comments.map(comment => (comment.id === editedComment.id ? editedComment : comment))
 
       return {
@@ -57,7 +57,7 @@ export default (state = inititalState, action) => {
         },
       }
     case types.DELETE_COMMENT:
-      const deletedCommentId = action.payload
+      const { deletedCommentId } = action.payload
       let canComeIn = true
       let deletedCommentDepth = 0
 
