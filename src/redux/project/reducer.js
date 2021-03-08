@@ -62,7 +62,7 @@ export default (state = inititalState, action) => {
       let deletedCommentDepth = 0
 
       const commentsAfterDeletion = state.currentProject.comments.filter(comment => {
-        if (!canComeIn && comment.depth === deletedCommentDepth) canComeIn = true
+        if (!canComeIn && comment.depth <= deletedCommentDepth) canComeIn = true
         if (comment.id === deletedCommentId) {
           canComeIn = false
           deletedCommentDepth = comment.depth
