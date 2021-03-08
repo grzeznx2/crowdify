@@ -12,7 +12,37 @@ import { setFlashMessage } from '../../../redux/flashMessage/actions'
 import { addNewComment, respondToComment, editComment, deleteComment } from '../../../redux/project/actions'
 
 export default function CommentForm({ closeModal, formName, parentCommentId, currentCommentId, currentCommentContent }) {
-  const { buttonText, handleLoading } = useFormLoading('add comment')
+  const initialValues = {
+    addComment: {
+      buttonText: 'add',
+      actions: response => {
+        dispatch(addNewComment(response.comment))
+        dispatch(setFlashMessage('success', 'Comment was successfully added.'))
+      },
+    },
+    deleteComment: {
+      buttonText: 'delete',
+      actions: () => {
+        dispatch(deleteComment(currentCommentId))
+        dispatch(setFlashMessage('success', 'Comment was successfully deleted.'))
+      },
+    },
+    respondToComment: {
+      buttonText: 'respond',
+      actions: response => {
+        dispatch(respondToComment({ newComment: response.comment, parentCommentId }))
+        dispatch(setFlashMessage('success', 'Comment was successfully added.'))
+      },
+    },
+    editComment: {
+      buttonText: 'edit',
+      actions: response => {
+        dispatch(editComment(response.comment))
+        dispatch(setFlashMessage('success', 'Comment was successfully edited.'))
+      },
+    },
+  }
+  const { buttonText, handleLoading } = useFormLoading(initialValues[formName].buttonText)
   const dispatch = useDispatch()
 
   const inputs =
@@ -21,7 +51,6 @@ export default function CommentForm({ closeModal, formName, parentCommentId, cur
           [formName]: {
             id: formName,
             name: formName,
-            parentCommentId,
             currentCommentId,
             modifiers: 'column on-red-bg center-input-text',
             formGroupModifiers: '',
@@ -62,25 +91,7 @@ export default function CommentForm({ closeModal, formName, parentCommentId, cur
 
   const handleResponse = response => {
     closeModal()
-    switch (formName) {
-      case 'addComment':
-        console.log(response)
-        dispatch(addNewComment(response.comment))
-        dispatch(setFlashMessage('success', 'Comment was successfully added.'))
-        break
-      case 'respondToComment':
-        dispatch(respondToComment({ newComment: response.comment, parentCommentId }))
-        dispatch(setFlashMessage('success', 'Comment was successfully added.'))
-        break
-      case 'editComment':
-        dispatch(editComment(response.comment))
-        dispatch(setFlashMessage('success', 'Comment was successfully edited.'))
-        break
-      case 'deleteComment':
-        dispatch(deleteComment(currentCommentId))
-        dispatch(setFlashMessage('success', 'Comment was successfully deleted.'))
-        break
-    }
+    initialValues[formName].actions(response)
   }
 
   const handleError = error => {
