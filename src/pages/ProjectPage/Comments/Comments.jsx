@@ -9,6 +9,7 @@ import CommentModal from '../../../components/Modals/CommentModal/CommenModal'
 
 export default function Comments({ comments }) {
   const [formName, setFormName] = useState('')
+  const [modalTitle, setModalTitle] = useState('')
   const [parentCommentId, setParentCommentId] = useState('')
   const [currentCommentId, setCurrentCommentId] = useState('')
   const [currentCommentContent, setCurrentCommentContent] = useState('')
@@ -28,6 +29,7 @@ export default function Comments({ comments }) {
       setParentCommentId(commentId)
       setCurrentCommentId('')
       setCurrentCommentContent('')
+      setModalTitle('respond to the comment')
       // dispatch(setParentCommentId(commentId))
       openCommentModal()
     } else {
@@ -41,6 +43,7 @@ export default function Comments({ comments }) {
       setParentCommentId('')
       setCurrentCommentId(commentId)
       setCurrentCommentContent(currentCommentContent)
+      setModalTitle('edit comment')
       // dispatch(editComment(commentId))
       openCommentModal()
     } else {
@@ -54,7 +57,7 @@ export default function Comments({ comments }) {
       setParentCommentId('')
       setCurrentCommentId(commentId)
       setCurrentCommentContent('')
-      // dispatch(editComment(commentId))
+      setModalTitle('are you sure you want to delete the comment?')
       openCommentModal()
     } else {
       history.push(`/auth?redirectTo=${location.pathname}`)
@@ -67,7 +70,7 @@ export default function Comments({ comments }) {
       setParentCommentId('')
       setCurrentCommentId('')
       setCurrentCommentContent('')
-      // dispatch(clearParentCommentId())
+      setModalTitle('leave a comment')
       openCommentModal()
     } else {
       history.push(`/auth?redirectTo=${location.pathname}`)
@@ -81,6 +84,7 @@ export default function Comments({ comments }) {
         isModalOpen={isCommentModalOpen}
         closeModal={closeCommentModal}
         formName={formName}
+        modalTitle={modalTitle}
         currentCommentId={currentCommentId}
         parentCommentId={parentCommentId}
         currentCommentContent={currentCommentContent}
