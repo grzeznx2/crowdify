@@ -56,6 +56,26 @@ export default (state = inititalState, action) => {
           comments: editedComments,
         },
       }
+    case types.DELETE_COMMENT:
+      const deletedCommentId = action.payload
+      let canComeIn = true
+      let deletedCommentDepth = 0
+
+      const commentsAfterDeletion = state.currentProject.comments.filter(comment => {
+        if (!canComeIn && comment.depth === deletedCommentDepth) canComeIn = true
+        if (comment.id === deletedCommentId) {
+          canComeIn = false
+          deletedCommentDepth = comment.depth
+        }
+        return canComeIn
+      })
+      return {
+        ...state,
+        currentProject: {
+          ...state.currentProject,
+          comments: commentsAfterDeletion,
+        },
+      }
 
     default:
       return state

@@ -13,7 +13,7 @@ export default function Form({ formInputs, buttons, name, formModifiers, formOth
   const { inputs, isLoading, error, response, handleChange, handleSubmit, handleEditButton } = useForm(name, formInputs)
 
   useEffect(() => {
-    if (response) handleResponse(response)
+    if (response || response === null) handleResponse(response)
   }, [response])
 
   useEffect(() => {

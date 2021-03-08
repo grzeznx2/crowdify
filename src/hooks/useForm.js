@@ -155,6 +155,11 @@ export default function useForm(form, formInputs) {
         }
         method = 'PATCH'
         break
+      case 'deleteComment':
+        url = `/api/v1/comments/${inputs[form].currentCommentId}`
+        body = null
+        method = 'DELETE'
+        break
       case 'respondToComment':
         url = `/api/v1/projects/${params.projectId}/comments/${inputs.respondToComment.parentCommentId}`
         body = {
@@ -166,15 +171,23 @@ export default function useForm(form, formInputs) {
         return null
     }
 
-    const options = {
-      url,
-      body,
-      method,
-      headers: { 'Content-Type': 'application/json' },
-    }
+    const options =
+      form === 'deleteComment'
+        ? {
+            url,
+            body,
+            method,
+          }
+        : {
+            url,
+            body,
+            method,
+            headers: { 'Content-Type': 'application/json' },
+          }
 
     const response = await sendRequest(options)
-    if (response) setResponse(response)
+
+    if (response || response === null) setResponse(response)
   }
 
   const handleSubmit = event => {

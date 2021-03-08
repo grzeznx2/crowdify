@@ -9,32 +9,42 @@ import Validator from '../../../utils/Validator'
 import useFormLoading from '../../../hooks/useFormLoading'
 
 import { setFlashMessage } from '../../../redux/flashMessage/actions'
-import { addNewComment, respondToComment, editComment } from '../../../redux/project/actions'
+import { addNewComment, respondToComment, editComment, deleteComment } from '../../../redux/project/actions'
 
 export default function CommentForm({ closeModal, formName, parentCommentId, currentCommentId, currentCommentContent }) {
-  console.log(`name: ${formName}, parentCommentId: ${parentCommentId}, currentCommentId: ${currentCommentId}, value: ${currentCommentContent}`)
-
   const { buttonText, handleLoading } = useFormLoading('add comment')
   const dispatch = useDispatch()
 
-  const inputs = {
-    [formName]: {
-      id: formName,
-      name: formName,
-      parentCommentId,
-      currentCommentId,
-      value: currentCommentContent,
-      type: 'textarea',
-      cols: 80,
-      rows: 15,
-      isValid: false,
-      isTouched: false,
-      validators: [Validator.isRequired('Comment can not be empty!')],
-      errors: [],
-      modifiers: 'column on-blue-bg center-input-text',
-      formGroupModifiers: '',
-    },
-  }
+  const inputs =
+    formName === 'deleteComment'
+      ? {
+          [formName]: {
+            id: formName,
+            name: formName,
+            parentCommentId,
+            currentCommentId,
+            modifiers: 'column on-red-bg center-input-text',
+            formGroupModifiers: '',
+          },
+        }
+      : {
+          [formName]: {
+            id: formName,
+            name: formName,
+            parentCommentId,
+            currentCommentId,
+            value: currentCommentContent,
+            type: 'textarea',
+            cols: 80,
+            rows: 15,
+            isValid: false,
+            isTouched: false,
+            validators: [Validator.isRequired('Comment can not be empty!')],
+            errors: [],
+            modifiers: 'column on-blue-bg center-input-text',
+            formGroupModifiers: '',
+          },
+        }
 
   const cancel = e => {
     e.preventDefault()
@@ -54,6 +64,7 @@ export default function CommentForm({ closeModal, formName, parentCommentId, cur
     closeModal()
     switch (formName) {
       case 'addComment':
+        console.log(response)
         dispatch(addNewComment(response.comment))
         dispatch(setFlashMessage('success', 'Comment was successfully added.'))
         break
@@ -64,6 +75,10 @@ export default function CommentForm({ closeModal, formName, parentCommentId, cur
       case 'editComment':
         dispatch(editComment(response.comment))
         dispatch(setFlashMessage('success', 'Comment was successfully edited.'))
+        break
+      case 'deleteComment':
+        dispatch(deleteComment(currentCommentId))
+        dispatch(setFlashMessage('success', 'Comment was successfully deleted.'))
         break
     }
   }

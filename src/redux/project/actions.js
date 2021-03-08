@@ -4,6 +4,10 @@ export const editComment = payload => ({
   type: types.EDIT_COMMENT,
   payload,
 })
+export const deleteComment = payload => ({
+  type: types.DELETE_COMMENT,
+  payload,
+})
 export const setProject = project => ({
   type: types.SET_PROJECT,
   payload: project,

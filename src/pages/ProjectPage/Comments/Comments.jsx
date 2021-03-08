@@ -50,7 +50,7 @@ export default function Comments({ comments }) {
 
   const handleDeleteButton = commentId => {
     if (user) {
-      setFormName('delete')
+      setFormName('deleteComment')
       setParentCommentId('')
       setCurrentCommentId(commentId)
       setCurrentCommentContent('')
@@ -77,6 +77,7 @@ export default function Comments({ comments }) {
   return (
     <>
       <CommentModal
+        outerContainerModifiers={formName !== 'deleteComment' ? 'bg-blue' : 'bg-red'}
         isModalOpen={isCommentModalOpen}
         closeModal={closeCommentModal}
         formName={formName}
