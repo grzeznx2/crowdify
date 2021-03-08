@@ -27,8 +27,8 @@ export default (state = inititalState, action) => {
       const parentCommentDepth = oldComments[parentCommentIndex].depth
       let searchedIndex = oldComments.length
 
-      for (let i = parentCommentIndex + 1; i < oldComments.length - 1; i++) {
-        if (oldComments[i].depth === parentCommentDepth) {
+      for (let i = parentCommentIndex + 1; i < oldComments.length; i++) {
+        if (oldComments[i].depth <= parentCommentDepth) {
           searchedIndex = i
           break
         }
