@@ -50,22 +50,12 @@ const Comment = ({
     }
     if (!rateID) {
       options = possibleOptions.post
-    }
-    if (isPositive) {
-      if (voted === 'up') {
-        options = possibleOptions.delete
-      }
-
-      if (voted === 'down') {
-        options = possibleOptions.update
-      }
+    } else if (isPositive) {
+      if (voted === 'up') options = possibleOptions.delete
+      else if (voted === 'down') options = possibleOptions.update
     } else {
-      if (voted === 'up') {
-        options = possibleOptions.update
-      }
-      if (voted === 'down') {
-        options = possibleOptions.delete
-      }
+      if (voted === 'up') options = possibleOptions.update
+      else if (voted === 'down') options = possibleOptions.delete
     }
     await sendRequest(options)
   }
@@ -132,4 +122,4 @@ const Comment = ({
   )
 }
 
-export default Comment
+export default React.memo(Comment)
