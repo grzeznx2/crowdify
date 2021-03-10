@@ -27,14 +27,22 @@ const CommentRates = ({ commentId, currentUserId }) => {
   const handleVoteUpButton = () => handleVotedButton(true)
   const handleVoteDownButton = () => handleVotedButton(false)
 
-  for (let rate of commentRates) {
+  const findCurrentUsersVote = rate => {
     if (rate.user === currentUserId) {
       rateId = rate._id
       if (rate.isPositive) voted = 'up'
       if (!rate.isPositive) voted = 'down'
     }
+  }
+
+  const countVotes = rate => {
     if (rate.isPositive) positiveVotesCount++
     else negativeVotesCount++
+  }
+
+  for (let rate of commentRates) {
+    findCurrentUsersVote(rate)
+    countVotes(rate)
   }
 
   return (
