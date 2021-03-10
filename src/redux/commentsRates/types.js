@@ -1,0 +1,3 @@
+export default {
+  SET_COMMENTS_RATES: 'SET_COMMENTS_RATES',
+}
