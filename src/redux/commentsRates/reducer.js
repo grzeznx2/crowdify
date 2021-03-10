@@ -41,6 +41,21 @@ export default function (state = initialState, action) {
           [commentId]: [...state.byCommentId[commentId], rate],
         },
       }
+    case types.UPDATE_COMMENT_RATE_SUCCESS:
+      const { rate: updatedRate } = action.payload
+      const updatedRateCommentId = updatedRate.comment
+
+      const newRates = state.byCommentId[updatedRateCommentId].map(el => {
+        if (el._id === updatedRate._id) return updatedRate
+        return el
+      })
+      return {
+        ...state,
+        byCommentId: {
+          ...state.byCommentId,
+          [updatedRateCommentId]: newRates,
+        },
+      }
     default:
       return state
   }
