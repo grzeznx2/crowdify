@@ -1,4 +1,5 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import useFetch from '../../../hooks/useFetch'
 
 import Avatar from '../../../components/Avatar/Avatar'
@@ -11,7 +12,6 @@ const Comment = ({
     content,
     user: { firstName, lastName, photo, id: commentCreatorId },
     depth,
-    rates,
     id: commentId,
   },
   currentUser,
@@ -20,6 +20,7 @@ const Comment = ({
   handleDeleteButton,
 }) => {
   const { isLoading, error, sendRequest } = useFetch()
+  const commentsRates = useSelector(state => state.commentsRates.byCommentId[commentId])
 
   let positive = 0
   let negative = 0
@@ -63,16 +64,14 @@ const Comment = ({
   const handleVoteUpButton = () => handleVotedButton(true)
   const handleVoteDownButton = () => handleVotedButton(false)
 
-  if (rates) {
-    for (let rate of rates) {
-      if (rate.user === currentUser.id) {
-        rateID = rate._id
-        if (rate.isPositive) voted = 'up'
-        if (!rate.isPositive) voted = 'down'
-      }
-      if (rate.isPositive) positive++
-      else negative++
+  for (let rate of commentsRates) {
+    if (rate.user === currentUser.id) {
+      rateID = rate._id
+      if (rate.isPositive) voted = 'up'
+      if (!rate.isPositive) voted = 'down'
     }
+    if (rate.isPositive) positive++
+    else negative++
   }
 
   return (
