@@ -25,6 +25,12 @@ export default function (state = initialState, action) {
         isLoading: false,
         error: action.payload,
       }
+    case types.ASYNC_COMMENT_RATE_REQUEST_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        error: undefined,
+      }
     default:
       return state
   }

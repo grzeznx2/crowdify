@@ -11,3 +11,6 @@ const asyncCommentRateRequestFailure = payload => ({
   type: types.ASYNC_COMMENT_RATE_REQUEST_FAILURE,
   payload,
 })
+const asyncCommentRateRequestSuccess = () => ({
+  type: types.ASYNC_COMMENT_RATE_REQUEST_SUCCESS,
+})
