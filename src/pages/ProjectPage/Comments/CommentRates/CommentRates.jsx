@@ -3,6 +3,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { postCommentRate, updateCommentRate, deleteCommentRate } from '../../../../redux/commentsRates/actions'
 
 import Button from '../../../../components/Button/Button'
+import SvgIcon from '../../../../components/SvgIcon/SvgIcon'
+
+import './CommentRates.scss'
 
 const CommentRates = ({ commentId, currentUserId }) => {
   const dispatch = useDispatch()
@@ -46,16 +49,16 @@ const CommentRates = ({ commentId, currentUserId }) => {
   }
 
   return (
-    <>
+    <div className="comment-rates">
       <Button className="button" handleClick={handleVoteUpButton}>
-        Up
+        <SvgIcon svgId="icon-arrow-up" root="comment-rates__icon" />
         <span>{positiveVotesCount}</span>
       </Button>
       <Button className="button" handleClick={handleVoteDownButton}>
-        Down
+        <SvgIcon svgId="icon-arrow-down" root="comment-rates__icon" />
         <span>{negativeVotesCount}</span>
       </Button>
-    </>
+    </div>
   )
 }
 
