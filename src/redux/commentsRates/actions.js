@@ -22,6 +22,10 @@ const updateCommentRateSuccess = payload => ({
   type: types.UPDATE_COMMENT_RATE_SUCCESS,
   payload,
 })
+const deleteCommentRateSuccess = payload => ({
+  type: types.DELETE_COMMENT_RATE_SUCCESS,
+  payload,
+})
 
 export const postCommentRate = (isPositive, commentId) => {
   return async dispatch => {
@@ -70,6 +74,34 @@ export const updateCommentRate = (isPositive, rateId) => {
       dispatch(asyncCommentRateRequestSuccess())
       dispatch(updateCommentRateSuccess({ rate }))
     } catch (error) {
+      dispatch(asyncCommentRateRequestFailure(error.message))
+    }
+  }
+}
+export const deleteCommentRate = (rateId, commentId) => {
+  return async dispatch => {
+    dispatch(asyncCommentRateRequestStart())
+
+    try {
+      const fetchOptions = {
+        url: `/api/v1/rates/${rateId}`,
+        init: {
+          body: null,
+          method: 'DELETE',
+        },
+      }
+
+      const response = await fetch(fetchOptions.url, { ...fetchOptions.init })
+
+      if (!response.ok) {
+        const responseData = await response.json()
+        throw Error(responseData.message)
+      }
+
+      dispatch(asyncCommentRateRequestSuccess())
+      dispatch(deleteCommentRateSuccess({ rateId, commentId }))
+    } catch (error) {
+      console.log(error.message)
       dispatch(asyncCommentRateRequestFailure(error.message))
     }
   }

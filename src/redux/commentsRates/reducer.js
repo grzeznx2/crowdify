@@ -56,6 +56,16 @@ export default function (state = initialState, action) {
           [updatedRateCommentId]: newRates,
         },
       }
+    case types.DELETE_COMMENT_RATE_SUCCESS:
+      const { rateId, commentId: deletedRateCommentId } = action.payload
+      const ratesAfterRemoval = state.byCommentId[deletedRateCommentId].filter(rate => rate._id !== rateId)
+      return {
+        ...state,
+        byCommentId: {
+          ...state.byCommentId,
+          [deletedRateCommentId]: ratesAfterRemoval,
+        },
+      }
     default:
       return state
   }
