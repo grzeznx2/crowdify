@@ -31,6 +31,16 @@ export default function (state = initialState, action) {
         isLoading: false,
         error: undefined,
       }
+    case types.POST_COMMENT_RATE_SUCCESS:
+      const { rate } = action.payload
+      const commentId = rate.comment
+      return {
+        ...state,
+        byCommentId: {
+          ...state.byCommentId,
+          [commentId]: [...state.byCommentId[commentId], rate],
+        },
+      }
     default:
       return state
   }
