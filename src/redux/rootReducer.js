@@ -2,6 +2,7 @@ import { combineReducers } from 'redux'
 import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
+import commentsRatesReducer from './commentsRates/reducer'
 import userReducer from './user/reducer'
 import projectReducer from './project/reducer'
 import flashMessageReducer from './flashMessage/reducer'
@@ -13,6 +14,7 @@ const persistConfig = {
 }
 
 const rootReducer = combineReducers({
+  commentsRates: commentsRatesReducer,
   user: userReducer,
   project: projectReducer,
   flashMessage: flashMessageReducer,
