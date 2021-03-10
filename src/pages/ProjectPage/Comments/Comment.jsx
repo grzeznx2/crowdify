@@ -48,7 +48,11 @@ const Comment = ({
             Delete
           </Button>
         )}
-        {currentUser && currentUser.id !== commentCreatorId && <CommentRates commentId={commentId} currentUserId={currentUser.id} />}
+        {currentUser && currentUser.id !== commentCreatorId && (
+          <div className="comment__rates">
+            <CommentRates commentId={commentId} currentUserId={currentUser.id} />
+          </div>
+        )}
       </div>
     </div>
   )
