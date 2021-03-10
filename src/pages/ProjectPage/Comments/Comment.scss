@@ -13,6 +13,7 @@
     padding: 2rem 0;
   }
   &__bottom {
+    display: flex;
   }
   &__avatar {
     width: 8rem;
@@ -33,6 +34,7 @@
   &__date {
     font-size: 1.4rem;
   }
-  &__ {
+  &__rates {
+    margin-left: auto;
   }
 }
