@@ -30,6 +30,12 @@
 <symbol id="icon-user" viewBox="0 0 24 32">
 <path d="M12 16c-6.625 0-12 5.375-12 12 0 2.211 1.789 4 4 4h16c2.211 0 4-1.789 4-4 0-6.625-5.375-12-12-12zM6 6c0-3.314 2.686-6 6-6s6 2.686 6 6c0 3.314-2.686 6-6 6s-6-2.686-6-6z"></path>
 </symbol>
+<symbol id="icon-arrow-up" viewBox="0 0 32 32">
+<path d="M16 1l-15 15h9v16h12v-16h9z"></path>
+</symbol>
+<symbol id="icon-arrow-down" viewBox="0 0 32 32">
+<path d="M16 31l15-15h-9v-16h-12v16h-9z"></path>
+</symbol>
 <!-- <symbol id="icon-checkmark" viewBox="0 0 20 20">
 <path d="M0 11l2-2 5 5 11-11 2 2-13 13z"></path>
 </symbol> -->
