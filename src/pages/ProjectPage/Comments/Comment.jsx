@@ -20,7 +20,7 @@ const Comment = ({
   handleDeleteButton,
 }) => {
   const { isLoading, error, sendRequest } = useFetch()
-  const commentsRates = useSelector(state => state.commentsRates.byCommentId[commentId])
+  const commentRates = useSelector(state => state.commentsRates.byCommentId[commentId])
 
   let positive = 0
   let negative = 0
@@ -64,7 +64,7 @@ const Comment = ({
   const handleVoteUpButton = () => handleVotedButton(true)
   const handleVoteDownButton = () => handleVotedButton(false)
 
-  for (let rate of commentsRates) {
+  for (let rate of commentRates) {
     if (rate.user === currentUser.id) {
       rateID = rate._id
       if (rate.isPositive) voted = 'up'
