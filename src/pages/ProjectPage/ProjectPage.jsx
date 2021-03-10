@@ -10,6 +10,7 @@ import LoanDetails from './LoanDetails/LoanDetails'
 import ProjectDescription from './ProjectDescription/ProjectDescription'
 import ProjectPresentation from './ProjectPresentation/ProjectPresentation'
 import { setProject } from '../../redux/project/actions'
+import { setCommentsRates } from '../../redux/commentsRates/actions'
 
 import './ProjectPage.scss'
 
@@ -43,6 +44,7 @@ export default function ProjectPage() {
       const flattenedComments = flattenTree(response.project.comments)
       if (response) {
         dispatch(setProject({ ...response.project, comments: flattenedComments }))
+        dispatch(setCommentsRates(response.project.commentsRates))
       }
     }
 
