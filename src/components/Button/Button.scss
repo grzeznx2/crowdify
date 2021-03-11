@@ -203,7 +203,11 @@
   align-items: center;
   padding: 0.5rem;
 
-  &:disabled {
+  &--disabled {
+    cursor: not-allowed;
+  }
+
+  &--loading {
     cursor: wait;
   }
 
