@@ -49,7 +49,7 @@ const Comment = ({
           </Button>
         )}
         <div className="comment__rates">
-          <CommentRates commentId={commentId} currentUserId={currentUser.id} />
+          <CommentRates commentId={commentId} currentUserId={currentUser.id} commentCreatorId={commentCreatorId} />
         </div>
       </div>
     </div>
