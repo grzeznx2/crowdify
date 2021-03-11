@@ -43,8 +43,8 @@ export const postCommentRate = (isPositive, commentId) => {
 
       const response = await fetch(fetchOptions.url, { ...fetchOptions.init })
       const responseData = await response.json()
-      const { rate } = responseData.data
       if (!response.ok) throw Error(responseData.message)
+      const { rate } = responseData.data
       dispatch(asyncCommentRateRequestSuccess())
       dispatch(postCommentRateSuccess({ rate }))
     } catch (error) {
@@ -68,9 +68,9 @@ export const updateCommentRate = (isPositive, rateId) => {
 
       const response = await fetch(fetchOptions.url, { ...fetchOptions.init })
       const responseData = await response.json()
+      if (!response.ok) throw Error(responseData.message)
       const { rate } = responseData.data
 
-      if (!response.ok) throw Error(responseData.message)
       dispatch(asyncCommentRateRequestSuccess())
       dispatch(updateCommentRateSuccess({ rate }))
     } catch (error) {
