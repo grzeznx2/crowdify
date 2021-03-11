@@ -2,203 +2,213 @@
 @import '../../styles/abstracts/mixins';
 
 .button {
+  &,
+  &:link,
+  &:visited {
+    display: inline-block;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-transform: capitalize;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+  }
 
-    &,
-    &:link,
-    &:visited {
-        display: inline-block;
-        font-size: 1.4rem;
-        font-weight: 700;
-        text-transform: capitalize;
-        padding: .8rem 1.5rem;
-        border-radius: 5px;
+  &:active,
+  &:focus {
+    outline: none;
+  }
+
+  &--secondary {
+    background-color: $COLOR_WHITE;
+    color: $COLOR_BLUE_30;
+    border: 2px solid $COLOR_WHITE;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: transparent;
+      color: $COLOR_WHITE;
+      border: 2px solid $COLOR_WHITE;
     }
+  }
 
-    &:active,
-    &:focus {
-        outline: none;
+  &--primary {
+    background-color: $COLOR_BLUE_30;
+    color: $COLOR_WHITE;
+    border: 2px solid $COLOR_BLUE_30;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: transparent;
+      color: $COLOR_BLUE_30;
+      border: 2px solid $COLOR_BLUE_30;
     }
+  }
 
-    &--secondary {
-        background-color: $COLOR_WHITE;
-        color: $COLOR_BLUE_30;
-        border: 2px solid $COLOR_WHITE;
-        transition: all .2s ease;
+  &--primary-inverse {
+    background-color: $COLOR_WHITE;
+    color: $COLOR_BLUE_30;
+    border: 2px solid $COLOR_BLUE_30;
+    transition: all 0.2s ease;
 
-        &:hover {
-            background-color: transparent;
-            color: $COLOR_WHITE;
-            border: 2px solid $COLOR_WHITE;
-        }
+    &:hover {
+      background-color: transparent;
+      background-color: $COLOR_BLUE_30;
+      color: $COLOR_WHITE;
     }
+  }
 
-    &--primary {
-        background-color: $COLOR_BLUE_30;
-        color: $COLOR_WHITE;
-        border: 2px solid $COLOR_BLUE_30;
-        transition: all .2s ease;
+  &--info {
+    background-color: $COLOR_ORANGE_30;
+    color: $COLOR_WHITE;
+    border: 2px solid $COLOR_ORANGE_30;
+    transition: all 0.2s ease;
 
-        &:hover {
-            background-color: transparent;
-            color: $COLOR_BLUE_30;
-            border: 2px solid $COLOR_BLUE_30;
-        }
+    &:hover {
+      background-color: transparent;
+      color: $COLOR_ORANGE_30;
+      border: 2px solid $COLOR_ORANGE_30;
     }
+  }
 
-    &--primary-inverse {
-        background-color: $COLOR_WHITE;
-        color: $COLOR_BLUE_30;
-        border: 2px solid $COLOR_BLUE_30;
-        transition: all .2s ease;
+  &--success {
+    background-color: $COLOR_GREEN_20;
+    color: $COLOR_WHITE;
+    border: 2px solid $COLOR_GREEN_20;
+    transition: all 0.2s ease;
 
-        &:hover {
-            background-color: transparent;
-            background-color: $COLOR_BLUE_30;
-            color: $COLOR_WHITE;
-        }
+    &:hover {
+      background-color: transparent;
+      color: $COLOR_GREEN_20;
+      border: 2px solid $COLOR_GREEN_20;
     }
+  }
 
+  &--warning {
+    background-color: $COLOR_RED_30;
+    color: $COLOR_WHITE;
+    border: 2px solid $COLOR_RED_30;
+    transition: all 0.2s ease;
 
-    &--info {
-        background-color: $COLOR_ORANGE_30;
-        color: $COLOR_WHITE;
-        border: 2px solid $COLOR_ORANGE_30;
-        transition: all .2s ease;
-
-        &:hover {
-            background-color: transparent;
-            color: $COLOR_ORANGE_30;
-            border: 2px solid $COLOR_ORANGE_30;
-        }
+    &:hover {
+      background-color: transparent;
+      color: $COLOR_RED_30;
+      border: 2px solid $COLOR_RED_30;
     }
+  }
 
-    &--success {
-        background-color: $COLOR_GREEN_20;
-        color: $COLOR_WHITE;
-        border: 2px solid $COLOR_GREEN_20;
-        transition: all .2s ease;
+  &--text-warning {
+    color: $COLOR_RED_30;
+  }
 
-        &:hover {
-            background-color: transparent;
-            color: $COLOR_GREEN_20;
-            border: 2px solid $COLOR_GREEN_20;
-        }
-    }
-
-    &--warning {
-        background-color: $COLOR_RED_30;
-        color: $COLOR_WHITE;
-        border: 2px solid $COLOR_RED_30;
-        transition: all .2s ease;
-
-        &:hover {
-            background-color: transparent;
-            color: $COLOR_RED_30;
-            border: 2px solid $COLOR_RED_30;
-        }
-    }
-
-    &--text-warning {
-        color: $COLOR_RED_30;
-    }
-
-    &--text-success {
-        color: $COLOR_GREEN_30;
-    }
+  &--text-success {
+    color: $COLOR_GREEN_30;
+  }
 }
 
 .button-round {
-    @include buttonRoundCenter(2.5rem);
+  @include buttonRoundCenter(2.5rem);
 
-    &:focus {
-        outline: none;
-    }
+  &:focus {
+    outline: none;
+  }
 
-    &--edit {
-        background-color: $COLOR_GRAY_8;
-    }
+  &--edit {
+    background-color: $COLOR_GRAY_8;
+  }
 
-    &--abort {
-        background-color: $COLOR_RED_30;
-    }
+  &--abort {
+    background-color: $COLOR_RED_30;
+  }
 
-    &--accept {
-        background-color: $COLOR_GREEN_20;
-    }
+  &--accept {
+    background-color: $COLOR_GREEN_20;
+  }
 
-    &__icon {
-        width: 60%;
-        height: 60%;
-        fill: $COLOR_WHITE;
-        pointer-events: none;
-    }
+  &__icon {
+    width: 60%;
+    height: 60%;
+    fill: $COLOR_WHITE;
+    pointer-events: none;
+  }
 }
 
 .button-account {
+  &:link,
+  &:visited {
+    display: none;
 
-    &:link,
-    &:visited {
-        display: none;
-
-        @include respond(tp) {
-            display: flex;
-            align-items: center;
-        }
+    @include respond(tp) {
+      display: flex;
+      align-items: center;
     }
+  }
 
-    &__icon {
-        width: 3rem;
-        height: 3rem;
-        fill: $COLOR_WHITE;
-    }
+  &__icon {
+    width: 3rem;
+    height: 3rem;
+    fill: $COLOR_WHITE;
+  }
 }
 
 .button-close {
-    @include buttonRoundCenter(4rem);
-    background-color: $COLOR_WHITE;
+  @include buttonRoundCenter(4rem);
+  background-color: $COLOR_WHITE;
 
-    &__icon {
-        width: 80%;
-        height: 80%;
-        fill: $COLOR_GRAY_8;
-        transition: all .2s;
+  &__icon {
+    width: 80%;
+    height: 80%;
+    fill: $COLOR_GRAY_8;
+    transition: all 0.2s;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover &__icon {
+    &--hv-fill-success {
+      fill: $COLOR_GREEN_20;
     }
 
-    &:focus {
-        outline: none;
+    &--hv-fill-warning {
+      fill: $COLOR_RED_30;
     }
 
-    &:hover &__icon {
-        &--hv-fill-success {
-            fill: $COLOR_GREEN_20
-        }
-
-        &--hv-fill-warning {
-            fill: $COLOR_RED_30
-        }
-
-        &--hv-fill-primary {
-            fill: $COLOR_BLUE_30
-        }
+    &--hv-fill-primary {
+      fill: $COLOR_BLUE_30;
     }
+  }
 }
 
 .button-project-id {
+  &:link,
+  &:visited {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    background-color: $COLOR_ORANGE_30;
+    color: $COLOR_WHITE;
+    border: 2px solid $COLOR_ORANGE_30;
+    transition: all 0.2s ease;
 
-    &:link,
-    &:visited {
-        display: inline-block;
-        padding: .5rem 1rem;
-        font-size: 1.2rem;
-        background-color: $COLOR_ORANGE_30;
-        color: $COLOR_WHITE;
-        border: 2px solid $COLOR_ORANGE_30;
-        transition: all .2s ease;
-
-        &:hover {
-            background-color: darken($COLOR_ORANGE_30, 6);
-            border: 2px solid darken($COLOR_ORANGE_30, 6);
-        }
+    &:hover {
+      background-color: darken($COLOR_ORANGE_30, 6);
+      border: 2px solid darken($COLOR_ORANGE_30, 6);
     }
+  }
+}
 
+.button-thumb {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+
+  &:disabled {
+    cursor: wait;
+  }
+
+  &:active,
+  &:focus {
+    outline: none;
+  }
 }
