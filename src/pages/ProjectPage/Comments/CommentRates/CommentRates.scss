@@ -2,5 +2,20 @@
   &__icon {
     width: 2rem;
     height: 2rem;
+
+    &--thumb-up {
+      fill: none;
+      stroke: green;
+    }
+    &--thumb-up-voted {
+      fill: green;
+    }
+    &--thumb-down {
+      fill: none;
+      stroke: red;
+    }
+    &--thumb-down-voted {
+      fill: red;
+    }
   }
 }
