@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { postCommentRate, updateCommentRate, deleteCommentRate } from '../../../../redux/commentsRates/actions'
+import { setFlashMessage } from '../../../../redux/flashMessage/actions'
 
 import Button from '../../../../components/Button/Button'
 import SvgIcon from '../../../../components/SvgIcon/SvgIcon'
@@ -10,7 +11,12 @@ import './CommentRates.scss'
 const CommentRates = ({ commentId, currentUserId }) => {
   const dispatch = useDispatch()
   const commentRates = useSelector(state => state.commentsRates.byCommentId[commentId])
-  const { isLoading, error } = useSelector(state => state.commentsRates)
+  const isLoading = useSelector(state => state.commentsRates.isLoading)
+  const error = useSelector(state => state.commentsRates.error)
+
+  useEffect(() => {
+    error && dispatch(setFlashMessage('error', error))
+  }, [error])
 
   let positiveVotesCount = 0
   let negativeVotesCount = 0
@@ -44,9 +50,11 @@ const CommentRates = ({ commentId, currentUserId }) => {
     else negativeVotesCount++
   }
 
-  for (let rate of commentRates) {
-    findCurrentUsersVote(rate)
-    countVotes(rate)
+  if (commentRates) {
+    for (let rate of commentRates) {
+      findCurrentUsersVote(rate)
+      countVotes(rate)
+    }
   }
 
   const thumbUpModifiers = voted === 'up' ? 'thumb-up-voted' : 'thumb-up'
