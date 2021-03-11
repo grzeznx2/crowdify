@@ -1,9 +1,12 @@
 @import '../../../../styles/abstracts/variables';
 
 .comment-rates {
+  display: flex;
+
   &__icon {
     width: 2rem;
     height: 2rem;
+    margin-right: 0.5rem;
 
     &--thumb-up {
       fill: none;
