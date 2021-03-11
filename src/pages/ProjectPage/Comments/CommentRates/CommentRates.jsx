@@ -48,14 +48,17 @@ const CommentRates = ({ commentId, currentUserId }) => {
     countVotes(rate)
   }
 
+  const thumbUpModifiers = voted === 'up' ? 'thumb-up-voted' : 'thumb-up'
+  const thumbDownModifiers = voted === 'down' ? 'thumb-down-voted' : 'thumb-down'
+
   return (
     <div className="comment-rates">
       <Button className="button" handleClick={handleVoteUpButton}>
-        <SvgIcon svgId="icon-arrow-up" root="comment-rates__icon" />
+        <SvgIcon svgId="icon-thumbs-up" root="comment-rates__icon" modifiers={thumbUpModifiers} />
         <span>{positiveVotesCount}</span>
       </Button>
       <Button className="button" handleClick={handleVoteDownButton}>
-        <SvgIcon svgId="icon-arrow-down" root="comment-rates__icon" />
+        <SvgIcon svgId="icon-thumbs-down" root="comment-rates__icon" modifiers={thumbDownModifiers} />
         <span>{negativeVotesCount}</span>
       </Button>
     </div>
