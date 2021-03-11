@@ -8,7 +8,7 @@ import SvgIcon from '../../../../components/SvgIcon/SvgIcon'
 
 import './CommentRates.scss'
 
-const CommentRates = ({ commentId, currentUserId }) => {
+const CommentRates = ({ commentId, currentUserId, commentCreatorId }) => {
   const dispatch = useDispatch()
   const commentRates = useSelector(state => state.commentsRates.byCommentId[commentId])
   const isLoading = useSelector(state => state.commentsRates.isLoading)
@@ -59,14 +59,16 @@ const CommentRates = ({ commentId, currentUserId }) => {
 
   const thumbUpModifiers = voted === 'up' ? 'thumb-up-voted' : 'thumb-up'
   const thumbDownModifiers = voted === 'down' ? 'thumb-down-voted' : 'thumb-down'
+  const disabled = currentUserId === commentCreatorId || isLoading
+  const buttonModifiers = isLoading ? 'loading' : disabled ? 'disabled' : ''
 
   return (
     <div className="comment-rates">
-      <Button root="button-thumb" disabled={isLoading} handleClick={handleVoteUpButton}>
+      <Button root="button-thumb" modifiers={buttonModifiers} disabled={disabled} handleClick={handleVoteUpButton}>
         <SvgIcon svgId="icon-thumbs-up" root="comment-rates__icon" modifiers={thumbUpModifiers} />
         <span>{positiveVotesCount}</span>
       </Button>
-      <Button root="button-thumb" disabled={isLoading} handleClick={handleVoteDownButton}>
+      <Button root="button-thumb" modifiers={buttonModifiers} disabled={disabled} handleClick={handleVoteDownButton}>
         <SvgIcon svgId="icon-thumbs-down" root="comment-rates__icon" modifiers={thumbDownModifiers} />
         <span>{negativeVotesCount}</span>
       </Button>
