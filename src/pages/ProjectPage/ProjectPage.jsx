@@ -35,21 +35,24 @@ export default function ProjectPage() {
   }
 
   useEffect(() => {
-    const fetchProject = async () => {
-      const options = {
-        url: `/api/v1/projects/${projectId}`,
+    // fetch project only if there is no project form persisted state or we want to fetch different project
+    if (!project || project._id !== projectId) {
+      const fetchProject = async () => {
+        const options = {
+          url: `/api/v1/projects/${projectId}`,
+        }
+
+        const response = await sendRequest(options)
+        const flattenedComments = flattenTree(response.project.comments)
+        if (response) {
+          dispatch(setProject({ ...response.project, comments: flattenedComments }))
+          dispatch(setCommentsRates(response.project.commentsRates))
+        }
       }
 
-      const response = await sendRequest(options)
-      const flattenedComments = flattenTree(response.project.comments)
-      if (response) {
-        dispatch(setProject({ ...response.project, comments: flattenedComments }))
-        dispatch(setCommentsRates(response.project.commentsRates))
-      }
+      fetchProject()
     }
-
-    fetchProject()
-  }, [projectId, sendRequest])
+  }, [projectId, project, sendRequest])
 
   const markup = project ? (
     <>
