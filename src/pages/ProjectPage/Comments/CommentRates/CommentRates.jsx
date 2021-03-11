@@ -10,6 +10,7 @@ import './CommentRates.scss'
 const CommentRates = ({ commentId, currentUserId }) => {
   const dispatch = useDispatch()
   const commentRates = useSelector(state => state.commentsRates.byCommentId[commentId])
+  const { isLoading, error } = useSelector(state => state.commentsRates)
 
   let positiveVotesCount = 0
   let negativeVotesCount = 0
@@ -53,11 +54,11 @@ const CommentRates = ({ commentId, currentUserId }) => {
 
   return (
     <div className="comment-rates">
-      <Button className="button" handleClick={handleVoteUpButton}>
+      <Button root="button-thumb" disabled={isLoading} handleClick={handleVoteUpButton}>
         <SvgIcon svgId="icon-thumbs-up" root="comment-rates__icon" modifiers={thumbUpModifiers} />
         <span>{positiveVotesCount}</span>
       </Button>
-      <Button className="button" handleClick={handleVoteDownButton}>
+      <Button root="button-thumb" disabled={isLoading} handleClick={handleVoteDownButton}>
         <SvgIcon svgId="icon-thumbs-down" root="comment-rates__icon" modifiers={thumbDownModifiers} />
         <span>{negativeVotesCount}</span>
       </Button>
