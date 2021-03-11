@@ -1,3 +1,5 @@
+@import '../../../../styles/abstracts/variables';
+
 .comment-rates {
   &__icon {
     width: 2rem;
@@ -5,17 +7,17 @@
 
     &--thumb-up {
       fill: none;
-      stroke: green;
+      stroke: $COLOR_GREEN_30;
     }
     &--thumb-up-voted {
-      fill: green;
+      fill: $COLOR_GREEN_30;
     }
     &--thumb-down {
       fill: none;
-      stroke: red;
+      stroke: $COLOR_RED_30;
     }
     &--thumb-down-voted {
-      fill: red;
+      fill: $COLOR_RED_30;
     }
   }
 }
