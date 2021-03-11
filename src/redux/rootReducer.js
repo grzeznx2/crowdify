@@ -10,11 +10,17 @@ import flashMessageReducer from './flashMessage/reducer'
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: ['flashMessage'],
+  blacklist: ['flashMessage', 'commentsRates'],
+}
+
+const commentsRatesPersistConfig = {
+  key: 'commentsRates',
+  storage,
+  blacklist: ['isLoading', 'error'],
 }
 
 const rootReducer = combineReducers({
-  commentsRates: commentsRatesReducer,
+  commentsRates: persistReducer(commentsRatesPersistConfig, commentsRatesReducer),
   user: userReducer,
   project: projectReducer,
   flashMessage: flashMessageReducer,
